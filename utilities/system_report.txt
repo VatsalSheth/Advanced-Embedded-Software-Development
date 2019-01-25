@@ -1,0 +1,63 @@
+Username
+uid=1000(vatsal) gid=1000(vatsal) groups=1000(vatsal),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+
+Operating System Type
+GNU/Linux
+
+OS version
+4.15.0-43-generic
+
+Kernel Version, Kernel gcc version build & build time
+Linux version 4.15.0-43-generic (buildd@lgw01-amd64-001) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
+
+System Architecture Info
+x86_64
+
+Information on File system memory
+MemTotal:        8168304 kB
+MemFree:         5361212 kB
+MemAvailable:    6273760 kB
+Buffers:           57688 kB
+Cached:          1132440 kB
+SwapCached:            0 kB
+Active:          1985660 kB
+Inactive:         625020 kB
+Active(anon):    1421788 kB
+Inactive(anon):    83848 kB
+Active(file):     563872 kB
+Inactive(file):   541172 kB
+Unevictable:          16 kB
+Mlocked:              16 kB
+SwapTotal:       2097148 kB
+SwapFree:        2097148 kB
+Dirty:               284 kB
+Writeback:             0 kB
+AnonPages:       1420656 kB
+Mapped:           415436 kB
+Shmem:             85080 kB
+Slab:              90980 kB
+SReclaimable:      53708 kB
+SUnreclaim:        37272 kB
+KernelStack:       10976 kB
+PageTables:        45808 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     6181300 kB
+Committed_AS:    6059724 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      114624 kB
+DirectMap2M:     8273920 kB

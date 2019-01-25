@@ -1,0 +1,19 @@
+#!/bin/bash
+rm system_report.txt
+echo "Username" >> system_report.txt
+id >> system_report.txt
+echo "
+Operating System Type" >> system_report.txt
+uname -o >> system_report.txt
+echo "
+OS version" >> system_report.txt
+uname -r >> system_report.txt
+echo "
+Kernel Version, Kernel gcc version build & build time" >> system_report.txt
+cat /proc/version >> system_report.txt 
+echo "
+System Architecture Info" >> system_report.txt
+uname -m >> system_report.txt
+echo "
+Information on File system memory" >> system_report.txt
+cat /proc/meminfo >> system_report.txt
