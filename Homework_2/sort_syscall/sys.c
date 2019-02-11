@@ -2562,6 +2562,12 @@ SYSCALL_DEFINE3(sort, int32_t *, src, unsigned long, size, int32_t *, des)
 {
 	int32_t *buf, i;
 	
+	if(size == 0)
+	{
+		printk("Size argument 0\n");
+		return -EINVAL;
+	}
+	
 	buf = (int32_t *)kmalloc(size, GFP_KERNEL);
 	if(buf == NULL)
 	{
