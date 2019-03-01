@@ -152,6 +152,8 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
     rc = fclose(fp);
 	if(rc != 0)
 		handle_error("fclose");
+	
+	exit(0);
 }
 
 void set_signal_handler(void)
