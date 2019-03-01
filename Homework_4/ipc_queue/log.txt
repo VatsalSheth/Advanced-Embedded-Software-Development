@@ -1,0 +1,50 @@
+
+[0 : 0 : 867 : 867569] Process 1 Main Thread IPC: POSIX Queue:
+POSIX thread ID: -1225244672
+Linux thread ID 334
+
+[26 : 689 : 689920 : 689920868] Received: String = "String with random number 54"	Length = 28	LED = 0
+[26 : 689 : 689979 : 689979487] Sent: String = "String with random number 53"	Length = 28	LED = 1
+[26 : 690 : 690510 : 690510888] Received: String = "String with random number 53"	Length = 28	LED = 1
+[26 : 690 : 690537 : 690537885] Sent: String = "String with random number 99"	Length = 28	LED = 1
+[26 : 690 : 690577 : 690577547] Received: String = "String with random number 99"	Length = 28	LED = 1
+[26 : 690 : 690598 : 690598836] Sent: String = "String with random number 49"	Length = 28	LED = 1
+[26 : 690 : 690633 : 690633249] Received: String = "String with random number 49"	Length = 28	LED = 1
+[26 : 690 : 690654 : 690654039] Sent: String = "String with random number 0"	Length = 27	LED = 0
+[26 : 690 : 690687 : 690687868] Received: String = "String with random number 0"	Length = 27	LED = 0
+[26 : 690 : 690708 : 690708408] Sent: String = "String with random number 1"	Length = 27	LED = 1
+[26 : 690 : 690741 : 690741613] Received: String = "String with random number 1"	Length = 27	LED = 1
+[26 : 690 : 690762 : 690762652] Sent: String = "String with random number 49"	Length = 28	LED = 1
+[26 : 690 : 690795 : 690795523] Received: String = "String with random number 49"	Length = 28	LED = 1
+[26 : 690 : 690815 : 690815688] Sent: String = "String with random number 23"	Length = 28	LED = 1
+[26 : 690 : 690848 : 690848518] Received: String = "String with random number 23"	Length = 28	LED = 1
+[26 : 690 : 690868 : 690868557] Sent: String = "String with random number 0"	Length = 27	LED = 0
+[26 : 690 : 690901 : 690901720] Received: String = "String with random number 0"	Length = 27	LED = 0
+[26 : 690 : 690922 : 690922218] Sent: String = "String with random number 35"	Length = 28	LED = 1
+[26 : 690 : 690954 : 690954673] Received: String = "String with random number 35"	Length = 28	LED = 1
+[26 : 690 : 690974 : 690974629] Sent: String = "String with random number 84"	Length = 28	LED = 0
+
+[0 : 0 : 41 : 41662] Process 2 Main Thread IPC: POSIX Queue:
+POSIX thread ID: -1225154560
+Linux thread ID 339
+
+[0 : 0 : 373 : 373751] Sent: String = "String with random number 54"	Length = 28	LED = 0
+[0 : 4 : 4789 : 4789188] Received: String = "String with random number 84"	Length = 28	LED = 0
+[0 : 4 : 4824 : 4824559] Sent: String = "String with random number 89"	Length = 28	LED = 1
+[0 : 4 : 4873 : 4873679] Received: String = "String with random number 89"	Length = 28	LED = 1
+[0 : 4 : 4895 : 4895177] Sent: String = "String with random number 14"	Length = 28	LED = 0
+[0 : 4 : 4930 : 4930048] Received: String = "String with random number 14"	Length = 28	LED = 0
+[0 : 4 : 4951 : 4951879] Sent: String = "String with random number 90"	Length = 28	LED = 0
+[0 : 4 : 4985 : 4985292] Received: String = "String with random number 90"	Length = 28	LED = 0
+[0 : 5 : 5006 : 5006873] Sent: String = "String with random number 75"	Length = 28	LED = 1
+[0 : 5 : 5039 : 5039703] Received: String = "String with random number 75"	Length = 28	LED = 1
+[0 : 5 : 5061 : 5061242] Sent: String = "String with random number 95"	Length = 28	LED = 1
+[0 : 5 : 5094 : 5094322] Received: String = "String with random number 95"	Length = 28	LED = 1
+[0 : 5 : 5115 : 5115653] Sent: String = "String with random number 79"	Length = 28	LED = 1
+[0 : 5 : 5148 : 5148191] Received: String = "String with random number 79"	Length = 28	LED = 1
+[0 : 5 : 5169 : 5169063] Sent: String = "String with random number 30"	Length = 28	LED = 0
+[0 : 5 : 5201 : 5201685] Received: String = "String with random number 30"	Length = 28	LED = 0
+[0 : 5 : 5223 : 5223558] Sent: String = "String with random number 41"	Length = 28	LED = 1
+[0 : 5 : 5255 : 5255971] Received: String = "String with random number 41"	Length = 28	LED = 1
+[0 : 5 : 5276 : 5276677] Sent: String = "String with random number 37"	Length = 28	LED = 1
+[0 : 5 : 5309 : 5309173] Received: String = "String with random number 37"	Length = 28	LED = 1
