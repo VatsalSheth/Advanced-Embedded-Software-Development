@@ -1,6 +1,3 @@
-#include <pthread.h>
-#include <mqueue.h>
-#include <stdio.h>
 /****************************************************************************************************************************************
 /*File Name : Inter-Process Communication using POSIX Message Queue, Process 2
 /*Author : Vatsal Sheth											
@@ -9,6 +6,9 @@
 /* form of a structure of string, strings's length and a command for LED.							  	
 /* ************************************************************************************************************************************/
 
+#include <pthread.h>
+#include <mqueue.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>           
