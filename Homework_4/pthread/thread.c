@@ -1,3 +1,10 @@
+/****************************************************************************************************************************************
+/*File Name : Pthread 
+/*Author : Vatsal Sheth											
+/*Dated 2/28/2019												
+/* Code description : This code create two threads, one to count alphabets in a file and other to log cpu utilization.							  	
+/* ************************************************************************************************************************************/
+
 #define _GNU_SOURCE
 #include <pthread.h>
 #include <stdio.h>
@@ -6,7 +13,12 @@
 #include <signal.h>
 #include <time.h>
 #include <string.h>
+#include <stdlib.h>
 
+#define handle_error(msg) \
+			{ perror(msg); \
+			exit(1); }
+			
 struct thread_param
 {
 	char *f_name;
@@ -31,6 +43,7 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	struct timespec final = {0,0};
 	struct timespec diff = {0,0};
+	int rc;
 	
 	signal_flag = 0;
 	set_signal_handler();
@@ -49,8 +62,12 @@ int main(int argc, char *argv[])
 	
 	parm.f_name = argv[1];
 	
-	pthread_create(&th_1, (void *)0, thread_1, (void *)&(parm));
-	pthread_create(&th_2, (void *)0, thread_2, (void *)&(parm));
+	rc = pthread_create(&th_1, (void *)0, thread_1, (void *)&(parm));
+	if(rc != 0)
+		handle_error("pthread_create");
+	rc = pthread_create(&th_2, (void *)0, thread_2, (void *)&(parm));
+	if(rc != 0)
+		handle_error("pthread_create");
 	
 	fp = fopen(argv[1], "a");
 	if(fp == NULL)
@@ -59,13 +76,21 @@ int main(int argc, char *argv[])
 	}
 	fprintf(fp, "\nMain Thread at %ld sec, %ld msec (%ld microsec) (%ld nanosec):\nPOSIX thread ID: %ld\nLinux thread ID %ld\n\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec, pthread_self(), syscall(SYS_gettid));
 	
-	pthread_join(th_1, NULL);
+	rc = pthread_join(th_1, NULL);
+	if(rc != 0)
+		handle_error("pthread_join");
+		
 	clock_gettime(CLOCK_REALTIME, &final);
 	time_diff(&final, &start, &diff);
 	fprintf(fp, "Completed Work at %ld sec, %ld msec (%ld microsec) (%ld nanosec)\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec);
-	fclose(fp);
 	
-	pthread_join(th_2, NULL);
+	rc = fclose(fp);
+	if(rc != 0)
+		handle_error("fclose");
+		
+	rc = pthread_join(th_2, NULL);
+	if(rc != 0)
+		handle_error("pthread_join");
 	
 	timer_delete(timer_id);
 	
@@ -76,7 +101,7 @@ void *thread_1(void *arg)
 {
 	FILE *f_ptr1, *f_ptr2;
 	struct thread_param *p;
-	int c;
+	int c, rc;
 	__uint32_t cnt[26] = {0};
 	struct timespec final = {0,0};
 	struct timespec diff = {0,0};
@@ -108,8 +133,11 @@ void *thread_1(void *arg)
 		}
 		
 	}while(!feof(f_ptr1));
-	fclose(f_ptr1);
 	
+	rc = fclose(f_ptr1);
+	if(rc != 0)
+		handle_error("fclose");
+		
 	f_ptr2 = fopen(p->f_name, "a");
 	if(f_ptr2 == NULL)
 	{
@@ -126,7 +154,9 @@ void *thread_1(void *arg)
 		}
 	}
 	
-	fclose(f_ptr2);
+	rc = fclose(f_ptr2);
+	if(rc != 0)
+		handle_error("fclose");
 	
 	pthread_exit(NULL);
 }
@@ -138,6 +168,7 @@ void *thread_2(void *arg)
 	struct thread_param *p;
 	FILE *f_ptr1, *f_ptr2;
 	char ch;
+	int rc;
 	struct timespec final = {0,0};
 	struct timespec diff = {0,0};
 	
@@ -149,7 +180,6 @@ void *thread_2(void *arg)
 	timer_flag = 0;
 	
 	f_ptr1 = fopen(p->f_name, "a");
-	
 	if(f_ptr1 == NULL)
 	{
 		printf("Error in opening file %s from thread 2\n",p->f_name);
@@ -157,7 +187,10 @@ void *thread_2(void *arg)
 	}
 	
 	fprintf(f_ptr1, "\nThread 2 created at %ld sec, %ld msec (%ld microsec) (%ld nanosec):\nThread ID %ld\n\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec,pthread_self());
-	fclose(f_ptr1);
+	
+	rc = fclose(f_ptr1);
+	if(rc != 0)
+		handle_error("fclose");
 	
 	memset(&sev, 0, sizeof(struct sigevent));
     memset(&trigger, 0, sizeof(struct itimerspec));
@@ -223,8 +256,13 @@ void *thread_2(void *arg)
 				ch = fgetc(f_ptr2);
 				fputc(ch, f_ptr1);
 			}	
-			pclose(f_ptr2);
-			fclose(f_ptr1);
+			
+			if(pclose(f_ptr2))
+				handle_error("pclose");
+			
+			rc = fclose(f_ptr1);
+			if(rc != 0)
+				handle_error("fclose");
 		}
 	}
 	pthread_exit(NULL);

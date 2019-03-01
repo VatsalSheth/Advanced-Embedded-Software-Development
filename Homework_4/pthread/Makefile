@@ -1,7 +1,7 @@
-CC = gcc
+CC = arm-linux-gcc
 
-thread: thread.c thread.o
-		$(CC) thread.c -o thread -lpthread -lrt 
+thread_arm: thread.c 
+		$(CC) thread.c -o thread_arm -lpthread -lrt 
 
 clean: 	
-		rm -f thread thread.o
+		rm -f thread_arm
