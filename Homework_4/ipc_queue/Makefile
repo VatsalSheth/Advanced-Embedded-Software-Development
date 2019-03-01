@@ -1,4 +1,4 @@
-CC = gcc
+CC = arm-linux-gcc
 
 all: process1 process2
 
