@@ -37,13 +37,10 @@ struct data
 	int led;
 };
 
-struct timespec start = {0,0};
-struct timespec final = {0,0};
 struct timespec diff = {0,0};
 FILE *fp;
 int sock_fd, newsock_fd;
 
-void time_diff(struct timespec *time2, struct timespec *time1, struct timespec *time_res);
 void set_signal_handler(void);
 
 int main()
@@ -56,22 +53,19 @@ int main()
 	
 	port = SERVER_PORT;
 	
-	clock_gettime(CLOCK_REALTIME, &start);
-	
 	remove(log_file);
 	set_signal_handler();
 	
 	srand(time(0));
 	
-	clock_gettime(CLOCK_REALTIME, &final);
-	time_diff(&final, &start, &diff);
+	clock_gettime(CLOCK_REALTIME, &diff);
 	
 	fp = fopen(log_file, "a");
 	if(fp == NULL)
 	{
 		printf("Error in opening file %s from main thread\n",log_file);
 	}
-	fprintf(fp, "\n[%ld : %ld : %ld : %ld] Server Main Thread IPC: Socket:\nPOSIX thread ID: %ld\nLinux thread ID %ld\n\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec, pthread_self(), syscall(SYS_gettid));
+	fprintf(fp, "\n[%ld : %ld : %ld : %ld] Server Main Thread IPC: Socket:\nProcess ID: %d\n\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec, getpid());
 	
 	rc = sock_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if(rc < 0) 
@@ -101,8 +95,7 @@ int main()
 		if(rc == -1)
 			handle_error("read");
 				
-		clock_gettime(CLOCK_REALTIME, &final);
-		time_diff(&final, &start, &diff);
+		clock_gettime(CLOCK_REALTIME, &diff);
 		fprintf(fp, "[%ld : %ld : %ld : %ld] Received: String = \"%s\"\tLength = %d\tLED = %d\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec, receive[i].str, receive[i].string_length, receive[i].led);
 	
 		rnd = rand();
@@ -111,8 +104,7 @@ int main()
 		send[i].string_length = strlen(send[i].str);
 		send[i].led = rnd%2;
 		
-		clock_gettime(CLOCK_REALTIME, &final);
-		time_diff(&final, &start, &diff);
+		clock_gettime(CLOCK_REALTIME, &diff);
 		
 		rc = write(newsock_fd, (char *)&send[i], sizeof(struct data));
 		if(rc == -1)
@@ -136,32 +128,11 @@ int main()
 	return 0;
 }
 
-void time_diff(struct timespec *time2, struct timespec *time1, struct timespec *time_res)
-{
-  int dt_sec=time2->tv_sec - time1->tv_sec;
-  int dt_nsec=time2->tv_nsec - time1->tv_nsec;
-
-  if(dt_sec >= 0)
-  {
-    if(dt_nsec >= 0)
-    {
-      time_res->tv_sec=dt_sec;
-      time_res->tv_nsec=dt_nsec;
-    }
-    else
-    {
-      time_res->tv_sec=dt_sec-1;
-      time_res->tv_nsec=1000000000+dt_nsec;
-    }
-  }
-}
-
 void signal_handler(int signo, siginfo_t *info, void *extra) 
 {	
 	int rc;
 	
-	clock_gettime(CLOCK_REALTIME, &final);
-	time_diff(&final, &start, &diff);
+	clock_gettime(CLOCK_REALTIME, &diff);
 	fprintf(fp, "[%ld : %ld : %ld : %ld] SIGINT encountered...!!!\n",diff.tv_sec, (diff.tv_nsec / 1000000), (diff.tv_nsec / 1000), diff.tv_nsec); 
 	
 	rc = close(newsock_fd);
