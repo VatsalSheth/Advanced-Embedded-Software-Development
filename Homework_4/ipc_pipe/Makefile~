@@ -1,8 +1,0 @@
-CC = arm-linux-gcc
-
-pipe: pipe.c
-	$(CC) pipe.c -o pipe -lpthread -lrt -g
-	
-clean:
-	rm -f pipe
-
