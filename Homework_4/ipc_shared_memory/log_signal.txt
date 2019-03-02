@@ -1,0 +1,6 @@
+
+[1726 : 308 : 308478 : 308478830] Process 1 Main Thread IPC: Shared Memory:
+Process ID: 189
+
+[1726 : 311 : 311628 : 311628372] Sent: String = "String with random number 78"	Length = 28	LED = 0
+[1727 : 277 : 277612 : 277612039] SIGINT encountered...!!!

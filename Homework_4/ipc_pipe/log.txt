@@ -1,0 +1,49 @@
+
+[13407 : 188 : 188461 : 188461348] Parent Main IPC: Pipe:
+Process ID: 323
+
+[13407 : 188 : 188603 : 188603348] Sent from parent: String = "String with random number 90"	Length = 28	LED = 0
+[13407 : 200 : 200184 : 200184973] Received by parent: String = "String with random number 90"	Length = 28	LED = 0
+[13407 : 200 : 200221 : 200221223] Sent from parent: String = "String with random number 22"	Length = 28	LED = 0
+[13407 : 210 : 210812 : 210812848] Received by parent: String = "String with random number 22"	Length = 28	LED = 0
+[13407 : 210 : 210841 : 210841514] Sent from parent: String = "String with random number 10"	Length = 28	LED = 0
+[13407 : 221 : 221142 : 221142014] Received by parent: String = "String with random number 10"	Length = 28	LED = 0
+[13407 : 221 : 221168 : 221168181] Sent from parent: String = "String with random number 53"	Length = 28	LED = 1
+[13407 : 231 : 231537 : 231537348] Received by parent: String = "String with random number 53"	Length = 28	LED = 1
+[13407 : 231 : 231565 : 231565931] Sent from parent: String = "String with random number 81"	Length = 28	LED = 1
+[13407 : 241 : 241880 : 241880264] Received by parent: String = "String with random number 81"	Length = 28	LED = 1
+[13407 : 241 : 241906 : 241906431] Sent from parent: String = "String with random number 87"	Length = 28	LED = 1
+[13407 : 252 : 252225 : 252225473] Received by parent: String = "String with random number 87"	Length = 28	LED = 1
+[13407 : 252 : 252250 : 252250764] Sent from parent: String = "String with random number 29"	Length = 28	LED = 1
+[13407 : 262 : 262545 : 262545348] Received by parent: String = "String with random number 29"	Length = 28	LED = 1
+[13407 : 262 : 262571 : 262571639] Sent from parent: String = "String with random number 79"	Length = 28	LED = 1
+[13407 : 272 : 272864 : 272864931] Received by parent: String = "String with random number 79"	Length = 28	LED = 1
+[13407 : 272 : 272890 : 272890348] Sent from parent: String = "String with random number 23"	Length = 28	LED = 1
+[13407 : 283 : 283198 : 283198681] Received by parent: String = "String with random number 23"	Length = 28	LED = 1
+[13407 : 283 : 283226 : 283226223] Sent from parent: String = "String with random number 54"	Length = 28	LED = 0
+[13407 : 293 : 293531 : 293531098] Received by parent: String = "String with random number 54"	Length = 28	LED = 0
+
+[13407 : 189 : 189449 : 189449098] Child Main IPC: Pipe:
+Process ID: 324
+
+[13407 : 199 : 199868 : 199868598] Received by child: String = "String with random number 90"	Length = 28	LED = 0
+[13407 : 199 : 199919 : 199919473] Sent from child: String = "String with random number 90"	Length = 28	LED = 0
+[13407 : 210 : 210719 : 210719264] Received by child: String = "String with random number 22"	Length = 28	LED = 0
+[13407 : 210 : 210749 : 210749514] Sent from child: String = "String with random number 22"	Length = 28	LED = 0
+[13407 : 221 : 221053 : 221053764] Received by child: String = "String with random number 10"	Length = 28	LED = 0
+[13407 : 221 : 221081 : 221081973] Sent from child: String = "String with random number 10"	Length = 28	LED = 0
+[13407 : 231 : 231431 : 231431764] Received by child: String = "String with random number 53"	Length = 28	LED = 1
+[13407 : 231 : 231468 : 231468139] Sent from child: String = "String with random number 53"	Length = 28	LED = 1
+[13407 : 241 : 241792 : 241792723] Received by child: String = "String with random number 81"	Length = 28	LED = 1
+[13407 : 241 : 241818 : 241818681] Sent from child: String = "String with random number 81"	Length = 28	LED = 1
+[13407 : 252 : 252138 : 252138389] Received by child: String = "String with random number 87"	Length = 28	LED = 1
+[13407 : 252 : 252164 : 252164348] Sent from child: String = "String with random number 87"	Length = 28	LED = 1
+[13407 : 262 : 262462 : 262462723] Received by child: String = "String with random number 29"	Length = 28	LED = 1
+[13407 : 262 : 262488 : 262488431] Sent from child: String = "String with random number 29"	Length = 28	LED = 1
+[13407 : 272 : 272781 : 272781098] Received by child: String = "String with random number 79"	Length = 28	LED = 1
+[13407 : 272 : 272806 : 272806973] Sent from child: String = "String with random number 79"	Length = 28	LED = 1
+[13407 : 283 : 283101 : 283101681] Received by child: String = "String with random number 23"	Length = 28	LED = 1
+[13407 : 283 : 283133 : 283133348] Sent from child: String = "String with random number 23"	Length = 28	LED = 1
+[13407 : 293 : 293447 : 293447014] Received by child: String = "String with random number 54"	Length = 28	LED = 0
+[13407 : 293 : 293473 : 293473348] Sent from child: String = "String with random number 54"	Length = 28	LED = 0
+[13408 : 72 : 72874 : 72874931] SIGINT encountered...!!!

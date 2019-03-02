@@ -1,6 +1,5 @@
 
-[0 : 0 : 731 : 731691] Server Main Thread IPC: Socket:
-POSIX thread ID: -1225089024
-Linux thread ID 200
+[3153 : 445 : 445811 : 445811667] Server Main Thread IPC: Socket:
+Process ID: 262
 
-[2 : 542 : 542387 : 542387924] SIGINT encountered...!!!
+[3154 : 436 : 436838 : 436838626] SIGINT encountered...!!!

@@ -1,6 +1,0 @@
-
-[0 : 0 : 911 : 911398] Process 1 Main Thread IPC: POSIX Queue:
-POSIX thread ID: -1225756672
-Linux thread ID 378
-
-[1 : 139 : 139395 : 139395470] SIGINT encountered...!!!
