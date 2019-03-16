@@ -12,4 +12,11 @@
 
 #include "log.h" 
 
+pthread_t log_th, temp_th, light_th, socket_th;
+int rc;
+struct log_param log_file;
+
 int arg_init(char *arg1, char *arg2);
+void thread_create();
+void set_signal_handler();
+void signal_handler(int signo, siginfo_t *info, void *extra);
