@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
-	
 	thread_join();
 	
 	return 0;
