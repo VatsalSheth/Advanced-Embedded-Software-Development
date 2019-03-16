@@ -1,5 +1,5 @@
 objects = main.o 
-headers = ../Include/main.h 
+headers = ../Include/main.h ../Include/log.h 
 CC = gcc
 
 project_1 : $(objects) $(headers)
