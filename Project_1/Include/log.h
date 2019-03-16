@@ -3,15 +3,17 @@
 
 #define LOG_NONE (0)
 #define LOG_DEBUG (1)
- 
-char *log_file;
-uint32_t log_verbosity;
 
-struct log_mssg
+#define handle_error(msg) \
+			{\ 
+				perror(msg); \
+				exit(1);\ 
+			}
+
+struct log_msg
 {
 	uint32_t id;
-	float light;
-	float temp;
+	float data;
 	struct timespec time_stamp;
 	uint32_t verbosity;
 };
