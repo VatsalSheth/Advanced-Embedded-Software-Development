@@ -11,3 +11,5 @@
 #include <signal.h>
 
 #include "log.h" 
+
+int arg_init(char *arg1, char *arg2);
