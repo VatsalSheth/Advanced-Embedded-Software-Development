@@ -21,6 +21,14 @@ void* logger_func(void* threadp)
 	{
 		handle_error("Error receiving from queue");
 	}
+
+	if(FILE* file_ptr = fopen(logArg.file_name, "w") == NULL)
+	{
+		handle_error("Error in creating file");
+	}
+
+
+
 }
 
 void log_exit()
@@ -33,6 +41,10 @@ void log_exit()
 	{
 		handle_error("Error in unlinking queue");
 	}
+	
+	//close file grcefully, use file_ptr somehow
+	//pthread exit
+
 	printf("\nQueue gracefully closed");
 	printf("\nExiting logger thread");
 }
