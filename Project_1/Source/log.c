@@ -17,18 +17,36 @@ void* logger_func(void* threadp)
 {
 	struct log_param* logArg = (struct log_param*)threadp;
 	struct log_msg log_data;
-	if(len = mq_receive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL) < 0)
+	queue_init();
+/*	if(len = mq_receive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL) < 0)
 	{
 		handle_error("Error receiving from queue");
 	}
-
-	if(FILE* file_ptr = fopen(logArg.file_name, "w") == NULL)
+*/
+	file_log = fopen(logArg->file_name, "w");
+	if(file_log == NULL)
 	{
 		handle_error("Error in creating file");
 	}
+	fprintf(file_log, "\nPROJECT 1 LOG FILE\n");
+	fclose(file_log);
+	
+	while(1)
+	{
+		if(len = mq_receive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL) < 0)
+		{
+			handle_error("Error receiving from queue");
+		}
+		clock_gettime(CLOCK_REALTIME, log_time);
+		file_log = fopen(logArg->file_name, "w");
+		if(file_log == NULL)
+		{
+			handle_error("Error in opening file");
+		}
 
-
-
+	}
+	pthread_exit(NULL);
+	
 }
 
 void log_exit()
@@ -41,10 +59,14 @@ void log_exit()
 	{
 		handle_error("Error in unlinking queue");
 	}
-	
-	//close file grcefully, use file_ptr somehow
-	//pthread exit
-
-	printf("\nQueue gracefully closed");
+	if(check = fclose(file_log) != 0)
+	{
+		handle_error("Error in closing file");
+	}
+	if(check = pthread_cancel(log_th) != 0)
+	{
+		handle_error("Error cancelling logger thread");
+	}
+	printf("\nQueue and file closed");
 	printf("\nExiting logger thread");
 }

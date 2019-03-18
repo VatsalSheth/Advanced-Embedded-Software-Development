@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <mqueue.h>
+#include <pthread.h>
 #include <errno.h>
 
 #define LOG_NONE (0)
@@ -17,6 +18,8 @@
 
 mqd_t queue_fd;
 struct mq_attr queue_attr;
+FILE* file_log;
+pthread_t log_th;
 uint32_t len, check;
 
 struct log_msg

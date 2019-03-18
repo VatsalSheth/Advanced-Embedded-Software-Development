@@ -1,4 +1,3 @@
-#include <pthread.h>
 #include <unistd.h>
 #include <fcntl.h>           
 #include <sys/stat.h>        
@@ -8,7 +7,7 @@
 
 #include "log.h" 
 
-pthread_t log_th, temp_th, light_th, socket_th;
+pthread_t temp_th, light_th, socket_th;
 int rc;
 struct log_param log_file;
 
