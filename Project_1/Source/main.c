@@ -21,14 +21,29 @@ void thread_join()
 {
 	rc = pthread_join(log_th, NULL);
 	if(rc != 0)
-		handle_error("pthread_join");
+	{
+		handle_error("Error in joining logger thread");
+	}
+	rc = pthread_join(temp_th, NULL);
+	if(rc != 0)
+	{
+		handle_error("Error in joining temperature sensor thread");
+	}
 }
 
 void thread_create()
 {
 	rc = pthread_create(&log_th, (void *)0, logger_func, (void *)&(log_file));
 	if(rc != 0)
-		handle_error("pthread_create");
+	{
+		handle_error("Error in creating logger thread");
+	}
+
+	rc = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
+	if(rc != 0)
+	{
+		handle_error("Error in creating temperature sensor thread");
+	}
 }
 
 int arg_init(char *arg1, char *arg2)
@@ -61,6 +76,7 @@ int arg_init(char *arg1, char *arg2)
 void signal_handler(int signo, siginfo_t *info, void *extra) 
 {
 	log_exit();
+	temp_exit();
 	exit(0);
 }
 

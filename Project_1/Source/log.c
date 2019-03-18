@@ -18,18 +18,13 @@ void* logger_func(void* threadp)
 	struct log_param* logArg = (struct log_param*)threadp;
 	struct log_msg log_data;
 	queue_init();
-/*	if(len = mq_receive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL) < 0)
-	{
-		handle_error("Error receiving from queue");
-	}
-*/
+	
 	file_log = fopen(logArg->file_name, "w");
 	if(file_log == NULL)
 	{
 		handle_error("Error in creating file");
 	}
 	fprintf(file_log, "\nPROJECT 1 LOG FILE\n");
-	fclose(file_log);
 	
 	while(1)
 	{
@@ -37,13 +32,13 @@ void* logger_func(void* threadp)
 		{
 			handle_error("Error receiving from queue");
 		}
-		clock_gettime(CLOCK_REALTIME, log_time);
-		file_log = fopen(logArg->file_name, "w");
-		if(file_log == NULL)
-		{
-			handle_error("Error in opening file");
-		}
-
+		clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
+		fprintf(file_log, "TIMESTAMP: %lu secs and %lu nsecs ; ", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
+		fprintf(file_log, "Log level: %s ; ", logArg->log_verbosity?"DEBUG":"NONE");
+		fprintf(file_log, "Source thread ID: %u ; ", log_data.id);
+		fprintf(file_log, "Data: %f ; ", log_data.data);
+		fprintf(file_log, "Debug Message: %s.\n", log_data.verbosity?log_data.debug_msg:"none");	
+		//differentiate print statement (data) based on which thread data comes from
 	}
 	pthread_exit(NULL);
 	
