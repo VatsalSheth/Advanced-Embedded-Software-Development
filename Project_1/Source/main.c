@@ -1,7 +1,5 @@
 #include "../Include/main.h"
 
-
-
 int main(int argc, char *argv[])
 {
 	set_signal_handler();
@@ -76,7 +74,8 @@ int arg_init(char *arg1, char *arg2)
 void signal_handler(int signo, siginfo_t *info, void *extra) 
 {
 	log_exit();
-	temp_exit();
+//	temp_exit();
+	printf("\n");
 	exit(0);
 }
 

@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <time.h>
 #include <mqueue.h>
 #include <pthread.h>
@@ -14,13 +15,14 @@
 				perror(msg); \
 				exit(1);\
 			}
-#define queue_name ("/log_queue")
+#define queue_name ("/log_fd")
 
 mqd_t queue_fd;
 struct mq_attr queue_attr;
+uint32_t len, check;
+
 FILE* file_log;
 pthread_t log_th;
-uint32_t len, check;
 
 struct log_msg
 {

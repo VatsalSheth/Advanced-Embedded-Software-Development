@@ -2,12 +2,15 @@
 
 void queue_init()
 {
+//	check = mq_close(queue_fd);
+//	check = mq_unlink(queue_name);
+
 	queue_attr.mq_flags = 0;
 	queue_attr.mq_maxmsg = 10;
 	queue_attr.mq_msgsize = sizeof(struct log_msg);
 	queue_attr.mq_curmsgs = 0;
 
-	if(queue_fd = mq_open(queue_name, O_RDWR | O_CREAT | O_EXCL, 0664, &queue_attr) == -1)
+	if(queue_fd = mq_open(queue_name, O_RDWR | O_CREAT/* | O_EXCL*/, 0664, &queue_attr) == -1)
 	{
 		handle_error("Error opening log queue");
 	}
@@ -48,11 +51,11 @@ void log_exit()
 {
 	if(check = mq_close(queue_fd) == -1)
 	{
-		handle_error("Error in closing queue");
+		handle_error("Error in closing logger thread queue");
 	}
 	if(check = mq_unlink(queue_name) == -1)
 	{
-		handle_error("Error in unlinking queue");
+		handle_error("Error in unlinking logger thread queue");
 	}
 	if(check = fclose(file_log) != 0)
 	{

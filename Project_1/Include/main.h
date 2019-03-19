@@ -5,10 +5,9 @@
 #include <sys/syscall.h>
 #include <signal.h>
 
-//#include "log.h" 
 #include "temp.h"
 
-pthread_t temp_th, light_th, socket_th;
+pthread_t light_th, socket_th;
 int rc;
 struct log_param log_file;
 
