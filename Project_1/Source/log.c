@@ -31,11 +31,12 @@ void* logger_func(void* threadp)
 			handle_error("Error receiving from queue");
 		
 		clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
-		fprintf(file_log, "TIMESTAMP: %lu secs and %lu nsecs ; ", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
-		fprintf(file_log, "Log level: %s ; ", logArg->log_verbosity?"DEBUG":"NONE");
-		fprintf(file_log, "Source thread ID: %u ; ", log_data.id);
-		fprintf(file_log, "Data: %f ; ", log_data.data);
-		fprintf(file_log, "Debug Message: %s.\n", log_data.verbosity?log_data.debug_msg:"none");	
+		fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
+		fprintf(file_log, "\nLog level: %s", logArg->log_verbosity?"DEBUG":"NONE");
+		fprintf(file_log, "\nSource thread ID: %u", log_data.id);
+		fprintf(file_log, "\nData: %f", log_data.data);
+		fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
+		fprintf(file_log, "\n***********************************\n");
 		//differentiate print statement (data) based on which thread data comes from
 	}
 	pthread_exit(NULL);

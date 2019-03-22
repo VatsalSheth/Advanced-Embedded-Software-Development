@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <time.h>
 #include <mqueue.h>
 #include <pthread.h>
@@ -19,7 +20,7 @@
 
 mqd_t queue_fd;
 struct mq_attr queue_attr;
-uint32_t rc_log, check;
+uint32_t rc_log;
 
 FILE* file_log;
 pthread_t log_th;
