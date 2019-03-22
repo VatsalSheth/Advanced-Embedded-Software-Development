@@ -89,3 +89,13 @@ void set_signal_handler(void)
     if (sigaction(SIGINT, &action, NULL) == -1)
 		handle_error("SIGINT: sigaction")
 }
+
+void heatbeat_check(void)
+{
+	clock_gettime(CLOCK_REALTIME, &heartbeat_timeout);
+	heartbeat_timeout.tv_sec += 1;
+	
+	pthread_mutex_lock(&lock_light);
+	pthread_cond_timedwait(&cond_light, &lock_light, &heartbeat_timeout);  
+	pthread_mutex_unlock(&lock_light);
+}

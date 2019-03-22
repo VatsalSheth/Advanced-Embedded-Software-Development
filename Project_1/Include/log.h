@@ -12,14 +12,14 @@
 
 #define handle_error(msg) \
 			{\
-				perror(msg); \
+				perror(msg);\
 				exit(1);\
 			}
 #define queue_name ("/log_fd")
 
 mqd_t queue_fd;
 struct mq_attr queue_attr;
-uint32_t len, check;
+uint32_t rc_log, check;
 
 FILE* file_log;
 pthread_t log_th;
