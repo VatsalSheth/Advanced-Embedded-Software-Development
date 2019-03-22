@@ -44,16 +44,20 @@ void* logger_func(void* threadp)
 
 void log_exit()
 {
-	if(check = mq_close(queue_fd) == -1)
+	rc_log = mq_close(queue_fd);
+	if(rc_log == -1)
 		handle_error("Error in closing logger thread queue");
 	
-	if(check = mq_unlink(queue_name) == -1)
+	rc_log = mq_unlink(queue_name);
+	if(rc_log == -1)
 		handle_error("Error in unlinking logger thread queue");
 	
-	if(check = fclose(file_log) != 0)
+	rc_log = fclose(file_log);
+	if(rc_log != 0)
 		handle_error("Error in closing file");
 	
-	if(check = pthread_cancel(log_th) != 0)
+	rc_log = pthread_cancel(log_th);
+	if(rc_log != 0)
 		handle_error("Error cancelling logger thread");
 	
 	printf("\nQueue and file closed");
