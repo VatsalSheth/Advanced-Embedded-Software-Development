@@ -10,7 +10,10 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
-	heartbeat_check();
+	//while(1)
+	{
+		heartbeat_check();
+	}
 	thread_join();
 	
 	return 0;
@@ -18,21 +21,25 @@ int main(int argc, char *argv[])
 
 void thread_join()
 {
+	printf("join %ld\n",log_th);
 	rc = pthread_join(log_th, NULL);
+	printf("rc %d\n",rc);
 	if(rc != 0)
-	{
-		handle_error("Error in joining logger thread");
-	}
+		handle_error("Error in joining logger thread"); 
+	
 	rc = pthread_join(temp_th, NULL);
 	if(rc != 0)
-	{
 		handle_error("Error in joining temperature sensor thread");
-	}
+		
+	rc = pthread_join(light_th, NULL);
+	if(rc != 0)
+		handle_error("Error in joining light sensor thread");
 }
 
 void thread_create()
 {
 	rc = pthread_create(&log_th, (void *)0, logger_func, (void *)&(log_file));
+	printf("create %ld\n",log_th);
 	if(rc != 0)
 	{
 		handle_error("Error in creating logger thread");
@@ -55,6 +62,22 @@ void thread_create()
 	}
 	else
 	{
+		rc = pthread_cond_init(&mon[2].cond, NULL); 
+		if(rc!=0)
+			handle_error("pthread cond init");
+			
+		rc = pthread_mutex_init(&mon[2].lock, NULL); 
+		if(rc!=0)
+			handle_error("pthread mutex init");
+	}
+	
+	/*rc = pthread_create(&light_th, (void *)0, light_func, (void *)0);
+	if(rc != 0)
+	{
+		handle_error("Error in creating light sensor thread");
+	}
+	else
+	{
 		rc = pthread_cond_init(&mon[1].cond, NULL); 
 		if(rc!=0)
 			handle_error("pthread cond init");
@@ -62,7 +85,7 @@ void thread_create()
 		rc = pthread_mutex_init(&mon[1].lock, NULL); 
 		if(rc!=0)
 			handle_error("pthread mutex init");
-	}
+	}*/
 }
 
 int arg_init(char *arg1, char *arg2)
@@ -97,7 +120,7 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 	uint32_t i;
 	
 	log_exit();
-//	temp_exit();
+	temp_exit();
 	for(i=0; i<NUM_OF_THREADS; i++)
 	{
 		pthread_cond_destroy(&mon[i].cond);
@@ -123,7 +146,7 @@ void heartbeat_check(void)
 	uint32_t i;
 	
 	for(i=0; i<NUM_OF_THREADS; i++)
-	{
+	{	
 		clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
 		mon[i].timeout.tv_sec += 2;
 	

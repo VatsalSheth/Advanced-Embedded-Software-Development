@@ -8,6 +8,7 @@
 
 #include "temp.h"
 
+
 pthread_t light_th, socket_th;
 int rc;
 struct log_param log_file;
