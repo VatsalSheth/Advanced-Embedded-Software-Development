@@ -33,11 +33,12 @@ void* logger_func(void* threadp)
 			handle_error("Error receiving from queue");
 		
 		clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
-		fprintf(file_log, "TIMESTAMP: %lu secs and %lu nsecs ; ", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
-		fprintf(file_log, "Log level: %s ; ", logArg->log_verbosity?"DEBUG":"NONE");
-		fprintf(file_log, "Source thread ID: %u ; ", log_data.id);
-		fprintf(file_log, "Data: %f ; ", log_data.data);
-		fprintf(file_log, "Debug Message: %s.\n", log_data.verbosity?log_data.debug_msg:"none");	
+		fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
+		fprintf(file_log, "\nLog level: %s", logArg->log_verbosity?"DEBUG":"NONE");
+		fprintf(file_log, "\nSource thread ID: %u", log_data.id);
+		fprintf(file_log, "\nData: %f", log_data.data);
+		fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
+		fprintf(file_log, "\n***********************************\n");
 		//differentiate print statement (data) based on which thread data comes from
 		ack_heartbeat(Thread_num);
 	}
@@ -47,16 +48,20 @@ void* logger_func(void* threadp)
 
 void log_exit()
 {
-	if(check = mq_close(queue_fd) == -1)
+	rc_log = mq_close(queue_fd);
+	if(rc_log == -1)
 		handle_error("Error in closing logger thread queue");
 	
-	if(check = mq_unlink(queue_name) == -1)
+	rc_log = mq_unlink(queue_name);
+	if(rc_log == -1)
 		handle_error("Error in unlinking logger thread queue");
 	
-	if(check = fclose(file_log) != 0)
+	rc_log = fclose(file_log);
+	if(rc_log != 0)
 		handle_error("Error in closing file");
 	
-	if(check = pthread_cancel(log_th) != 0)
+	rc_log = pthread_cancel(log_th);
+	if(rc_log != 0)
 		handle_error("Error cancelling logger thread");
 	
 	printf("\nQueue and file closed");
