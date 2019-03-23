@@ -1,5 +1,7 @@
 #include "../Include/log.h"
 
+#define Thread_num 0
+
 void queue_init()
 {
 	queue_attr.mq_flags = 0;
@@ -37,6 +39,7 @@ void* logger_func(void* threadp)
 		fprintf(file_log, "Data: %f ; ", log_data.data);
 		fprintf(file_log, "Debug Message: %s.\n", log_data.verbosity?log_data.debug_msg:"none");	
 		//differentiate print statement (data) based on which thread data comes from
+		ack_heartbeat(Thread_num);
 	}
 	pthread_exit(NULL);
 	
@@ -58,4 +61,11 @@ void log_exit()
 	
 	printf("\nQueue and file closed");
 	printf("\nExiting logger thread");
+}
+
+void ack_heartbeat(uint32_t th_num)
+{
+	pthread_mutex_lock(&mon[th_num].lock);
+	pthread_cond_signal(&mon[th_num].cond);  
+	pthread_mutex_unlock(&mon[th_num].lock);
 }

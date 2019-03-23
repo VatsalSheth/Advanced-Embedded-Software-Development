@@ -17,6 +17,15 @@
 			}
 #define queue_name ("/log_fd")
 
+#define NUM_OF_THREADS 2
+
+struct heartbeat_monitor
+{
+	pthread_cond_t cond;
+	pthread_mutex_t lock;
+	struct timespec timeout;
+}mon[NUM_OF_THREADS];
+
 mqd_t queue_fd;
 struct mq_attr queue_attr;
 uint32_t rc_log, check;
@@ -42,3 +51,4 @@ struct log_param
 void queue_init(void);
 void* logger_func(void*);
 void log_exit(void);
+void ack_heartbeat(uint32_t);

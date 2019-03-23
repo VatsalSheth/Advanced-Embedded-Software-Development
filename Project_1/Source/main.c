@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
+	heartbeat_check();
 	thread_join();
 	
 	return 0;
@@ -36,11 +37,31 @@ void thread_create()
 	{
 		handle_error("Error in creating logger thread");
 	}
+	else
+	{
+		rc = pthread_cond_init(&mon[0].cond, NULL); 
+		if(rc!=0)
+			handle_error("pthread cond init");
+			
+		rc = pthread_mutex_init(&mon[0].lock, NULL); 
+		if(rc!=0)
+			handle_error("pthread mutex init");
+	}
 
 	rc = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
 	if(rc != 0)
 	{
 		handle_error("Error in creating temperature sensor thread");
+	}
+	else
+	{
+		rc = pthread_cond_init(&mon[1].cond, NULL); 
+		if(rc!=0)
+			handle_error("pthread cond init");
+			
+		rc = pthread_mutex_init(&mon[1].lock, NULL); 
+		if(rc!=0)
+			handle_error("pthread mutex init");
 	}
 }
 
@@ -72,9 +93,16 @@ int arg_init(char *arg1, char *arg2)
 }
 
 void signal_handler(int signo, siginfo_t *info, void *extra) 
-{
+{	
+	uint32_t i;
+	
 	log_exit();
 //	temp_exit();
+	for(i=0; i<NUM_OF_THREADS; i++)
+	{
+		pthread_cond_destroy(&mon[i].cond);
+		pthread_mutex_destroy(&mon[i].lock);
+	}
 	printf("\n");
 	exit(0);
 }
@@ -90,12 +118,21 @@ void set_signal_handler(void)
 		handle_error("SIGINT: sigaction")
 }
 
-void heatbeat_check(void)
+void heartbeat_check(void)
 {
-	clock_gettime(CLOCK_REALTIME, &heartbeat_timeout);
-	heartbeat_timeout.tv_sec += 1;
+	uint32_t i;
 	
-	pthread_mutex_lock(&lock_light);
-	pthread_cond_timedwait(&cond_light, &lock_light, &heartbeat_timeout);  
-	pthread_mutex_unlock(&lock_light);
+	for(i=0; i<NUM_OF_THREADS; i++)
+	{
+		clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
+		mon[i].timeout.tv_sec += 2;
+	
+		pthread_mutex_lock(&mon[i].lock);
+		rc = pthread_cond_timedwait(&mon[i].cond, &mon[i].lock, &mon[i].timeout);  
+		if(rc == ETIMEDOUT)
+		{
+			printf("fail %d\n",i);
+		}
+		pthread_mutex_unlock(&mon[i].lock);
+	}
 }
