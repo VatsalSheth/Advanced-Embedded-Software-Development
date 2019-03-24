@@ -1,7 +1,5 @@
 #include "../Include/log.h"
 
-#define Thread_num 0
-
 void queue_init()
 {
 	queue_attr.mq_flags = 0;
@@ -19,7 +17,7 @@ void* logger_func(void* threadp)
 	struct log_param* logArg = (struct log_param*)threadp;
 	struct log_msg log_data;
 	queue_init();
-	
+
 	file_log = fopen(logArg->file_name, "w");
 	if(file_log == NULL)
 		handle_error("Error in creating file");
@@ -35,12 +33,12 @@ void* logger_func(void* threadp)
 		clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
 		fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
 		fprintf(file_log, "\nLog level: %s", logArg->log_verbosity?"DEBUG":"NONE");
-		fprintf(file_log, "\nSource thread ID: %u", log_data.id);
-		fprintf(file_log, "\nData: %f", log_data.data);
+		fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":"LIGHT SENSOR");
+		fprintf(file_log, "\nData: %f %s", log_data.data, log_data.id==TEMP_THREAD_NUM?"degrees Celsius":"Lumens");
 		fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
 		fprintf(file_log, "\n***********************************\n");
 		//differentiate print statement (data) based on which thread data comes from
-		ack_heartbeat(Thread_num);
+		ack_heartbeat(LOG_THREAD_NUM);
 	}
 	pthread_exit(NULL);
 	

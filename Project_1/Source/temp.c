@@ -21,24 +21,26 @@ void* temp_func(void* threadp)
 	temp_data.debug_msg = malloc(30);
 	while(1)
 	{
-		temp_data.id = pthread_self();
+		temp_data.id = TEMP_THREAD_NUM; 
 		temp_data.data = rand();
 		clock_gettime(CLOCK_REALTIME, &(temp_data.time_stamp));
-		temp_data.verbosity = (rand())%2;
-		strcpy(temp_data.debug_msg, "GNU DEBUGGER!!!");
+		temp_data.verbosity = 1;//(rand())%2;
+		strcpy(temp_data.debug_msg, "GNU TEMPERATURE DEBUGGER!!!");
 		rc_temp = mq_send(temp_queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+		ack_heartbeat(TEMP_THREAD_NUM);
 	}
 	pthread_exit(NULL);
 }
 
 void temp_exit()
 {
+//	free(temp_data.debug_msg);
 	rc_temp = mq_close(temp_queue_fd);
 	if(rc_temp  == -1)
 		handle_error("Error in closing temperature thread queue");
 	
 	rc_temp = pthread_cancel(temp_th);
 	if(rc_temp != 0)
-		handle_error("Error cancelling temperature thread queue");
+		handle_error("Error cancelling temperature thread");
 	printf("\nExiting temperature thread");
 }

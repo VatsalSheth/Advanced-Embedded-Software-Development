@@ -3,6 +3,7 @@
 int main(int argc, char *argv[])
 {
 	set_signal_handler();
+	exit_cond = 1;
 	
 	if(!arg_init(argv[1], argv[2]))
 	{
@@ -10,7 +11,7 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
-	//while(1)
+	while(exit_cond)
 	{
 		heartbeat_check();
 	}
@@ -21,36 +22,54 @@ int main(int argc, char *argv[])
 
 void thread_join()
 {
-	printf("join %ld\n",log_th);
 	rc = pthread_join(log_th, NULL);
-	printf("rc %d\n",rc);
 	if(rc != 0)
-		handle_error("Error in joining logger thread"); 
-	
+	{
+		handle_error("Error in joining logger thread");
+	}
+	else 
+	{
+		pthread_cond_destroy(&mon[LOG_THREAD_NUM].cond);
+		pthread_mutex_destroy(&mon[LOG_THREAD_NUM].lock);
+	}
+
 	rc = pthread_join(temp_th, NULL);
 	if(rc != 0)
+	{
 		handle_error("Error in joining temperature sensor thread");
+	}
+	else 
+	{
+		pthread_cond_destroy(&mon[TEMP_THREAD_NUM].cond);
+		pthread_mutex_destroy(&mon[TEMP_THREAD_NUM].lock);
+	}	
 		
 	rc = pthread_join(light_th, NULL);
 	if(rc != 0)
+	{
 		handle_error("Error in joining light sensor thread");
+	}
+	else 
+	{
+		pthread_cond_destroy(&mon[LIGHT_THREAD_NUM].cond);
+		pthread_mutex_destroy(&mon[LIGHT_THREAD_NUM].lock);
+	}
 }
 
 void thread_create()
 {
 	rc = pthread_create(&log_th, (void *)0, logger_func, (void *)&(log_file));
-	printf("create %ld\n",log_th);
 	if(rc != 0)
 	{
 		handle_error("Error in creating logger thread");
 	}
 	else
 	{
-		rc = pthread_cond_init(&mon[0].cond, NULL); 
+		rc = pthread_cond_init(&mon[LOG_THREAD_NUM].cond, NULL); 
 		if(rc!=0)
 			handle_error("pthread cond init");
 			
-		rc = pthread_mutex_init(&mon[0].lock, NULL); 
+		rc = pthread_mutex_init(&mon[LOG_THREAD_NUM].lock, NULL); 
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}
@@ -62,30 +81,30 @@ void thread_create()
 	}
 	else
 	{
-		rc = pthread_cond_init(&mon[2].cond, NULL); 
+		rc = pthread_cond_init(&mon[TEMP_THREAD_NUM].cond, NULL); 
 		if(rc!=0)
 			handle_error("pthread cond init");
 			
-		rc = pthread_mutex_init(&mon[2].lock, NULL); 
+		rc = pthread_mutex_init(&mon[TEMP_THREAD_NUM].lock, NULL); 
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}
 	
-	/*rc = pthread_create(&light_th, (void *)0, light_func, (void *)0);
+	rc = pthread_create(&light_th, (void *)0, light_func, (void *)0);
 	if(rc != 0)
 	{
 		handle_error("Error in creating light sensor thread");
 	}
 	else
 	{
-		rc = pthread_cond_init(&mon[1].cond, NULL); 
+		rc = pthread_cond_init(&mon[LIGHT_THREAD_NUM].cond, NULL); 
 		if(rc!=0)
 			handle_error("pthread cond init");
 			
-		rc = pthread_mutex_init(&mon[1].lock, NULL); 
+		rc = pthread_mutex_init(&mon[LIGHT_THREAD_NUM].lock, NULL); 
 		if(rc!=0)
 			handle_error("pthread mutex init");
-	}*/
+	}
 }
 
 int arg_init(char *arg1, char *arg2)
@@ -117,17 +136,11 @@ int arg_init(char *arg1, char *arg2)
 
 void signal_handler(int signo, siginfo_t *info, void *extra) 
 {	
-	uint32_t i;
-	
 	log_exit();
 	temp_exit();
-	for(i=0; i<NUM_OF_THREADS; i++)
-	{
-		pthread_cond_destroy(&mon[i].cond);
-		pthread_mutex_destroy(&mon[i].lock);
-	}
+	light_exit();
 	printf("\n");
-	exit(0);
+	exit_cond = 0;
 }
 
 void set_signal_handler(void)
@@ -145,7 +158,7 @@ void heartbeat_check(void)
 {
 	uint32_t i;
 	
-	for(i=0; i<NUM_OF_THREADS; i++)
+	for(i=0; i<(NUM_OF_THREADS - 1); i++)
 	{	
 		clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
 		mon[i].timeout.tv_sec += 2;

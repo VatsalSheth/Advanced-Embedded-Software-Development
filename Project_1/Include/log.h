@@ -18,7 +18,10 @@
 			}
 #define queue_name ("/log_fd")
 
-#define NUM_OF_THREADS 2
+#define LOG_THREAD_NUM 0
+#define TEMP_THREAD_NUM 1
+#define LIGHT_THREAD_NUM 2
+#define NUM_OF_THREADS 3
 
 struct heartbeat_monitor
 {
@@ -30,6 +33,7 @@ struct heartbeat_monitor
 mqd_t queue_fd;
 struct mq_attr queue_attr;
 uint32_t rc_log;
+uint32_t exit_cond;
 
 FILE* file_log;
 pthread_t log_th;

@@ -7,13 +7,12 @@
 #include <time.h>
 
 #include "temp.h"
+#include "light.h"
 
-
-pthread_t light_th, socket_th;
+pthread_t socket_th;
 int rc;
+useconds_t usec;
 struct log_param log_file;
-
-
 
 int arg_init(char *arg1, char *arg2);
 void thread_create(void);
