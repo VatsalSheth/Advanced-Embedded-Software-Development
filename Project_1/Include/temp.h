@@ -6,7 +6,7 @@
 mqd_t temp_queue_fd;
 struct mq_attr temp_queue_attr;
 pthread_t temp_th;
-uint32_t rc_temp;
+int rc_temp;
 
 void* temp_func(void*);
 void temp_exit(void);

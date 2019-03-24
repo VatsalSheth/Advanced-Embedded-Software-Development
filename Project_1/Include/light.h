@@ -6,7 +6,7 @@
 mqd_t light_queue_fd;
 struct mq_attr light_queue_attr;
 pthread_t light_th;
-uint32_t rc_light;
+int rc_light;
 
 void* light_func(void*);
 void light_exit(void);

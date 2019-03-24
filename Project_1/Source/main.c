@@ -54,6 +54,17 @@ void thread_join()
 		pthread_cond_destroy(&mon[LIGHT_THREAD_NUM].cond);
 		pthread_mutex_destroy(&mon[LIGHT_THREAD_NUM].lock);
 	}
+	
+	rc = pthread_join(socket_th, NULL);
+	if(rc != 0)
+	{
+		handle_error("Error in joining socket sensor thread");
+	}
+	else 
+	{
+		pthread_cond_destroy(&mon[SOCKET_THREAD_NUM].cond);
+		pthread_mutex_destroy(&mon[SOCKET_THREAD_NUM].lock);
+	}
 }
 
 void thread_create()
@@ -105,6 +116,22 @@ void thread_create()
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}
+	
+	rc = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
+	if(rc != 0)
+	{
+		handle_error("Error in creating socket sensor thread");
+	}
+	else
+	{
+		rc = pthread_cond_init(&mon[SOCKET_THREAD_NUM].cond, NULL); 
+		if(rc!=0)
+			handle_error("pthread cond init");
+			
+		rc = pthread_mutex_init(&mon[SOCKET_THREAD_NUM].lock, NULL); 
+		if(rc!=0)
+			handle_error("pthread mutex init");
+	}
 }
 
 int arg_init(char *arg1, char *arg2)
@@ -139,6 +166,7 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 	log_exit();
 	temp_exit();
 	light_exit();
+	socket_exit();
 	printf("\n");
 	exit_cond = 0;
 }
@@ -160,8 +188,11 @@ void heartbeat_check(void)
 	
 	for(i=0; i<(NUM_OF_THREADS - 1); i++)
 	{	
+		if(!exit_cond)
+			break;
+			
 		clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
-		mon[i].timeout.tv_sec += 2;
+		mon[i].timeout.tv_sec += 3;
 	
 		pthread_mutex_lock(&mon[i].lock);
 		rc = pthread_cond_timedwait(&mon[i].cond, &mon[i].lock, &mon[i].timeout);  

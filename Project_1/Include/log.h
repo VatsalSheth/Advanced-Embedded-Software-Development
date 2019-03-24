@@ -7,6 +7,7 @@
 #include <mqueue.h>
 #include <pthread.h>
 #include <errno.h>
+#include <signal.h>
 
 #define LOG_NONE (0)
 #define LOG_DEBUG (1)
@@ -21,7 +22,8 @@
 #define LOG_THREAD_NUM 0
 #define TEMP_THREAD_NUM 1
 #define LIGHT_THREAD_NUM 2
-#define NUM_OF_THREADS 3
+#define SOCKET_THREAD_NUM 3
+#define NUM_OF_THREADS 4
 
 struct heartbeat_monitor
 {
@@ -32,11 +34,13 @@ struct heartbeat_monitor
 
 mqd_t queue_fd;
 struct mq_attr queue_attr;
-uint32_t rc_log;
+int rc_log;
+uint32_t data_avail;
 uint32_t exit_cond;
 
 FILE* file_log;
 pthread_t log_th;
+struct sigevent sev;
 
 struct log_msg
 {
@@ -46,7 +50,7 @@ struct log_msg
 	uint32_t verbosity;
 	char* debug_msg;
 };
-
+ 
 struct log_param
 {
 	uint32_t log_verbosity;
@@ -57,3 +61,5 @@ void queue_init(void);
 void* logger_func(void*);
 void log_exit(void);
 void ack_heartbeat(uint32_t);
+void set_notify_signal();
+void notify_handler(union sigval sv);

@@ -8,8 +8,8 @@
 
 #include "temp.h"
 #include "light.h"
+#include "socket.h"
 
-pthread_t socket_th;
 int rc;
 useconds_t usec;
 struct log_param log_file;

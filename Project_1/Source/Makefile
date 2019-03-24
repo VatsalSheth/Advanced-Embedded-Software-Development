@@ -1,5 +1,5 @@
-objects = main.o log.o temp.o light.o
-headers = ../Include/main.h ../Include/log.h ../Include/temp.h ../Include/light.h 
+objects = main.o log.o temp.o light.o socket.o
+headers = ../Include/main.h ../Include/log.h ../Include/temp.h ../Include/light.h ../Include/socket.h 
 CC = gcc
 
 project_1 : $(objects) $(headers)
@@ -16,6 +16,9 @@ temp.o : temp.c $(headers)
 
 light.o : light.c $(headers)
 	$(CC) -c light.c
+
+socket.o : socket.c $(headers)
+	$(CC) -c socket.c
 
 clean : 	
 	rm -f project_1 $(objects)

@@ -16,7 +16,11 @@ void* logger_func(void* threadp)
 {
 	struct log_param* logArg = (struct log_param*)threadp;
 	struct log_msg log_data;
+	struct timespec rx_timeout;
+	useconds_t garbage_sleep = 1;
+	
 	queue_init();
+	set_notify_signal();
 
 	file_log = fopen(logArg->file_name, "w");
 	if(file_log == NULL)
@@ -25,19 +29,28 @@ void* logger_func(void* threadp)
 	fprintf(file_log, "\nPROJECT 1 LOG FILE\n");
 	
 	while(1)
-	{
-		rc_log = mq_receive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL);
-		if(rc_log < 0)
-			handle_error("Error receiving from queue");
-		
-		clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
-		fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
-		fprintf(file_log, "\nLog level: %s", logArg->log_verbosity?"DEBUG":"NONE");
-		fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":"LIGHT SENSOR");
-		fprintf(file_log, "\nData: %f %s", log_data.data, log_data.id==TEMP_THREAD_NUM?"degrees Celsius":"Lumens");
-		fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
-		fprintf(file_log, "\n***********************************\n");
-		//differentiate print statement (data) based on which thread data comes from
+	{	
+		if(data_avail == 1)
+		{
+			clock_gettime(CLOCK_REALTIME, &rx_timeout);
+			rx_timeout.tv_nsec += 1000000;
+			rc_log = mq_timedreceive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL, &rx_timeout);
+			if(rc_log < 0)
+			{
+				data_avail = 0;
+				if(mq_notify(queue_fd, &sev) == -1)
+					handle_error("mq_notify");	
+			}
+						
+			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
+			fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
+			fprintf(file_log, "\nLog level: %s", logArg->log_verbosity?"DEBUG":"NONE");
+			fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":"LIGHT SENSOR");
+			fprintf(file_log, "\nData: %f %s", log_data.data, log_data.id==TEMP_THREAD_NUM?"degrees Celsius":"Lumens");
+			fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
+			fprintf(file_log, "\n***********************************\n");
+		}
+		usleep(garbage_sleep);
 		ack_heartbeat(LOG_THREAD_NUM);
 	}
 	pthread_exit(NULL);
@@ -71,4 +84,21 @@ void ack_heartbeat(uint32_t th_num)
 	pthread_mutex_lock(&mon[th_num].lock);
 	pthread_cond_signal(&mon[th_num].cond);  
 	pthread_mutex_unlock(&mon[th_num].lock);
+}
+
+void set_notify_signal()
+{
+	sev.sigev_notify = SIGEV_THREAD;
+    sev.sigev_notify_function = notify_handler;
+    sev.sigev_notify_attributes = NULL;
+    sev.sigev_value.sival_ptr = NULL;
+    
+    if(mq_notify(queue_fd, &sev) == -1)
+		handle_error("mq_notify");
+}
+
+void notify_handler(union sigval sv)
+{
+	//printf("notify\n");   DEBUG
+	data_avail = 1;
 }

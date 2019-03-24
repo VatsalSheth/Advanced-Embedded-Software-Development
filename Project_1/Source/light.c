@@ -23,6 +23,7 @@ void* light_func(void* threadp)
 	light_data.debug_msg = malloc(30);
 	while(1)
 	{
+		sleep(1);
 		light_data.id = LIGHT_THREAD_NUM; 
 		light_data.data = rand();
 		clock_gettime(CLOCK_REALTIME, &(light_data.time_stamp));

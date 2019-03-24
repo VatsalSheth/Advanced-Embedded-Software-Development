@@ -21,6 +21,7 @@ void* temp_func(void* threadp)
 	temp_data.debug_msg = malloc(30);
 	while(1)
 	{
+		sleep(1);
 		temp_data.id = TEMP_THREAD_NUM; 
 		temp_data.data = rand();
 		clock_gettime(CLOCK_REALTIME, &(temp_data.time_stamp));
