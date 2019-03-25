@@ -22,6 +22,8 @@ void* logger_func(void* threadp)
 	queue_init();
 	set_notify_signal();
 
+	timer_init();
+	
 	file_log = fopen(logArg->file_name, "w");
 	if(file_log == NULL)
 		handle_error("Error in creating file");
@@ -55,6 +57,33 @@ void* logger_func(void* threadp)
 	}
 	pthread_exit(NULL);
 	
+}
+
+void timer_init()
+{
+	struct sigevent sev;
+	struct itimerspec trigger;
+	
+	memset(&sev, 0, sizeof(struct sigevent));
+    memset(&trigger, 0, sizeof(struct itimerspec));
+    
+    sev.sigev_notify = SIGEV_THREAD;
+	sev.sigev_notify_function = timer_handle;
+	
+	timer_create(CLOCK_REALTIME, &sev, &timer_id);
+	
+	trigger.it_interval.tv_sec = 1;
+	trigger.it_value.tv_sec = 1;
+		
+	timer_settime(timer_id, 0, &trigger, NULL);
+}
+
+void timer_handle(union sigval sv)
+{
+	for(uint32_t i=0; i<(NUM_OF_THREADS-2); i++)
+	{
+		timer_flag[i] = 1;
+	}
 }
 
 void log_exit()

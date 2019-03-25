@@ -84,9 +84,12 @@ int main()
 	if(rc < 0) 
 		handle_error("can't open stream socket");
     
-    rc = connect(sock_fd, (struct sockaddr *) &server_addr, sizeof(server_addr));
-	if(rc < 0) 
-		handle_error("can't connect to server");
+	do
+	{
+    		rc = connect(sock_fd, (struct sockaddr *) &server_addr, sizeof(server_addr));
+		//if(rc < 0) 
+		//	handle_error("can't connect to server");
+	}while(rc<0);
     
     for(i=0; i<10; i++)
 	{	

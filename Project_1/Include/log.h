@@ -17,11 +17,13 @@
 				perror(msg);\
 				exit(1);\
 			}
+			
 #define queue_name ("/log_fd")
 
-#define LOG_THREAD_NUM 0
-#define TEMP_THREAD_NUM 1
-#define LIGHT_THREAD_NUM 2
+
+#define TEMP_THREAD_NUM 0
+#define LIGHT_THREAD_NUM 1
+#define LOG_THREAD_NUM 2
 #define SOCKET_THREAD_NUM 3
 #define NUM_OF_THREADS 4
 
@@ -37,6 +39,8 @@ struct mq_attr queue_attr;
 int rc_log;
 uint32_t data_avail;
 uint32_t exit_cond;
+uint32_t timer_flag[NUM_OF_THREADS - 2];
+timer_t timer_id;
 
 FILE* file_log;
 pthread_t log_th;
@@ -63,3 +67,5 @@ void log_exit(void);
 void ack_heartbeat(uint32_t);
 void set_notify_signal();
 void notify_handler(union sigval sv);
+void timer_init();
+void timer_handle(union sigval sv);

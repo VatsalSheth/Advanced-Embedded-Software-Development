@@ -46,3 +46,31 @@ Process ID: 271
 [3195 : 424 : 424252 : 424252880] Received: String = "String with random number 5"	Length = 27	LED = 1
 [3195 : 424 : 424276 : 424276380] Sent: String = "String with random number 91"	Length = 28	LED = 1
 [3195 : 427 : 427671 : 427671297] Received: String = "String with random number 45"	Length = 28	LED = 1
+
+[1553549321 : 412 : 412690 : 412690427] Client Main Thread IPC: Sockets:
+Process ID: 2537
+
+
+[1553549689 : 355 : 355624 : 355624097] Client Main Thread IPC: Sockets:
+Process ID: 2610
+
+[1553549714 : 485 : 485911 : 485911062] Sent: String = "String with random number 18"	Length = 28	LED = 0
+[1553549714 : 485 : 485949 : 485949249] Received: String = "String with random number 72"	Length = 28	LED = 0
+[1553549714 : 485 : 485966 : 485966173] Sent: String = "String with random number 34"	Length = 28	LED = 0
+[1553549714 : 485 : 485990 : 485990209] Received: String = "String with random number 38"	Length = 28	LED = 0
+[1553549714 : 485 : 485991 : 485991846] Sent: String = "String with random number 28"	Length = 28	LED = 0
+[1553549714 : 486 : 486007 : 486007987] Received: String = "String with random number 40"	Length = 28	LED = 0
+[1553549714 : 486 : 486009 : 486009430] Sent: String = "String with random number 37"	Length = 28	LED = 1
+[1553549714 : 486 : 486024 : 486024905] Received: String = "String with random number 38"	Length = 28	LED = 0
+[1553549714 : 486 : 486026 : 486026372] Sent: String = "String with random number 83"	Length = 28	LED = 1
+[1553549714 : 486 : 486041 : 486041825] Received: String = "String with random number 85"	Length = 28	LED = 1
+[1553549714 : 486 : 486043 : 486043265] Sent: String = "String with random number 27"	Length = 28	LED = 1
+[1553549714 : 486 : 486058 : 486058665] Received: String = "String with random number 14"	Length = 28	LED = 0
+[1553549714 : 486 : 486060 : 486060161] Sent: String = "String with random number 88"	Length = 28	LED = 0
+[1553549714 : 486 : 486075 : 486075692] Received: String = "String with random number 70"	Length = 28	LED = 0
+[1553549714 : 486 : 486077 : 486077098] Sent: String = "String with random number 58"	Length = 28	LED = 0
+[1553549714 : 486 : 486092 : 486092665] Received: String = "String with random number 88"	Length = 28	LED = 0
+[1553549714 : 486 : 486094 : 486094059] Sent: String = "String with random number 86"	Length = 28	LED = 0
+[1553549714 : 486 : 486109 : 486109162] Received: String = "String with random number 76"	Length = 28	LED = 0
+[1553549714 : 486 : 486110 : 486110634] Sent: String = "String with random number 23"	Length = 28	LED = 1
+[1553549714 : 486 : 486309 : 486309301] Received: String = "String with random number 62"	Length = 28	LED = 0

@@ -17,17 +17,24 @@ void* temp_func(void* threadp)
 	sleep(1);
 	temp_queue_init();	
 	srand(time(NULL));
-	struct log_msg temp_data;
+	
+	useconds_t garbage_sleep = 1;
+	
 	temp_data.debug_msg = malloc(30);
+	
 	while(1)
 	{
-		sleep(1);
-		temp_data.id = TEMP_THREAD_NUM; 
-		temp_data.data = rand();
-		clock_gettime(CLOCK_REALTIME, &(temp_data.time_stamp));
-		temp_data.verbosity = 1;//(rand())%2;
-		strcpy(temp_data.debug_msg, "GNU TEMPERATURE DEBUGGER!!!");
-		rc_temp = mq_send(temp_queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+		if(timer_flag[TEMP_THREAD_NUM] == 1)
+		{
+			timer_flag[TEMP_THREAD_NUM] = 0;
+			temp_data.id = TEMP_THREAD_NUM; 
+			temp_data.data = rand();
+			clock_gettime(CLOCK_REALTIME, &(temp_data.time_stamp));
+			temp_data.verbosity = 1;//(rand())%2;
+			strcpy(temp_data.debug_msg, "GNU TEMPERATURE DEBUGGER!!!");
+			rc_temp = mq_send(temp_queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+		}
+		usleep(garbage_sleep);
 		ack_heartbeat(TEMP_THREAD_NUM);
 	}
 	pthread_exit(NULL);
@@ -35,7 +42,7 @@ void* temp_func(void* threadp)
 
 void temp_exit()
 {
-//	free(temp_data.debug_msg);
+	free(temp_data.debug_msg);
 	rc_temp = mq_close(temp_queue_fd);
 	if(rc_temp  == -1)
 		handle_error("Error in closing temperature thread queue");
