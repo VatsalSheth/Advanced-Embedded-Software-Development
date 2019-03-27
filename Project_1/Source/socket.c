@@ -2,9 +2,11 @@
 
 void* socket_func(void* threadp)
 {
+	uint32_t tmp_flag;
 	useconds_t garbage_sleep = 1;
 	struct command req, res;
 	socket_hb = 1;
+	struct timespec rx_timeout;
 	char string[60];	//for testing only
 
 	port = SERV_TCP_PORT;
@@ -72,6 +74,7 @@ void* socket_func(void* threadp)
 				else
 				{
 					socket_req_flag = 1;
+					tmp_flag = 1;
 				}
 			}
 			else if((req.action == REQUEST_LIGHT) || (req.action == KILL_LIGHT))
@@ -85,6 +88,7 @@ void* socket_func(void* threadp)
 				else
 				{
 					socket_req_flag = 1;
+					tmp_flag = 1;
 				}
 			}
 			else if(req.action == KILL_SOCKET)
@@ -97,11 +101,35 @@ void* socket_func(void* threadp)
 				log_exit();
 				exit_flag[LOG_THREAD_NUM] = 1;
 			}
-
-			//Really required????
-			usleep(garbage_sleep);
-			ack_heartbeat(SOCKET_THREAD_NUM);
+			
+			while(tmp_flag == 1)
+			{
+				if(socket_req_flag == 0)
+				{
+					clock_gettime(CLOCK_REALTIME, &rx_timeout);
+					rx_timeout.tv_sec += 1;
+					rc_socket = mq_timedreceive(soc_queue_fd, (char*)&res, sizeof(struct command), NULL, &rx_timeout);
+					if(rc_socket < 0)
+					{
+						if(errno == ETIMEDOUT)
+						{
+							socket_req_flag = 0;
+							res.action = REQUEST_FAIL;
+						}
+						else
+							handle_error("socket mq_receive");
+					}
+					tmp_flag = 0;
+					printf("Received from light:%f\n", res.sensor_data);
+					rc_socket = write(newserver_fd, (void*)&res, sizeof(struct command));
+					if(rc_socket == -1)
+						handle_error("write");
+				}
+			}
 		}
+		
+		usleep(garbage_sleep);
+		ack_heartbeat(SOCKET_THREAD_NUM);
 	}
 	pthread_exit(NULL);
 }
