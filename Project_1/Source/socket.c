@@ -3,9 +3,9 @@
 void* socket_func(void* threadp)
 {
 	useconds_t garbage_sleep = 1;
-	struct command user;
+	struct command req, res;
 	socket_hb = 1;
-	char string[60];
+	char string[60];	//for testing only
 
 	port = SERV_TCP_PORT;
 
@@ -18,7 +18,6 @@ void* socket_func(void* threadp)
 	serv_addr.sin_port = htons(port);
 	if(bind(server_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
 		handle_error("can't bind local address");
-	struct command req, res;
 	
 	soc_queue_init();
 	
@@ -46,7 +45,7 @@ void* socket_func(void* threadp)
 
 	while(1)
 	{
-		len = read(newserver_fd, (char*)&user, sizeof(struct command));	
+		len = read(newserver_fd, (char*)&req, sizeof(struct command));	
 		if (len < 0)
 		{
 			handle_error("Receiving Read failed");
@@ -56,31 +55,51 @@ void* socket_func(void* threadp)
 			usleep(garbage_sleep);
 			ack_heartbeat(SOCKET_THREAD_NUM);	
 		}
-		else
+		else	
 		{
-//			string[len] = 0;		
-			printf("\nReceived %d bytes: %d\n", len, user.action);
+			string[len] = 0;		//for testing only
+			printf("\nReceived %d bytes: %d\n", len, req.action);	//for testing only
+			ack_heartbeat(SOCKET_THREAD_NUM);	//for testing only
+		
+			if((req.action == REQUEST_TEMPERATURE) || (req.action == KILL_TEMPERATURE))
+			{
+				socket_req_id = TEMP_THREAD_NUM;
+			}
+			else if((req.action == REQUEST_LIGHT) || (req.action == KILL_LIGHT))
+			{
+				socket_req_id = LIGHT_THREAD_NUM;
+			}
+			else if(req.action == KILL_SOCKET)
+			{
+				socket_exit();
+			}
+			else if(req.action == KILL_LOGGER)
+			{
+				log_exit();
+			}
+
+			socket_req_flag = 1;
+			rc_socket = mq_send(soc_queue_fd, (char*)&req, sizeof(struct command), 0);
+			if(rc_socket == -1)
+				handle_error("socket mq_send");
+		//Really required????
+			usleep(garbage_sleep);
 			ack_heartbeat(SOCKET_THREAD_NUM);
 		}
-		rc_socket = read(newserver_fd, (char *)&req, sizeof(struct command));
-		if(rc_socket == -1)
-			handle_error("socket read");
-		
-		if(req.id
-		socket_req_id = ;
-		socket_req_flag = 1;	
-		rc_socket = mq_send(soc_queue_fd, (char*)&req, sizeof(struct command), 0);
-		if(rc_socket == -1)
-			handle_error("socket mq_send");
-		
-		usleep(garbage_sleep);
-		ack_heartbeat(SOCKET_THREAD_NUM);
 	}
 	pthread_exit(NULL);
 }
 
 void socket_exit(void)
 {
+	rc_socket = mq_close(soc_queue_fd);
+	if(rc_log == -1)
+		handle_error("Error in closing socket thread mqueue");
+	
+	rc_log = mq_unlink(socket_queue);
+	if(rc_log == -1)
+		handle_error("Error in unlinking socket thread mqueue");
+
 	rc_socket = close(newserver_fd);
 	if(rc_socket != 0)
 		handle_error("Error closing socket file descriptor");
