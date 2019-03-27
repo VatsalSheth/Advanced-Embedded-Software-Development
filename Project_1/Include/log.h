@@ -36,6 +36,7 @@ struct heartbeat_monitor
 
 mqd_t queue_fd;
 struct mq_attr queue_attr;
+uint8_t socket_hb;
 int rc_log;
 uint32_t data_avail;
 uint32_t exit_cond;

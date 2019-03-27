@@ -187,7 +187,7 @@ void heartbeat_check(void)
 {
 	uint32_t i;
 	
-	for(i=0; i<(NUM_OF_THREADS - 1); i++)
+	for(i=0; i<(NUM_OF_THREADS - socket_hb); i++)
 	{	
 		if(!exit_cond)
 			break;
