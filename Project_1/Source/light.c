@@ -46,13 +46,17 @@ void* light_func(void* threadp)
 
 void light_exit()
 {
-	free(light_data.debug_msg);
-	rc_light = mq_close(light_queue_fd);
-	if(rc_light  == -1)
-		handle_error("Error in closing light thread queue");
+	if(!exit_flag[LIGHT_THREAD_NUM])
+	{
+		rc_light = pthread_cancel(light_th);
+		if(rc_light != 0)
+			handle_error("Error cancelling light thread");
+		
+		free(light_data.debug_msg);
+		rc_light = mq_close(light_queue_fd);
+		if(rc_light  == -1)
+			handle_error("Error in closing light thread queue");
 
-	rc_light = pthread_cancel(light_th);
-	if(rc_light != 0)
-		handle_error("Error cancelling light thread");
-	printf("\nExiting light thread");
+		printf("\nExiting light thread");
+	}
 }

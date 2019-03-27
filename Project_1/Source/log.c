@@ -2,6 +2,10 @@
 
 void queue_init()
 {
+		rc_log = mq_unlink(queue_name);
+		if(rc_log == -1)
+			handle_error("Error in unlinking logger thread queue");
+
 	queue_attr.mq_flags = 0;
 	queue_attr.mq_maxmsg = 10;
 	queue_attr.mq_msgsize = sizeof(struct log_msg);
@@ -93,24 +97,27 @@ void timer_handle(union sigval sv)
 
 void log_exit()
 {
-	rc_log = mq_close(queue_fd);
-	if(rc_log == -1)
-		handle_error("Error in closing logger thread queue");
-	
-	rc_log = mq_unlink(queue_name);
-	if(rc_log == -1)
-		handle_error("Error in unlinking logger thread queue");
-	
-	rc_log = fclose(file_log);
-	if(rc_log != 0)
-		handle_error("Error in closing file");
-	
-	rc_log = pthread_cancel(log_th);
-	if(rc_log != 0)
-		handle_error("Error cancelling logger thread");
-	
-	printf("\nQueue and file closed");
-	printf("\nExiting logger thread");
+	if(!exit_flag[LOG_THREAD_NUM])
+	{
+		rc_log = pthread_cancel(log_th);
+		if(rc_log != 0)
+			handle_error("Error cancelling logger thread");
+		
+		rc_log = mq_close(queue_fd);
+		if(rc_log == -1)
+			handle_error("Error in closing logger thread queue");
+		
+		rc_log = mq_unlink(queue_name);
+		if(rc_log == -1)
+			handle_error("Error in unlinking logger thread queue");
+		
+		rc_log = fclose(file_log);
+		if(rc_log != 0)
+			handle_error("Error in closing file");
+		
+		printf("\nLog file closed");
+		printf("\nExiting logger thread");
+	}
 }
 
 void ack_heartbeat(uint32_t th_num)

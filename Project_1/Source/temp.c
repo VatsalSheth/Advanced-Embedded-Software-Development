@@ -44,13 +44,17 @@ void* temp_func(void* threadp)
 
 void temp_exit()
 {
-	free(temp_data.debug_msg);
-	rc_temp = mq_close(temp_queue_fd);
-	if(rc_temp  == -1)
-		handle_error("Error in closing temperature thread queue");
-	
-	rc_temp = pthread_cancel(temp_th);
-	if(rc_temp != 0)
-		handle_error("Error cancelling temperature thread");
-	printf("\nExiting temperature thread");
+	if(!exit_flag[TEMP_THREAD_NUM])
+	{
+		rc_temp = pthread_cancel(temp_th);
+		if(rc_temp != 0)
+			handle_error("Error cancelling temperature thread");
+		
+		free(temp_data.debug_msg);
+		rc_temp = mq_close(temp_queue_fd);
+		if(rc_temp  == -1)
+			handle_error("Error in closing temperature thread queue");
+		
+		printf("\nExiting temperature thread");
+	}
 }

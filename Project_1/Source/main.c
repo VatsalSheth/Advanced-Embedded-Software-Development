@@ -186,7 +186,6 @@ void set_signal_handler(void)
 void heartbeat_check(void)
 {
 	uint32_t i;
-	
 	for(i=0; i<(NUM_OF_THREADS - socket_hb); i++)
 	{	
 		if(!exit_cond)

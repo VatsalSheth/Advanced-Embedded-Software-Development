@@ -71,11 +71,13 @@ void* socket_func(void* threadp)
 			}
 			else if(req.action == KILL_SOCKET)
 			{
+				exit_flag[SOCKET_THREAD_NUM] = 1;
 				socket_exit();
 			}
 			else if(req.action == KILL_LOGGER)
 			{
 				log_exit();
+				exit_flag[LOG_THREAD_NUM] = 1;
 			}
 
 			socket_req_flag = 1;
@@ -92,32 +94,65 @@ void* socket_func(void* threadp)
 
 void socket_exit(void)
 {
-	rc_socket = mq_close(soc_queue_fd);
-	if(rc_log == -1)
-		handle_error("Error in closing socket thread mqueue");
-	
-	rc_log = mq_unlink(socket_queue);
-	if(rc_log == -1)
-		handle_error("Error in unlinking socket thread mqueue");
+	if(!exit_flag[SOCKET_THREAD_NUM])
+	{
+		rc_socket = pthread_cancel(socket_th);
+		if(rc_socket != 0)
+			handle_error("Error cancelling socket thread");
 
-	rc_socket = close(newserver_fd);
-	if(rc_socket != 0)
-		handle_error("Error closing socket file descriptor");
+		rc_socket = mq_close(soc_queue_fd);
+		if(rc_socket == -1)
+		{
+			printf("%d", errno);
+			handle_error("Error in closing socket thread mqueue");
+		}
+		
+		rc_socket = mq_unlink(socket_queue);
+		if(rc_socket == -1)
+			handle_error("Error in unlinking socket thread mqueue");
 
-	rc_socket = pthread_cancel(socket_th);
-	if(rc_socket != 0)
-		handle_error("Error cancelling socket thread");
-	printf("\nExiting socket thread");
+		rc_socket = close(newserver_fd);
+		if(rc_socket != 0)
+			handle_error("Error closing socket file descriptor");
+
+		printf("\nExiting socket thread");
+	}
+	else if(exit_flag[SOCKET_THREAD_NUM] == 1)
+	{
+		exit_flag[SOCKET_THREAD_NUM] = 2;
+		rc_socket = mq_close(soc_queue_fd);
+		if(rc_socket == -1)
+		{
+			printf("%d", errno);
+			handle_error("Error in closing socket thread mqueue");
+		}
+		
+		rc_socket = mq_unlink(socket_queue);
+		if(rc_socket == -1)
+			handle_error("Error in unlinking socket thread mqueue");
+
+		rc_socket = close(newserver_fd);
+		if(rc_socket != 0)
+			handle_error("Error closing socket file descriptor");
+
+		printf("\nExiting socket thread");
+		pthread_exit(NULL);
+	}
 }
 
 void soc_queue_init()
 {
+
+		rc_socket = mq_unlink(socket_queue);
+		if(rc_socket == -1)
+			handle_error("Error in unlinking socket thread mqueue");
+
 	soc_queue_attr.mq_flags = 0;
-	soc_queue_attr.mq_maxmsg = 1;
-	soc_queue_attr.mq_msgsize = sizeof(struct command);
+	soc_queue_attr.mq_maxmsg = 10;//1;
+	soc_queue_attr.mq_msgsize = 30;//sizeof(struct command);
 	soc_queue_attr.mq_curmsgs = 0;
 
-	soc_queue_fd = mq_open(socket_queue, O_RDWR | O_CREAT | O_EXCL, 0664, &queue_attr);
+	soc_queue_fd = mq_open(socket_queue, O_RDWR | O_CREAT | O_EXCL, 0664, &soc_queue_attr);
 	if(soc_queue_fd == -1)
 		handle_error("Error opening socket queue");
 }
