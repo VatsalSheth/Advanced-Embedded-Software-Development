@@ -142,11 +142,6 @@ void socket_exit(void)
 
 void soc_queue_init()
 {
-
-		rc_socket = mq_unlink(socket_queue);
-		if(rc_socket == -1)
-			handle_error("Error in unlinking socket thread mqueue");
-
 	soc_queue_attr.mq_flags = 0;
 	soc_queue_attr.mq_maxmsg = 10;//1;
 	soc_queue_attr.mq_msgsize = 30;//sizeof(struct command);
