@@ -3,8 +3,8 @@
 #include "log.h"
 #endif
 
-mqd_t light_queue_fd;
-struct mq_attr light_queue_attr;
+mqd_t light_queue_fd, light_soc_queue_fd;
+struct mq_attr light_queue_attr, light_soc_queue_attr;
 pthread_t light_th;
 int rc_light;
 struct log_msg light_data;

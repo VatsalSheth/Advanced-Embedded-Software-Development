@@ -12,6 +12,15 @@ void light_queue_init()
 	light_queue_fd = mq_open(queue_name, O_RDWR, 0664, &light_queue_attr);
 	if(light_queue_fd  == -1)
 		handle_error("Error opening light thread queue");
+		
+	light_soc_queue_attr.mq_flags = 0;
+	light_soc_queue_attr.mq_maxmsg = 1;
+	light_soc_queue_attr.mq_msgsize = sizeof(struct command);
+	light_soc_queue_attr.mq_curmsgs = 0;
+
+	light_soc_queue_fd = mq_open(socket_queue, O_RDWR, 0664, &light_soc_queue_attr);
+	if(light_soc_queue_fd == -1)
+		handle_error("Error opening socket queue in light sensor");
 }
 
 void* light_func(void* threadp)
