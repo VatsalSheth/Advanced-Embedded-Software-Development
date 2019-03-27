@@ -61,13 +61,31 @@ void* socket_func(void* threadp)
 			printf("\nReceived %d bytes: %d\n", len, req.action);	//for testing only
 			ack_heartbeat(SOCKET_THREAD_NUM);	//for testing only
 		
-			if((req.action == REQUEST_TEMPERATURE) || (req.action == KILL_TEMPERATURE))
+			if((req.action == REQUEST_TEMPERATURE_C) || (req.action == REQUEST_TEMPERATURE_F) || (req.action == REQUEST_TEMPERATURE_K) || (req.action == KILL_TEMPERATURE))
 			{
 				socket_req_id = TEMP_THREAD_NUM;
+				rc_socket = mq_send(soc_queue_fd, (char*)&req, sizeof(struct command), 0);
+				if(rc_socket == -1)
+				{
+					handle_error("socket mq_send");
+				}	
+				else
+				{
+					socket_req_flag = 1;
+				}
 			}
 			else if((req.action == REQUEST_LIGHT) || (req.action == KILL_LIGHT))
 			{
 				socket_req_id = LIGHT_THREAD_NUM;
+				rc_socket = mq_send(soc_queue_fd, (char*)&req, sizeof(struct command), 0);
+				if(rc_socket == -1)
+				{
+					handle_error("socket mq_send");
+				}
+				else
+				{
+					socket_req_flag = 1;
+				}
 			}
 			else if(req.action == KILL_SOCKET)
 			{
@@ -80,11 +98,7 @@ void* socket_func(void* threadp)
 				exit_flag[LOG_THREAD_NUM] = 1;
 			}
 
-			socket_req_flag = 1;
-			rc_socket = mq_send(soc_queue_fd, (char*)&req, sizeof(struct command), 0);
-			if(rc_socket == -1)
-				handle_error("socket mq_send");
-		//Really required????
+			//Really required????
 			usleep(garbage_sleep);
 			ack_heartbeat(SOCKET_THREAD_NUM);
 		}
@@ -143,8 +157,8 @@ void socket_exit(void)
 void soc_queue_init()
 {
 	soc_queue_attr.mq_flags = 0;
-	soc_queue_attr.mq_maxmsg = 10;//1;
-	soc_queue_attr.mq_msgsize = 30;//sizeof(struct command);
+	soc_queue_attr.mq_maxmsg = 1;
+	soc_queue_attr.mq_msgsize = sizeof(struct command);
 	soc_queue_attr.mq_curmsgs = 0;
 
 	soc_queue_fd = mq_open(socket_queue, O_RDWR | O_CREAT | O_EXCL, 0664, &soc_queue_attr);

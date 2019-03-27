@@ -15,12 +15,6 @@
 #define MAX_SIZE 80
 #define BACKLOG 5
 
-struct command
-{
-	float sensor_data;
-	uint32_t action;
-};
-
 struct sockaddr_in serv_addr, cli_addr;
 pthread_t socket_th;
 int rc_socket, len;

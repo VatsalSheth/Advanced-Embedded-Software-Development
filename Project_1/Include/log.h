@@ -26,7 +26,9 @@
 #define LOG_THREAD_NUM 2
 #define SOCKET_THREAD_NUM 3
 
-#define REQUEST_TEMPERATURE 0
+#define REQUEST_TEMPERATURE_C 0
+#define REQUEST_TEMPERATURE_F 2
+#define REQUEST_TEMPERATURE_K 4
 #define REQUEST_LIGHT 1
 #define KILL_TEMPERATURE 11
 #define KILL_LIGHT 12
@@ -34,6 +36,12 @@
 #define KILL_SOCKET 22
 
 #define NUM_OF_THREADS 4
+
+struct command
+{
+	float sensor_data;
+	uint32_t action;
+};
 
 struct heartbeat_monitor
 {
