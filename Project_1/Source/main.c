@@ -84,6 +84,22 @@ void thread_create()
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}
+	
+	rc = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
+	if(rc != 0)
+	{
+		handle_error("Error in creating socket sensor thread");
+	}
+	else
+	{
+		rc = pthread_cond_init(&mon[SOCKET_THREAD_NUM].cond, NULL); 
+		if(rc!=0)
+			handle_error("pthread cond init");
+			
+		rc = pthread_mutex_init(&mon[SOCKET_THREAD_NUM].lock, NULL); 
+		if(rc!=0)
+			handle_error("pthread mutex init");
+	}
 
 	rc = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
 	if(rc != 0)
@@ -113,22 +129,6 @@ void thread_create()
 			handle_error("pthread cond init");
 			
 		rc = pthread_mutex_init(&mon[LIGHT_THREAD_NUM].lock, NULL); 
-		if(rc!=0)
-			handle_error("pthread mutex init");
-	}
-	
-	rc = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
-	if(rc != 0)
-	{
-		handle_error("Error in creating socket sensor thread");
-	}
-	else
-	{
-		rc = pthread_cond_init(&mon[SOCKET_THREAD_NUM].cond, NULL); 
-		if(rc!=0)
-			handle_error("pthread cond init");
-			
-		rc = pthread_mutex_init(&mon[SOCKET_THREAD_NUM].lock, NULL); 
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}

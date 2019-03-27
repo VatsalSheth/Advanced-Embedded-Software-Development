@@ -39,9 +39,14 @@ void* logger_func(void* threadp)
 			rc_log = mq_timedreceive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL, &rx_timeout);
 			if(rc_log < 0)
 			{
-				data_avail = 0;
-				if(mq_notify(queue_fd, &sev) == -1)
-					handle_error("mq_notify");	
+				if(errno == ETIMEDOUT)
+				{
+					data_avail = 0;
+					if(mq_notify(queue_fd, &sev) == -1)
+						handle_error("mq_notify");	
+				}
+				else
+					handle_error("mq receive");
 			}
 						
 			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));

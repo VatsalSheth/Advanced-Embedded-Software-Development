@@ -18,6 +18,9 @@ void* socket_func(void* threadp)
 	serv_addr.sin_port = htons(port);
 	if(bind(server_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
 		handle_error("can't bind local address");
+	struct command req, res;
+	
+	soc_queue_init();
 	
 	listen(server_fd, BACKLOG);
 
@@ -59,6 +62,19 @@ void* socket_func(void* threadp)
 			printf("\nReceived %d bytes: %d\n", len, user.action);
 			ack_heartbeat(SOCKET_THREAD_NUM);
 		}
+		rc_socket = read(newserver_fd, (char *)&req, sizeof(struct command));
+		if(rc_socket == -1)
+			handle_error("socket read");
+		
+		if(req.id
+		socket_req_id = ;
+		socket_req_flag = 1;	
+		rc_socket = mq_send(soc_queue_fd, (char*)&req, sizeof(struct command), 0);
+		if(rc_socket == -1)
+			handle_error("socket mq_send");
+		
+		usleep(garbage_sleep);
+		ack_heartbeat(SOCKET_THREAD_NUM);
 	}
 	pthread_exit(NULL);
 }
@@ -73,4 +89,16 @@ void socket_exit(void)
 	if(rc_socket != 0)
 		handle_error("Error cancelling socket thread");
 	printf("\nExiting socket thread");
+}
+
+void soc_queue_init()
+{
+	soc_queue_attr.mq_flags = 0;
+	soc_queue_attr.mq_maxmsg = 1;
+	soc_queue_attr.mq_msgsize = sizeof(struct command);
+	soc_queue_attr.mq_curmsgs = 0;
+
+	soc_queue_fd = mq_open(socket_queue, O_RDWR | O_CREAT | O_EXCL, 0664, &queue_attr);
+	if(soc_queue_fd == -1)
+		handle_error("Error opening socket queue");
 }

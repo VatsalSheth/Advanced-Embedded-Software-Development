@@ -33,6 +33,8 @@ void* temp_func(void* threadp)
 			temp_data.verbosity = 1;//(rand())%2;
 			strcpy(temp_data.debug_msg, "GNU TEMPERATURE DEBUGGER!!!");
 			rc_temp = mq_send(temp_queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+			if(rc_temp == -1)
+				handle_error("temp mq_send");
 		}
 		usleep(garbage_sleep);
 		ack_heartbeat(TEMP_THREAD_NUM);
