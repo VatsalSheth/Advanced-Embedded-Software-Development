@@ -25,6 +25,8 @@ void light_queue_init()
 
 void* light_func(void* threadp)
 {
+	struct command req, res;
+	
 	sleep(1);
 	light_queue_init();	
 	srand(time(NULL));
@@ -39,7 +41,7 @@ void* light_func(void* threadp)
 		{
 			timer_flag[LIGHT_THREAD_NUM] = 0;
 			light_data.id = LIGHT_THREAD_NUM; 
-			light_data.data = rand();
+			light_data.data = request_light();
 			clock_gettime(CLOCK_REALTIME, &(light_data.time_stamp));
 			light_data.verbosity = 1;//(rand())%2;
 			strcpy(light_data.debug_msg, "GNU LIGHT DEBUGGER!!!");
@@ -47,10 +49,40 @@ void* light_func(void* threadp)
 			if(rc_light == -1)
 				handle_error("light mq_send");
 		}
+		
+		if(socket_req_flag == 1)
+		{
+			if(socket_req_id == LIGHT_THREAD_NUM)
+			{
+				rc_light = mq_receive(light_soc_queue_fd, (char*)&req, sizeof(struct command), NULL);
+				if(rc_light < 0)
+				{
+					handle_error("socket queue receive in light sensor");
+				}
+				else
+				{
+					if(req.action == REQUEST_LIGHT)
+					{
+						res.sensor_data = request_light();
+						res.action = req.action;
+						rc_light = mq_send(light_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						if(rc_light == -1)
+							handle_error("light socket mq_send");
+					}
+				}
+				socket_req_flag = 0;
+			}
+		}
+		
 		usleep(garbage_sleep);
 		ack_heartbeat(LIGHT_THREAD_NUM);
 	}
 	pthread_exit(NULL);
+}
+
+float request_light()
+{
+	return rand();
 }
 
 void light_exit()

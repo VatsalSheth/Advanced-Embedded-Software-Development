@@ -192,7 +192,7 @@ void heartbeat_check(void)
 			break;
 			
 		clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
-		mon[i].timeout.tv_sec += 3;
+		mon[i].timeout.tv_sec += 4;
 	
 		pthread_mutex_lock(&mon[i].lock);
 		rc = pthread_cond_timedwait(&mon[i].cond, &mon[i].lock, &mon[i].timeout);  
