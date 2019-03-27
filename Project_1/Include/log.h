@@ -19,12 +19,13 @@
 			}
 			
 #define queue_name ("/log_fd")
-
+#define socket_queue ("/socket_queue")
 
 #define TEMP_THREAD_NUM 0
 #define LIGHT_THREAD_NUM 1
 #define LOG_THREAD_NUM 2
 #define SOCKET_THREAD_NUM 3
+
 #define NUM_OF_THREADS 4
 
 struct heartbeat_monitor
@@ -37,6 +38,9 @@ struct heartbeat_monitor
 mqd_t queue_fd;
 struct mq_attr queue_attr;
 int rc_log;
+
+uint32_t socket_req_id, socket_req_flag;
+
 uint32_t data_avail;
 uint32_t exit_cond;
 uint32_t timer_flag[NUM_OF_THREADS - 2];

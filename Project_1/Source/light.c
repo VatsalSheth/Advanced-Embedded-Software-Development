@@ -35,6 +35,8 @@ void* light_func(void* threadp)
 			light_data.verbosity = 1;//(rand())%2;
 			strcpy(light_data.debug_msg, "GNU LIGHT DEBUGGER!!!");
 			rc_light = mq_send(light_queue_fd, (char*)&light_data, sizeof(struct log_msg), 0);
+			if(rc_light == -1)
+				handle_error("light mq_send");
 		}
 		usleep(garbage_sleep);
 		ack_heartbeat(LIGHT_THREAD_NUM);

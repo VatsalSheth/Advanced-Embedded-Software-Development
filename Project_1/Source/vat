@@ -1,0 +1,86 @@
+
+PROJECT 1 LOG FILE
+
+[TIMESTAMP: 1553569062 secs and 894742790 nsecs]
+Log level: NONE
+Source: TEMPERATURE SENSOR
+Data: 1742018176.000000 degrees Celsius
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569062 secs and 898168059 nsecs]
+Log level: NONE
+Source: LIGHT SENSOR
+Data: 698034240.000000 Lumens
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569062 secs and 901889942 nsecs]
+Log level: NONE
+Source: LIGHT SENSOR
+Data: 698034240.000000 Lumens
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569063 secs and 899240331 nsecs]
+Log level: NONE
+Source: LIGHT SENSOR
+Data: 1298289024.000000 Lumens
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569063 secs and 901944154 nsecs]
+Log level: NONE
+Source: TEMPERATURE SENSOR
+Data: 658581376.000000 degrees Celsius
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569063 secs and 906070341 nsecs]
+Log level: NONE
+Source: TEMPERATURE SENSOR
+Data: 658581376.000000 degrees Celsius
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569064 secs and 895991862 nsecs]
+Log level: NONE
+Source: TEMPERATURE SENSOR
+Data: 1391862912.000000 degrees Celsius
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569064 secs and 896333972 nsecs]
+Log level: NONE
+Source: LIGHT SENSOR
+Data: 372438144.000000 Lumens
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569064 secs and 900250790 nsecs]
+Log level: NONE
+Source: LIGHT SENSOR
+Data: 372438144.000000 Lumens
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569065 secs and 884135540 nsecs]
+Log level: NONE
+Source: LIGHT SENSOR
+Data: 1903914624.000000 Lumens
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569065 secs and 884719354 nsecs]
+Log level: NONE
+Source: TEMPERATURE SENSOR
+Data: 469770048.000000 degrees Celsius
+Debug Message: none
+***********************************
+
+[TIMESTAMP: 1553569065 secs and 894800929 nsecs]
+Log level: NONE
+Source: TEMPERATURE SENSOR
+Data: 469770048.000000 degrees Celsius
+Debug Message: none
+***********************************
