@@ -92,8 +92,8 @@ int main(int argc, char* argv[])
 			else
 			{
 				printf("Application NOT connected...!!!\n");
-				continue;
 			}
+			continue;
 		}
 		else if(!strcmp(option, "exit"))
 		{
@@ -135,13 +135,15 @@ int main(int argc, char* argv[])
 			serv_addr.sin_addr.s_addr = ((struct in_addr *)host_ptr->h_addr_list[0])->s_addr;
 			serv_addr.sin_port = htons(port);
 
-			if((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+			client_fd = socket(AF_INET, SOCK_STREAM, 0);
+			if(client_fd < 0)
 			{
 				printf("Error opening socket\n");
 				continue;
 			}
 
-			if(connect(client_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 	
+			rc = connect(client_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
+			if(rc < 0) 	
 			{
 				printf("Error connecting to server\n");
 				continue;
@@ -159,7 +161,7 @@ int main(int argc, char* argv[])
 		
 		if(res_flag)
 		{
-			while(1)
+			//while(1)
 			{
 				rc = read(client_fd, (char*)&user, sizeof(struct command));
 				if(rc < 0)
@@ -178,7 +180,7 @@ int main(int argc, char* argv[])
 					{
 						printf("Requested Data is: %f\n",user.sensor_data);
 					}
-					break;
+					//break;
 				}
 			}
 		}
