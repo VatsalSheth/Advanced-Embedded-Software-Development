@@ -11,7 +11,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#define SERV_TCP_PORT 8001 
+#define SERV_TCP_PORT 8002
 #define MAX_SIZE 80
 #define BACKLOG 5
 

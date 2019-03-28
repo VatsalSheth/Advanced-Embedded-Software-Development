@@ -21,7 +21,6 @@ int main(int argc, char* argv[])
 	while(1)
 	{
 		printf("\nWhat would you like to do? <request> <kill> <close> <exit>\n");
-			
 		scanf("%s", option);
 		option = strlwr(option);
 		
@@ -161,26 +160,23 @@ int main(int argc, char* argv[])
 		
 		if(res_flag)
 		{
-			//while(1)
+			res_flag = 0;
+			rc = read(client_fd, (char*)&user, sizeof(struct command));
+			if(rc < 0)
 			{
-				rc = read(client_fd, (char*)&user, sizeof(struct command));
-				if(rc < 0)
+				printf("Receiving Read failed\n");
+				continue;
+			}
+			else if(rc > 0)
+			{
+				if(user.action == REQUEST_FAIL)
 				{
-					printf("Receiving Read failed\n");
+					printf("Response timed out...!!!\n");
 					continue;
 				}
-				else if(rc > 0)
+				else
 				{
-					if(user.action == REQUEST_FAIL)
-					{
-						printf("Response timed out...!!!\n");
-						continue;
-					}
-					else
-					{
-						printf("Requested Data is: %f\n",user.sensor_data);
-					}
-					//break;
+					printf("Requested Data is: %f\n",user.sensor_data);
 				}
 			}
 		}

@@ -33,18 +33,16 @@ void* light_func(void* threadp)
 	
 	useconds_t garbage_sleep = 1;
 	
-	light_data.debug_msg = malloc(30);
-	
 	while(1)
 	{
 		if(timer_flag[LIGHT_THREAD_NUM] == 1)
 		{
 			timer_flag[LIGHT_THREAD_NUM] = 0;
-			light_data.id = LIGHT_THREAD_NUM; 
-			light_data.data = request_light();
-			clock_gettime(CLOCK_REALTIME, &(light_data.time_stamp));
-			light_data.verbosity = 1;//(rand())%2;
-			strcpy(light_data.debug_msg, "GNU LIGHT DEBUGGER!!!");
+
+			light_data = write_to_log_queue(LIGHT_THREAD_NUM,
+											request_light(),
+											1,
+											"GNU LIGHT DEBUGGER");
 			rc_light = mq_send(light_queue_fd, (char*)&light_data, sizeof(struct log_msg), 0);
 			if(rc_light == -1)
 				handle_error("light mq_send");
@@ -68,6 +66,11 @@ void* light_func(void* threadp)
 						rc_light = mq_send(light_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_light == -1)
 							handle_error("light socket mq_send");
+					}
+					else if(req.action == KILL_LIGHT)
+					{
+						exit_flag[LIGHT_THREAD_NUM] = 1;
+						light_exit();
 					}
 				}
 				socket_req_flag = 0;
@@ -93,11 +96,28 @@ void light_exit()
 		if(rc_light != 0)
 			handle_error("Error cancelling light thread");
 		
-		free(light_data.debug_msg);
 		rc_light = mq_close(light_queue_fd);
 		if(rc_light  == -1)
 			handle_error("Error in closing light thread queue");
-
-		printf("\nExiting light thread");
+		
+		rc_light = mq_close(light_soc_queue_fd);
+		if(rc_light  == -1)
+			handle_error("Error in closing light thread socket queue");
+			
+		printf("\nExiting light thread\n");
+	}
+	else if(exit_flag[LIGHT_THREAD_NUM] == 1)
+	{
+		exit_flag[LIGHT_THREAD_NUM] = 2;
+		rc_light = mq_close(light_queue_fd);
+		if(rc_light  == -1)
+			handle_error("Error in closing light thread queue");
+		
+		rc_light = mq_close(light_soc_queue_fd);
+		if(rc_light  == -1)
+			handle_error("Error in closing light thread socket queue");
+			
+		printf("\nExiting light thread\n");
+		pthread_exit(NULL);
 	}
 }

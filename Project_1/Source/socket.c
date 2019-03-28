@@ -70,7 +70,10 @@ void* socket_func(void* threadp)
 				else
 				{
 					socket_req_flag = 1;
-					tmp_flag = 1;
+					if(req.action != KILL_TEMPERATURE)
+					{
+						tmp_flag = 1;
+					}
 				}
 			}
 			else if((req.action == REQUEST_LIGHT) || (req.action == KILL_LIGHT))
@@ -84,7 +87,10 @@ void* socket_func(void* threadp)
 				else
 				{
 					socket_req_flag = 1;
-					tmp_flag = 1;
+					if(req.action != KILL_LIGHT)
+					{
+						tmp_flag = 1;
+					}
 				}
 			}
 			else if(req.action == KILL_SOCKET)
