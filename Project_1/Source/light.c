@@ -105,19 +105,20 @@ void light_exit()
 			handle_error("Error in closing light thread socket queue");
 			
 		printf("\nExiting light thread\n");
+		exit_flag[LIGHT_THREAD_NUM] = 2;
 	}
 	else if(exit_flag[LIGHT_THREAD_NUM] == 1)
 	{
-		exit_flag[LIGHT_THREAD_NUM] = 2;
-//		rc_light = mq_close(light_queue_fd);
-//		if(rc_light  == -1)
-//			handle_error("Error in closing light thread queue");
+		//rc_light = mq_close(light_soc_queue_fd);
+		//if(rc_light  == -1)
+		//	handle_error("Error in closing light thread socket queue");
 		
-		rc_light = mq_close(light_soc_queue_fd);
-		if(rc_light  == -1)
-			handle_error("Error in closing light thread socket queue");
+		//rc_light = mq_close(light_queue_fd);
+		//if(rc_light  == -1)
+		//	handle_error("Error in closing light thread queue");
 			
 		printf("\nExiting light thread\n");
+		exit_flag[LIGHT_THREAD_NUM] = 2;
 		pthread_exit(NULL);
 	}
 }

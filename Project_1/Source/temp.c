@@ -23,6 +23,7 @@ void temp_queue_init()
 
 void* temp_func(void* threadp)
 {
+	struct command req, res;
 	sleep(1);
 	temp_queue_init();	
 	srand(time(NULL));
@@ -43,6 +44,54 @@ void* temp_func(void* threadp)
 			if(rc_temp == -1)
 				handle_error("temp mq_send");
 		}
+		
+		if(socket_req_flag == 1)
+		{
+			if(socket_req_id == TEMP_THREAD_NUM)
+			{
+				rc_temp = mq_receive(temp_soc_queue_fd, (char*)&req, sizeof(struct command), NULL);
+				if(rc_temp < 0)
+				{
+					handle_error("socket queue receive in temperature sensor");
+				}
+				else
+				{
+					if(req.action == REQUEST_TEMPERATURE_C)
+					{
+						res.sensor_data = request_temp();
+						res.action = req.action;
+						rc_temp = mq_send(temp_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						if(rc_temp == -1)
+							handle_error("temp socket mq_send");
+					}
+					else if(req.action == REQUEST_TEMPERATURE_F)
+					{
+						res.sensor_data = request_temp();
+						res.sensor_data = conv_temp(res.sensor_data, 'F');
+						res.action = req.action;
+						rc_temp = mq_send(temp_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						if(rc_temp == -1)
+							handle_error("temp socket mq_send");
+					}
+					else if(req.action == REQUEST_TEMPERATURE_K)
+					{
+						res.sensor_data = request_temp();
+						res.sensor_data = conv_temp(res.sensor_data, 'K');
+						res.action = req.action;
+						rc_temp = mq_send(temp_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						if(rc_temp == -1)
+							handle_error("temp socket mq_send");
+					}
+					else if(req.action == KILL_TEMPERATURE)
+					{
+						exit_flag[TEMP_THREAD_NUM] = 1;
+						temp_exit();
+					}
+				}
+				socket_req_flag = 0;
+			}
+		}
+		
 		usleep(garbage_sleep);
 		ack_heartbeat(TEMP_THREAD_NUM);
 	}
@@ -52,6 +101,19 @@ void* temp_func(void* threadp)
 float request_temp()
 {
 	return rand();
+}
+
+float conv_temp(float cel, char unit)
+{
+	if(unit == 'F')
+	{
+		cel = (5*(cel-32))/9;
+	}
+	else if(unit == 'K')
+	{
+		cel = cel+273;
+	}
+	return cel;
 }
 
 void temp_exit()
@@ -66,6 +128,25 @@ void temp_exit()
 		if(rc_temp  == -1)
 			handle_error("Error in closing temperature thread queue");
 		
-		printf("\nExiting temperature thread");
+		rc_temp = mq_close(temp_soc_queue_fd);
+		if(rc_temp  == -1)
+			handle_error("Error in closing temperature thread socket queue");
+		
+		printf("Exiting temperature thread\n");
+		exit_flag[TEMP_THREAD_NUM] = 2;
+	}
+	else if(exit_flag[TEMP_THREAD_NUM] == 1)
+	{
+		//rc_temp = mq_close(temp_queue_fd);
+		//if(rc_temp  == -1)
+		//	handle_error("Error in closing temperature thread queue");
+		
+		//rc_temp = mq_close(temp_soc_queue_fd);
+		//if(rc_temp  == -1)
+		//	handle_error("Error in closing temperature thread socket queue");
+		
+		printf("Exiting temperature thread\n");
+		exit_flag[TEMP_THREAD_NUM] = 2;
+		pthread_exit(NULL);
 	}
 }

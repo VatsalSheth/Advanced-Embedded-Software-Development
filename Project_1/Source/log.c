@@ -7,7 +7,7 @@ void queue_init()
 	queue_attr.mq_msgsize = sizeof(struct log_msg);
 	queue_attr.mq_curmsgs = 0;
 
-	queue_fd = mq_open(queue_name, O_RDWR | O_CREAT | O_EXCL, 0664, &queue_attr);
+	queue_fd = mq_open(queue_name, O_RDONLY | O_CREAT | O_EXCL, 0664, &queue_attr);
 	if(queue_fd == -1)
 		handle_error("Error opening log queue");
 }
@@ -18,6 +18,7 @@ void* logger_func(void* threadp)
 	struct log_msg log_data;
 	struct timespec rx_timeout;
 	useconds_t garbage_sleep = 1;
+	struct mq_attr get_attr;
 	
 	queue_init();
 	set_notify_signal();
@@ -35,20 +36,35 @@ void* logger_func(void* threadp)
 		if(data_avail == 1)
 		{
 			clock_gettime(CLOCK_REALTIME, &rx_timeout);
-			rx_timeout.tv_nsec += 1000000;
+			rx_timeout.tv_nsec += 100000;
 			rc_log = mq_timedreceive(queue_fd, (char*)&log_data, sizeof(struct log_msg), NULL, &rx_timeout);
 			if(rc_log < 0)
 			{
 				if(errno == ETIMEDOUT)
 				{
 					data_avail = 0;
-					if(mq_notify(queue_fd, &sev) == -1)
-						handle_error("mq_notify");	
+					printf("data 0 \n");
+					//rc_log = mq_getattr(queue_fd, &get_attr);
+					//if(!rc_log)
+					//{
+						//rc_log = get_attr.mq_curmsgs;
+						//printf("mssg %ld\n",get_attr.mq_curmsgs);
+						//if(rc_log == 0)
+						//{
+							if(mq_notify(queue_fd, &sev) == -1)
+								handle_error("mq_notify");	
+						//}
+						//else
+						//{
+						//	data_avail = 1;
+						//}
+					//}
+					//continue;
 				}
 				else
 					handle_error("mq receive");
 			}
-//			printf("test\n");	
+			
 			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
 			if((log_data.verbosity) != ERROR_MESSAGE)
 			{
@@ -131,6 +147,7 @@ void log_exit()
 		
 		printf("Log file closed\n");
 		printf("Exiting logger thread\n");
+		exit_flag[LOG_THREAD_NUM] = 1;
 	}
 }
 
@@ -154,7 +171,7 @@ void set_notify_signal()
 
 void notify_handler(union sigval sv)
 {
-	//printf("notify\n");   DEBUG
+	printf("notify\n");   //DEBUG
 	data_avail = 1;
 }
 

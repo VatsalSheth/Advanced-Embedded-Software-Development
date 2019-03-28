@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
-	usleep(1);
+	usleep(200);
 	main_queue_init();
 	while(exit_cond)
 	{
@@ -208,20 +208,28 @@ void heartbeat_check(void)
 			break;
 			
 		clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
-		mon[i].timeout.tv_sec += 4;
+		mon[i].timeout.tv_sec += 3;
 	
 		pthread_mutex_lock(&mon[i].lock);
 		rc = pthread_cond_timedwait(&mon[i].cond, &mon[i].lock, &mon[i].timeout);  
 		if(rc == ETIMEDOUT)
 		{
 			printf("fail %d\n",i);
-			error_data = write_to_log_queue(i,
-											0,
-											ERROR_MESSAGE,
-											"Heartbeat failed");
-			rc = mq_send(main_queue_fd, (char*)&error_data, sizeof(struct log_msg), 0);
-			if(rc == -1)
-				handle_error("heartbeat mq_send");
+			if(!exit_flag[LOG_THREAD_NUM]) 
+			{
+				error_data = write_to_log_queue(i,
+												0,
+												ERROR_MESSAGE,
+												"Heartbeat failed");
+				//data_avail = 1;
+				//clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
+				//mon[i].timeout.tv_sec += 1;
+				rc = mq_send(main_queue_fd, (char*)&error_data, sizeof(struct log_msg), 0); //, &mon[i].timeout);
+				if(rc == -1)
+				{
+					handle_error("heartbeat mq_send");
+				}
+			}
 		}
 		pthread_mutex_unlock(&mon[i].lock);
 	}

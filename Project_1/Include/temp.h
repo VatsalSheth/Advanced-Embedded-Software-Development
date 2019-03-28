@@ -13,3 +13,4 @@ void* temp_func(void*);
 void temp_exit(void);
 void temp_queue_init(void);
 float request_temp(void);
+float conv_temp(float, char);
