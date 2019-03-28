@@ -36,9 +36,9 @@ void* temp_func(void* threadp)
 			timer_flag[TEMP_THREAD_NUM] = 0;
 			
 			temp_data = write_to_log_queue(TEMP_THREAD_NUM,
-							request_temp(),
-							1,
-							"GNU TEMPERATURE DEBUGGER");
+											request_temp(),
+											LOG_DEBUG,
+											"GNU TEMPERATURE DEBUGGER");
 			rc_temp = mq_send(temp_queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
 			if(rc_temp == -1)
 				handle_error("temp mq_send");

@@ -201,6 +201,7 @@ void heartbeat_check(void)
 {
 	uint32_t i;
 	struct log_msg error_data;
+	
 	for(i=0; i<(NUM_OF_THREADS - socket_hb); i++)
 	{	
 		if(!exit_cond)
@@ -215,10 +216,12 @@ void heartbeat_check(void)
 		{
 			printf("fail %d\n",i);
 			error_data = write_to_log_queue(i,
-							0,
-							ERROR_MESSAGE,
-							"Heartbeat failed");
+											0,
+											ERROR_MESSAGE,
+											"Heartbeat failed");
 			rc = mq_send(main_queue_fd, (char*)&error_data, sizeof(struct log_msg), 0);
+			if(rc == -1)
+				handle_error("heartbeat mq_send");
 		}
 		pthread_mutex_unlock(&mon[i].lock);
 	}

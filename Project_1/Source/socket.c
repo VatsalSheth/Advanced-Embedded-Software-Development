@@ -41,28 +41,24 @@ void* socket_func(void* threadp)
 		else
 		{
 			socket_hb = 0;
-			printf("\nConnection with remote client established");
+			int flags = fcntl(newserver_fd, F_GETFL, 0);
+			fcntl(newserver_fd, F_SETFL, flags | O_NONBLOCK);
+			printf("\nConnection with remote client established\n");
 		}
 	}
-
+	
 	while(1)
 	{
 		len = read(newserver_fd, (char*)&req, sizeof(struct command));	
 		if (len < 0)
 		{
-			handle_error("Receiving Read failed");
+			if(errno != EAGAIN)
+				handle_error("Receiving Read failed");
 		}
-		else if (len == 0)
+		else if(len > 0)
 		{
-			usleep(garbage_sleep);
-			ack_heartbeat(SOCKET_THREAD_NUM);	
-		}
-		else	
-		{
-			string[len] = 0;		//for testing only
 			printf("\nReceived %d bytes: %d\n", len, req.action);	//for testing only
-			ack_heartbeat(SOCKET_THREAD_NUM);	//for testing only
-		
+					
 			if((req.action == REQUEST_TEMPERATURE_C) || (req.action == REQUEST_TEMPERATURE_F) || (req.action == REQUEST_TEMPERATURE_K) || (req.action == KILL_TEMPERATURE))
 			{
 				socket_req_id = TEMP_THREAD_NUM;
@@ -74,7 +70,10 @@ void* socket_func(void* threadp)
 				else
 				{
 					socket_req_flag = 1;
-					tmp_flag = 1;
+					if(req.action != KILL_TEMPERATURE)
+					{
+						tmp_flag = 1;
+					}
 				}
 			}
 			else if((req.action == REQUEST_LIGHT) || (req.action == KILL_LIGHT))
@@ -88,7 +87,10 @@ void* socket_func(void* threadp)
 				else
 				{
 					socket_req_flag = 1;
-					tmp_flag = 1;
+					if(req.action != KILL_LIGHT)
+					{
+						tmp_flag = 1;
+					}
 				}
 			}
 			else if(req.action == KILL_SOCKET)
@@ -127,7 +129,6 @@ void* socket_func(void* threadp)
 				}
 			}
 		}
-		
 		usleep(garbage_sleep);
 		ack_heartbeat(SOCKET_THREAD_NUM);
 	}

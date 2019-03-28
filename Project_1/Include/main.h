@@ -12,6 +12,9 @@
 
 struct log_msg main_data;
 
+mqd_t main_queue_fd;
+struct mq_attr main_queue_attr;
+
 int rc;
 useconds_t usec;
 struct log_param log_file;

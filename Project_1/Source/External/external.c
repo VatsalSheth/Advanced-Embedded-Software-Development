@@ -21,7 +21,6 @@ int main(int argc, char* argv[])
 	while(1)
 	{
 		printf("\nWhat would you like to do? <request> <kill> <close> <exit>\n");
-			
 		scanf("%s", option);
 		option = strlwr(option);
 		
@@ -92,12 +91,18 @@ int main(int argc, char* argv[])
 			else
 			{
 				printf("Application NOT connected...!!!\n");
-				continue;
 			}
+			continue;
 		}
 		else if(!strcmp(option, "exit"))
 		{
 			printf("Exiting application...!!!\n");
+			if(conn_flag == 1)
+			{
+				close(client_fd);
+				printf("Closing Socket...!!!\n");
+				conn_flag = 0;
+			}
 			free(option);
 			free(serv_host);
 			exit(0);
@@ -135,13 +140,15 @@ int main(int argc, char* argv[])
 			serv_addr.sin_addr.s_addr = ((struct in_addr *)host_ptr->h_addr_list[0])->s_addr;
 			serv_addr.sin_port = htons(port);
 
-			if((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+			client_fd = socket(AF_INET, SOCK_STREAM, 0);
+			if(client_fd < 0)
 			{
 				printf("Error opening socket\n");
 				continue;
 			}
 
-			if(connect(client_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 	
+			rc = connect(client_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
+			if(rc < 0) 	
 			{
 				printf("Error connecting to server\n");
 				continue;
@@ -159,26 +166,23 @@ int main(int argc, char* argv[])
 		
 		if(res_flag)
 		{
-			while(1)
+			res_flag = 0;
+			rc = read(client_fd, (char*)&user, sizeof(struct command));
+			if(rc < 0)
 			{
-				rc = read(client_fd, (char*)&user, sizeof(struct command));
-				if(rc < 0)
+				printf("Receiving Read failed\n");
+				continue;
+			}
+			else if(rc > 0)
+			{
+				if(user.action == REQUEST_FAIL)
 				{
-					printf("Receiving Read failed\n");
+					printf("Response timed out...!!!\n");
 					continue;
 				}
-				else if(rc > 0)
+				else
 				{
-					if(user.action == REQUEST_FAIL)
-					{
-						printf("Response timed out...!!!\n");
-						continue;
-					}
-					else
-					{
-						printf("Requested Data is: %f\n",user.sensor_data);
-					}
-					break;
+					printf("Requested Data is: %f\n",user.sensor_data);
 				}
 			}
 		}

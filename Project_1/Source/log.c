@@ -48,9 +48,9 @@ void* logger_func(void* threadp)
 				else
 					handle_error("mq receive");
 			}
-						
+//			printf("test\n");	
 			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
-			if((log_data.verbosity) != 2)
+			if((log_data.verbosity) != ERROR_MESSAGE)
 			{
 				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
 				fprintf(file_log, "\nLog level: %s", (logArg->log_verbosity==1)?"DEBUG":"NONE");
@@ -62,9 +62,9 @@ void* logger_func(void* threadp)
 				fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
 				fprintf(file_log, "\n***********************************\n");
 			}
-			else if(log_data.verbosity == 2) 
+			else if(log_data.verbosity == ERROR_MESSAGE) 
 			{
-								
+//				printf("error\n");
 				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
 			//	fprintf(file_log, "\nLog level: %s", (logArg->log_verbosity==1)?"DEBUG":"NONE");
 				fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":
@@ -129,8 +129,8 @@ void log_exit()
 		if(rc_log != 0)
 			handle_error("Error in closing file");
 		
-		printf("\nLog file closed");
-		printf("\nExiting logger thread");
+		printf("Log file closed\n");
+		printf("Exiting logger thread\n");
 	}
 }
 

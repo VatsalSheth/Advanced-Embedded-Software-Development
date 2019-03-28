@@ -53,9 +53,6 @@ struct heartbeat_monitor
 	struct timespec timeout;
 }mon[NUM_OF_THREADS];
 
-mqd_t main_queue_fd;
-struct mq_attr main_queue_attr;
-
 mqd_t queue_fd;
 struct mq_attr queue_attr;
 uint8_t socket_hb;
