@@ -50,7 +50,7 @@ void* logger_func(void* threadp)
 			}
 						
 			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
-			if((logArg->log_verbosity) != 2)
+			if((log_data.verbosity) != 2)
 			{
 				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
 				fprintf(file_log, "\nLog level: %s", (logArg->log_verbosity==1)?"DEBUG":"NONE");
@@ -62,7 +62,7 @@ void* logger_func(void* threadp)
 				fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
 				fprintf(file_log, "\n***********************************\n");
 			}
-			else 
+			else if(log_data.verbosity == 2) 
 			{
 								
 				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);

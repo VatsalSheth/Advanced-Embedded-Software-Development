@@ -10,10 +10,13 @@
 #include "light.h"
 #include "socket.h"
 
+struct log_msg main_data;
+
 int rc;
 useconds_t usec;
 struct log_param log_file;
 
+void main_exit(void);
 int arg_init(char *arg1, char *arg2);
 void thread_create(void);
 void thread_join(void);

@@ -1,5 +1,17 @@
 #include "../Include/main.h"
 
+void main_queue_init()
+{
+	main_queue_attr.mq_flags = 0;	
+	main_queue_attr.mq_maxmsg = 10;	
+	main_queue_attr.mq_msgsize = sizeof(struct log_msg);	
+	main_queue_attr.mq_curmsgs = 0;
+
+	main_queue_fd = mq_open(queue_name, O_RDWR, 0664, &main_queue_attr);
+	if(main_queue_fd  == -1)
+		handle_error("Error opening main thread queue");
+}
+
 int main(int argc, char *argv[])
 {
 	set_signal_handler();
@@ -11,12 +23,15 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
+	usleep(1);
+	main_queue_init();
 	while(exit_cond)
 	{
 		heartbeat_check();
 	}
 	thread_join();
-	
+	main_exit();
+	printf("\n");
 	return 0;
 }
 
@@ -168,7 +183,6 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 	temp_exit();
 	light_exit();
 	socket_exit();
-	printf("\n");
 	exit_cond = 0;
 }
 
@@ -199,7 +213,21 @@ void heartbeat_check(void)
 		if(rc == ETIMEDOUT)
 		{
 			printf("fail %d\n",i);
+			struct log_msg error_data;
+			error_data = write_to_log_queue(i,
+							0,
+							ERROR_MESSAGE,
+							"Heartbeat failed");
+			rc = mq_send(main_queue_fd, (char*)&error_data, sizeof(struct log_msg), 0);
 		}
 		pthread_mutex_unlock(&mon[i].lock);
 	}
+}
+
+void main_exit(void)
+{
+	rc = mq_close(main_queue_fd);
+	if(rc  == -1)
+		handle_error("Error in closing main thread queue");
+	printf("\nExiting main thread");
 }
