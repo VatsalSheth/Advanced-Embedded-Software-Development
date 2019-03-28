@@ -200,6 +200,7 @@ void set_signal_handler(void)
 void heartbeat_check(void)
 {
 	uint32_t i;
+	struct log_msg error_data;
 	for(i=0; i<(NUM_OF_THREADS - socket_hb); i++)
 	{	
 		if(!exit_cond)
@@ -213,7 +214,6 @@ void heartbeat_check(void)
 		if(rc == ETIMEDOUT)
 		{
 			printf("fail %d\n",i);
-			struct log_msg error_data;
 			error_data = write_to_log_queue(i,
 							0,
 							ERROR_MESSAGE,
