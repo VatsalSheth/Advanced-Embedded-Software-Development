@@ -97,6 +97,12 @@ int main(int argc, char* argv[])
 		else if(!strcmp(option, "exit"))
 		{
 			printf("Exiting application...!!!\n");
+			if(conn_flag == 1)
+			{
+				close(client_fd);
+				printf("Closing Socket...!!!\n");
+				conn_flag = 0;
+			}
 			free(option);
 			free(serv_host);
 			exit(0);

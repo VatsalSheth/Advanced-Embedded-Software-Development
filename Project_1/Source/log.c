@@ -48,7 +48,7 @@ void* logger_func(void* threadp)
 				else
 					handle_error("mq receive");
 			}
-						
+//			printf("test\n");	
 			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
 			if((log_data.verbosity) != ERROR_MESSAGE)
 			{
@@ -64,7 +64,7 @@ void* logger_func(void* threadp)
 			}
 			else if(log_data.verbosity == ERROR_MESSAGE) 
 			{
-								
+//				printf("error\n");
 				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
 			//	fprintf(file_log, "\nLog level: %s", (logArg->log_verbosity==1)?"DEBUG":"NONE");
 				fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":

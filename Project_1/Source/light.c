@@ -41,7 +41,7 @@ void* light_func(void* threadp)
 
 			light_data = write_to_log_queue(LIGHT_THREAD_NUM,
 											request_light(),
-											1,
+											LOG_DEBUG,
 											"GNU LIGHT DEBUGGER");
 			rc_light = mq_send(light_queue_fd, (char*)&light_data, sizeof(struct log_msg), 0);
 			if(rc_light == -1)
@@ -109,9 +109,9 @@ void light_exit()
 	else if(exit_flag[LIGHT_THREAD_NUM] == 1)
 	{
 		exit_flag[LIGHT_THREAD_NUM] = 2;
-		rc_light = mq_close(light_queue_fd);
-		if(rc_light  == -1)
-			handle_error("Error in closing light thread queue");
+//		rc_light = mq_close(light_queue_fd);
+//		if(rc_light  == -1)
+//			handle_error("Error in closing light thread queue");
 		
 		rc_light = mq_close(light_soc_queue_fd);
 		if(rc_light  == -1)

@@ -221,7 +221,7 @@ void heartbeat_check(void)
 											"Heartbeat failed");
 			rc = mq_send(main_queue_fd, (char*)&error_data, sizeof(struct log_msg), 0);
 			if(rc == -1)
-							handle_error("heartbeat mq_send");
+				handle_error("heartbeat mq_send");
 		}
 		pthread_mutex_unlock(&mon[i].lock);
 	}
