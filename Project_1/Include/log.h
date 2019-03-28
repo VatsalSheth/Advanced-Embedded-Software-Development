@@ -11,6 +11,25 @@
 
 #define LOG_NONE (0)
 #define LOG_DEBUG (1)
+#define ERROR_MESSAGE (2)
+
+#define TEMP_THREAD_NUM (0)
+#define LIGHT_THREAD_NUM (1)
+#define LOG_THREAD_NUM (2)
+#define SOCKET_THREAD_NUM (3)
+#define MAIN_THREAD_NUM (99)
+
+#define REQUEST_FAIL (0) 
+#define REQUEST_TEMPERATURE_C (2)
+#define REQUEST_TEMPERATURE_F (4)
+#define REQUEST_TEMPERATURE_K (6)
+#define REQUEST_LIGHT (1)
+#define KILL_TEMPERATURE (11)
+#define KILL_LIGHT (12)
+#define KILL_LOGGER (21)
+#define KILL_SOCKET (22)
+
+#define NUM_OF_THREADS (4)
 
 #define handle_error(msg) \
 			{\
@@ -20,23 +39,6 @@
 			
 #define queue_name ("/log_fd")
 #define socket_queue ("/socket_queue")
-
-#define TEMP_THREAD_NUM 0
-#define LIGHT_THREAD_NUM 1
-#define LOG_THREAD_NUM 2
-#define SOCKET_THREAD_NUM 3
-
-#define REQUEST_FAIL 0 
-#define REQUEST_TEMPERATURE_C 2
-#define REQUEST_TEMPERATURE_F 4
-#define REQUEST_TEMPERATURE_K 6
-#define REQUEST_LIGHT 1
-#define KILL_TEMPERATURE 11
-#define KILL_LIGHT 12
-#define KILL_LOGGER 21
-#define KILL_SOCKET 22
-
-#define NUM_OF_THREADS 4
 
 struct command
 {
@@ -91,3 +93,7 @@ void set_notify_signal();
 void notify_handler(union sigval sv);
 void timer_init();
 void timer_handle(union sigval sv);
+struct log_msg write_to_log_queue(uint32_t thread_id,
+				    float thread_data,
+				    uint32_t msg_verbosity,
+				    char* msg);

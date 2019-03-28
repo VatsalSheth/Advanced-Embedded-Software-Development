@@ -50,12 +50,30 @@ void* logger_func(void* threadp)
 			}
 						
 			clock_gettime(CLOCK_REALTIME,&(log_data.time_stamp));
-			fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
-			fprintf(file_log, "\nLog level: %s", logArg->log_verbosity?"DEBUG":"NONE");
-			fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":"LIGHT SENSOR");
-			fprintf(file_log, "\nData: %f %s", log_data.data, log_data.id==TEMP_THREAD_NUM?"degrees Celsius":"Lumens");
-			fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
-			fprintf(file_log, "\n***********************************\n");
+			if((logArg->log_verbosity) != 2)
+			{
+				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
+				fprintf(file_log, "\nLog level: %s", (logArg->log_verbosity==1)?"DEBUG":"NONE");
+				fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":
+								 (log_data.id==LIGHT_THREAD_NUM?"LIGHT SENSOR":
+								 (log_data.id==SOCKET_THREAD_NUM?"SOCKET THREAD":
+								 (log_data.id==MAIN_THREAD_NUM?"MAIN THREAD":"FAULTY THREAD"))));
+				fprintf(file_log, "\nData: %f %s", log_data.data, log_data.id==TEMP_THREAD_NUM?"degrees Celsius":"Lumens");
+				fprintf(file_log, "\nDebug Message: %s", logArg->log_verbosity?(log_data.verbosity?log_data.debug_msg:"none"):"none");	
+				fprintf(file_log, "\n***********************************\n");
+			}
+			else 
+			{
+								
+				fprintf(file_log, "\n[TIMESTAMP: %lu secs and %lu nsecs]", log_data.time_stamp.tv_sec, log_data.time_stamp.tv_nsec);
+			//	fprintf(file_log, "\nLog level: %s", (logArg->log_verbosity==1)?"DEBUG":"NONE");
+				fprintf(file_log, "\nSource: %s", log_data.id==TEMP_THREAD_NUM?"TEMPERATURE SENSOR":
+								 (log_data.id==LIGHT_THREAD_NUM?"LIGHT SENSOR":
+								 (log_data.id==SOCKET_THREAD_NUM?"SOCKET THREAD":
+								 (log_data.id==MAIN_THREAD_NUM?"MAIN THREAD":"FAULTY THREAD"))));
+				fprintf(file_log, "\nERROR MESSAGE: %s", log_data.debug_msg);	
+				fprintf(file_log, "\n***********************************\n");
+			}
 		}
 		usleep(garbage_sleep);
 		ack_heartbeat(LOG_THREAD_NUM);
@@ -138,4 +156,18 @@ void notify_handler(union sigval sv)
 {
 	//printf("notify\n");   DEBUG
 	data_avail = 1;
+}
+
+struct log_msg write_to_log_queue(uint32_t thread_id,
+				    float thread_data,
+				    uint32_t msg_verbosity,
+				    char* msg)
+{
+	struct log_msg sensor_data;
+	sensor_data.id = thread_id;
+	sensor_data.data = thread_data;
+	clock_gettime(CLOCK_REALTIME, &(sensor_data.time_stamp));
+	sensor_data.verbosity = msg_verbosity;
+	sensor_data.debug_msg = msg;
+	return sensor_data;
 }
