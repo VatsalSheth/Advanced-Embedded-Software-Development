@@ -43,23 +43,8 @@ void* logger_func(void* threadp)
 				if(errno == ETIMEDOUT)
 				{
 					data_avail = 0;
-					printf("data 0 \n");
-					//rc_log = mq_getattr(queue_fd, &get_attr);
-					//if(!rc_log)
-					//{
-						//rc_log = get_attr.mq_curmsgs;
-						//printf("mssg %ld\n",get_attr.mq_curmsgs);
-						//if(rc_log == 0)
-						//{
-							if(mq_notify(queue_fd, &sev) == -1)
-								handle_error("mq_notify");	
-						//}
-						//else
-						//{
-						//	data_avail = 1;
-						//}
-					//}
-					//continue;
+					if(mq_notify(queue_fd, &sev) == -1)
+						handle_error("mq_notify");	
 				}
 				else
 					handle_error("mq receive");
@@ -171,7 +156,7 @@ void set_notify_signal()
 
 void notify_handler(union sigval sv)
 {
-	printf("notify\n");   //DEBUG
+	//printf("notify\n");   //DEBUG
 	data_avail = 1;
 }
 
