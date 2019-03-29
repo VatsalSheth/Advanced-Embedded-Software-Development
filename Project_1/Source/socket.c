@@ -121,7 +121,7 @@ void* socket_func(void* threadp)
 						else
 							handle_error("socket mq_receive");
 					}
-					if((exit_flag[LIGHT_THREAD_NUM] == 2) || (exit_flag[TEMP_THREAD_NUM] = 2))
+					if(((exit_flag[LIGHT_THREAD_NUM] == 2) && (socket_req_id == LIGHT_THREAD_NUM)) || ((socket_req_id == TEMP_THREAD_NUM) && (exit_flag[TEMP_THREAD_NUM] = 2)))
 					{
 						socket_req_flag = 0;
 						res.action = REQUEST_FAIL;
