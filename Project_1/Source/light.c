@@ -23,51 +23,6 @@ void light_queue_init()
 		handle_error("Error opening socket queue in light sensor");
 }
 
-void* int_func(void* threadp)
-{
-	FILE *gpio_fd;
-	struct pollfd fdset;
-	int nfds, rc_int;
-	
-	gpio_export(GPIO_LED);
-	gpio_dir(GPIO_LED);
-	gpio_blink(GPIO_LED);
-	
-	gpio_export(GPIO_LIGHT);
-	gpio_dir(GPIO_LIGHT);
-	gpio_edge(GPIO_LIGHT, "rising");
-	
-	gpio_fd = gpio_open(GPIO_LIGHT, "value");
-	nfds = 1;
-	
-	while(1)
-	{
-		//memset((void*)fdset, 0, sizeof(fdset));
-		
-		fdset.fd = (int)gpio_fd;
-		fdset.events = POLLPRI;
-		rc_int = poll(&fdset, nfds, 1000);
-		if(rc_int < 0)
-		{
-			handle_error("poll");
-		}
-		else if(rc_int == 0)
-		{
-			printf(".");
-			continue;
-		}
-			printf("test\n");
-		if (fdset.revents & POLLPRI) 
-		{
-			lseek(fdset.fd, 0, SEEK_SET);
-			//len = read(fdset[1].fd, buf, MAX_BUF);
-			printf("\npoll() GPIO  interrupt occurred\n");
-		}
-	}
-	
-	gpio_close(gpio_fd);
-}
-
 void* light_func(void* threadp)
 {
 	struct command req, res;
@@ -78,10 +33,6 @@ void* light_func(void* threadp)
 	
 	useconds_t garbage_sleep = 1;
 	
-	//rc_light = pthread_create(&int_th, (void *)0, int_func, (void *)0);
-	//if(rc_light != 0)
-	//	handle_error("Error in creating light interrupt thread");
-		
 	while(1)
 	{
 		if(timer_flag[LIGHT_THREAD_NUM] == 1)

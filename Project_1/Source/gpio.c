@@ -14,7 +14,7 @@ int gpio_export(uint32_t pin)
 	return 0;
 } 
 
-int gpio_dir(uint32_t pin)
+int gpio_dir(uint32_t pin, char *dir)
 {
 	FILE *fp;
 	char path[50];
@@ -25,7 +25,7 @@ int gpio_dir(uint32_t pin)
 	if(fp == NULL)
 		return -1;
 	
-	fprintf(fp, "out");
+	fprintf(fp, "%s",dir);
 	
 	fclose(fp);
 	return 0;
@@ -84,31 +84,37 @@ int gpio_edge(uint32_t pin, char *edge)
 	return 0;
 }
 
-FILE *gpio_open(uint32_t pin, char *file)
+int gpio_open(uint32_t pin, char *file)
 {
-	FILE *fp;
+	int fp;
 	char path[50];
 	
 	snprintf(path, 50, GPIO_DIR "/gpio%d/%s",pin,file);
 	
-	fp = fopen(path, "w");
-	if(fp == NULL)
-		return (FILE*)-1;
+	fp = open(path, O_RDONLY | O_NONBLOCK );
+	if(fp < 0)
+		return -1;
 		
 	return fp;
 }
 
-int gpio_close(FILE *fp)
+int gpio_close(int fp)
 {
-	fclose(fp);
-			
-	return 0;
+	return close(fp);
 }
 
 int gpio_blink(uint32_t pin)
 {
 	blink_timer_init(pin);
 } 
+
+int gpio_blink_off(uint32_t pin)
+{
+	timer_delete(blink_timer_id);
+	gpio_set_value(pin, 0);
+	
+	return 0;
+}
 
 void blink_timer_init(uint32_t pin)
 {

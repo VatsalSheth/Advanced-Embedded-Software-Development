@@ -85,7 +85,6 @@ int main(int argc, char* argv[])
 			if(conn_flag == 1)
 			{
 				close(client_fd);
-				close(newclient_fd);
 				printf("Closing Socket...!!!\n");
 				conn_flag = 0;
 			}
@@ -101,7 +100,6 @@ int main(int argc, char* argv[])
 			if(conn_flag == 1)
 			{
 				close(client_fd);
-				//close(newclient_fd);
 				printf("Closing Socket...!!!\n");
 				conn_flag = 0;
 			}

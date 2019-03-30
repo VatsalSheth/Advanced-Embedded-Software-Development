@@ -23,7 +23,7 @@
 #define KILL_LOGGER 21
 #define KILL_SOCKET 22
 
-#define SERV_TCP_PORT 8003
+#define SERV_TCP_PORT 8001
 #define MAX_SIZE 80
 
 struct command
@@ -34,7 +34,7 @@ struct command
 
 struct sockaddr_in serv_addr;
 struct hostent *host_ptr;
-int client_fd, newclient_fd, clilen, port, len;
+int client_fd, clilen, port, len;
 char* option;
 useconds_t sleepy;
 uint32_t conn_flag, res_flag, conn_attempt_flag;
