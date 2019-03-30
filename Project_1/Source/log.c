@@ -7,7 +7,7 @@ void queue_init()
 	queue_attr.mq_msgsize = sizeof(struct log_msg);
 	queue_attr.mq_curmsgs = 0;
 
-	queue_fd = mq_open(queue_name, O_RDONLY | O_CREAT | O_EXCL, 0664, &queue_attr);
+	queue_fd = mq_open(queue_name, O_RDWR | O_CREAT | O_EXCL, 0664, &queue_attr);
 	if(queue_fd == -1)
 		handle_error("Error opening log queue");
 }
@@ -43,23 +43,8 @@ void* logger_func(void* threadp)
 				if(errno == ETIMEDOUT)
 				{
 					data_avail = 0;
-					printf("data 0 \n");
-					//rc_log = mq_getattr(queue_fd, &get_attr);
-					//if(!rc_log)
-					//{
-						//rc_log = get_attr.mq_curmsgs;
-						//printf("mssg %ld\n",get_attr.mq_curmsgs);
-						//if(rc_log == 0)
-						//{
-							if(mq_notify(queue_fd, &sev) == -1)
-								handle_error("mq_notify");	
-						//}
-						//else
-						//{
-						//	data_avail = 1;
-						//}
-					//}
-					//continue;
+					if(mq_notify(queue_fd, &sev) == -1)
+						handle_error("mq_notify");	
 				}
 				else
 					handle_error("mq receive");
@@ -171,7 +156,7 @@ void set_notify_signal()
 
 void notify_handler(union sigval sv)
 {
-	printf("notify\n");   //DEBUG
+	//printf("notify\n");   //DEBUG
 	data_avail = 1;
 }
 

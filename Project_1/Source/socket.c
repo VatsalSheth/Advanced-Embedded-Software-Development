@@ -106,7 +106,9 @@ void* socket_func(void* threadp)
 			
 			while(tmp_flag == 1)
 			{
-				if(socket_req_flag == 0)
+				if((socket_req_flag == 0) 
+					|| ((exit_flag[LIGHT_THREAD_NUM] == 2) && (socket_req_id == LIGHT_THREAD_NUM)) 
+					|| ((socket_req_id == TEMP_THREAD_NUM) && (exit_flag[TEMP_THREAD_NUM] == 2)))
 				{
 					clock_gettime(CLOCK_REALTIME, &rx_timeout);
 					rx_timeout.tv_sec += 1;
@@ -121,8 +123,14 @@ void* socket_func(void* threadp)
 						else
 							handle_error("socket mq_receive");
 					}
+					if(((exit_flag[LIGHT_THREAD_NUM] == 2) && (socket_req_id == LIGHT_THREAD_NUM)) 
+						|| ((socket_req_id == TEMP_THREAD_NUM) && (exit_flag[TEMP_THREAD_NUM] == 2)))
+					{
+						socket_req_flag = 0;
+						res.action = REQUEST_FAIL;
+					}
 					tmp_flag = 0;
-					printf("Received from light:%f\n", res.sensor_data);
+					//printf("Received from light:%f\n", res.sensor_data);
 					rc_socket = write(newserver_fd, (void*)&res, sizeof(struct command));
 					if(rc_socket == -1)
 						handle_error("write");
@@ -157,6 +165,10 @@ void socket_exit(void)
 		rc_socket = close(newserver_fd);
 		if(rc_socket != 0)
 			handle_error("Error closing socket file descriptor");
+		
+		rc_socket = close(server_fd);
+		if(rc_socket != 0)
+			handle_error("Error closing socket file descriptor");
 
 		printf("\nExiting socket thread");
 		exit_flag[SOCKET_THREAD_NUM] = 2;
@@ -175,6 +187,10 @@ void socket_exit(void)
 			handle_error("Error in unlinking socket thread mqueue");
 
 		rc_socket = close(newserver_fd);
+		if(rc_socket != 0)
+			handle_error("Error closing socket file descriptor");
+			
+		rc_socket = close(server_fd);
 		if(rc_socket != 0)
 			handle_error("Error closing socket file descriptor");
 

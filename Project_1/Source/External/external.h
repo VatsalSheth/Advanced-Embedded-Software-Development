@@ -22,6 +22,8 @@
 #define KILL_LIGHT 12
 #define KILL_LOGGER 21
 #define KILL_SOCKET 22
+#define STATUS_LIGHT (3)
+#define STATUS_DARK (5)
 
 #define SERV_TCP_PORT 8010
 #define MAX_SIZE 80
@@ -34,7 +36,7 @@ struct command
 
 struct sockaddr_in serv_addr;
 struct hostent *host_ptr;
-int client_fd, newclient_fd, clilen, port, len;
+int client_fd, clilen, port, len;
 char* option;
 useconds_t sleepy;
 uint32_t conn_flag, res_flag, conn_attempt_flag;

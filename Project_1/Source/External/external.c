@@ -182,7 +182,20 @@ int main(int argc, char* argv[])
 				}
 				else
 				{
-					printf("Requested Data is: %f\n",user.sensor_data);
+					switch(user.action)
+					{
+						case STATUS_LIGHT:	printf("Ambience is light with %f lux\n",user.sensor_data);
+											break;
+						case STATUS_DARK:	printf("Ambience is dark with %f lux\n",user.sensor_data);
+											break;
+						case REQUEST_TEMPERATURE_C:	printf("Temperature is %f C\n",user.sensor_data);
+											break;
+						case REQUEST_TEMPERATURE_K:	printf("Temperature is %f K\n",user.sensor_data);
+											break;
+						case REQUEST_TEMPERATURE_F:	printf("Temperature is %f F\n",user.sensor_data);
+											break;
+						default:			break;
+					}
 				}
 			}
 		}
