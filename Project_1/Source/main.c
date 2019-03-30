@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	}
 	
 	thread_create();
-	usleep(200);
+	usleep(20000);
 	main_queue_init();
 	while(exit_cond)
 	{

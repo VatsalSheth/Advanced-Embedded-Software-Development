@@ -106,7 +106,7 @@ void* socket_func(void* threadp)
 			
 			while(tmp_flag == 1)
 			{
-				if((socket_req_flag == 0) || (exit_flag[LIGHT_THREAD_NUM] == 2) || (exit_flag[TEMP_THREAD_NUM] = 2))
+				if(socket_req_flag == 0)
 				{
 					clock_gettime(CLOCK_REALTIME, &rx_timeout);
 					rx_timeout.tv_sec += 1;
@@ -120,11 +120,6 @@ void* socket_func(void* threadp)
 						}
 						else
 							handle_error("socket mq_receive");
-					}
-					if(((exit_flag[LIGHT_THREAD_NUM] == 2) && (socket_req_id == LIGHT_THREAD_NUM)) || ((socket_req_id == TEMP_THREAD_NUM) && (exit_flag[TEMP_THREAD_NUM] = 2)))
-					{
-						socket_req_flag = 0;
-						res.action = REQUEST_FAIL;
 					}
 					tmp_flag = 0;
 					printf("Received from light:%f\n", res.sensor_data);
