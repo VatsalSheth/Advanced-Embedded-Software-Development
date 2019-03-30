@@ -3,7 +3,7 @@ headers = ../Include/main.h ../Include/log.h ../Include/temp.h ../Include/light.
 CC = gcc
 
 project_1 : $(objects) $(headers)
-	$(CC) -g -o project_1 $(objects) -lpthread -lrt
+	$(CC) -g -o project_1 $(objects) -lpthread -lrt -lm
 
 main.o : main.c $(headers)
 	$(CC) -c main.c

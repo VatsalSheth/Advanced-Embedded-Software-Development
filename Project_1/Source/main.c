@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
 		
 	thread_create();
 	usleep(20000);
-	main_queue_init();
 	
 	while(exit_cond)
 	{
@@ -240,12 +239,12 @@ void* int_func(void* threadp)
 		
 	gpio_export(GPIO_TEMP);
 	gpio_dir(GPIO_TEMP, "in");
-	gpio_edge(GPIO_TEMP, "rising");
+	gpio_edge(GPIO_TEMP, "both");
 	gpio_fd[TEMP_THREAD_NUM] = gpio_open(GPIO_TEMP, "value");
 	
 	gpio_export(GPIO_LIGHT);
 	gpio_dir(GPIO_LIGHT, "in");
-	gpio_edge(GPIO_LIGHT, "rising");
+	gpio_edge(GPIO_LIGHT, "both");
 	gpio_fd[LIGHT_THREAD_NUM] = gpio_open(GPIO_LIGHT, "value");
 	
 	nfds = 2;

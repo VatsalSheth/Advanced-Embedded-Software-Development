@@ -33,6 +33,7 @@ int sensor_init(void)
 		/* ERROR HANDLING; you can check errno to see what went wrong */
    		 exit(1);
 	}
+
 	return lsense_fd;
 }
 
@@ -136,10 +137,10 @@ uint8_t read_timing_reg(void)
 
 int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for INT_TH_H registers
 {
-	uint8_t temp_val = val & 0x00FF;
+	uint8_t	temp_val = val & 0x00FF;
 	if(reg == 1)
 	{
-		write_command_reg(INT_TH_LL_REG);
+		write_command_reg(/*0x20 |*/ INT_TH_LL_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
 		{
@@ -148,7 +149,7 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 		}
 	
 		temp_val = val >> 8;
-		write_command_reg(INT_TH_LH_REG);
+		write_command_reg(/*0x20 |*/ INT_TH_LH_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
 		{
@@ -158,7 +159,7 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 	}
 	else if(reg == 2)
 	{
-		write_command_reg(INT_TH_HL_REG);
+		write_command_reg(/*0x20 |*/ INT_TH_HL_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
 		{
@@ -167,7 +168,7 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 		}
 	
 		temp_val = val >> 8;
-		write_command_reg(INT_TH_HH_REG);
+		write_command_reg(/*0x20 |*/ INT_TH_HH_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
 		{
@@ -180,10 +181,11 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 
 uint16_t read_int_th_reg(uint8_t reg)
 {
-	uint16_t val, temp_val;
+	uint16_t val;
+	uint8_t temp_val;
 	if(reg == 1)
 	{
-		write_command_reg(INT_TH_LL_REG);
+		write_command_reg(/*0x20 |*/ INT_TH_LL_REG);
 		lsense_check = read(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
 		{
@@ -226,8 +228,8 @@ uint16_t read_int_th_reg(uint8_t reg)
 
 uint16_t ch_ADC0(void)		//min 69	 max 124
 {
-	uint16_t adc0;
-	uint8_t lsb, msb;
+	uint16_t adc0, msb;
+	uint8_t lsb;
 
 	write_command_reg(ADC_DATA0L_REG);
 	
@@ -255,8 +257,8 @@ uint16_t ch_ADC0(void)		//min 69	 max 124
 
 uint16_t ch_ADC1(void)		//min 12	max 58
 {
-	uint16_t adc1;
-	uint8_t lsb, msb;
+	uint16_t adc1, msb;
+	uint8_t lsb;
 
 	write_command_reg(ADC_DATA1L_REG);
 	
