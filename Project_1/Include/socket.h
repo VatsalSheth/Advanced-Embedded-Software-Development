@@ -19,8 +19,6 @@ struct sockaddr_in serv_addr, cli_addr;
 pthread_t socket_th;
 int rc_socket, len;
 int server_fd, newserver_fd, clilen, port;
-mqd_t soc_queue_fd;
-struct mq_attr soc_queue_attr;
 
 void* socket_func(void*);
 void socket_exit(void);

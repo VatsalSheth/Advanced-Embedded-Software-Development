@@ -7,7 +7,7 @@ void queue_init()
 	queue_attr.mq_msgsize = sizeof(struct log_msg);
 	queue_attr.mq_curmsgs = 0;
 
-	queue_fd = mq_open(queue_name, O_RDONLY | O_CREAT | O_EXCL, 0664, &queue_attr);
+	queue_fd = mq_open(queue_name, O_RDWR | O_CREAT | O_EXCL, 0664, &queue_attr);
 	if(queue_fd == -1)
 		handle_error("Error opening log queue");
 }

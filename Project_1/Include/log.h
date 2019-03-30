@@ -31,13 +31,15 @@
 #define KILL_LIGHT (12)
 #define KILL_LOGGER (21)
 #define KILL_SOCKET (22)
+#define STATUS_LIGHT (3)
+#define STATUS_DARK (5)
 
 #define NUM_OF_THREADS (4)
 
 #define handle_error(msg) \
 			{\
 				perror(msg);\
-				exit(1);\
+				kill(getpid(), SIGINT);\
 			}
 			
 #define queue_name ("/log_fd")
@@ -56,8 +58,8 @@ struct heartbeat_monitor
 	struct timespec timeout;
 }mon[NUM_OF_THREADS];
 
-mqd_t queue_fd;
-struct mq_attr queue_attr;
+mqd_t queue_fd, soc_queue_fd;
+struct mq_attr queue_attr, soc_queue_attr;
 uint8_t socket_hb;
 int rc_log;
 

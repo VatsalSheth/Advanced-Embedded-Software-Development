@@ -1,31 +1,9 @@
 #include "../Include/temp.h"
 
-void temp_queue_init()
-{
-	temp_queue_attr.mq_flags = 0;	
-	temp_queue_attr.mq_maxmsg = 10;	
-	temp_queue_attr.mq_msgsize = sizeof(struct log_msg);	
-	temp_queue_attr.mq_curmsgs = 0;
-
-	temp_queue_fd = mq_open(queue_name, O_RDWR, 0664, &temp_queue_attr);
-	if(temp_queue_fd  == -1)
-		handle_error("Error opening temperature thread queue");
-	
-	temp_soc_queue_attr.mq_flags = 0;
-	temp_soc_queue_attr.mq_maxmsg = 1;
-	temp_soc_queue_attr.mq_msgsize = sizeof(struct command);
-	temp_soc_queue_attr.mq_curmsgs = 0;
-
-	temp_soc_queue_fd = mq_open(socket_queue, O_RDWR, 0664, &temp_soc_queue_attr);
-	if(temp_soc_queue_fd == -1)
-		handle_error("Error opening socket queue in temperature sensor");
-}
-
 void* temp_func(void* threadp)
 {
 	struct command req, res;
 	sleep(1);
-	temp_queue_init();	
 	srand(time(NULL));
 	
 	useconds_t garbage_sleep = 1;
@@ -40,7 +18,7 @@ void* temp_func(void* threadp)
 											request_temp(),
 											LOG_DEBUG,
 											"GNU TEMPERATURE DEBUGGER");
-			rc_temp = mq_send(temp_queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+			rc_temp = mq_send(queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
 			if(rc_temp == -1)
 				handle_error("temp mq_send");
 		}
@@ -49,7 +27,7 @@ void* temp_func(void* threadp)
 		{
 			if(socket_req_id == TEMP_THREAD_NUM)
 			{
-				rc_temp = mq_receive(temp_soc_queue_fd, (char*)&req, sizeof(struct command), NULL);
+				rc_temp = mq_receive(soc_queue_fd, (char*)&req, sizeof(struct command), NULL);
 				if(rc_temp < 0)
 				{
 					handle_error("socket queue receive in temperature sensor");
@@ -60,7 +38,7 @@ void* temp_func(void* threadp)
 					{
 						res.sensor_data = request_temp();
 						res.action = req.action;
-						rc_temp = mq_send(temp_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						rc_temp = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_temp == -1)
 							handle_error("temp socket mq_send");
 					}
@@ -69,7 +47,7 @@ void* temp_func(void* threadp)
 						res.sensor_data = request_temp();
 						res.sensor_data = conv_temp(res.sensor_data, 'F');
 						res.action = req.action;
-						rc_temp = mq_send(temp_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						rc_temp = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_temp == -1)
 							handle_error("temp socket mq_send");
 					}
@@ -78,7 +56,7 @@ void* temp_func(void* threadp)
 						res.sensor_data = request_temp();
 						res.sensor_data = conv_temp(res.sensor_data, 'K');
 						res.action = req.action;
-						rc_temp = mq_send(temp_soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						rc_temp = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_temp == -1)
 							handle_error("temp socket mq_send");
 					}
@@ -124,27 +102,11 @@ void temp_exit()
 		if(rc_temp != 0)
 			handle_error("Error cancelling temperature thread");
 		
-		rc_temp = mq_close(temp_queue_fd);
-		if(rc_temp  == -1)
-			handle_error("Error in closing temperature thread queue");
-		
-		rc_temp = mq_close(temp_soc_queue_fd);
-		if(rc_temp  == -1)
-			handle_error("Error in closing temperature thread socket queue");
-		
 		printf("Exiting temperature thread\n");
 		exit_flag[TEMP_THREAD_NUM] = 2;
 	}
 	else if(exit_flag[TEMP_THREAD_NUM] == 1)
 	{
-		//rc_temp = mq_close(temp_queue_fd);
-		//if(rc_temp  == -1)
-		//	handle_error("Error in closing temperature thread queue");
-		
-		//rc_temp = mq_close(temp_soc_queue_fd);
-		//if(rc_temp  == -1)
-		//	handle_error("Error in closing temperature thread socket queue");
-		
 		printf("Exiting temperature thread\n");
 		exit_flag[TEMP_THREAD_NUM] = 2;
 		pthread_exit(NULL);

@@ -1,17 +1,5 @@
 #include "../Include/main.h"
 
-void main_queue_init()
-{
-	main_queue_attr.mq_flags = 0;	
-	main_queue_attr.mq_maxmsg = 10;	
-	main_queue_attr.mq_msgsize = sizeof(struct log_msg);	
-	main_queue_attr.mq_curmsgs = 0;
-
-	main_queue_fd = mq_open(queue_name, O_RDWR, 0664, &main_queue_attr);
-	if(main_queue_fd  == -1)
-		handle_error("Error opening main thread queue");
-}
-
 int main(int argc, char *argv[])
 {
 	set_signal_handler();
@@ -23,14 +11,12 @@ int main(int argc, char *argv[])
 	}
 		
 	thread_create();
-	usleep(20000);
-	main_queue_init();
+	
 	while(exit_cond)
 	{
 		heartbeat_check();
 	}
 	thread_join();
-	main_exit();
 	printf("\n");
 	return 0;
 }
@@ -103,7 +89,7 @@ void thread_create()
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}
-	
+	sleep(1);
 	rc = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
 	if(rc != 0)
 	{
@@ -119,7 +105,7 @@ void thread_create()
 		if(rc!=0)
 			handle_error("pthread mutex init");
 	}
-
+	sleep(1);
 	rc = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
 	if(rc != 0)
 	{
@@ -233,7 +219,7 @@ void heartbeat_check(void)
 				//data_avail = 1;
 				//clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
 				//mon[i].timeout.tv_sec += 1;
-				rc = mq_send(main_queue_fd, (char*)&error_data, sizeof(struct log_msg), 0); //, &mon[i].timeout);
+				rc = mq_send(queue_fd, (char*)&error_data, sizeof(struct log_msg), 0); //, &mon[i].timeout);
 				if(rc == -1)
 				{
 					handle_error("heartbeat mq_send");
@@ -242,15 +228,6 @@ void heartbeat_check(void)
 		}
 		pthread_mutex_unlock(&mon[i].lock);
 	}
-}
-
-void main_exit(void)
-{
-	rc = mq_close(main_queue_fd);
-	if(rc  == -1)
-		handle_error("Error in closing main thread queue");
-	
-	printf("\nExiting main thread");
 }
 
 void* int_func(void* threadp)
@@ -309,10 +286,16 @@ void* int_func(void* threadp)
 
 void int_exit(void)
 {
-	gpio_close(gpio_fd[TEMP_THREAD_NUM]);
-	gpio_close(gpio_fd[LIGHT_THREAD_NUM]);
+	static uint32_t flag;
 	
-	rc = pthread_cancel(int_th);
-	if(rc != 0)
-		handle_error("Error cancelling interrupt thread");
+	if(flag == 0)
+	{
+		gpio_close(gpio_fd[TEMP_THREAD_NUM]);
+		gpio_close(gpio_fd[LIGHT_THREAD_NUM]);
+	
+		rc = pthread_cancel(int_th);
+		if(rc != 0)
+			handle_error("Error cancelling interrupt thread");
+	}
+	flag = 1;
 }

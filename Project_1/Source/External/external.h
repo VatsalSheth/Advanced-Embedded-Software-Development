@@ -22,6 +22,8 @@
 #define KILL_LIGHT 12
 #define KILL_LOGGER 21
 #define KILL_SOCKET 22
+#define STATUS_LIGHT (3)
+#define STATUS_DARK (5)
 
 #define SERV_TCP_PORT 8001
 #define MAX_SIZE 80

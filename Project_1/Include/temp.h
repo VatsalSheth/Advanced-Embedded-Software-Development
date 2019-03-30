@@ -3,14 +3,11 @@
 #include "log.h"
 #endif
 
-mqd_t temp_queue_fd, temp_soc_queue_fd;
-struct mq_attr temp_queue_attr, temp_soc_queue_attr;
 pthread_t temp_th;
 int rc_temp;
 struct log_msg temp_data;
 
 void* temp_func(void*);
 void temp_exit(void);
-void temp_queue_init(void);
 float request_temp(void);
 float conv_temp(float, char);

@@ -12,15 +12,12 @@
 
 struct log_msg main_data;
 
-mqd_t main_queue_fd;
-struct mq_attr main_queue_attr;
 pthread_t int_th; 
 int rc;
 int gpio_fd[2];
 useconds_t usec;
 struct log_param log_file;
 
-void main_exit(void);
 int arg_init(char *arg1, char *arg2);
 void thread_create(void);
 void thread_join(void);
