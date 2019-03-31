@@ -3,6 +3,7 @@
 void* light_func(void* threadp)
 {
 	struct command req, res;
+	struct timespec timeout;
 	
 	sleep(1);
 	srand(time(NULL));
@@ -19,19 +20,50 @@ void* light_func(void* threadp)
 											request_light(),
 											LOG_DEBUG,
 											"GNU LIGHT DEBUGGER");
-			rc_light = mq_send(queue_fd, (char*)&light_data, sizeof(struct log_msg), 0);
+			clock_gettime(CLOCK_REALTIME, &timeout);
+			timeout.tv_nsec += 100000000;
+			rc_light = mq_timedsend(queue_fd, (char*)&light_data, sizeof(struct log_msg), 0, &timeout);
 			if(rc_light == -1)
-				handle_error("light mq_send");
+			{
+				if(errno == ETIMEDOUT)
+				{
+					printf("Log queue full...!!!\n");
+				}
+				else
+					handle_error("mq send in light");
+			}
 		}
 		
 		if(socket_req_flag == 1)
 		{
 			if(socket_req_id == LIGHT_THREAD_NUM)
 			{
-				rc_light = mq_receive(soc_queue_fd, (char*)&req, sizeof(struct command), NULL);
+				clock_gettime(CLOCK_REALTIME, &timeout);
+				timeout.tv_nsec += 100000000;
+				rc_light = mq_timedreceive(soc_queue_fd, (char*)&req, sizeof(struct command), NULL, &timeout);
 				if(rc_light < 0)
 				{
-					handle_error("socket queue receive in light sensor");
+					if(errno == ETIMEDOUT)
+					{
+						light_data = write_to_log_queue(LIGHT_THREAD_NUM,
+											0,
+											ERROR_MESSAGE,
+											"Socket queue empty. NO request received...!!!");
+						clock_gettime(CLOCK_REALTIME, &timeout);
+						timeout.tv_nsec += 100000000;
+						rc_light = mq_timedsend(queue_fd, (char*)&light_data, sizeof(struct log_msg), 0, &timeout);
+						if(rc_light == -1)
+						{
+							if(errno == ETIMEDOUT)
+							{
+								printf("Log queue full...!!!\n");
+							}
+							else
+								handle_error("mq send in light");
+						}
+					}
+					else
+						handle_error("socket queue receive in light sensor");
 				}
 				else
 				{
@@ -39,9 +71,18 @@ void* light_func(void* threadp)
 					{
 						res.sensor_data = request_light();
 						res.action = req.action;
-						rc_light = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
+						clock_gettime(CLOCK_REALTIME, &timeout);
+						timeout.tv_nsec += 100000000;
+						rc_light = mq_timedsend(soc_queue_fd, (char*)&res, sizeof(struct command), 0, &timeout);
 						if(rc_light == -1)
-							handle_error("light socket mq_send");
+						{
+							if(errno == ETIMEDOUT)
+							{
+								printf("Log queue full...!!!\n");
+							}
+							else
+								handle_error("light socket mq_send");
+						}
 					}
 					else if(req.action == KILL_LIGHT)
 					{
@@ -70,7 +111,7 @@ void light_exit()
 	{
 		rc_light = pthread_cancel(light_th);
 		if(rc_light != 0)
-			handle_error("Error cancelling light thread");
+			printf("Light Thread: NO thread found with given thread ID...!!!\n");
 		
 		printf("\nExiting light thread\n");
 		exit_flag[LIGHT_THREAD_NUM] = 2;
