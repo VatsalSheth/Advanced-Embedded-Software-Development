@@ -3,6 +3,7 @@
 void* temp_func(void* threadp)
 {
 	struct command req, res;
+	struct timespec timeout;
 	sleep(1);
 	srand(time(NULL));
 	
@@ -21,12 +22,21 @@ void* temp_func(void* threadp)
 			timer_flag[TEMP_THREAD_NUM] = 0;
 			
 			temp_data = write_to_log_queue(TEMP_THREAD_NUM,
-											request_temp(),
-											LOG_DEBUG,
-											"GNU TEMPERATURE DEBUGGER");
-			rc_temp = mq_send(queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+							request_temp(),
+							LOG_DEBUG,
+							"GNU TEMPERATURE DEBUGGER");
+			clock_gettime(CLOCK_REALTIME, &timeout);
+			timeout.tv_nsec += 100000000;
+			rc_temp = mq_timedsend(queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0, &timeout);
 			if(rc_temp == -1)
-				handle_error("temp mq_send");
+			{
+				if(errno == ETIMEDOUT)
+				{
+					printf("Log queue full...!!!\n");
+				}
+				else
+					handle_error("mq send in temperature");
+			}
 		}
 		
 		if(socket_req_flag == 1)

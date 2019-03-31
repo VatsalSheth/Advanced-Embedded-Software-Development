@@ -25,7 +25,7 @@
 #define STATUS_LIGHT 	(3)
 #define STATUS_DARK 	(5)
 
-#define SERV_TCP_PORT 	(8009)
+#define SERV_TCP_PORT 	(8010)
 #define MAX_SIZE 	(80)
 
 struct command

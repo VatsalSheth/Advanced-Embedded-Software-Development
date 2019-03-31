@@ -122,8 +122,9 @@ int main(int argc, char* argv[])
 			
 			strcpy(serv_host, option);
 			port = SERV_TCP_PORT;
-
-			if((host_ptr = gethostbyname(serv_host)) == NULL) 
+			
+			host_ptr = gethostbyname(serv_host);
+			if(host_ptr == NULL) 
 			{
 				printf("gethostbyname error\n");
 				continue;
@@ -146,8 +147,9 @@ int main(int argc, char* argv[])
 				printf("Error opening socket\n");
 				continue;
 			}
-
+printf("testb4\n");
 			rc = connect(client_fd, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
+printf("testafter\n");
 			if(rc < 0) 	
 			{
 				printf("Error connecting to server\n");
