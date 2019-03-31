@@ -5,10 +5,13 @@
 
 #include "apds.h"
 
+#define CH0_LOW_THRESHOLD 	(40)
+#define CH0_HIGH_THRESHOLD 	(600)
+
 mqd_t light_queue_fd, light_soc_queue_fd;
 struct mq_attr light_queue_attr, light_soc_queue_attr;
 pthread_t light_th;
-int rc_light;
+int rc_light, light_status;
 struct log_msg light_data;
 
 void* light_func(void*);

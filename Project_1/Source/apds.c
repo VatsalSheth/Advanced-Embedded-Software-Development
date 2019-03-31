@@ -8,31 +8,24 @@ int write_command_reg(uint8_t reg)
 	{
 		char* string = malloc(30);
 		sprintf(string, "Failed to write to %x register", reg);
-		perror(string);
+		handle_error(string);
 		free(string);
-		exit(1);
 	}
 	return lsense_check;
 }
 
-int sensor_init(void)
+int light_sensor_init(void)
 {
 	char *filename = "/dev/i2c-2";
-	lsense_fd = open("/dev/i2c-2", O_RDWR);
+	lsense_fd = open(filename, O_RDWR);
 //chec return type outside; followiing check is for testing
 	if (lsense_fd < 0)
-	{
-   		perror("Failed to open the i2c bus");
-    		exit(1);
-	}
+   		handle_error("Failed to open the i2c bus");
 
-	int addr = SLAVE_ADDRESS;          // The I2C address of the ADC
+	int addr = LIGHT_SLAVE_ADDRESS;          // The I2C address of the ADC
 	if (ioctl(lsense_fd, I2C_SLAVE, addr) < 0)
-       	{
-    		perror("Failed to acquire bus access");
+    		handle_error("Failed to acquire bus access");
 		/* ERROR HANDLING; you can check errno to see what went wrong */
-   		 exit(1);
-	}
 
 	return lsense_fd;
 }
@@ -44,10 +37,7 @@ int write_control_reg(uint8_t val)
 	int buf = val;
 	lsense_check = write(lsense_fd, &buf, 1);
 	if(lsense_check != 1)
-	{
-		perror("Failed to write in write_control_reg");
-		exit(1);
-	}
+		handle_error("Failed to write in write_control_reg");
 	return lsense_check;
 }
 
@@ -58,10 +48,7 @@ uint8_t read_control_reg()
 	uint8_t buf;
 	lsense_check = read(lsense_fd, &buf, 1);
 	if(lsense_check == -1)
-	{
-		perror("Failed to read in read_control_reg");
-		exit(1);
-	}
+		handle_error("Failed to read in read_control_reg");
 	return buf;
 }
 
@@ -72,10 +59,7 @@ int write_int_ctl_reg(uint8_t val) 	//write 0b00010001 for last conversion resul
 	int buf = val;
 	lsense_check = write(lsense_fd, &buf, 1);
 	if(lsense_check == -1)
-	{
-		perror("Failed to write in write_int_ctl_reg");
-		exit(1);
-	}
+		handle_error("Failed to write in write_int_ctl_reg");
 	return lsense_check;
 }
 
@@ -86,10 +70,7 @@ uint8_t read_int_ctl_reg(void)
 	uint8_t buf;	
 	lsense_check = read(lsense_fd, &buf, 1);
 	if(lsense_check == -1)
-	{
-		perror("Failed to read in read_int_ctl_reg");
-		exit(1);
-	}
+		handle_error("Failed to read in read_int_ctl_reg");
 	return buf;
 }
 
@@ -100,10 +81,7 @@ int sensor_id()
 	int buf;
 	lsense_check = read(lsense_fd, &buf, 1);
 	if(lsense_check == -1)
-	{
-		perror("Failed to read in read_control_reg");
-		exit(1);
-	}
+		handle_error("Failed to read in read_control_reg");
 	return buf;
 }
 
@@ -114,10 +92,7 @@ int write_timing_reg(uint8_t val)
 	int buf = val;
 	lsense_check = write(lsense_fd, &buf, 1);
 	if(lsense_check == -1)
-	{
-		perror("Failed to write in write_timing_reg");
-		exit(1);
-	}
+		handle_error("Failed to write in write_timing_reg");
 	return lsense_check;
 }
 
@@ -128,10 +103,7 @@ uint8_t read_timing_reg(void)
 	uint8_t buf;
 	lsense_check = read(lsense_fd, &buf, 1);
 	if(lsense_check == -1)
-	{
-		perror("Failed to read in read_timing_reg");
-		exit(1);
-	}
+		handle_error("Failed to read in read_timing_reg");
 	return buf;
 }
 
@@ -143,38 +115,26 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 		write_command_reg(/*0x20 |*/ INT_TH_LL_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to write LL reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to write LL reg in int_th_reg");
 	
 		temp_val = val >> 8;
 		write_command_reg(/*0x20 |*/ INT_TH_LH_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to write LH reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to write LH reg in int_th_reg");
 	}
 	else if(reg == 2)
 	{
 		write_command_reg(/*0x20 |*/ INT_TH_HL_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to write HL reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to write HL reg in int_th_reg");
 	
 		temp_val = val >> 8;
 		write_command_reg(/*0x20 |*/ INT_TH_HH_REG);
 		lsense_check = write(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to write HH reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to write HH reg in int_th_reg");
 	}
 	return lsense_check;
 }
@@ -188,17 +148,11 @@ uint16_t read_int_th_reg(uint8_t reg)
 		write_command_reg(/*0x20 |*/ INT_TH_LL_REG);
 		lsense_check = read(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to read LL reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to read LL reg in int_th_reg");
 		write_command_reg(INT_TH_LH_REG);
 		lsense_check = read(lsense_fd, &val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to read LH reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to read LH reg in int_th_reg");
 		val = val << 8;
 		val = val | temp_val;
 		return val;
@@ -208,18 +162,12 @@ uint16_t read_int_th_reg(uint8_t reg)
 		write_command_reg(INT_TH_HL_REG);
 		lsense_check = read(lsense_fd, &temp_val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to read HL reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to read HL reg in int_th_reg");
 	
 		write_command_reg(INT_TH_HH_REG);
 		lsense_check = read(lsense_fd, &val, 1);
 		if(lsense_check == -1)
-		{
-			perror("Failed to read HH reg in int_th_reg");
-			exit(1);
-		}
+			handle_error("Failed to read HH reg in int_th_reg");
 		val = val << 8;
 		val = val | temp_val;
 		return val;
@@ -235,19 +183,13 @@ uint16_t ch_ADC0(void)		//min 69	 max 124
 	
 	lsense_check = read(lsense_fd, &lsb, 1);
 	if(lsense_fd == -1)
-	{
-		perror("Failed to read in ch_ADC0L");
-		exit(1);
-	}
+		handle_error("Failed to read in ch_ADC0L");
 
 	write_command_reg(ADC_DATA0H_REG);
 	
 	lsense_check = read(lsense_fd, &msb, 1);
 	if(lsense_fd == -1)
-	{
-		perror("Failed to read in ch_ADC0H");
-		exit(1);
-	}
+		handle_error("Failed to read in ch_ADC0H");
 
 	msb = msb << 8;
 	adc0 = msb | lsb;
@@ -264,19 +206,13 @@ uint16_t ch_ADC1(void)		//min 12	max 58
 	
 	lsense_check = read(lsense_fd, &lsb, 1);
 	if(lsense_fd == -1)
-	{
-		perror("Failed to read in ch_ADC1L");
-		exit(1);
-	}
+		handle_error("Failed to read in ch_ADC1L");
 
 	write_command_reg(ADC_DATA1H_REG);
 	
 	lsense_check = read(lsense_fd, &msb, 1);
 	if(lsense_fd == -1)
-	{
-		perror("Failed to read in ch_ADC1H");
-		exit(1);
-	}
+		handle_error("Failed to read in ch_ADC1H");
 
 	msb = msb << 8;
 	adc1 = msb | lsb;

@@ -12,29 +12,29 @@
 
 #include "gpio.h"
 
-#define LOG_NONE (0)
-#define LOG_DEBUG (1)
-#define ERROR_MESSAGE (2)
+#define LOG_NONE 	(0)
+#define LOG_DEBUG 	(1)
+#define ERROR_MESSAGE 	(2)
 
-#define TEMP_THREAD_NUM (0)
-#define LIGHT_THREAD_NUM (1)
-#define LOG_THREAD_NUM (2)
-#define SOCKET_THREAD_NUM (3)
-#define MAIN_THREAD_NUM (99)
+#define TEMP_THREAD_NUM 	(0)
+#define LIGHT_THREAD_NUM 	(1)
+#define LOG_THREAD_NUM 		(2)
+#define SOCKET_THREAD_NUM 	(3)
+#define MAIN_THREAD_NUM 	(99)
 
-#define REQUEST_FAIL (0) 
-#define REQUEST_TEMPERATURE_C (2)
-#define REQUEST_TEMPERATURE_F (4)
-#define REQUEST_TEMPERATURE_K (6)
-#define REQUEST_LIGHT (1)
-#define KILL_TEMPERATURE (11)
-#define KILL_LIGHT (12)
-#define KILL_LOGGER (21)
-#define KILL_SOCKET (22)
-#define STATUS_LIGHT (3)
-#define STATUS_DARK (5)
+#define REQUEST_FAIL 		(0) 
+#define REQUEST_TEMPERATURE_C 	(2)
+#define REQUEST_TEMPERATURE_F 	(4)
+#define REQUEST_TEMPERATURE_K 	(6)
+#define REQUEST_LIGHT 		(1)
+#define KILL_TEMPERATURE 	(11)
+#define KILL_LIGHT 		(12)
+#define KILL_LOGGER 		(21)
+#define KILL_SOCKET 		(22)
+#define STATUS_LIGHT 		(3)
+#define STATUS_DARK 		(5)
 
-#define NUM_OF_THREADS (4)
+#define NUM_OF_THREADS 		(4)
 
 #define handle_error(msg) \
 			{\
@@ -42,8 +42,8 @@
 				kill(getpid(), SIGINT);\
 			}
 			
-#define queue_name ("/log_fd")
-#define socket_queue ("/socket_queue")
+#define queue_name 	("/log_fd")
+#define socket_queue 	("/socket_queue")
 
 struct command
 {

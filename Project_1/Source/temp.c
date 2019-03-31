@@ -7,7 +7,13 @@ void* temp_func(void* threadp)
 	srand(time(NULL));
 	
 	useconds_t garbage_sleep = 1;
-	
+
+	rc_tsense = temp_sensor_init();
+//	printf("Config register holds %x\n", read_reg(CONFIG_REG));
+	write_config_reg(read_reg(CONFIG_REG) | THERMOSTAT_MODE);
+	write_tlow_reg(LOW_THRESHOLD);		//Low threshold as 23 C
+	write_thigh_reg(HIGH_THRESHOLD);		//High threshold as 24 C
+		
 	while(1)
 	{
 		if(timer_flag[TEMP_THREAD_NUM] == 1)
@@ -78,7 +84,8 @@ void* temp_func(void* threadp)
 
 float request_temp()
 {
-	return rand();
+//	printf("Temperature acquired is %f degrees C\n", temp_calc());
+	return temp_calc();//rand();
 }
 
 float conv_temp(float cel, char unit)

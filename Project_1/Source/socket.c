@@ -2,6 +2,10 @@
 
 void* socket_func(void* threadp)
 {	
+//	rc_socket = mq_unlink(socket_queue);
+//		if(rc_socket == -1)
+//			handle_error("Error in unlinking socket thread mqueue");
+
 	uint32_t tmp_flag;
 	useconds_t garbage_sleep = 1;
 	struct command req, res;

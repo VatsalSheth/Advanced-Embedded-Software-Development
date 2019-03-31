@@ -3,6 +3,11 @@
 #include "log.h"
 #endif
 
+#include "tmp102.h"
+
+#define LOW_THRESHOLD 	(23)
+#define HIGH_THRESHOLD 	(24)
+
 pthread_t temp_th;
 int rc_temp;
 struct log_msg temp_data;

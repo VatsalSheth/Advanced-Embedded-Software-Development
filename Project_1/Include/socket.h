@@ -11,9 +11,9 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#define SERV_TCP_PORT 8010
-#define MAX_SIZE 80
-#define BACKLOG 5
+#define SERV_TCP_PORT 	(8009)
+#define MAX_SIZE 	(80)
+#define BACKLOG 	(5)
 
 struct sockaddr_in serv_addr, cli_addr;
 pthread_t socket_th;

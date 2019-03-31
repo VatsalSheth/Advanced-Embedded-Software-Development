@@ -2,6 +2,9 @@
 
 void queue_init()
 {
+//	rc_log = mq_unlink(queue_name);
+//		if(rc_log == -1)
+//			handle_error("Error in unlinking logger thread queue");
 	queue_attr.mq_flags = 0;
 	queue_attr.mq_maxmsg = 10;
 	queue_attr.mq_msgsize = sizeof(struct log_msg);

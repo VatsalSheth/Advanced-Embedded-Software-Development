@@ -236,7 +236,6 @@ void* int_func(void* threadp)
 	struct pollfd fdset[2];
 	int nfds, rc_int;
 	char val[5];
-		
 	gpio_export(GPIO_TEMP);
 	gpio_dir(GPIO_TEMP, "in");
 	gpio_edge(GPIO_TEMP, "both");
@@ -244,7 +243,7 @@ void* int_func(void* threadp)
 	
 	gpio_export(GPIO_LIGHT);
 	gpio_dir(GPIO_LIGHT, "in");
-	gpio_edge(GPIO_LIGHT, "both");
+	gpio_edge(GPIO_LIGHT, "falling");
 	gpio_fd[LIGHT_THREAD_NUM] = gpio_open(GPIO_LIGHT, "value");
 	
 	nfds = 2;
@@ -273,14 +272,19 @@ void* int_func(void* threadp)
 		{
 			lseek(fdset[TEMP_THREAD_NUM].fd, 0, SEEK_SET);
 			read(fdset[TEMP_THREAD_NUM].fd, val, 5);
-			printf("Temperature interrupt occurred %s\n",val);
+			printf("Temperature interrupt occurred, approaching %s recommended levels \n",(val[0] == 0)?"ABOVE":"BELOW");
 		}
 		
 		if (fdset[LIGHT_THREAD_NUM].revents & POLLPRI) 
 		{
 			lseek(fdset[LIGHT_THREAD_NUM].fd, 0, SEEK_SET);
 			read(fdset[LIGHT_THREAD_NUM].fd, val, 5);
-			printf("Light interrupt occurred %s\n",val);
+//			if(val == 0)
+			{
+				
+				printf("Light interrupt occurred, ambience is %s \n",(light_status == STATUS_LIGHT)?"BRIGHT":"DARK");
+				write_command_reg(0b11000000);
+			}
 		}
 	}
 }

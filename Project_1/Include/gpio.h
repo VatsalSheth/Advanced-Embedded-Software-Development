@@ -9,10 +9,10 @@
 #include <errno.h>
 #include <signal.h>
 
-#define GPIO_DIR "/sys/class/gpio"
-#define GPIO_LED 53
-#define GPIO_LIGHT 30
-#define GPIO_TEMP 31
+#define GPIO_DIR 	"/sys/class/gpio"
+#define GPIO_LED 	(53)
+#define GPIO_LIGHT 	(30)
+#define GPIO_TEMP 	(31)
 
 timer_t blink_timer_id;
 

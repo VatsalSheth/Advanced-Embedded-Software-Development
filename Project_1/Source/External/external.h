@@ -13,20 +13,20 @@
 #include <arpa/inet.h>
 
 			
-#define REQUEST_FAIL 0 
-#define REQUEST_TEMPERATURE_C 2
-#define REQUEST_TEMPERATURE_F 4
-#define REQUEST_TEMPERATURE_K 6
-#define REQUEST_LIGHT 1
-#define KILL_TEMPERATURE 11
-#define KILL_LIGHT 12
-#define KILL_LOGGER 21
-#define KILL_SOCKET 22
-#define STATUS_LIGHT (3)
-#define STATUS_DARK (5)
+#define REQUEST_FAIL 		(0) 
+#define REQUEST_TEMPERATURE_C 	(2)
+#define REQUEST_TEMPERATURE_F 	(4)
+#define REQUEST_TEMPERATURE_K 	(6)
+#define REQUEST_LIGHT 	(1)
+#define KILL_TEMPERATURE (11)
+#define KILL_LIGHT 	(12)
+#define KILL_LOGGER 	(21)
+#define KILL_SOCKET 	(22)
+#define STATUS_LIGHT 	(3)
+#define STATUS_DARK 	(5)
 
-#define SERV_TCP_PORT 8010
-#define MAX_SIZE 80
+#define SERV_TCP_PORT 	(8009)
+#define MAX_SIZE 	(80)
 
 struct command
 {
