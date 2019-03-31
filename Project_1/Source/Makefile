@@ -1,9 +1,9 @@
-objects = main.o log.o temp.o light.o socket.o gpio.o
-headers = ../Include/main.h ../Include/log.h ../Include/temp.h ../Include/light.h ../Include/socket.h ../Include/gpio.h 
+objects = main.o log.o temp.o light.o socket.o gpio.o apds.o
+headers = ../Include/main.h ../Include/log.h ../Include/temp.h ../Include/light.h ../Include/socket.h ../Include/apds.h ../Include/gpio.h
 CC = gcc
 
 project_1 : $(objects) $(headers)
-	$(CC) -g -o project_1 $(objects) -lpthread -lrt
+	$(CC) -g -o project_1 $(objects) -lpthread -lrt -lm
 
 main.o : main.c $(headers)
 	$(CC) -c main.c
@@ -19,6 +19,9 @@ light.o : light.c $(headers)
 
 socket.o : socket.c $(headers)
 	$(CC) -c socket.c
+
+apds.o : apds.c $(headers)
+	$(CC) -c apds.c
 
 gpio.o : gpio.c $(headers)
 	$(CC) -c gpio.c

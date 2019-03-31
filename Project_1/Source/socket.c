@@ -1,7 +1,7 @@
 #include "../Include/socket.h" 
 
 void* socket_func(void* threadp)
-{
+{	
 	uint32_t tmp_flag;
 	useconds_t garbage_sleep = 1;
 	struct command req, res;

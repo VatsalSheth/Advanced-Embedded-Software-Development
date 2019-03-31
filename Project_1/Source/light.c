@@ -10,6 +10,16 @@ void* light_func(void* threadp)
 	
 	useconds_t garbage_sleep = 1;
 	
+	rc_lsense = sensor_init();
+	rc_lsense = write_control_reg(0x03);
+	rc_lsense = read_control_reg();
+	printf("Control register: %d\n",rc_lsense);
+	rc_lsense = write_int_th_reg(0b0000000001010000, 1);	//120 and 72
+	rc_lsense = write_int_th_reg(0b0000001001011000, 2);	//55 and 15
+	rc_lsense = write_int_ctl_reg(0b00010001);
+	
+write_command_reg(0b11000000);
+	
 	while(1)
 	{
 		if(timer_flag[LIGHT_THREAD_NUM] == 1)
@@ -102,6 +112,13 @@ void* light_func(void* threadp)
 
 float request_light()
 {
+//	rc_lsense = sensor_id();
+//	printf("Register ID: %d\n",rc_lsense);
+	printf("\nADC channel 0 reading: %d adc0-\n", ch_ADC0());
+	printf("ADC channel 1 reading: %d adc1-\n", ch_ADC1());
+	printf("Low threshold set is: %u ", read_int_th_reg(1));
+	printf("High threshold set is: %u ", read_int_th_reg(2));
+	printf("Sensor reading: %f lux\n", lux_calc());
 	return rand();
 }
 
