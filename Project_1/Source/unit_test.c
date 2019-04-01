@@ -33,7 +33,7 @@ void test_temp_conv()
 		else
 		{
 			op = conv_temp(ip, 'F');
-			if(op == (((9*ip)/5) - 32))
+			if(op == (((9*ip)/5) + 32))
 				p++;
 		}
 	}
