@@ -16,7 +16,7 @@ pthread_t int_th;
 int rc;
 int gpio_fd[2];
 useconds_t usec;
-struct log_param log_file;
+
 
 int arg_init(char *arg1, char *arg2);
 void thread_create(void);

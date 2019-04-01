@@ -16,4 +16,5 @@ struct log_msg light_data;
 
 void* light_func(void*);
 void light_exit(void);
+void light_entry(void);
 float request_light(void);
