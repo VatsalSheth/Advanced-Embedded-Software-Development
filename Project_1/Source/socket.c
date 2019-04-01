@@ -147,6 +147,25 @@ void* socket_func(void* threadp)
 	pthread_exit(NULL);
 }
 
+void socket_entry(void)
+{
+	rc_socket = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
+	if(rc_socket != 0)
+	{
+		handle_error_exit("Error in creating socket sensor thread");
+	}
+	else
+	{
+		rc_socket = pthread_cond_init(&mon[SOCKET_THREAD_NUM].cond, NULL); 
+		if(rc_socket!=0)
+			handle_error_exit("pthread cond init");
+			
+		rc_socket = pthread_mutex_init(&mon[SOCKET_THREAD_NUM].lock, NULL); 
+		if(rc_socket!=0)
+			handle_error_exit("pthread mutex init");
+	}
+}
+
 void socket_exit(void)
 {
 	if(!exit_flag[SOCKET_THREAD_NUM])

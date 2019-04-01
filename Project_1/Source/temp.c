@@ -129,3 +129,22 @@ void temp_exit()
 		pthread_exit(NULL);
 	}
 }
+
+void temp_entry(void)
+{
+	rc_temp = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
+	if(rc_temp != 0)
+	{
+		handle_error_exit("Error in creating temperature sensor thread");
+	}
+	else
+	{
+		rc_temp = pthread_cond_init(&mon[TEMP_THREAD_NUM].cond, NULL); 
+		if(rc_temp!=0)
+			handle_error_exit("pthread cond init");
+			
+		rc_temp = pthread_mutex_init(&mon[TEMP_THREAD_NUM].lock, NULL); 
+		if(rc_temp!=0)
+			handle_error_exit("pthread mutex init");
+	}
+}

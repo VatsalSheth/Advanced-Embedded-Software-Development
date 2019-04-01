@@ -22,4 +22,5 @@ int server_fd, newserver_fd, clilen, port;
 
 void* socket_func(void*);
 void socket_exit(void);
+void socket_entry(void);
 void soc_queue_init(void);

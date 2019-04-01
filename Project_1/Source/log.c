@@ -114,6 +114,25 @@ void timer_handle(union sigval sv)
 	}
 }
 
+void log_entry(void)
+{
+	rc_log = pthread_create(&log_th, (void *)0, logger_func, (void *)&(log_file));
+	if(rc_log != 0)
+	{
+		handle_error_exit("Error in creating logger thread");
+	}
+	else
+	{
+		rc_log = pthread_cond_init(&mon[LOG_THREAD_NUM].cond, NULL); 
+		if(rc_log!=0)
+			handle_error_exit("pthread cond init");
+			
+		rc_log = pthread_mutex_init(&mon[LOG_THREAD_NUM].lock, NULL); 
+		if(rc_log!=0)
+			handle_error_exit("pthread mutex init");
+	}
+}
+
 void log_exit()
 {
 	if(!exit_flag[LOG_THREAD_NUM])
