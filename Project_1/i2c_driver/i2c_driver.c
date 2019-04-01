@@ -1,18 +1,15 @@
-#include <linux/module.h>
 #include <linux/init.h>
-#include <linux/timer.h>
-#include <linux/fs.h>
-#include <linux/cdev.h>
+#include <linux/module.h>
+#include <linux/kernel.h>
 #include <linux/i2c.h>
-#include <linux/delay.h>
-#include <linux/gpio.h>
+#include <linux/i2c-dev.h>
+#include <linux/fs.h>
+#include <linux/slab.h>
+#include <linux/device.h>
 #include <linux/uaccess.h>
 
-#define MAX_MINOR_NUM (2)
 #define SDA (2)
 #define SCL (3)
-
-#define I2C_SLAVE (0x0703)
 
 static int i2c_open(struct inode *inode, struct file *file);
 static int i2c_read(struct file *file, char __user *user_buffer, size_t size, loff_t *offset);
@@ -21,6 +18,7 @@ static long i2c_ioctl (struct file *file, unsigned int cmd, unsigned long arg);
 static int i2c_release(struct inode *inode, struct file *file);
 static int i2c_driver_init(void);
 static void i2c_driver_exit(void);
+/*
 void i2c_start(void);
 void i2c_stop(void);
 void send_ack(uint32_t ack);
@@ -28,6 +26,7 @@ uint8_t ack_check(void);
 uint8_t ack_check(void);
 uint8_t i2c_write_byte(uint8_t value);
 uint8_t i2c_read_byte(uint8_t ack);
+*/
 
 static int major;
 struct class *c;
@@ -49,6 +48,7 @@ const struct file_operations f_op = {
     .unlocked_ioctl = i2c_ioctl
 };
 
+/*
 //start bit logic
 void i2c_start()
 {
@@ -148,7 +148,36 @@ uint8_t i2c_read_byte(uint8_t ack)
     send_ack(ack);
     return tmp;
 }
+*/
 
+static int i2c_open(struct inode *inode, struct file *file)
+{
+	struct i2c_client *my_client;
+	struct i2c_adapter *my_adapter;
+	uint32_t minor = iminor(inode);
+	
+	printk(KERN_INFO "I2C driver open\n");
+	
+	my_adapter = i2c_get_adapter(minor);
+	if (!my_adapter)
+		return -ENODEV;
+	
+	my_client = kmalloc(sizeof(*my_client), GFP_KERNEL);
+	if (!my_client) 
+	{
+		i2c_put_adapter(my_adapter);
+		return -ENOMEM;
+	}
+	
+	snprintf(my_client->name, I2C_NAME_SIZE, "i2c_driver %d", my_adapter->nr);
+
+	my_client->adapter = my_adapter;
+	file->private_data = my_client;
+
+	return 0;
+}
+
+/*
 static int i2c_open(struct inode *inode, struct file *file)
 {
 	struct driver_data *data;
@@ -180,7 +209,7 @@ static int i2c_open(struct inode *inode, struct file *file)
 	printk(KERN_INFO "I2C driver open\n");
 	return 0;
 }
-
+*/
 static int i2c_read(struct file *file, char __user *user_buffer, size_t size, loff_t *offset)
 {
 	return 0;
@@ -286,7 +315,7 @@ static int i2c_driver_init(void)
 		return PTR_ERR(dev_ret);
 	}
 	
-	gpio_request(SDA, "sysfs");
+	/*gpio_request(SDA, "sysfs");
 	gpio_direction_output(SDA, 1);
 	gpio_set_value(SDA, 1);
 	gpio_export(SDA, true);
@@ -295,7 +324,7 @@ static int i2c_driver_init(void)
 	gpio_direction_output(SCL, 1);
 	gpio_set_value(SCL, 1);
 	gpio_export(SCL, false);
-	
+	*/
 	return 0;
 }
 
@@ -307,9 +336,9 @@ static void i2c_driver_exit(void)
     class_destroy(c);
       
     unregister_chrdev_region(MKDEV(major, 0), MAX_MINOR_NUM);
-    
+    /*
     gpio_unexport(SDA);
-    gpio_unexport(SCL);
+    gpio_unexport(SCL);*/
 }
 
 module_init(i2c_driver_init);

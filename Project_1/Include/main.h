@@ -1,3 +1,10 @@
+/***********************************************************************************
+* @main.h
+* @This file contains dependent include files and variable declaration for main.c
+*
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include <unistd.h>
 #include <fcntl.h>           
 #include <sys/stat.h>        
