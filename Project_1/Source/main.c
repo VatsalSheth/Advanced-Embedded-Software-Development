@@ -1,7 +1,8 @@
 /***********************************************************************************
-* @bufferprop.c
-* @This file contains circular FIFO APIs
-* 
+* @main.c
+* @This file contains main(), with thread creation, joining, heartbeat check function, 
+* GPIO interrupt thread. built in self test function.
+* Command to run the application project_1 <Log file name> <Log Verbosity>
 * @author Vatsal Sheth & Sarthak Jain
 ************************************************************************************/
 
@@ -9,10 +10,11 @@
 
 /**
  * @brief 
- *
- *
- * @param argc
- * @param argv[]
+ * This is the main function where signals are set, threads are created, buil in self tests,
+ * heartbeat checks are performed.
+ * 
+ * @param argc runtime arguments count
+ * @param argv[] runtime argument for log file, log verbosity
  *
  * @return 
  */
@@ -47,6 +49,7 @@ int main(int argc, char *argv[])
 
 /**
  * @brief 
+ * This function joins all the created threads
  */
 void thread_join()
 {
@@ -101,6 +104,7 @@ void thread_join()
 
 /**
  * @brief 
+ * This function creates all the threads
  */
 void thread_create()
 {
@@ -118,9 +122,9 @@ void thread_create()
 
 /**
  * @brief 
- *
- * @param arg1
- * @param arg2
+ * This function sets the log file name and log verbosity provided runtime
+ * @param arg1 log file name
+ * @param arg2 log verbosity
  *
  * @return 
  */
@@ -153,6 +157,7 @@ int arg_init(char *arg1, char *arg2)
 
 /**
  * @brief 
+ * This function performs built in self test on light sensor
  */
 void light_sensor_bist(void)
 {
@@ -181,6 +186,7 @@ void light_sensor_bist(void)
 
 /**
  * @brief 
+ * This function performs built in self test on temperature sensor
  */
 void temp_sensor_bist(void)
 {
@@ -205,7 +211,7 @@ void temp_sensor_bist(void)
 
 /**
  * @brief 
- *
+ *	This is the signal handler funnction for SIGINT signal
  * @param signo
  * @param info
  * @param extra
@@ -223,6 +229,7 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 
 /**
  * @brief 
+ * This function initializes and sets the signal handler for SIGINT signal
  */
 void set_signal_handler(void)
 {
@@ -237,6 +244,9 @@ void set_signal_handler(void)
 
 /**
  * @brief 
+ * This function checks the heartbeat using pthread conditional variables using monitor structure
+ * On 3 successive heartbeat fails for a thread, it is canceled and re-spawned. LED is blinked during
+ * heartbeat failure
  */
 void heartbeat_check(void)
 {
@@ -308,7 +318,7 @@ void heartbeat_check(void)
 
 /**
  * @brief 
- *
+ * This is the thread function which polls GPIO pins for sensor interrupts and logs on interrupt
  * @param threadp
  *
  * @return 
@@ -388,6 +398,7 @@ void* int_func(void* threadp)
 
 /**
  * @brief 
+ * This function safely exits interrupt thread on kill
  */
 void int_exit(void)
 {

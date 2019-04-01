@@ -1,3 +1,10 @@
+/***********************************************************************************
+* @gpio.h
+* @This file contains dependent include files and variable declaration for gpio.c
+*
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

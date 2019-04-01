@@ -1,8 +1,18 @@
+/***********************************************************************************
+* @socket.c
+* @This file contains server code for remote client. It accepts connection and send request
+* to respective sensor threads using message queues. It then send back the data to remote
+* client
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/socket.h" 
 
 /**
  * @brief 
- *
+ * This function is the thread for socket. It accepts connection and passes on request to respective sensor
+ * thread and send back the reply to client.
  * @param threadp
  *
  * @return 
@@ -156,6 +166,7 @@ void* socket_func(void* threadp)
 
 /**
  * @brief 
+ * This function creates socket thread and initializes its respective monitor structure
  */
 void socket_entry(void)
 {
@@ -180,6 +191,7 @@ void socket_entry(void)
 
 /**
  * @brief 
+ * This function safely exits from socket thread.
  */
 void socket_exit(void)
 {
@@ -240,6 +252,7 @@ void socket_exit(void)
 
 /**
  * @brief 
+ * This function initializes message queue used for communication between socket and sensor threads
  */
 void soc_queue_init()
 {

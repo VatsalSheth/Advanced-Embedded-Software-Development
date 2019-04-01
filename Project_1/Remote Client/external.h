@@ -1,3 +1,10 @@
+/***********************************************************************************
+* @external.h
+* @This file contains dependent include files and variable declaration for external.c
+*
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,12 @@
+/***********************************************************************************
+* @i2c_driver.c
+* @This file contains character device driver module for I2c.
+* 
+* @Reference: Linux Kernel i2c-dev.c and linux/i2c.c character device driver code 
+* 			  Character device driver basics: https://linux-kernel-labs.github.io/master/labs/device_drivers.html 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -7,6 +16,7 @@
 #include <linux/slab.h>
 #include <linux/device.h>
 #include <linux/uaccess.h>
+#include <linux/gpio.h>
 
 #define SDA (2)
 #define SCL (3)

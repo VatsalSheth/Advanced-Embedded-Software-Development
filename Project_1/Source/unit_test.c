@@ -1,3 +1,11 @@
+/***********************************************************************************
+* @unit_test.c
+* @This file contains test for temperature conversion, request temperature and sensor
+* data function
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/temp.h"
 #include "../Include/light.h"
 
@@ -7,6 +15,7 @@ FILE *fp;
 
 /**
  * @brief 
+ * Initialize thmperatuer sensor
  */
 void temp_init()
 {
@@ -15,6 +24,7 @@ void temp_init()
 
 /**
  * @brief 
+ * Initialize light sensor
  */
 void light_init()
 {
@@ -24,6 +34,8 @@ void light_init()
 
 /**
  * @brief 
+ * This function supplies random floating input in celcius and randomly selects coversion between 
+ * kelvin and fahrenheit. It compares the coutput and logs test result.
  */
 void test_temp_conv()
 {
@@ -53,6 +65,8 @@ void test_temp_conv()
 
 /**
  * @brief 
+ * This function reads temperature sensor data every 1 seconds and checks whether the data is 
+ * in valid range. It logs the results
  */
 void test_temp_data()
 {
@@ -73,6 +87,8 @@ void test_temp_data()
 
 /**
  * @brief 
+ * This function reads light sensor data every 1 seconds and checks whether the data is 
+ * in valid range. It logs the results
  */
 void test_light_data()
 {
@@ -93,6 +109,7 @@ void test_light_data()
 
 /**
  * @brief 
+ * It runs 3 test suite and logs final results. 
  */
 void main()
 {
