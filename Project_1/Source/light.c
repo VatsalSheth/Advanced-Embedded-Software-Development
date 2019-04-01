@@ -182,6 +182,8 @@ void light_exit()
 
 void light_entry(void)
 {
+	exit_flag[LIGHT_THREAD_NUM] = 0;
+	
 	rc_light = pthread_create(&light_th, (void *)0, light_func, (void *)0);
 	if(rc_light != 0)
 	{

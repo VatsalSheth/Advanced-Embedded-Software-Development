@@ -71,6 +71,7 @@ struct heartbeat_monitor
 	pthread_cond_t cond;
 	pthread_mutex_t lock;
 	struct timespec timeout;
+	uint32_t count;
 }mon[NUM_OF_THREADS];
 
 mqd_t queue_fd, soc_queue_fd;

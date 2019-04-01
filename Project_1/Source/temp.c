@@ -152,6 +152,8 @@ void temp_exit()
 
 void temp_entry(void)
 {
+	exit_flag[TEMP_THREAD_NUM] = 0;
+	
 	rc_temp = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
 	if(rc_temp != 0)
 	{

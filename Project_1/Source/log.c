@@ -116,6 +116,8 @@ void timer_handle(union sigval sv)
 
 void log_entry(void)
 {
+	exit_flag[LOG_THREAD_NUM] = 0;
+	
 	rc_log = pthread_create(&log_th, (void *)0, logger_func, (void *)&(log_file));
 	if(rc_log != 0)
 	{
