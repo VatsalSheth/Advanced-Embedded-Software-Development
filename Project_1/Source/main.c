@@ -149,7 +149,6 @@ void temp_sensor_bist(void)
 	rc_tsense = write(tsense_fd, &reg, 1);
 	rc_tsense = read(tsense_fd, buf, 2);
 	rc_tsense = (buf[0] << 4) | (buf[1] >> 4);
-printf("Config register is %x\n", rc_tsense);
 	if((rc_tsense & CONV_RES_MASK) == CONV_RES_MASK)
 	{
 		bist_buffer[1] = malloc(30);
@@ -225,6 +224,7 @@ void heartbeat_check(void)
 void* int_func(void* threadp)
 {
 	struct pollfd fdset[2];
+	struct log_msg interrupt_data;
 	int nfds, rc_int;
 	char val[5];
 	gpio_export(GPIO_TEMP);
@@ -263,19 +263,33 @@ void* int_func(void* threadp)
 		{
 			lseek(fdset[TEMP_THREAD_NUM].fd, 0, SEEK_SET);
 			read(fdset[TEMP_THREAD_NUM].fd, val, 5);
-			printf("Temperature interrupt occurred, approaching %s recommended levels \n",(val[0] == 0)?"ABOVE":"BELOW");
+			interrupt_data = write_to_log_queue(	TEMP_THREAD_NUM,
+								0,
+								ERROR_MESSAGE,
+								"Interrupt, crossing recommended levels");
+			rc = mq_send(queue_fd, (char*)&interrupt_data, sizeof(struct log_msg), 0); 
+			if(rc == -1)
+			{
+				handle_error("interrupt mq_send");
+			}
+			printf("Temperature interrupt occurred, crossing recommended levels \n");
 		}
 		
 		if (fdset[LIGHT_THREAD_NUM].revents & POLLPRI) 
 		{
 			lseek(fdset[LIGHT_THREAD_NUM].fd, 0, SEEK_SET);
 			read(fdset[LIGHT_THREAD_NUM].fd, val, 5);
-//			if(val == 0)
+			interrupt_data = write_to_log_queue(	LIGHT_THREAD_NUM,
+								0,
+								ERROR_MESSAGE,
+								(light_status == STATUS_LIGHT)?"Interrupt, ambience is BRIGHT":"Interrupt, ambience is DARK");
+			rc = mq_send(queue_fd, (char*)&interrupt_data, sizeof(struct log_msg), 0); 
+			if(rc == -1)
 			{
-				
-				printf("Light interrupt occurred, ambience is %s \n",(light_status == STATUS_LIGHT)?"BRIGHT":"DARK");
-				write_command_reg(0b11000000);
+				handle_error("interrupt mq_send");
 			}
+			printf("Light interrupt occurred, ambience is %s \n",(light_status == STATUS_LIGHT)?"BRIGHT":"DARK");
+			write_command_reg(0b11000000);
 		}
 	}
 }

@@ -13,9 +13,9 @@ void* light_func(void* threadp)
 	
 	rc_lsense = read_control_reg();
 	light_data = write_to_log_queue(LIGHT_THREAD_NUM,
-												rc_lsense,
-												LOG_DEBUG,
-												"APDS9301: Control Register");
+					rc_lsense,
+					LOG_DEBUG,
+					"APDS9301: Control Register");
 	rc_light = mq_send(queue_fd, (char*)&light_data, sizeof(struct log_msg), 0);
 	if(rc_light == -1)
 		handle_error_print("mq send in light");
@@ -25,9 +25,9 @@ void* light_func(void* threadp)
 	
 	rc_lsense = read_timing_reg();
 	light_data = write_to_log_queue(LIGHT_THREAD_NUM,
-												rc_lsense,
-												LOG_DEBUG,
-												"APDS9301: Timing Register");
+					rc_lsense,
+					LOG_DEBUG,
+					"APDS9301: Timing Register");
 	rc_light = mq_send(queue_fd, (char*)&light_data, sizeof(struct log_msg), 0);
 	if(rc_light == -1)
 		handle_error_print("mq send in light");
@@ -45,25 +45,25 @@ void* light_func(void* threadp)
 			if(rf_light >= 0)
 			{
 				light_data = write_to_log_queue(LIGHT_THREAD_NUM,
-												rf_light,
-												LOG_NONE,
-												"GNU LIGHT DEBUGGER");
+								rf_light,
+								LOG_NONE,
+								"GNU LIGHT DEBUGGER");
 			}
 			else
 			{
 				if(rf_light == ADC0_ERROR)
 				{
 					light_data = write_to_log_queue(LIGHT_THREAD_NUM,
-													0,
-													ERROR_MESSAGE,
-													"Error in fetching data from ADC channel 0");
+									0,
+									ERROR_MESSAGE,
+									"Error in fetching data from ADC channel 0");
 				}
 				else if(rf_light == ADC1_ERROR)
 				{
 					light_data = write_to_log_queue(LIGHT_THREAD_NUM,
-													0,
-													ERROR_MESSAGE,
-													"Error in fetching data from ADC channel 1");
+									0,
+									ERROR_MESSAGE,
+									"Error in fetching data from ADC channel 1");
 				}
 				
 			}

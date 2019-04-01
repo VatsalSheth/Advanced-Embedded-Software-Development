@@ -23,7 +23,7 @@ int write_pointer_reg(uint8_t reg)
 {	
 	tsense_check = write(tsense_fd, &reg, 1);
 	if(tsense_check != 1)
-		handle_error("Failed to write in write_pointer_reg");
+		return -1;
 	return tsense_check;
 }
 
@@ -105,16 +105,32 @@ int write_thigh_reg(float data)
 int read_temp_reg(void)
 {
 	uint8_t buf[2];
-	write_pointer_reg(TEMP_REG);
+	if(write_pointer_reg(TEMP_REG) == -1)
+		return -1;
 	tsense_check = read(tsense_fd, buf, 2);
 	if(tsense_check != 2)
-		handle_error("Failed to read in read_temp_reg");
+		return -1;
 	int temp = (buf[0] << 4) | (buf[1] >> 4);
 	return temp;
 }
 
 float temp_calc(void)
 {
+	float degrees;
 	int temp = read_temp_reg();
-	float degress = temp*0.0625;
+	if(temp == -1)
+		return -1;
+	if((temp & 0x800) == 0)
+	{
+		degrees = temp*0.0625;
+	}
+	else 
+	{
+		temp = temp ^ 0xFFFF;
+		degrees = temp*(-0.0625);		
+	}
+	if(temp == -1)
+		return -1;
+	return degrees;
+//	float degress = temp*0.0625;
 }
