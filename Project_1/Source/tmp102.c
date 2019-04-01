@@ -1,9 +1,16 @@
+/***********************************************************************************
+* @tmp102.c
+* @This file contains a C library for accessing and writing to the registers of 
+* TMP102 temperature sensor. 
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/tmp102.h"
 
 /**
  * @brief 
- *
- * @return 
+ * Initializes temperature sensor
  */
 int temp_sensor_init()
 {
@@ -26,8 +33,7 @@ int temp_sensor_init()
 
 /**
  * @brief 
- *
- * @param reg
+ * Writes to pointer register of sensor, to specify register address to be written to next
  *
  * @return 
  */
@@ -41,9 +47,7 @@ int write_pointer_reg(uint8_t reg)
 
 /**
  * @brief 
- *
- * @param reg
- *
+ * Function fo reading and accessing any register of sensor
  * @return 
  */
 int read_reg(uint8_t reg)
@@ -64,8 +68,7 @@ int read_reg(uint8_t reg)
 
 /**
  * @brief 
- *
- * @param data
+ * Writes to configuration register of sensor
  *
  * @return 
  */
@@ -83,13 +86,7 @@ int write_config_reg(uint16_t data)
 
 }
 
-/**
- * @brief 
- *
- * @param reads[]
- *
- * @return 
- */
+
 uint16_t* read_config_reg(uint16_t reads[])
 {
 	int config = read_reg(CONFIG_REG);
@@ -101,8 +98,8 @@ uint16_t* read_config_reg(uint16_t reads[])
 
 /**
  * @brief 
- *
- * @param data
+ * Writes to tlow register of sensor, by first dividing the data by 0.0625, then wiriting into a buffer
+ * the register address, MSG of data and LSB of data
  *
  * @return 
  */
@@ -121,13 +118,6 @@ int write_tlow_reg(float data)
 }
 
 
-/**
- * @brief 
- *
- * @param data
- *
- * @return 
- */
 int write_thigh_reg(float data)
 {
 	data = data/0.0625;
@@ -142,11 +132,7 @@ int write_thigh_reg(float data)
 	write_pointer_reg(TEMP_REG);
 }
 
-/**
- * @brief 
- *
- * @return 
- */
+
 int read_temp_reg(void)
 {
 	uint8_t buf[2];
@@ -159,11 +145,6 @@ int read_temp_reg(void)
 	return temp;
 }
 
-/**
- * @brief 
- *
- * @return 
- */
 float temp_calc(void)
 {
 	float degrees;
@@ -182,5 +163,4 @@ float temp_calc(void)
 	if(temp == -1)
 		return -1;
 	return degrees;
-//	float degress = temp*0.0625;
 }

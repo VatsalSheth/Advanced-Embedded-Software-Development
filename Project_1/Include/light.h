@@ -1,3 +1,10 @@
+/***********************************************************************************
+* @light.h
+* @This file contains dependent include files and variable declaration for light.c
+*
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #ifndef LOG_H_
 #define LOG_H_
 #include "log.h"

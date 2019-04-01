@@ -1,11 +1,19 @@
+/***********************************************************************************
+* @apds.c
+* @This file contains a C library for accessing and writing to the registers of 
+* APDS9301 ambient light sensor. 
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/apds.h"
 
 /**
  * @brief 
+ * Function for writing to command register
  *
- * @param reg
- *
- * @return 
+ * @return
+ * returns value for checking if transaction succeeded 
  */
 int write_command_reg(uint8_t reg)
 {
@@ -23,8 +31,7 @@ int write_command_reg(uint8_t reg)
 
 /**
  * @brief 
- *
- * @return 
+ * Initializes light sensor, by opening file and writing slave address via ioctl
  */
 int light_sensor_init(void)
 {
@@ -49,10 +56,9 @@ int light_sensor_init(void)
 
 /**
  * @brief 
- *
+ * Writes to control register
  * @param val
- *
- * @return 
+ * Value to be written
  */
 int write_control_reg(uint8_t val)
 {
@@ -65,11 +71,7 @@ int write_control_reg(uint8_t val)
 	return lsense_check;
 }
 
-/**
- * @brief 
- *
- * @return 
- */
+
 uint8_t read_control_reg()
 {
 	write_command_reg(CONTROL_REG);
@@ -83,10 +85,7 @@ uint8_t read_control_reg()
 
 /**
  * @brief 
- *
- * @param val
- *
- * @return 
+ * Writes to interrupt control register
  */
 int write_int_ctl_reg(uint8_t val) 	//write 0b00010001 for last conversion resulting in value outside threshold
 {
@@ -99,11 +98,7 @@ int write_int_ctl_reg(uint8_t val) 	//write 0b00010001 for last conversion resul
 	return lsense_check;
 }
 
-/**
- * @brief 
- *
- * @return 
- */
+
 uint8_t read_int_ctl_reg(void) 
 {
 	write_command_reg(INT_CTL_REG);
@@ -115,11 +110,7 @@ uint8_t read_int_ctl_reg(void)
 	return buf;
 }
 
-/**
- * @brief 
- *
- * @return 
- */
+
 int sensor_id()
 {
 	write_command_reg(ID_REG);
@@ -131,13 +122,7 @@ int sensor_id()
 	return buf;
 }
 
-/**
- * @brief 
- *
- * @param val
- *
- * @return 
- */
+
 int write_timing_reg(uint8_t val)
 {
 	write_command_reg(TIMING_REG);
@@ -149,11 +134,7 @@ int write_timing_reg(uint8_t val)
 	return lsense_check;
 }
 
-/**
- * @brief 
- *
- * @return 
- */
+
 uint8_t read_timing_reg(void)
 {
 	write_command_reg(TIMING_REG);
@@ -167,11 +148,7 @@ uint8_t read_timing_reg(void)
 
 /**
  * @brief 
- *
- * @param val
- * @param reg
- *
- * @return 
+ * Writes to interrupt threshold registers. Writes are performed 2 bytes at a time to a register.
  */
 int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for INT_TH_H registers
 {
@@ -205,13 +182,7 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 	return lsense_check;
 }
 
-/**
- * @brief 
- *
- * @param reg
- *
- * @return 
- */
+
 uint16_t read_int_th_reg(uint8_t reg)
 {
 	uint16_t val;
@@ -249,8 +220,7 @@ uint16_t read_int_th_reg(uint8_t reg)
 
 /**
  * @brief 
- *
- * @return 
+ * Reads value at Channel 0 of ADC
  */
 uint16_t ch_ADC0(void)		//min 69	 max 124
 {
@@ -279,8 +249,7 @@ uint16_t ch_ADC0(void)		//min 69	 max 124
 
 /**
  * @brief 
- *
- * @return 
+ * Reads value at channel 1 of ADC
  */
 uint16_t ch_ADC1(void)		//min 12	max 58
 {
@@ -308,8 +277,7 @@ uint16_t ch_ADC1(void)		//min 12	max 58
 
 /**
  * @brief 
- *
- * @return 
+ * Calculates lux value basis return values of ADC0 and ADC1
  */
 float lux_calc(void)
 {

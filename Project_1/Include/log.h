@@ -1,3 +1,10 @@
+/***********************************************************************************
+* @log.h
+* @This file contains dependent include files and variable declaration for log.c
+*
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

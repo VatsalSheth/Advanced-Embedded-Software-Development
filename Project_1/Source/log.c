@@ -1,3 +1,12 @@
+/***********************************************************************************
+* @log.c
+* @This file contains message queues for writing to logger thread, timer 
+* initialization and handler, log entry and exit functions and an acknowledgement
+* heartbeat function, used by other threads to notify main they are still alive.
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/log.h"
 
 /**

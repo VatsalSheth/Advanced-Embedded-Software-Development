@@ -1,11 +1,17 @@
+/***********************************************************************************
+* @temp.c
+* @This file contains a thread spawned by main thread, and exit and entry functions 
+* for the temperature thread.
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/temp.h"
 
 /**
  * @brief 
- *
- * @param threadp
- *
- * @return 
+ * The temperature thread performs a number of functions. It collects data from the the sensor and writes the same via message queues 
+ * to the logger thread.
  */
 void* temp_func(void* threadp)
 {
@@ -119,25 +125,14 @@ void* temp_func(void* threadp)
 	pthread_exit(NULL);
 }
 
-/**
- * @brief 
- *
- * @return 
- */
+
 float request_temp()
 {
 //	printf("Temperature acquired is %f degrees C\n", temp_calc());
 	return temp_calc();//rand();
 }
 
-/**
- * @brief 
- *
- * @param cel
- * @param unit
- *
- * @return 
- */
+
 float conv_temp(float cel, char unit)
 {
 	if(unit == 'F')
@@ -151,9 +146,7 @@ float conv_temp(float cel, char unit)
 	return cel;
 }
 
-/**
- * @brief 
- */
+
 void temp_exit()
 {
 	if(!exit_flag[TEMP_THREAD_NUM])
@@ -173,9 +166,7 @@ void temp_exit()
 	}
 }
 
-/**
- * @brief 
- */
+
 void temp_entry(void)
 {
 	exit_flag[TEMP_THREAD_NUM] = 0;
