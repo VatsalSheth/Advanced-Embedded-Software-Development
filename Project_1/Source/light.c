@@ -10,15 +10,15 @@ void* light_func(void* threadp)
 	
 	useconds_t garbage_sleep = 1;
 	
-	rc_lsense = light_sensor_init();
-	rc_lsense = write_control_reg(0x03);		//Power on light sensor
+//	rc_lsense = light_sensor_init();
+//	rc_lsense = write_control_reg(0x03);		//Power on light sensor
 	rc_lsense = read_control_reg();
 //	printf("Control register: %d\n",rc_lsense);
 	rc_lsense = write_int_th_reg(CH0_LOW_THRESHOLD, 1);	//Write low threshold as 40 lux
 	rc_lsense = write_int_th_reg(CH0_HIGH_THRESHOLD, 2);	//Write high threshold as 600 lux
 	rc_lsense = read_timing_reg();
 //	printf("Timing reg: %d\n", rc_lsense);
-	rc_lsense = write_int_ctl_reg(0b00011010);
+	rc_lsense = write_int_ctl_reg(0b00011010);		//clear interrupt first time
 	
 write_command_reg(0b11000000);
 	
@@ -60,9 +60,9 @@ write_command_reg(0b11000000);
 					if(errno == ETIMEDOUT)
 					{
 						light_data = write_to_log_queue(LIGHT_THREAD_NUM,
-											0,
-											ERROR_MESSAGE,
-											"Socket queue empty. NO request received...!!!");
+										0,
+										ERROR_MESSAGE,
+										"Socket queue empty. NO request received...!!!");
 						clock_gettime(CLOCK_REALTIME, &timeout);
 						timeout.tv_nsec += 100000000;
 						rc_light = mq_timedsend(queue_fd, (char*)&light_data, sizeof(struct log_msg), 0, &timeout);

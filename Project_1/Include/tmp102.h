@@ -27,6 +27,8 @@
 #define RATE_FOUR 	(0x0080)
 #define RATE_EIGHT 	(0x000C0)
 
+#define CONV_RES_MASK 	(0x600)
+
 #define FAULT 	(0)
 #define EM 	(1)
 #define CONV	(2)

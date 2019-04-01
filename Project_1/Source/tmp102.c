@@ -5,11 +5,17 @@ int temp_sensor_init()
 	char*filename = "/dev/i2c-2";
 	tsense_fd = open(filename, O_RDWR);
 	if(tsense_fd < 0)
-		handle_error("Failed to open the i2c bus");
+	{		
+		perror("Failed to open the i2c bus");
+		exit(1);	
+	}
 
 	int addr = TEMP_SLAVE_ADDRESS;
 	if(ioctl(tsense_fd, I2C_SLAVE, addr) < 0)
-		handle_error("Failed to acquire bus access");
+	{		
+		perror("Failed to acquire bus access");
+		exit(1);
+	}
 	return tsense_fd;
 }
 

@@ -4,7 +4,10 @@ int main(int argc, char *argv[])
 {
 	set_signal_handler();
 	exit_cond = 1;
-	
+
+	light_sensor_bist();
+	temp_sensor_bist();
+
 	/*int fp = open("/dev/i2c_driver", O_RDWR);
 	if(fp < 0)
 		printf("file\n");
@@ -180,6 +183,51 @@ int arg_init(char *arg1, char *arg2)
 	return 1;
 }
 
+void light_sensor_bist(void)
+{
+	rc_lsense = light_sensor_init();
+	int buf = CONTROL_REG | COMMAND;
+	lsense_check = write(lsense_fd, &buf, 1);
+	buf = POWER_UP;
+	rc_lsense = write(lsense_fd, &buf, 1);
+
+	buf = CONTROL_REG | COMMAND;
+	rc_lsense = write(lsense_fd, &buf, 1);
+	lsense_check = read(lsense_fd, &rc_lsense, 1);
+
+	if((rc_lsense & CONTROL_REG_MASK) == POWER_UP)
+	{	
+		bist_buffer[0] = malloc(30);
+		strcpy(bist_buffer[0], "Light sensor initialized\n");
+	}
+	else 
+	{
+		printf("Light sensor initialization failed, exiting..\n");
+		exit(1);
+	}
+}
+
+void temp_sensor_bist(void)
+{
+	rc_tsense = temp_sensor_init();
+	uint8_t buf[2];
+	uint8_t reg = CONFIG_REG;
+	rc_tsense = write(tsense_fd, &reg, 1);
+	rc_tsense = read(tsense_fd, buf, 2);
+	rc_tsense = (buf[0] << 4) | (buf[1] >> 4);
+printf("Config register is %x\n", rc_tsense);
+	if((rc_tsense & CONV_RES_MASK) == CONV_RES_MASK)
+	{
+		bist_buffer[1] = malloc(30);
+		strcpy(bist_buffer[1], "Temperature sensor initialized\n");
+	}
+	else
+	{
+		printf("Temperature sensor initialization failed, exiting..\n");
+		exit(1);
+	}
+}
+
 void signal_handler(int signo, siginfo_t *info, void *extra) 
 {	
 	timer_delete(timer_id);
@@ -223,9 +271,9 @@ void heartbeat_check(void)
 			if(!exit_flag[LOG_THREAD_NUM]) 
 			{
 				error_data = write_to_log_queue(i,
-												0,
-												ERROR_MESSAGE,
-												"Heartbeat failed");
+								0,
+								ERROR_MESSAGE,
+								"Heartbeat failed");
 				//data_avail = 1;
 				//clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
 				//mon[i].timeout.tv_sec += 1;

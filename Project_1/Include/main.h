@@ -21,6 +21,10 @@ struct log_param log_file;
 int arg_init(char *arg1, char *arg2);
 void thread_create(void);
 void thread_join(void);
+
+void light_sensor_bist(void);
+void temp_sensor_bist(void);
+
 void set_signal_handler();
 void signal_handler(int signo, siginfo_t *info, void *extra);
 void heartbeat_check(void);
