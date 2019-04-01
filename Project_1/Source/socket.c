@@ -149,6 +149,8 @@ void* socket_func(void* threadp)
 
 void socket_entry(void)
 {
+	exit_flag[SOCKET_THREAD_NUM] = 0;
+	
 	rc_socket = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
 	if(rc_socket != 0)
 	{

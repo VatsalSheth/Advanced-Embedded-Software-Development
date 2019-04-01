@@ -2,6 +2,10 @@
 
 int main(int argc, char *argv[])
 {
+	gpio_export(GPIO_LED);
+	gpio_dir(GPIO_LED, "out");
+	gpio_set_value(GPIO_LED, 0);
+	
 	set_signal_handler();
 	exit_cond = 1;
 
@@ -137,6 +141,7 @@ void light_sensor_bist(void)
 	else 
 	{
 		printf("Light sensor initialization failed, exiting..\n");
+		gpio_set_value(GPIO_LED, 1);
 		exit(1);
 	}
 }
@@ -157,6 +162,7 @@ void temp_sensor_bist(void)
 	else
 	{
 		printf("Temperature sensor initialization failed, exiting..\n");
+		gpio_set_value(GPIO_LED, 1);	
 		exit(1);
 	}
 }
@@ -200,21 +206,51 @@ void heartbeat_check(void)
 		rc = pthread_cond_timedwait(&mon[i].cond, &mon[i].lock, &mon[i].timeout);  
 		if(rc == ETIMEDOUT)
 		{
-			printf("fail %d\n",i);
+			if(!mon[i].count)
+				gpio_blink(GPIO_LED);
+				
+			printf("Thread fail: %d\n",i);
+			mon[i].count++;
+			if(mon[i].count >=3)
+			{
+				mon[i].count = 0;
+				gpio_blink_off(GPIO_LED);
+				gpio_set_value(GPIO_LED, 0);
+				
+				if(i==0)
+				{
+					temp_exit();
+					temp_entry();
+				}
+				else if(i==1)
+				{
+					light_exit();
+					light_entry();
+				}
+				else if(i==2)
+				{
+					log_exit();
+					log_entry();
+				}
+				else if(i==3)
+				{
+					socket_exit();
+					socket_entry();
+				}
+			}
+			
 			if(!exit_flag[LOG_THREAD_NUM]) 
 			{
 				error_data = write_to_log_queue(i,
 								0,
 								ERROR_MESSAGE,
 								"Heartbeat failed");
-				//data_avail = 1;
-				//clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
-				//mon[i].timeout.tv_sec += 1;
-				rc = mq_send(queue_fd, (char*)&error_data, sizeof(struct log_msg), 0); //, &mon[i].timeout);
+				
+				clock_gettime(CLOCK_REALTIME, &mon[i].timeout);
+				mon[i].timeout.tv_sec += 1;
+				rc = mq_timedsend(queue_fd, (char*)&error_data, sizeof(struct log_msg), 0, &mon[i].timeout);
 				if(rc == -1)
-				{
-					handle_error("heartbeat mq_send");
-				}
+					handle_error_print("heartbeat mq_send");
 			}
 		}
 		pthread_mutex_unlock(&mon[i].lock);

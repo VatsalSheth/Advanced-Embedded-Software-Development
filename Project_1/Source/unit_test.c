@@ -3,6 +3,7 @@
 
 uint32_t total;
 uint32_t pass;
+FILE *fp;
 
 void temp_init()
 {
@@ -17,20 +18,66 @@ void light_init()
 
 void test_temp_conv()
 {
-	float ip;
+	float ip, op;
 	uint32_t t=5, p=0;
 	
 	for(uint32_t i=0; i<t; i++)
 	{
-		ip = ((float)rand())/rand();
-		printf("%f\n",ip);
-		//conv_temp
+		ip = (((float)1)/rand()) + (rand()%100);
+		if(rand()%2)
+		{
+			op = conv_temp(ip, 'K');
+			if(op == ip + 273)
+				p++;
+		}
+		else
+		{
+			op = conv_temp(ip, 'F');
+			if(op == (((9*ip)/5) - 32))
+				p++;
+		}
 	}
+	total += t;
+	pass += p;
+	fprintf(fp, "Temperature conversion test: %d PASS out of %d\n",p,t);
+}
+
+void test_temp_data()
+{
+	uint32_t t=5, p=0;
+	float op;
+	
+	for(uint32_t i=0; i<t; i++)
+	{
+		op=request_temp();
+		if(op > -40 && op < 100)
+			p++;
+		sleep(1);
+	}
+	total += t;
+	pass += p;
+	fprintf(fp, "Temperature data request test: %d PASS out of %d\n",p,t);
+}
+
+void test_light_data()
+{
+	uint32_t t=5, p=0;
+	float op;
+	
+	for(uint32_t i=0; i<t; i++)
+	{
+		op=request_light();
+		if(op >= 0 && op < 500)
+			p++;
+		sleep(1);
+	}
+	total += t;
+	pass += p;
+	fprintf(fp, "Light data request test: %d PASS out of %d\n",p,t);
 }
 
 void main()
 {
-	FILE *fp;
 	fp = fopen("unittest_log.txt", "w");
 	if(fp == NULL)
 	{
@@ -46,5 +93,14 @@ void main()
 	fprintf(fp, "Unit Test\n");
 	
 	test_temp_conv();
+	test_light_data();
+	test_temp_data();
 	
+	if(pass == total)
+		fprintf(fp, "TEST SUCCESS...!!!\n");
+	else
+		fprintf(fp, "TEST FAIL...!!!\n");
+	
+	fprintf(fp, "Total test: %d PASS out of %d\n",pass,total);
+	fclose(fp);	
 }

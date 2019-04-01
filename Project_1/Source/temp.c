@@ -4,12 +4,22 @@ void* temp_func(void* threadp)
 {
 	struct command req, res;
 	struct timespec timeout;
+	float rf_temp;
+	
 	sleep(1);
-	srand(time(NULL));
 	
 	useconds_t garbage_sleep = 1;
 
 	write_config_reg(read_reg(CONFIG_REG) | THERMOSTAT_MODE);
+	
+	temp_data = write_to_log_queue(TEMP_THREAD_NUM,
+							read_reg(CONFIG_REG),
+							LOG_DEBUG,
+							"TMP102: Config register");
+	rc_temp = mq_send(queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0);
+	if(rc_temp == -1)
+		handle_error_print("mq send in temperature");
+	
 	write_tlow_reg(LOW_THRESHOLD);		//Low threshold as 23 C
 	write_thigh_reg(HIGH_THRESHOLD);		//High threshold as 24 C
 		
@@ -19,10 +29,22 @@ void* temp_func(void* threadp)
 		{
 			timer_flag[TEMP_THREAD_NUM] = 0;
 			
-			temp_data = write_to_log_queue(TEMP_THREAD_NUM,
-							request_temp(),
-							LOG_DEBUG,
-							"GNU TEMPERATURE DEBUGGER");
+			rf_temp = request_temp();
+			if(rf_temp >= 0)
+			{
+				temp_data = write_to_log_queue(TEMP_THREAD_NUM,
+								rf_temp,
+								LOG_NONE,
+								"GNU TEMPERATURE DEBUGGER");
+			}
+			else if(rf_temp == -1)
+			{
+				temp_data = write_to_log_queue(TEMP_THREAD_NUM,
+								0,
+								ERROR_MESSAGE,
+								"Error in fetching data from temperature sensor");
+			}
+			
 			clock_gettime(CLOCK_REALTIME, &timeout);
 			timeout.tv_nsec += 100000000;
 			rc_temp = mq_timedsend(queue_fd, (char*)&temp_data, sizeof(struct log_msg), 0, &timeout);
@@ -33,7 +55,7 @@ void* temp_func(void* threadp)
 					printf("Log queue full...!!!\n");
 				}
 				else
-					handle_error("mq send in temperature");
+					handle_error_print("mq send in temperature");
 			}
 		}
 		
@@ -44,7 +66,7 @@ void* temp_func(void* threadp)
 				rc_temp = mq_receive(soc_queue_fd, (char*)&req, sizeof(struct command), NULL);
 				if(rc_temp < 0)
 				{
-					handle_error("socket queue receive in temperature sensor");
+					handle_error_print("socket queue receive in temperature sensor");
 				}
 				else
 				{
@@ -54,7 +76,7 @@ void* temp_func(void* threadp)
 						res.action = req.action;
 						rc_temp = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_temp == -1)
-							handle_error("temp socket mq_send");
+							handle_error_print("temp socket mq_send");
 					}
 					else if(req.action == REQUEST_TEMPERATURE_F)
 					{
@@ -63,7 +85,7 @@ void* temp_func(void* threadp)
 						res.action = req.action;
 						rc_temp = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_temp == -1)
-							handle_error("temp socket mq_send");
+							handle_error_print("temp socket mq_send");
 					}
 					else if(req.action == REQUEST_TEMPERATURE_K)
 					{
@@ -72,7 +94,7 @@ void* temp_func(void* threadp)
 						res.action = req.action;
 						rc_temp = mq_send(soc_queue_fd, (char*)&res, sizeof(struct command), 0);
 						if(rc_temp == -1)
-							handle_error("temp socket mq_send");
+							handle_error_print("temp socket mq_send");
 					}
 					else if(req.action == KILL_TEMPERATURE)
 					{
@@ -130,6 +152,8 @@ void temp_exit()
 
 void temp_entry(void)
 {
+	exit_flag[TEMP_THREAD_NUM] = 0;
+	
 	rc_temp = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
 	if(rc_temp != 0)
 	{
