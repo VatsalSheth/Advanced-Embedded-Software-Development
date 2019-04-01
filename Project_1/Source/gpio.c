@@ -1,3 +1,10 @@
+/***********************************************************************************
+* @gpio.c
+* @This file APIs to manipulate GPIO
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "../Include/gpio.h"
 
 /**
@@ -124,7 +131,7 @@ int gpio_edge(uint32_t pin, char *edge)
 
 /**
  * @brief 
- *
+ *	Returns the file descriptor of input file
  * @param pin
  * @param file
  *
@@ -158,7 +165,7 @@ int gpio_close(int fp)
 
 /**
  * @brief 
- *
+ * Toggles the input GPIO pins at 1 HZ frequency
  * @param pin
  *
  * @return 
@@ -170,7 +177,7 @@ int gpio_blink(uint32_t pin)
 
 /**
  * @brief 
- *
+ * Turns off GPIO toggle
  * @param pin
  *
  * @return 
@@ -185,7 +192,7 @@ int gpio_blink_off(uint32_t pin)
 
 /**
  * @brief 
- *
+ * Timer for GPIO blink
  * @param pin
  */
 void blink_timer_init(uint32_t pin)
@@ -210,7 +217,7 @@ void blink_timer_init(uint32_t pin)
 
 /**
  * @brief 
- *
+ * Timer handle
  * @param sv
  */
 void blink_timer_handle(union sigval sv)

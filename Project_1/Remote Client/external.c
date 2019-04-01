@@ -1,8 +1,19 @@
+/***********************************************************************************
+* @external.c
+* @This file creates user interface for remote client application. It connects to server 
+* and request light and temperature sensor data and can also issue kill signals for threads 
+* running on server.
+* 
+* @author Vatsal Sheth & Sarthak Jain
+************************************************************************************/
+
 #include "external.h"
 
 /**
  * @brief 
- *
+ * This file creates user interface for remote client application. It connects to server 
+ * and request light and temperature sensor data and can also issue kill signals for threads 
+ * running on server.	
  * @param argc
  * @param argv[]
  *
@@ -213,7 +224,7 @@ int main(int argc, char* argv[])
 
 /**
  * @brief 
- *
+ * This funtion converts string to lower case
  * @param ip
  *
  * @return 
