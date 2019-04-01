@@ -46,6 +46,17 @@
 //			{\
 				
 			
+#define handle_error_exit(msg) \
+			{\
+				perror(msg);\
+				exit(0);\
+			}
+			
+#define handle_error_print(msg) \
+			{\
+				perror(msg);\
+			}
+					
 #define queue_name 	("/log_fd")
 #define socket_queue 	("/socket_queue")
 
@@ -98,6 +109,7 @@ struct log_param
 void queue_init(void);
 void* logger_func(void*);
 void log_exit(void);
+void log_entry(void);
 void ack_heartbeat(uint32_t);
 void set_notify_signal();
 void notify_handler(union sigval sv);

@@ -78,70 +78,13 @@ void thread_join()
 
 void thread_create()
 {
-	rc = pthread_create(&log_th, (void *)0, logger_func, (void *)&(log_file));
-	if(rc != 0)
-	{
-		handle_error("Error in creating logger thread");
-	}
-	else
-	{
-		rc = pthread_cond_init(&mon[LOG_THREAD_NUM].cond, NULL); 
-		if(rc!=0)
-			handle_error("pthread cond init");
-			
-		rc = pthread_mutex_init(&mon[LOG_THREAD_NUM].lock, NULL); 
-		if(rc!=0)
-			handle_error("pthread mutex init");
-	}
+	log_entry();
 	sleep(1);
-	rc = pthread_create(&socket_th, (void *)0, socket_func, (void *)0);
-	if(rc != 0)
-	{
-		handle_error("Error in creating socket sensor thread");
-	}
-	else
-	{
-		rc = pthread_cond_init(&mon[SOCKET_THREAD_NUM].cond, NULL); 
-		if(rc!=0)
-			handle_error("pthread cond init");
-			
-		rc = pthread_mutex_init(&mon[SOCKET_THREAD_NUM].lock, NULL); 
-		if(rc!=0)
-			handle_error("pthread mutex init");
-	}
+	socket_entry();
 	sleep(1);
-	rc = pthread_create(&temp_th, (void *)0, temp_func, (void *)0);
-	if(rc != 0)
-	{
-		handle_error("Error in creating temperature sensor thread");
-	}
-	else
-	{
-		rc = pthread_cond_init(&mon[TEMP_THREAD_NUM].cond, NULL); 
-		if(rc!=0)
-			handle_error("pthread cond init");
+	temp_entry();	
+	light_entry();
 			
-		rc = pthread_mutex_init(&mon[TEMP_THREAD_NUM].lock, NULL); 
-		if(rc!=0)
-			handle_error("pthread mutex init");
-	}
-	
-	rc = pthread_create(&light_th, (void *)0, light_func, (void *)0);
-	if(rc != 0)
-	{
-		handle_error("Error in creating light sensor thread");
-	}
-	else
-	{
-		rc = pthread_cond_init(&mon[LIGHT_THREAD_NUM].cond, NULL); 
-		if(rc!=0)
-			handle_error("pthread cond init");
-			
-		rc = pthread_mutex_init(&mon[LIGHT_THREAD_NUM].lock, NULL); 
-		if(rc!=0)
-			handle_error("pthread mutex init");
-	}
-	
 	rc = pthread_create(&int_th, (void *)0, int_func, (void *)0);
 	if(rc != 0)
 		handle_error("Error in creating interrupt thread");
