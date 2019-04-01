@@ -1,5 +1,12 @@
 #include "../Include/light.h"
 
+/**
+ * @brief 
+ *
+ * @param threadp
+ *
+ * @return 
+ */
 void* light_func(void* threadp)
 {
 	struct command req, res;
@@ -149,6 +156,11 @@ void* light_func(void* threadp)
 	pthread_exit(NULL);
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 float request_light()
 {
 //	rc_lsense = sensor_id();
@@ -161,6 +173,9 @@ float request_light()
 	return lux_calc();
 }
 
+/**
+ * @brief 
+ */
 void light_exit()
 {
 	if(!exit_flag[LIGHT_THREAD_NUM])
@@ -180,6 +195,9 @@ void light_exit()
 	}
 }
 
+/**
+ * @brief 
+ */
 void light_entry(void)
 {
 	exit_flag[LIGHT_THREAD_NUM] = 0;

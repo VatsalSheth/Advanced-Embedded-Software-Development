@@ -1,5 +1,14 @@
 #include "../Include/main.h"
 
+/**
+ * @brief 
+ *
+ *
+ * @param argc
+ * @param argv[]
+ *
+ * @return 
+ */
 int main(int argc, char *argv[])
 {
 	gpio_export(GPIO_LED);
@@ -29,6 +38,9 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
+/**
+ * @brief 
+ */
 void thread_join()
 {
 	rc = pthread_join(log_th, NULL);
@@ -80,6 +92,9 @@ void thread_join()
 		handle_error("Error in joining interrupt thread");
 }
 
+/**
+ * @brief 
+ */
 void thread_create()
 {
 	log_entry();
@@ -94,6 +109,14 @@ void thread_create()
 		handle_error("Error in creating interrupt thread");
 }
 
+/**
+ * @brief 
+ *
+ * @param arg1
+ * @param arg2
+ *
+ * @return 
+ */
 int arg_init(char *arg1, char *arg2)
 {
 	if(arg1 == NULL)
@@ -121,6 +144,9 @@ int arg_init(char *arg1, char *arg2)
 	return 1;
 }
 
+/**
+ * @brief 
+ */
 void light_sensor_bist(void)
 {
 	rc_lsense = light_sensor_init();
@@ -146,6 +172,9 @@ void light_sensor_bist(void)
 	}
 }
 
+/**
+ * @brief 
+ */
 void temp_sensor_bist(void)
 {
 	rc_tsense = temp_sensor_init();
@@ -167,6 +196,13 @@ void temp_sensor_bist(void)
 	}
 }
 
+/**
+ * @brief 
+ *
+ * @param signo
+ * @param info
+ * @param extra
+ */
 void signal_handler(int signo, siginfo_t *info, void *extra) 
 {	
 	timer_delete(timer_id);
@@ -178,6 +214,9 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 	exit_cond = 0;
 }
 
+/**
+ * @brief 
+ */
 void set_signal_handler(void)
 {
 	struct sigaction action;
@@ -189,6 +228,9 @@ void set_signal_handler(void)
 		handle_error("SIGINT: sigaction")
 }
 
+/**
+ * @brief 
+ */
 void heartbeat_check(void)
 {
 	uint32_t i;
@@ -257,6 +299,13 @@ void heartbeat_check(void)
 	}
 }
 
+/**
+ * @brief 
+ *
+ * @param threadp
+ *
+ * @return 
+ */
 void* int_func(void* threadp)
 {
 	struct pollfd fdset[2];
@@ -330,6 +379,9 @@ void* int_func(void* threadp)
 	}
 }
 
+/**
+ * @brief 
+ */
 void int_exit(void)
 {
 	static uint32_t flag;

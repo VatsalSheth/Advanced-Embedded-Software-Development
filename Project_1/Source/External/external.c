@@ -1,5 +1,13 @@
 #include "external.h"
 
+/**
+ * @brief 
+ *
+ * @param argc
+ * @param argv[]
+ *
+ * @return 
+ */
 int main(int argc, char* argv[])
 {
 	sleepy = 1;
@@ -203,6 +211,13 @@ int main(int argc, char* argv[])
 	}
 }
 
+/**
+ * @brief 
+ *
+ * @param ip
+ *
+ * @return 
+ */
 char *strlwr(char *ip)
 {
 	for(__uint32_t i=0; ip[i]!='\0'; i++)

@@ -5,17 +5,26 @@ uint32_t total;
 uint32_t pass;
 FILE *fp;
 
+/**
+ * @brief 
+ */
 void temp_init()
 {
 	temp_sensor_init();
 }
 
+/**
+ * @brief 
+ */
 void light_init()
 {
 	light_sensor_init();
 	write_control_reg(0x03);		//Power on light sensor
 }
 
+/**
+ * @brief 
+ */
 void test_temp_conv()
 {
 	float ip, op;
@@ -42,6 +51,9 @@ void test_temp_conv()
 	fprintf(fp, "Temperature conversion test: %d PASS out of %d\n",p,t);
 }
 
+/**
+ * @brief 
+ */
 void test_temp_data()
 {
 	uint32_t t=5, p=0;
@@ -59,6 +71,9 @@ void test_temp_data()
 	fprintf(fp, "Temperature data request test: %d PASS out of %d\n",p,t);
 }
 
+/**
+ * @brief 
+ */
 void test_light_data()
 {
 	uint32_t t=5, p=0;
@@ -76,6 +91,9 @@ void test_light_data()
 	fprintf(fp, "Light data request test: %d PASS out of %d\n",p,t);
 }
 
+/**
+ * @brief 
+ */
 void main()
 {
 	fp = fopen("unittest_log.txt", "w");

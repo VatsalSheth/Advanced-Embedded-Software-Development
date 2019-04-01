@@ -1,5 +1,12 @@
 #include "../Include/temp.h"
 
+/**
+ * @brief 
+ *
+ * @param threadp
+ *
+ * @return 
+ */
 void* temp_func(void* threadp)
 {
 	struct command req, res;
@@ -112,12 +119,25 @@ void* temp_func(void* threadp)
 	pthread_exit(NULL);
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 float request_temp()
 {
 //	printf("Temperature acquired is %f degrees C\n", temp_calc());
 	return temp_calc();//rand();
 }
 
+/**
+ * @brief 
+ *
+ * @param cel
+ * @param unit
+ *
+ * @return 
+ */
 float conv_temp(float cel, char unit)
 {
 	if(unit == 'F')
@@ -131,6 +151,9 @@ float conv_temp(float cel, char unit)
 	return cel;
 }
 
+/**
+ * @brief 
+ */
 void temp_exit()
 {
 	if(!exit_flag[TEMP_THREAD_NUM])
@@ -150,6 +173,9 @@ void temp_exit()
 	}
 }
 
+/**
+ * @brief 
+ */
 void temp_entry(void)
 {
 	exit_flag[TEMP_THREAD_NUM] = 0;

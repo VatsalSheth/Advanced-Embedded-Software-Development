@@ -1,5 +1,12 @@
 #include "../Include/socket.h" 
 
+/**
+ * @brief 
+ *
+ * @param threadp
+ *
+ * @return 
+ */
 void* socket_func(void* threadp)
 {	
 //	rc_socket = mq_unlink(socket_queue);
@@ -147,6 +154,9 @@ void* socket_func(void* threadp)
 	pthread_exit(NULL);
 }
 
+/**
+ * @brief 
+ */
 void socket_entry(void)
 {
 	exit_flag[SOCKET_THREAD_NUM] = 0;
@@ -168,6 +178,9 @@ void socket_entry(void)
 	}
 }
 
+/**
+ * @brief 
+ */
 void socket_exit(void)
 {
 	if(!exit_flag[SOCKET_THREAD_NUM])
@@ -225,6 +238,9 @@ void socket_exit(void)
 	}
 }
 
+/**
+ * @brief 
+ */
 void soc_queue_init()
 {
 	soc_queue_attr.mq_flags = 0;

@@ -1,5 +1,10 @@
 #include "../Include/tmp102.h"
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 int temp_sensor_init()
 {
 	char*filename = "/dev/i2c-2";
@@ -19,6 +24,13 @@ int temp_sensor_init()
 	return tsense_fd;
 }
 
+/**
+ * @brief 
+ *
+ * @param reg
+ *
+ * @return 
+ */
 int write_pointer_reg(uint8_t reg)
 {	
 	tsense_check = write(tsense_fd, &reg, 1);
@@ -27,6 +39,13 @@ int write_pointer_reg(uint8_t reg)
 	return tsense_check;
 }
 
+/**
+ * @brief 
+ *
+ * @param reg
+ *
+ * @return 
+ */
 int read_reg(uint8_t reg)
 {
 	uint8_t buf[2];
@@ -43,6 +62,13 @@ int read_reg(uint8_t reg)
 	return data;
 }
 
+/**
+ * @brief 
+ *
+ * @param data
+ *
+ * @return 
+ */
 int write_config_reg(uint16_t data)
 {
 	write_pointer_reg(CONFIG_REG);
@@ -57,6 +83,13 @@ int write_config_reg(uint16_t data)
 
 }
 
+/**
+ * @brief 
+ *
+ * @param reads[]
+ *
+ * @return 
+ */
 uint16_t* read_config_reg(uint16_t reads[])
 {
 	int config = read_reg(CONFIG_REG);
@@ -66,6 +99,13 @@ uint16_t* read_config_reg(uint16_t reads[])
 	return reads;	
 }
 
+/**
+ * @brief 
+ *
+ * @param data
+ *
+ * @return 
+ */
 int write_tlow_reg(float data)
 {
 	data = data/0.0625;
@@ -102,6 +142,11 @@ int write_thigh_reg(float data)
 	write_pointer_reg(TEMP_REG);
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 int read_temp_reg(void)
 {
 	uint8_t buf[2];
@@ -114,6 +159,11 @@ int read_temp_reg(void)
 	return temp;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 float temp_calc(void)
 {
 	float degrees;

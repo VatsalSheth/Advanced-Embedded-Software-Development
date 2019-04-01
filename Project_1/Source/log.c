@@ -1,5 +1,8 @@
 #include "../Include/log.h"
 
+/**
+ * @brief 
+ */
 void queue_init()
 {
 //	rc_log = mq_unlink(queue_name);
@@ -15,6 +18,13 @@ void queue_init()
 		handle_error("Error opening log queue");
 }
 
+/**
+ * @brief 
+ *
+ * @param threadp
+ *
+ * @return 
+ */
 void* logger_func(void* threadp)
 {
 	struct log_param* logArg = (struct log_param*)threadp;
@@ -87,6 +97,9 @@ void* logger_func(void* threadp)
 	
 }
 
+/**
+ * @brief 
+ */
 void timer_init()
 {
 	struct sigevent sev;
@@ -106,6 +119,11 @@ void timer_init()
 	timer_settime(timer_id, 0, &trigger, NULL);
 }
 
+/**
+ * @brief 
+ *
+ * @param sv
+ */
 void timer_handle(union sigval sv)
 {
 	for(uint32_t i=0; i<(NUM_OF_THREADS-2); i++)
@@ -114,6 +132,9 @@ void timer_handle(union sigval sv)
 	}
 }
 
+/**
+ * @brief 
+ */
 void log_entry(void)
 {
 	exit_flag[LOG_THREAD_NUM] = 0;
@@ -135,6 +156,9 @@ void log_entry(void)
 	}
 }
 
+/**
+ * @brief 
+ */
 void log_exit()
 {
 	if(!exit_flag[LOG_THREAD_NUM])
@@ -161,6 +185,11 @@ void log_exit()
 	}
 }
 
+/**
+ * @brief 
+ *
+ * @param th_num
+ */
 void ack_heartbeat(uint32_t th_num)
 {
 	pthread_mutex_lock(&mon[th_num].lock);
@@ -168,6 +197,9 @@ void ack_heartbeat(uint32_t th_num)
 	pthread_mutex_unlock(&mon[th_num].lock);
 }
 
+/**
+ * @brief 
+ */
 void set_notify_signal()
 {
 	sev.sigev_notify = SIGEV_THREAD;
@@ -179,12 +211,27 @@ void set_notify_signal()
 		handle_error("mq_notify");
 }
 
+/**
+ * @brief 
+ *
+ * @param sv
+ */
 void notify_handler(union sigval sv)
 {
 	//printf("notify\n");   //DEBUG
 	data_avail = 1;
 }
 
+/**
+ * @brief 
+ *
+ * @param thread_id
+ * @param thread_data
+ * @param msg_verbosity
+ * @param msg
+ *
+ * @return 
+ */
 struct log_msg write_to_log_queue(uint32_t thread_id,
 				    float thread_data,
 				    uint32_t msg_verbosity,

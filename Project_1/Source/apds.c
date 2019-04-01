@@ -1,5 +1,12 @@
 #include "../Include/apds.h"
 
+/**
+ * @brief 
+ *
+ * @param reg
+ *
+ * @return 
+ */
 int write_command_reg(uint8_t reg)
 {
 	int buf = reg | COMMAND;
@@ -14,6 +21,11 @@ int write_command_reg(uint8_t reg)
 	return lsense_check;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 int light_sensor_init(void)
 {
 	char *filename = "/dev/i2c-2";
@@ -35,6 +47,13 @@ int light_sensor_init(void)
 	return lsense_fd;
 }
 
+/**
+ * @brief 
+ *
+ * @param val
+ *
+ * @return 
+ */
 int write_control_reg(uint8_t val)
 {
 	write_command_reg(CONTROL_REG);
@@ -46,6 +65,11 @@ int write_control_reg(uint8_t val)
 	return lsense_check;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 uint8_t read_control_reg()
 {
 	write_command_reg(CONTROL_REG);
@@ -57,6 +81,13 @@ uint8_t read_control_reg()
 	return buf;
 }
 
+/**
+ * @brief 
+ *
+ * @param val
+ *
+ * @return 
+ */
 int write_int_ctl_reg(uint8_t val) 	//write 0b00010001 for last conversion resulting in value outside threshold
 {
 	write_command_reg(INT_CTL_REG);
@@ -68,6 +99,11 @@ int write_int_ctl_reg(uint8_t val) 	//write 0b00010001 for last conversion resul
 	return lsense_check;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 uint8_t read_int_ctl_reg(void) 
 {
 	write_command_reg(INT_CTL_REG);
@@ -79,6 +115,11 @@ uint8_t read_int_ctl_reg(void)
 	return buf;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 int sensor_id()
 {
 	write_command_reg(ID_REG);
@@ -90,6 +131,13 @@ int sensor_id()
 	return buf;
 }
 
+/**
+ * @brief 
+ *
+ * @param val
+ *
+ * @return 
+ */
 int write_timing_reg(uint8_t val)
 {
 	write_command_reg(TIMING_REG);
@@ -101,6 +149,11 @@ int write_timing_reg(uint8_t val)
 	return lsense_check;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 uint8_t read_timing_reg(void)
 {
 	write_command_reg(TIMING_REG);
@@ -112,6 +165,14 @@ uint8_t read_timing_reg(void)
 	return buf;
 }
 
+/**
+ * @brief 
+ *
+ * @param val
+ * @param reg
+ *
+ * @return 
+ */
 int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for INT_TH_H registers
 {
 	uint8_t	temp_val = val & 0x00FF;
@@ -144,6 +205,13 @@ int write_int_th_reg(uint16_t val, uint8_t reg)		//pass 1 for INT_TH_L and 2 for
 	return lsense_check;
 }
 
+/**
+ * @brief 
+ *
+ * @param reg
+ *
+ * @return 
+ */
 uint16_t read_int_th_reg(uint8_t reg)
 {
 	uint16_t val;
@@ -179,6 +247,11 @@ uint16_t read_int_th_reg(uint8_t reg)
 	}
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 uint16_t ch_ADC0(void)		//min 69	 max 124
 {
 	uint16_t adc0, msb;
@@ -204,6 +277,11 @@ uint16_t ch_ADC0(void)		//min 69	 max 124
 }
 
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 uint16_t ch_ADC1(void)		//min 12	max 58
 {
 	uint16_t adc1, msb;
@@ -228,6 +306,11 @@ uint16_t ch_ADC1(void)		//min 12	max 58
 	return adc1;
 }
 
+/**
+ * @brief 
+ *
+ * @return 
+ */
 float lux_calc(void)
 {
 	float lux;

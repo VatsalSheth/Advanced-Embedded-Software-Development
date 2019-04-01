@@ -1,5 +1,12 @@
 #include "../Include/gpio.h"
 
+/**
+ * @brief 
+ *
+ * @param pin
+ *
+ * @return 
+ */
 int gpio_export(uint32_t pin)
 {
 	FILE *fp;
@@ -14,6 +21,14 @@ int gpio_export(uint32_t pin)
 	return 0;
 } 
 
+/**
+ * @brief 
+ *
+ * @param pin
+ * @param dir
+ *
+ * @return 
+ */
 int gpio_dir(uint32_t pin, char *dir)
 {
 	FILE *fp;
@@ -31,6 +46,14 @@ int gpio_dir(uint32_t pin, char *dir)
 	return 0;
 } 
 
+/**
+ * @brief 
+ *
+ * @param pin
+ * @param val
+ *
+ * @return 
+ */
 int gpio_set_value(uint32_t pin, uint32_t val)
 {
 	FILE *fp;
@@ -48,6 +71,13 @@ int gpio_set_value(uint32_t pin, uint32_t val)
 	return 0;
 } 
 
+/**
+ * @brief 
+ *
+ * @param pin
+ *
+ * @return 
+ */
 int gpio_get_value(uint32_t pin)
 {
 	FILE *fp;
@@ -67,6 +97,14 @@ int gpio_get_value(uint32_t pin)
 	return val;
 } 
 
+/**
+ * @brief 
+ *
+ * @param pin
+ * @param edge
+ *
+ * @return 
+ */
 int gpio_edge(uint32_t pin, char *edge)
 {
 	FILE *fp;
@@ -84,6 +122,14 @@ int gpio_edge(uint32_t pin, char *edge)
 	return 0;
 }
 
+/**
+ * @brief 
+ *
+ * @param pin
+ * @param file
+ *
+ * @return 
+ */
 int gpio_open(uint32_t pin, char *file)
 {
 	int fp;
@@ -98,16 +144,37 @@ int gpio_open(uint32_t pin, char *file)
 	return fp;
 }
 
+/**
+ * @brief 
+ *
+ * @param fp
+ *
+ * @return 
+ */
 int gpio_close(int fp)
 {
 	return close(fp);
 }
 
+/**
+ * @brief 
+ *
+ * @param pin
+ *
+ * @return 
+ */
 int gpio_blink(uint32_t pin)
 {
 	blink_timer_init(pin);
 } 
 
+/**
+ * @brief 
+ *
+ * @param pin
+ *
+ * @return 
+ */
 int gpio_blink_off(uint32_t pin)
 {
 	timer_delete(blink_timer_id);
@@ -116,6 +183,11 @@ int gpio_blink_off(uint32_t pin)
 	return 0;
 }
 
+/**
+ * @brief 
+ *
+ * @param pin
+ */
 void blink_timer_init(uint32_t pin)
 {
 	struct sigevent sev;
@@ -136,6 +208,11 @@ void blink_timer_init(uint32_t pin)
 	timer_settime(blink_timer_id, 0, &trigger, NULL);
 }
 
+/**
+ * @brief 
+ *
+ * @param sv
+ */
 void blink_timer_handle(union sigval sv)
 {	
 	uint32_t led;
