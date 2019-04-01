@@ -30,6 +30,8 @@
 #define POWER_UP 	(0x03)
 #define POWER_DOWN 	(0x00)
 
+#define CONTROL_REG_MASK (0x03)
+
 int lsense_fd, lsense_check, rc_lsense;
 
 int light_sensor_init(void);

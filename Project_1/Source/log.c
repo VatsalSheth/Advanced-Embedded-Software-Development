@@ -33,7 +33,8 @@ void* logger_func(void* threadp)
 		handle_error("Error in creating file");
 
 	fprintf(file_log, "\nPROJECT 1 LOG FILE\n");
-	
+	fprintf(file_log, bist_buffer[0]);
+	fprintf(file_log, bist_buffer[1]);
 	while(1)
 	{	
 		if(data_avail == 1)

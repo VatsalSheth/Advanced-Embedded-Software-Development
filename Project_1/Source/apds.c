@@ -18,14 +18,19 @@ int light_sensor_init(void)
 {
 	char *filename = "/dev/i2c-2";
 	lsense_fd = open(filename, O_RDWR);
-//chec return type outside; followiing check is for testing
 	if (lsense_fd < 0)
-   		handle_error("Failed to open the i2c bus");
+	{		
+		perror("Failed to open I2C bus");
+		exit(1);
+	}
+
 
 	int addr = LIGHT_SLAVE_ADDRESS;          // The I2C address of the ADC
 	if (ioctl(lsense_fd, I2C_SLAVE, addr) < 0)
-    		handle_error("Failed to acquire bus access");
-		/* ERROR HANDLING; you can check errno to see what went wrong */
+	{		
+		perror("Failed to acquire bus access");
+		exit(1);
+	}
 
 	return lsense_fd;
 }

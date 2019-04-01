@@ -69,6 +69,7 @@ uint32_t data_avail;
 uint32_t exit_cond;
 uint32_t timer_flag[NUM_OF_THREADS - 2];
 uint32_t exit_flag[NUM_OF_THREADS];
+char* bist_buffer[2];
 timer_t timer_id;
 
 FILE* file_log;

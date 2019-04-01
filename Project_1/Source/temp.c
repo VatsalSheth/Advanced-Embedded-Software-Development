@@ -9,7 +9,7 @@ void* temp_func(void* threadp)
 	
 	useconds_t garbage_sleep = 1;
 
-	rc_tsense = temp_sensor_init();
+//	rc_tsense = temp_sensor_init();
 //	printf("Config register holds %x\n", read_reg(CONFIG_REG));
 	write_config_reg(read_reg(CONFIG_REG) | THERMOSTAT_MODE);
 	write_tlow_reg(LOW_THRESHOLD);		//Low threshold as 23 C
