@@ -8,7 +8,7 @@ int write_command_reg(uint8_t reg)
 	{
 		char* string = malloc(30);
 		sprintf(string, "Failed to write to %x register", reg);
-		handle_error(string);
+		log_error(string);
 		free(string);
 	}
 	return lsense_check;
@@ -184,17 +184,19 @@ uint16_t ch_ADC0(void)		//min 69	 max 124
 	uint16_t adc0, msb;
 	uint8_t lsb;
 
-	write_command_reg(ADC_DATA0L_REG);
+	if(write_command_reg(ADC_DATA0L_REG) == -1)
+		return 0;
 	
 	lsense_check = read(lsense_fd, &lsb, 1);
-	if(lsense_fd == -1)
-		handle_error("Failed to read in ch_ADC0L");
+	if(lsense_check == -1)
+		return 0;
 
-	write_command_reg(ADC_DATA0H_REG);
+	if(write_command_reg(ADC_DATA0H_REG) == -1)
+		return 0;
 	
 	lsense_check = read(lsense_fd, &msb, 1);
-	if(lsense_fd == -1)
-		handle_error("Failed to read in ch_ADC0H");
+	if(lsense_check == -1)
+		return 0;
 
 	msb = msb << 8;
 	adc0 = msb | lsb;
@@ -207,17 +209,19 @@ uint16_t ch_ADC1(void)		//min 12	max 58
 	uint16_t adc1, msb;
 	uint8_t lsb;
 
-	write_command_reg(ADC_DATA1L_REG);
+	if(write_command_reg(ADC_DATA1L_REG) == -1)
+		return 0;
 	
 	lsense_check = read(lsense_fd, &lsb, 1);
-	if(lsense_fd == -1)
-		handle_error("Failed to read in ch_ADC1L");
+	if(lsense_check == -1)
+		return 0;
 
-	write_command_reg(ADC_DATA1H_REG);
+	if(write_command_reg(ADC_DATA1H_REG) == -1)
+		return 0;
 	
 	lsense_check = read(lsense_fd, &msb, 1);
-	if(lsense_fd == -1)
-		handle_error("Failed to read in ch_ADC1H");
+	if(lsense_check == -1)
+		return 0;
 
 	msb = msb << 8;
 	adc1 = msb | lsb;
@@ -228,8 +232,10 @@ float lux_calc(void)
 {
 	float lux;
 	uint16_t adc0, adc1;
-	adc0 = ch_ADC0();
-	adc1 = ch_ADC1();
+	if((adc0 = ch_ADC0()) == 0)
+		return ADC0_ERROR;
+	if((adc1 = ch_ADC1()) == 0)
+		return ADC1_ERROR;
 
 	float adc_div = ((float)adc1)/((float)adc0);
 	if((0 < adc_div) && (adc_div <= 0.5))

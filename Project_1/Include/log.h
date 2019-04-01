@@ -41,6 +41,10 @@
 				perror(msg);\
 				kill(getpid(), SIGINT);\
 			}
+
+//#define log_error(msg) \
+//			{\
+				
 			
 #define queue_name 	("/log_fd")
 #define socket_queue 	("/socket_queue")

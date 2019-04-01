@@ -10,8 +10,6 @@ void* light_func(void* threadp)
 	
 	useconds_t garbage_sleep = 1;
 	
-//	rc_lsense = light_sensor_init();
-//	rc_lsense = write_control_reg(0x03);		//Power on light sensor
 	rc_lsense = read_control_reg();
 //	printf("Control register: %d\n",rc_lsense);
 	rc_lsense = write_int_th_reg(CH0_LOW_THRESHOLD, 1);	//Write low threshold as 40 lux

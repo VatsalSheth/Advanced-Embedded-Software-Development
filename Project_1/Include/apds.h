@@ -32,6 +32,9 @@
 
 #define CONTROL_REG_MASK (0x03)
 
+#define ADC0_ERROR	(-1)
+#define ADC1_ERROR	(-2)
+
 int lsense_fd, lsense_check, rc_lsense;
 
 int light_sensor_init(void);
