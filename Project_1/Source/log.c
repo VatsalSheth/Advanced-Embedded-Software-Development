@@ -2,6 +2,9 @@
 
 /**
  * @brief 
+ *The queue_init() function initializes a common queue for all threads to write to the logger thread queue.
+ *A structure log_msg is commonly defined in log.h, which has fields of thread id, sensor data, debug messgaes 
+ *and verbosity.
  */
 void queue_init()
 {
@@ -20,8 +23,12 @@ void queue_init()
 
 /**
  * @brief 
- *
+ *The logger thread function, spawned by main thread. A log file is opened, and messages received from the queue are checked basis the verbosity flag.
+ *If flag is error message, an error with the source is printed, else the data with timestamp and thread ids printed out. mq_notify is used, along with
+ *a flag to check if the queue has been written to or not.
+ * 
  * @param threadp
+ *A structure is passed as argument, containing the default verbosity and log file name as entered by user on prompt by main thread.
  *
  * @return 
  */
@@ -98,7 +105,8 @@ void* logger_func(void* threadp)
 }
 
 /**
- * @brief 
+ * @brief
+ * Timer for each sensor thread is created, with a trigger rate of 1 seconds.
  */
 void timer_init()
 {
@@ -121,7 +129,7 @@ void timer_init()
 
 /**
  * @brief 
- *
+ * Timer handle function, on being called, sets a timer flag for each thread, and the flag is cleared when the thread receives timer interrupt.
  * @param sv
  */
 void timer_handle(union sigval sv)
@@ -133,7 +141,8 @@ void timer_handle(union sigval sv)
 }
 
 /**
- * @brief 
+ * @brief
+ * Log thread is created, and its conditional variables and mutex initialized. This function is called by main.
  */
 void log_entry(void)
 {
@@ -158,6 +167,7 @@ void log_entry(void)
 
 /**
  * @brief 
+ * Thread is cancelled, message queue is closed and unlinked, log file is closed,allowing for graceful exit.
  */
 void log_exit()
 {
@@ -187,8 +197,10 @@ void log_exit()
 
 /**
  * @brief 
- *
+ *The heartbeat function, which will be called by each thread to ensure it is not dead. Conditional variable signal is given, after being protected by a mutex.
+ * 
  * @param th_num
+ * Thread number
  */
 void ack_heartbeat(uint32_t th_num)
 {
@@ -197,9 +209,7 @@ void ack_heartbeat(uint32_t th_num)
 	pthread_mutex_unlock(&mon[th_num].lock);
 }
 
-/**
- * @brief 
- */
+
 void set_notify_signal()
 {
 	sev.sigev_notify = SIGEV_THREAD;
@@ -213,8 +223,7 @@ void set_notify_signal()
 
 /**
  * @brief 
- *
- * @param sv
+ * Flag indicating data is available is set, to indicate to logger thread to enter functionality once mq_notify handler occurs.
  */
 void notify_handler(union sigval sv)
 {
@@ -224,11 +233,7 @@ void notify_handler(union sigval sv)
 
 /**
  * @brief 
- *
- * @param thread_id
- * @param thread_data
- * @param msg_verbosity
- * @param msg
+ * A function for writing values to the structure to be sent via mqueue.
  *
  * @return 
  */
