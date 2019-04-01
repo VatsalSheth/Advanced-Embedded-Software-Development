@@ -7,7 +7,6 @@ void* light_func(void* threadp)
 	float rf_light;
 	
 	sleep(1);
-	srand(time(NULL));
 	
 	useconds_t garbage_sleep = 1;
 	
