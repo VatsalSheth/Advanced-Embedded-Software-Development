@@ -2,9 +2,16 @@ objects = main.o log.o temp.o light.o socket.o gpio.o apds.o tmp102.o
 headers = ../Include/main.h ../Include/log.h ../Include/temp.h ../Include/light.h ../Include/socket.h ../Include/apds.h ../Include/gpio.h ../Include/tmp102.h
 CC = gcc
 
+
 project_1 : $(objects) $(headers)
 	$(CC) -g -o project_1 $(objects) -lpthread -lrt -lm
 
+unit_test: unit_test.o $(headers)
+	$(cc) -g -o unit_test light.o temp.o -lpthread -lrt -lm
+	
+unit_test.o: unit_test.c $(headers)
+	$(CC) -g unit_test.c 
+		
 main.o : main.c $(headers)
 	$(CC) -c main.c
 
@@ -27,7 +34,7 @@ tmp102.o : tmp102.c $(headers)
 	$(CC) -c tmp102.c
 
 gpio.o : gpio.c $(headers)
-	$(CC) -c gpio.c
+	$(CC) -c gpio.c 
 
 clean : 	
-	rm -f project_1 $(objects)
+	rm -f project_1 unit_test $(objects)

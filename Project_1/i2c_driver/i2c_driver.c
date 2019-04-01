@@ -6,6 +6,7 @@
 #include <linux/i2c.h>
 #include <linux/delay.h>
 #include <linux/gpio.h>
+#include <linux/uaccess.h>
 
 #define MAX_MINOR_NUM (2)
 #define SDA (2)
@@ -20,6 +21,13 @@ static long i2c_ioctl (struct file *file, unsigned int cmd, unsigned long arg);
 static int i2c_release(struct inode *inode, struct file *file);
 static int i2c_driver_init(void);
 static void i2c_driver_exit(void);
+void i2c_start(void);
+void i2c_stop(void);
+void send_ack(uint32_t ack);
+uint8_t ack_check(void);
+uint8_t ack_check(void);
+uint8_t i2c_write_byte(uint8_t value);
+uint8_t i2c_read_byte(uint8_t ack);
 
 static int major;
 struct class *c;
@@ -147,7 +155,7 @@ static int i2c_open(struct inode *inode, struct file *file)
 	int i, flag=0;
 	
 	data = container_of(inode->i_cdev, struct driver_data, c_dev);
-	
+	printk(KERN_INFO "pointer %p",data);
 	for(i=0; (i<MAX_MINOR_NUM) && (flag==0); i++)
 	{
 		if(dev_data[i].valid == 1) 
@@ -160,6 +168,7 @@ static int i2c_open(struct inode *inode, struct file *file)
 		data->id = i;
 		data->valid = 1;
 		file->private_data = data;
+		printk(KERN_INFO "I2C driver open %d\n",data->id);
 	}
 	
 	if(flag == 0)
@@ -179,13 +188,53 @@ static int i2c_read(struct file *file, char __user *user_buffer, size_t size, lo
 
 static int i2c_write(struct file *file, const char __user *user_buffer, size_t size, loff_t * offset)
 {
-	return 0;
+	struct driver_data *data = (struct driver_data *)file->private_data;
+	uint8_t *buf;
+	uint8_t tmp, ack, i;
+	
+	printk(KERN_INFO "size %d",size);
+	buf = (uint8_t *)kmalloc(size+1, GFP_KERNEL);
+	if(buf == NULL)
+	{
+		printk(KERN_INFO "Kmalloc failed...!!!\n");
+		return -ENOMEM;
+	}
+		
+	if(copy_from_user(buf, user_buffer, size))
+	{
+		printk(KERN_INFO "copy from user failed\n");
+		kfree(buf);
+		return -EFAULT;
+	}
+	printk(KERN_INFO "slave %d data %d\n",dev_data[data->id].slave_addr,buf[0]);
+	
+	tmp = *(buf++);
+	tmp = tmp << 1;
+	i2c_start();
+	ack = i2c_write_byte(tmp);
+	if(ack==1)
+	{
+		for(i=0; i<(size-1); i++)
+		{
+			tmp = *(buf++);
+			ack = i2c_write_byte(tmp);
+			if(ack == 0)
+			{
+				printk(KERN_INFO "NACK\n");
+				return -1;
+			}
+		}
+	}
+	i2c_stop();
+	
+	kfree(buf);
+	return size;
 }
 
 static long i2c_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 {
-	struct driver_data *data = file->private_data;
-	
+	struct driver_data *data = (struct driver_data *)file->private_data;
+	printk(KERN_INFO "ioctl id %d\n",data->id);
 	switch(cmd)
 	{
 			case I2C_SLAVE: dev_data[data->id].slave_addr = (uint8_t)arg;

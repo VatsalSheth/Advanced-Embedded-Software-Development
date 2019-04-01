@@ -102,7 +102,7 @@ float conv_temp(float cel, char unit)
 {
 	if(unit == 'F')
 	{
-		cel = (5*(cel-32))/9;
+		cel = ((9*cel)/5) - 32;
 	}
 	else if(unit == 'K')
 	{

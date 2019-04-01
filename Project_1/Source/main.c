@@ -5,15 +5,6 @@ int main(int argc, char *argv[])
 	set_signal_handler();
 	exit_cond = 1;
 	
-	/*int fp = open("/dev/i2c_driver", O_RDWR);
-	if(fp < 0)
-		printf("file\n");
-	int fp1 = open("/dev/i2c_driver", O_RDWR);
-	if(fp1 < 0)
-		printf("file\n");
-	close(fp);
-	close(fp1);
-	*/
 	if(!arg_init(argv[1], argv[2]))
 	{
 		return 0;
