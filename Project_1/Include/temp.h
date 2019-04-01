@@ -14,5 +14,6 @@ struct log_msg temp_data;
 
 void* temp_func(void*);
 void temp_exit(void);
+void temp_entry(void);
 float request_temp(void);
 float conv_temp(float, char);

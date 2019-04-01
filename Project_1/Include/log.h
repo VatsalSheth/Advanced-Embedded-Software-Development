@@ -102,6 +102,8 @@ struct log_param
 	char* file_name;
 };
 
+struct log_param log_file;
+
 void queue_init(void);
 void* logger_func(void*);
 void log_exit(void);
