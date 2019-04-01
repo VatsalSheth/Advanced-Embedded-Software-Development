@@ -8,7 +8,7 @@ int write_command_reg(uint8_t reg)
 	{
 		char* string = malloc(30);
 		sprintf(string, "Failed to write to %x register", reg);
-		log_error(string);
+		handle_error(string);
 		free(string);
 	}
 	return lsense_check;
