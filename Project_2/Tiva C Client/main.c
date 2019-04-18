@@ -10,15 +10,6 @@
 
 volatile unsigned long g_vulRunTimeStatsCountValue;
 
-QueueHandle_t xQueue;
-
-//*****************************************************************************
-//
-// Global variable to hold the system clock speed.
-//
-//*****************************************************************************
-uint32_t g_ui32SysClock;
-
 //*****************************************************************************
 //
 // The error routine that is called if the driver library encounters an error.
@@ -57,6 +48,8 @@ void vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
 //*****************************************************************************
 int main(void)
 {
+    uint32_t temp[3] = {0xaa, 0x55, 0x32};
+    uint32_t *ans;
     //
     // Configure the system frequency.
     //
@@ -64,6 +57,12 @@ int main(void)
                                              SYSCTL_OSC_MAIN |
                                              SYSCTL_USE_PLL |
                                              SYSCTL_CFG_VCO_480), 120000000);
+    //ans = (uint32_t *)malloc(sizeof(uint32_t)*3);
+    ConfigureUART();
+    ConfigureSPI2();
+    SPIsend(temp, 3);
+    ans = SPIreceive(3);
+    UARTprintf("Data is %d, %d, %d\n",ans[0], ans[1],ans[2]);
 
     //vTaskStartScheduler();
 

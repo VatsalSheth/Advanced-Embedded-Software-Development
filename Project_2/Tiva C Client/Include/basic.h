@@ -18,4 +18,11 @@
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
 
+//*****************************************************************************
+//
+// Global variable to hold the system clock speed.
+//
+//*****************************************************************************
+uint32_t g_ui32SysClock;
+
 #endif /* INCLUDE_BASIC_H_ */

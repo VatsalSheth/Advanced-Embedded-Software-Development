@@ -23,5 +23,6 @@
 #include "Include/i2c_driver.h"
 #include "Include/spi_driver.h"
 #include "Include/uart_driver.h"
+#include "Include/lcd_driver.h"
 
 #endif /* INCLUDE_MAIN_H_ */

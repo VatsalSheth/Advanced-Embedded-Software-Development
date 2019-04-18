@@ -10,6 +10,7 @@ CMD_SRCS += \
 
 C_SRCS += \
 ../i2c_driver.c \
+../lcd_driver.c \
 ../main.c \
 ../spi_driver.c \
 ../startup_ccs.c \
@@ -17,6 +18,7 @@ C_SRCS += \
 
 C_DEPS += \
 ./i2c_driver.d \
+./lcd_driver.d \
 ./main.d \
 ./spi_driver.d \
 ./startup_ccs.d \
@@ -24,6 +26,7 @@ C_DEPS += \
 
 OBJS += \
 ./i2c_driver.obj \
+./lcd_driver.obj \
 ./main.obj \
 ./spi_driver.obj \
 ./startup_ccs.obj \
@@ -31,6 +34,7 @@ OBJS += \
 
 OBJS__QUOTED += \
 "i2c_driver.obj" \
+"lcd_driver.obj" \
 "main.obj" \
 "spi_driver.obj" \
 "startup_ccs.obj" \
@@ -38,6 +42,7 @@ OBJS__QUOTED += \
 
 C_DEPS__QUOTED += \
 "i2c_driver.d" \
+"lcd_driver.d" \
 "main.d" \
 "spi_driver.d" \
 "startup_ccs.d" \
@@ -45,6 +50,7 @@ C_DEPS__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../i2c_driver.c" \
+"../lcd_driver.c" \
 "../main.c" \
 "../spi_driver.c" \
 "../startup_ccs.c" \
