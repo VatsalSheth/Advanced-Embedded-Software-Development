@@ -17,6 +17,7 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
+#include "utils/uartstdio.h"
 
 //*****************************************************************************
 //

@@ -1,0 +1,101 @@
+\hypertarget{nrf24l01_8c}{}\section{nrf24l01.\+c File Reference}
+\label{nrf24l01_8c}\index{nrf24l01.\+c@{nrf24l01.\+c}}
+{\ttfamily \#include \char`\"{}Include/nrf24l01.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{nrf24l01_8c_a4c47ecb0afd108992aa1d9350d3f8295}{set\+\_\+\+C\+SN} ()
+\begin{DoxyCompactList}\small\item\em Sets C\+SN pin of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8c_a8e4b718cc74a4671374f2c970e3c75ed}{clear\+\_\+\+C\+SN} ()
+\begin{DoxyCompactList}\small\item\em Clears C\+SN pin of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8c_a58dcbbe5884003d7814d657f456f987d}{Configure\+N\+RF} (void)
+\begin{DoxyCompactList}\small\item\em Configures N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8c_aef40b2dfcf1e3e09c6841e4ac7936580}{N\+R\+F\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR of N\+R\+F24l01+ module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{nrf24l01_8c_a8e4b718cc74a4671374f2c970e3c75ed}\label{nrf24l01_8c_a8e4b718cc74a4671374f2c970e3c75ed}} 
+\index{nrf24l01.\+c@{nrf24l01.\+c}!clear\+\_\+\+C\+SN@{clear\+\_\+\+C\+SN}}
+\index{clear\+\_\+\+C\+SN@{clear\+\_\+\+C\+SN}!nrf24l01.\+c@{nrf24l01.\+c}}
+\subsubsection{\texorpdfstring{clear\+\_\+\+C\+S\+N()}{clear\_CSN()}}
+{\footnotesize\ttfamily void clear\+\_\+\+C\+SN (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears C\+SN pin of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 31 of file nrf24l01.\+c.
+
+
+
+References nrf\+\_\+csn, nrf\+\_\+gpio\+\_\+base, and set\+\_\+\+C\+S\+N().
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8c_a58dcbbe5884003d7814d657f456f987d}\label{nrf24l01_8c_a58dcbbe5884003d7814d657f456f987d}} 
+\index{nrf24l01.\+c@{nrf24l01.\+c}!Configure\+N\+RF@{Configure\+N\+RF}}
+\index{Configure\+N\+RF@{Configure\+N\+RF}!nrf24l01.\+c@{nrf24l01.\+c}}
+\subsubsection{\texorpdfstring{Configure\+N\+R\+F()}{ConfigureNRF()}}
+{\footnotesize\ttfamily void Configure\+N\+RF (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configures N\+R\+F24l01+ module. 
+
+
+
+Definition at line 40 of file nrf24l01.\+c.
+
+
+
+References clear\+\_\+\+C\+S\+N(), Configure\+S\+P\+I2(), nrf\+\_\+ce, nrf\+\_\+irq, N\+R\+F\+\_\+\+I\+S\+R(), set\+\_\+\+C\+S\+N(), S\+P\+Ireceive(), and S\+P\+Isend().
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{nrf24l01_8c_aef40b2dfcf1e3e09c6841e4ac7936580}\label{nrf24l01_8c_aef40b2dfcf1e3e09c6841e4ac7936580}} 
+\index{nrf24l01.\+c@{nrf24l01.\+c}!N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}}
+\index{N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}!nrf24l01.\+c@{nrf24l01.\+c}}
+\subsubsection{\texorpdfstring{N\+R\+F\+\_\+\+I\+S\+R()}{NRF\_ISR()}}
+{\footnotesize\ttfamily void N\+R\+F\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 71 of file nrf24l01.\+c.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8c_a4c47ecb0afd108992aa1d9350d3f8295}\label{nrf24l01_8c_a4c47ecb0afd108992aa1d9350d3f8295}} 
+\index{nrf24l01.\+c@{nrf24l01.\+c}!set\+\_\+\+C\+SN@{set\+\_\+\+C\+SN}}
+\index{set\+\_\+\+C\+SN@{set\+\_\+\+C\+SN}!nrf24l01.\+c@{nrf24l01.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+\+C\+S\+N()}{set\_CSN()}}
+{\footnotesize\ttfamily void set\+\_\+\+C\+SN (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets C\+SN pin of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 23 of file nrf24l01.\+c.
+
+
+
+References nrf\+\_\+csn, and nrf\+\_\+gpio\+\_\+base.
+
+
+
+Referenced by clear\+\_\+\+C\+S\+N(), and Configure\+N\+R\+F().
+

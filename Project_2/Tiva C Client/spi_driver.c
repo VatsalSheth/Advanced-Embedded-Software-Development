@@ -10,11 +10,13 @@
  * SCLK: PD3
  * MOSI: PD1
  * MISO: PD0
- * CS: PD7
  */
 
 #include "Include/spi_driver.h"
 
+/**
+ * @brief Configure SSI2 block as SPI Master
+ */
 void ConfigureSPI2(void)
 {
     uint32_t tmp;
@@ -38,6 +40,12 @@ void ConfigureSPI2(void)
     }
 }
 
+
+/**
+ * @brief Send data through SSI2
+ * @param data Pointer to send data
+ * @param count Number of 32 bits data to send
+ */
 void SPIsend(uint32_t *data, uint32_t count)
 {
     uint32_t i;
@@ -52,19 +60,18 @@ void SPIsend(uint32_t *data, uint32_t count)
     }
 }
 
-uint32_t * SPIreceive(uint32_t count)
+/**
+ * @brief Receive data through SSI2
+ * @param data Pointer to store received data
+ * @param count Number of 32 bits data to receive
+ */
+void SPIreceive(uint32_t *data, uint32_t count)
 {
     uint32_t i;
-    uint32_t data[4];
 
     for(i=0; i<count; i++)
     {
         SSIDataGet(SSI2_BASE, &data[i]);
         data[i] &= 0xff;
     }
-}
-
-void SPIslaveselect()
-{
-
 }

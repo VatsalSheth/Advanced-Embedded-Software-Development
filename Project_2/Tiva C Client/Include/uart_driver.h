@@ -13,7 +13,6 @@
 #include "driverlib/rom.h"
 #include "driverlib/rom_map.h"
 #include "driverlib/uart.h"
-#include "utils/uartstdio.h"
 
 void ConfigureUART(void);
 

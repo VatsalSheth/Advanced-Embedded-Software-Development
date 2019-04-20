@@ -14,6 +14,6 @@
 
 void ConfigureSPI2(void);
 void SPIsend(uint32_t *data, uint32_t count);
-uint32_t * SPIreceive(uint32_t count);
+void SPIreceive(uint32_t *data, uint32_t count);
 
 #endif /* INCLUDE_SPI_DRIVER_H_ */

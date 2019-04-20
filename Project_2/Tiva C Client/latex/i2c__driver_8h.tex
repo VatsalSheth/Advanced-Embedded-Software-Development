@@ -1,0 +1,48 @@
+\hypertarget{i2c__driver_8h}{}\section{Include/i2c\+\_\+driver.h File Reference}
+\label{i2c__driver_8h}\index{Include/i2c\+\_\+driver.\+h@{Include/i2c\+\_\+driver.\+h}}
+{\ttfamily \#include \char`\"{}basic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inc/hw\+\_\+i2c.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inc/hw\+\_\+memmap.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driverlib/i2c.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{i2c__driver_8h_a6ce3db1994587a4c70027f9b1ca75f3e}{Configure\+I2\+C2} (void)
+\item 
+void \hyperlink{i2c__driver_8h_a4bcdb29f94851bb195aa4bcd049e8607}{I2\+Csend} (uint8\+\_\+t addr, uint8\+\_\+t data)
+\item 
+uint32\+\_\+t \hyperlink{i2c__driver_8h_ad5a6d9f1ea386edfdcf3b075ba337c36}{I2\+Creceive} (uint8\+\_\+t addr, uint8\+\_\+t reg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{i2c__driver_8h_a6ce3db1994587a4c70027f9b1ca75f3e}\label{i2c__driver_8h_a6ce3db1994587a4c70027f9b1ca75f3e}} 
+\index{i2c\+\_\+driver.\+h@{i2c\+\_\+driver.\+h}!Configure\+I2\+C2@{Configure\+I2\+C2}}
+\index{Configure\+I2\+C2@{Configure\+I2\+C2}!i2c\+\_\+driver.\+h@{i2c\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{Configure\+I2\+C2()}{ConfigureI2C2()}}
+{\footnotesize\ttfamily void Configure\+I2\+C2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3 of file i2c\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{i2c__driver_8h_ad5a6d9f1ea386edfdcf3b075ba337c36}\label{i2c__driver_8h_ad5a6d9f1ea386edfdcf3b075ba337c36}} 
+\index{i2c\+\_\+driver.\+h@{i2c\+\_\+driver.\+h}!I2\+Creceive@{I2\+Creceive}}
+\index{I2\+Creceive@{I2\+Creceive}!i2c\+\_\+driver.\+h@{i2c\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{I2\+Creceive()}{I2Creceive()}}
+{\footnotesize\ttfamily uint32\+\_\+t I2\+Creceive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{reg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file i2c\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{i2c__driver_8h_a4bcdb29f94851bb195aa4bcd049e8607}\label{i2c__driver_8h_a4bcdb29f94851bb195aa4bcd049e8607}} 
+\index{i2c\+\_\+driver.\+h@{i2c\+\_\+driver.\+h}!I2\+Csend@{I2\+Csend}}
+\index{I2\+Csend@{I2\+Csend}!i2c\+\_\+driver.\+h@{i2c\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{I2\+Csend()}{I2Csend()}}
+{\footnotesize\ttfamily void I2\+Csend (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file i2c\+\_\+driver.\+c.
+

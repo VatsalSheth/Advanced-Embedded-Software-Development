@@ -18,11 +18,11 @@
 #include "queue.h"
 #include "semphr.h"
 #include "drivers/pinout.h"
-#include "drivers/buttons.h"
 
 #include "Include/i2c_driver.h"
-#include "Include/spi_driver.h"
+#include "Include/nrf24l01.h"
 #include "Include/uart_driver.h"
 #include "Include/lcd_driver.h"
+#include "Include/button.h"
 
 #endif /* INCLUDE_MAIN_H_ */

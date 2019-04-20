@@ -10,9 +10,11 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./button.obj" \
 "./i2c_driver.obj" \
 "./lcd_driver.obj" \
 "./main.obj" \
+"./nrf24l01.obj" \
 "./spi_driver.obj" \
 "./startup_ccs.obj" \
 "./uart_driver.obj" \
@@ -199,8 +201,8 @@ Project_2_client.bin: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "i2c_driver.obj" "lcd_driver.obj" "main.obj" "spi_driver.obj" "startup_ccs.obj" "uart_driver.obj" "drivers\buttons.obj" "drivers\eth_client_lwip.obj" "drivers\exosite_hal_lwip.obj" "drivers\http.obj" "drivers\pinout.obj" "third_party\FreeRTOS\Source\list.obj" "third_party\FreeRTOS\Source\queue.obj" "third_party\FreeRTOS\Source\tasks.obj" "third_party\FreeRTOS\Source\timers.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\portasm.obj" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.obj" "third_party\exosite\exosite.obj" "third_party\exosite\exosite_meta.obj" "utils\cmdline.obj" "utils\flash_pb.obj" "utils\locator.obj" "utils\lwiplib.obj" "utils\ringbuf.obj" "utils\uartstdio.obj" "utils\ustdlib.obj" 
-	-$(RM) "i2c_driver.d" "lcd_driver.d" "main.d" "spi_driver.d" "startup_ccs.d" "uart_driver.d" "drivers\buttons.d" "drivers\eth_client_lwip.d" "drivers\exosite_hal_lwip.d" "drivers\http.d" "drivers\pinout.d" "third_party\FreeRTOS\Source\list.d" "third_party\FreeRTOS\Source\queue.d" "third_party\FreeRTOS\Source\tasks.d" "third_party\FreeRTOS\Source\timers.d" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.d" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.d" "third_party\exosite\exosite.d" "third_party\exosite\exosite_meta.d" "utils\cmdline.d" "utils\flash_pb.d" "utils\locator.d" "utils\lwiplib.d" "utils\ringbuf.d" "utils\uartstdio.d" "utils\ustdlib.d" 
+	-$(RM) "button.obj" "i2c_driver.obj" "lcd_driver.obj" "main.obj" "nrf24l01.obj" "spi_driver.obj" "startup_ccs.obj" "uart_driver.obj" "drivers\buttons.obj" "drivers\eth_client_lwip.obj" "drivers\exosite_hal_lwip.obj" "drivers\http.obj" "drivers\pinout.obj" "third_party\FreeRTOS\Source\list.obj" "third_party\FreeRTOS\Source\queue.obj" "third_party\FreeRTOS\Source\tasks.obj" "third_party\FreeRTOS\Source\timers.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\portasm.obj" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.obj" "third_party\exosite\exosite.obj" "third_party\exosite\exosite_meta.obj" "utils\cmdline.obj" "utils\flash_pb.obj" "utils\locator.obj" "utils\lwiplib.obj" "utils\ringbuf.obj" "utils\uartstdio.obj" "utils\ustdlib.obj" 
+	-$(RM) "button.d" "i2c_driver.d" "lcd_driver.d" "main.d" "nrf24l01.d" "spi_driver.d" "startup_ccs.d" "uart_driver.d" "drivers\buttons.d" "drivers\eth_client_lwip.d" "drivers\exosite_hal_lwip.d" "drivers\http.d" "drivers\pinout.d" "third_party\FreeRTOS\Source\list.d" "third_party\FreeRTOS\Source\queue.d" "third_party\FreeRTOS\Source\tasks.d" "third_party\FreeRTOS\Source\timers.d" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.d" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.d" "third_party\exosite\exosite.d" "third_party\exosite\exosite_meta.d" "utils\cmdline.d" "utils\flash_pb.d" "utils\locator.d" "utils\lwiplib.d" "utils\ringbuf.d" "utils\uartstdio.d" "utils\ustdlib.d" 
 	-$(RM) "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\portasm.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
