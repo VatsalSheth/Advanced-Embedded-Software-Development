@@ -1,16 +1,12 @@
 var searchData=
 [
-  ['pbuf_5flink_5fhlen',['PBUF_LINK_HLEN',['../lwipopts_8h.html#a35998a3d56af9940e6a80bb372597685',1,'lwipopts.h']]],
-  ['pbuf_5fpool_5fbufsize',['PBUF_POOL_BUFSIZE',['../lwipopts_8h.html#ae61f4491d56e805e79b79eb5d35a00e5',1,'lwipopts.h']]],
-  ['pbuf_5fpool_5fsize',['PBUF_POOL_SIZE',['../lwipopts_8h.html#a50eaadc4cad0716410332691e382c38a',1,'lwipopts.h']]],
-  ['phy_5fphys_5faddr',['PHY_PHYS_ADDR',['../lwipopts_8h.html#a4432db241e5d371d72b38a1dcda86892',1,'lwipopts.h']]],
-  ['portconfigure_5ftimer_5ffor_5frun_5ftime_5fstats',['portCONFIGURE_TIMER_FOR_RUN_TIME_STATS',['../_free_r_t_o_s_config_8h.html#a727939bcdb98501e0eba0ec8a1841e1b',1,'FreeRTOSConfig.h']]],
-  ['portget_5frun_5ftime_5fcounter_5fvalue',['portGET_RUN_TIME_COUNTER_VALUE',['../_free_r_t_o_s_config_8h.html#aa7cb8c79fb40bf2d4caccf5ba9ae6737',1,'FreeRTOSConfig.h']]],
-  ['priority_5fbmp180_5ftask',['PRIORITY_BMP180_TASK',['../priorities_8h.html#a5bcd2655d66dbfc45e0f64e4ab9bdcf7',1,'priorities.h']]],
-  ['priority_5fcloud_5ftask',['PRIORITY_CLOUD_TASK',['../priorities_8h.html#ab79feb8a8562ccdbad9fb16928d43dfe',1,'priorities.h']]],
-  ['priority_5fcommand_5ftask',['PRIORITY_COMMAND_TASK',['../priorities_8h.html#af9ccc1ab272cf99ea4ef9fe7ec29485f',1,'priorities.h']]],
-  ['priority_5fcompdcm_5ftask',['PRIORITY_COMPDCM_TASK',['../priorities_8h.html#a667cffa32fd01f01d9108381fea28e1c',1,'priorities.h']]],
-  ['priority_5fisl29023_5ftask',['PRIORITY_ISL29023_TASK',['../priorities_8h.html#a1f9b79512b44c82276cb7439f2c34c86',1,'priorities.h']]],
-  ['priority_5fsht21_5ftask',['PRIORITY_SHT21_TASK',['../priorities_8h.html#a46567ee778004b0d24773095fcb24f13',1,'priorities.h']]],
-  ['priority_5ftmp006_5ftask',['PRIORITY_TMP006_TASK',['../priorities_8h.html#abbe58fb82f4f4067e6aac7437339d785',1,'priorities.h']]]
+  ['netif_5fdebug',['NETIF_DEBUG',['../lwipopts_8h.html#a2dfad02b075a7f9a8791a66fe40864a4',1,'lwipopts.h']]],
+  ['no_5fsys',['NO_SYS',['../lwipopts_8h.html#ae00ba99de94a5bf84d832be8976df59b',1,'lwipopts.h']]],
+  ['nop',['NOP',['../nrf24l01_8h.html#a700f88377bf36711b711f69b06c52f5d',1,'nrf24l01.h']]],
+  ['nrf_5fce',['nrf_ce',['../nrf24l01_8h.html#a3306d6b734ed12aef885bb1434e77c7c',1,'nrf24l01.h']]],
+  ['nrf_5fcsn',['nrf_csn',['../nrf24l01_8h.html#a067b8f16222795820f19e293ef838259',1,'nrf24l01.h']]],
+  ['nrf_5fgpio_5fbase',['nrf_gpio_base',['../nrf24l01_8h.html#ad7b3c7708f7d54c9c83e6a5f6b43d15d',1,'nrf24l01.h']]],
+  ['nrf_5firq',['nrf_irq',['../nrf24l01_8h.html#a175472cf0728a143c3a2217d3d03988e',1,'nrf24l01.h']]],
+  ['num_5frx_5fdescriptors',['NUM_RX_DESCRIPTORS',['../lwipopts_8h.html#ad9819ff90ac3963fcb6ba7c402fb98c6',1,'lwipopts.h']]],
+  ['num_5ftx_5fdescriptors',['NUM_TX_DESCRIPTORS',['../lwipopts_8h.html#ad70baca046931aa8d783f9db0a950f08',1,'lwipopts.h']]]
 ];

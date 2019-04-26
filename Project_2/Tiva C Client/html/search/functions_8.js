@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['set_5fcsn',['set_CSN',['../nrf24l01_8h.html#a4c47ecb0afd108992aa1d9350d3f8295',1,'set_CSN():&#160;nrf24l01.c'],['../nrf24l01_8c.html#a4c47ecb0afd108992aa1d9350d3f8295',1,'set_CSN():&#160;nrf24l01.c']]],
-  ['spireceive',['SPIreceive',['../spi__driver_8h.html#a47949f56ac5919693e050a685a06f42d',1,'SPIreceive(uint32_t *data, uint32_t count):&#160;spi_driver.c'],['../spi__driver_8c.html#a47949f56ac5919693e050a685a06f42d',1,'SPIreceive(uint32_t *data, uint32_t count):&#160;spi_driver.c']]],
-  ['spisend',['SPIsend',['../spi__driver_8h.html#a7ca37424c7a9ccefde91d79b1b7ac987',1,'SPIsend(uint32_t *data, uint32_t count):&#160;spi_driver.c'],['../spi__driver_8c.html#a7ca37424c7a9ccefde91d79b1b7ac987',1,'SPIsend(uint32_t *data, uint32_t count):&#160;spi_driver.c']]]
+  ['rd_5fcmd',['RD_CMD',['../lcd__driver_8h.html#a4bdecb2f54b0351dafc22a22d7205f59',1,'RD_CMD(void):&#160;lcd_driver.c'],['../lcd__driver_8c.html#a4bdecb2f54b0351dafc22a22d7205f59',1,'RD_CMD(void):&#160;lcd_driver.c']]],
+  ['rd_5fdata',['RD_DATA',['../lcd__driver_8h.html#ae2e35ea9408f73b8e44ac03bb910ceec',1,'RD_DATA(void):&#160;lcd_driver.c'],['../lcd__driver_8c.html#ae2e35ea9408f73b8e44ac03bb910ceec',1,'RD_DATA(void):&#160;lcd_driver.c']]],
+  ['resetisr',['ResetISR',['../startup__ccs_8c.html#a516ff8924be921fa3a1bb7754b1f5734',1,'startup_ccs.c']]]
 ];

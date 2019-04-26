@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['clear_5fce',['clear_CE',['../nrf24l01_8h.html#ad1e63bfa769b6b25fffbd56b8f85d8aa',1,'clear_CE():&#160;nrf24l01.c'],['../nrf24l01_8c.html#ad1e63bfa769b6b25fffbd56b8f85d8aa',1,'clear_CE():&#160;nrf24l01.c']]],
   ['clear_5fcsn',['clear_CSN',['../nrf24l01_8h.html#a8e4b718cc74a4671374f2c970e3c75ed',1,'clear_CSN():&#160;nrf24l01.c'],['../nrf24l01_8c.html#a8e4b718cc74a4671374f2c970e3c75ed',1,'clear_CSN():&#160;nrf24l01.c']]],
   ['configurebutton',['ConfigureButton',['../button_8h.html#ae8d5123efdd67e5cfddf084ba6123e7b',1,'ConfigureButton():&#160;button.c'],['../button_8c.html#ae8d5123efdd67e5cfddf084ba6123e7b',1,'ConfigureButton():&#160;button.c']]],
   ['configurei2c2',['ConfigureI2C2',['../i2c__driver_8h.html#a6ce3db1994587a4c70027f9b1ca75f3e',1,'ConfigureI2C2(void):&#160;i2c_driver.c'],['../i2c__driver_8c.html#a6ce3db1994587a4c70027f9b1ca75f3e',1,'ConfigureI2C2(void):&#160;i2c_driver.c']]],

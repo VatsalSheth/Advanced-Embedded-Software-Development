@@ -48,6 +48,7 @@ void vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
 //*****************************************************************************
 int main(void)
 {
+    uint8_t tmp[8] = {0x41,0x1f,0x04,0x04,0x04,0x04,0x1f,0x1f};
     //
     // Configure the system frequency.
     //
@@ -59,7 +60,7 @@ int main(void)
     ConfigureButton();
     ConfigureUART();
     ConfigureNRF();
-
+    ConfigureLCD();
 
     //vTaskStartScheduler();
 

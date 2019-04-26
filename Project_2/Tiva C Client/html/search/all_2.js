@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['c',['c',['../nrf24l01_8c.html#aaf5d342e977c5857e99310eea0e72e4b',1,'nrf24l01.c']]],
   ['checksum_5fcheck_5fip',['CHECKSUM_CHECK_IP',['../lwipopts_8h.html#a005b1b9988b84a2cb844144cef22c11e',1,'lwipopts.h']]],
   ['checksum_5fcheck_5ftcp',['CHECKSUM_CHECK_TCP',['../lwipopts_8h.html#ab676cc29571b7ffda12336482ad97699',1,'lwipopts.h']]],
   ['checksum_5fcheck_5fudp',['CHECKSUM_CHECK_UDP',['../lwipopts_8h.html#a6747f7b72abe544fd4dc184cc7fcad37',1,'lwipopts.h']]],
@@ -7,7 +8,9 @@ var searchData=
   ['checksum_5fgen_5fip',['CHECKSUM_GEN_IP',['../lwipopts_8h.html#a8ddad81fc26268a13b35091781da2265',1,'lwipopts.h']]],
   ['checksum_5fgen_5ftcp',['CHECKSUM_GEN_TCP',['../lwipopts_8h.html#a800069963cc4552b99235237c22f00bb',1,'lwipopts.h']]],
   ['checksum_5fgen_5fudp',['CHECKSUM_GEN_UDP',['../lwipopts_8h.html#a98d460f8c2baed8bf62d5473831c0b2c',1,'lwipopts.h']]],
+  ['clear_5fce',['clear_CE',['../nrf24l01_8h.html#ad1e63bfa769b6b25fffbd56b8f85d8aa',1,'clear_CE():&#160;nrf24l01.c'],['../nrf24l01_8c.html#ad1e63bfa769b6b25fffbd56b8f85d8aa',1,'clear_CE():&#160;nrf24l01.c']]],
   ['clear_5fcsn',['clear_CSN',['../nrf24l01_8h.html#a8e4b718cc74a4671374f2c970e3c75ed',1,'clear_CSN():&#160;nrf24l01.c'],['../nrf24l01_8c.html#a8e4b718cc74a4671374f2c970e3c75ed',1,'clear_CSN():&#160;nrf24l01.c']]],
+  ['config',['CONFIG',['../nrf24l01_8h.html#a76ea3cf49247a07c54b3db005a3c7f57',1,'nrf24l01.h']]],
   ['configcheck_5ffor_5fstack_5foverflow',['configCHECK_FOR_STACK_OVERFLOW',['../_free_r_t_o_s_config_8h.html#a847511ee433494b1e32c90602c967ae7',1,'FreeRTOSConfig.h']]],
   ['configcpu_5fclock_5fhz',['configCPU_CLOCK_HZ',['../_free_r_t_o_s_config_8h.html#aa68082df879e6fc96bcb9b26513639e7',1,'FreeRTOSConfig.h']]],
   ['configgenerate_5frun_5ftime_5fstats',['configGENERATE_RUN_TIME_STATS',['../_free_r_t_o_s_config_8h.html#ad8081822f3ebc7c917b63bd7bdd7bc58',1,'FreeRTOSConfig.h']]],
@@ -38,5 +41,6 @@ var searchData=
   ['configuse_5frecursive_5fmutexes',['configUSE_RECURSIVE_MUTEXES',['../_free_r_t_o_s_config_8h.html#a9fe02d866cb1c4fbaa0c3de79f53d42d',1,'FreeRTOSConfig.h']]],
   ['configuse_5ftick_5fhook',['configUSE_TICK_HOOK',['../_free_r_t_o_s_config_8h.html#a23c5922c077106fad3f70b54d9071466',1,'FreeRTOSConfig.h']]],
   ['configuse_5ftimers',['configUSE_TIMERS',['../_free_r_t_o_s_config_8h.html#ac342ae309b0c53828d2ecad3e6de355b',1,'FreeRTOSConfig.h']]],
-  ['configuse_5ftrace_5ffacility',['configUSE_TRACE_FACILITY',['../_free_r_t_o_s_config_8h.html#a27f5ee137dc9f125681a31f0b0a4b3be',1,'FreeRTOSConfig.h']]]
+  ['configuse_5ftrace_5ffacility',['configUSE_TRACE_FACILITY',['../_free_r_t_o_s_config_8h.html#a27f5ee137dc9f125681a31f0b0a4b3be',1,'FreeRTOSConfig.h']]],
+  ['ctrl_5fgpio_5fbase',['ctrl_gpio_base',['../lcd__driver_8h.html#a62a4b586610cd41e953c6e266ce86395',1,'lcd_driver.h']]]
 ];

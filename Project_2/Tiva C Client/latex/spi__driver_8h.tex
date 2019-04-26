@@ -10,7 +10,9 @@ void \hyperlink{spi__driver_8h_a9f0d582580529c5fcf66f3475981c6b5}{Configure\+S\+
 void \hyperlink{spi__driver_8h_a7ca37424c7a9ccefde91d79b1b7ac987}{S\+P\+Isend} (uint32\+\_\+t $\ast$data, uint32\+\_\+t count)
 \begin{DoxyCompactList}\small\item\em Send data through S\+S\+I2. \end{DoxyCompactList}\item 
 void \hyperlink{spi__driver_8h_a47949f56ac5919693e050a685a06f42d}{S\+P\+Ireceive} (uint32\+\_\+t $\ast$data, uint32\+\_\+t count)
-\begin{DoxyCompactList}\small\item\em Receive data through S\+S\+I2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Receive data through S\+S\+I2. \end{DoxyCompactList}\item 
+void \hyperlink{spi__driver_8h_a2dadbf649c776991ed3b0b2780ee5917}{S\+P\+I\+\_\+rxfifo\+\_\+flush} (void)
+\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -36,6 +38,20 @@ References g\+\_\+ui32\+Sys\+Clock.
 
 Referenced by Configure\+N\+R\+F().
 
+\mbox{\Hypertarget{spi__driver_8h_a2dadbf649c776991ed3b0b2780ee5917}\label{spi__driver_8h_a2dadbf649c776991ed3b0b2780ee5917}} 
+\index{spi\+\_\+driver.\+h@{spi\+\_\+driver.\+h}!S\+P\+I\+\_\+rxfifo\+\_\+flush@{S\+P\+I\+\_\+rxfifo\+\_\+flush}}
+\index{S\+P\+I\+\_\+rxfifo\+\_\+flush@{S\+P\+I\+\_\+rxfifo\+\_\+flush}!spi\+\_\+driver.\+h@{spi\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{S\+P\+I\+\_\+rxfifo\+\_\+flush()}{SPI\_rxfifo\_flush()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+rxfifo\+\_\+flush (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 79 of file spi\+\_\+driver.\+c.
+
+
+
+Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+write().
+
 \mbox{\Hypertarget{spi__driver_8h_a47949f56ac5919693e050a685a06f42d}\label{spi__driver_8h_a47949f56ac5919693e050a685a06f42d}} 
 \index{spi\+\_\+driver.\+h@{spi\+\_\+driver.\+h}!S\+P\+Ireceive@{S\+P\+Ireceive}}
 \index{S\+P\+Ireceive@{S\+P\+Ireceive}!spi\+\_\+driver.\+h@{spi\+\_\+driver.\+h}}
@@ -55,11 +71,11 @@ Receive data through S\+S\+I2.
 \end{DoxyParams}
 
 
-Definition at line 70 of file spi\+\_\+driver.\+c.
+Definition at line 68 of file spi\+\_\+driver.\+c.
 
 
 
-Referenced by Configure\+N\+R\+F().
+Referenced by N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
 
 \mbox{\Hypertarget{spi__driver_8h_a7ca37424c7a9ccefde91d79b1b7ac987}\label{spi__driver_8h_a7ca37424c7a9ccefde91d79b1b7ac987}} 
 \index{spi\+\_\+driver.\+h@{spi\+\_\+driver.\+h}!S\+P\+Isend@{S\+P\+Isend}}
@@ -80,9 +96,9 @@ Send data through S\+S\+I2.
 \end{DoxyParams}
 
 
-Definition at line 51 of file spi\+\_\+driver.\+c.
+Definition at line 49 of file spi\+\_\+driver.\+c.
 
 
 
-Referenced by Configure\+N\+R\+F().
+Referenced by N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
 

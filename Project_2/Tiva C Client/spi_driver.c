@@ -75,3 +75,13 @@ void SPIreceive(uint32_t *data, uint32_t count)
         data[i] &= 0xff;
     }
 }
+
+void SPI_rxfifo_flush(void)
+{
+    uint32_t *tmp, rc;
+
+    do
+    {
+        rc = SSIDataGetNonBlocking(SSI2_BASE, tmp);
+    }while(rc);
+}

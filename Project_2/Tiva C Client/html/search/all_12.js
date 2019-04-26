@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xportpendsvhandler',['xPortPendSVHandler',['../startup__ccs_8c.html#a4e6b17b7b6e1a92564afdeff7e9dba91',1,'startup_ccs.c']]],
-  ['xportsystickhandler',['xPortSysTickHandler',['../startup__ccs_8c.html#a78100b2d36913d0b45565be8975e5de8',1,'startup_ccs.c']]]
+  ['vapplicationstackoverflowhook',['vApplicationStackOverflowHook',['../main_8c.html#a2eb5093548035dca71f09ba8f40db43d',1,'main.c']]],
+  ['vportsvchandler',['vPortSVCHandler',['../startup__ccs_8c.html#a859e86b6143d6bc4cf96b2867f408c75',1,'startup_ccs.c']]]
 ];

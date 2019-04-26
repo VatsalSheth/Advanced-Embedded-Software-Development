@@ -59,7 +59,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">nrf24l01.c File Reference</div>  </div>
 </div><!--header-->
@@ -73,17 +74,59 @@ Functions</h2></td></tr>
 <tr class="memitem:a4c47ecb0afd108992aa1d9350d3f8295"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#a4c47ecb0afd108992aa1d9350d3f8295">set_CSN</a> ()</td></tr>
 <tr class="memdesc:a4c47ecb0afd108992aa1d9350d3f8295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets CSN pin of NRF24l01+ module.  <a href="#a4c47ecb0afd108992aa1d9350d3f8295">More...</a><br /></td></tr>
 <tr class="separator:a4c47ecb0afd108992aa1d9350d3f8295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3a4189b6ee9141022e9204cd261dc49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#ad3a4189b6ee9141022e9204cd261dc49">set_CE</a> ()</td></tr>
+<tr class="memdesc:ad3a4189b6ee9141022e9204cd261dc49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets CE pin of NRF24l01+ module.  <a href="#ad3a4189b6ee9141022e9204cd261dc49">More...</a><br /></td></tr>
+<tr class="separator:ad3a4189b6ee9141022e9204cd261dc49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1e63bfa769b6b25fffbd56b8f85d8aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#ad1e63bfa769b6b25fffbd56b8f85d8aa">clear_CE</a> ()</td></tr>
+<tr class="memdesc:ad1e63bfa769b6b25fffbd56b8f85d8aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears CE pin of NRF24l01+ module.  <a href="#ad1e63bfa769b6b25fffbd56b8f85d8aa">More...</a><br /></td></tr>
+<tr class="separator:ad1e63bfa769b6b25fffbd56b8f85d8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e4b718cc74a4671374f2c970e3c75ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#a8e4b718cc74a4671374f2c970e3c75ed">clear_CSN</a> ()</td></tr>
 <tr class="memdesc:a8e4b718cc74a4671374f2c970e3c75ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears CSN pin of NRF24l01+ module.  <a href="#a8e4b718cc74a4671374f2c970e3c75ed">More...</a><br /></td></tr>
 <tr class="separator:a8e4b718cc74a4671374f2c970e3c75ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58dcbbe5884003d7814d657f456f987d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#a58dcbbe5884003d7814d657f456f987d">ConfigureNRF</a> (void)</td></tr>
 <tr class="memdesc:a58dcbbe5884003d7814d657f456f987d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures NRF24l01+ module.  <a href="#a58dcbbe5884003d7814d657f456f987d">More...</a><br /></td></tr>
 <tr class="separator:a58dcbbe5884003d7814d657f456f987d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2944482d98243bebf55412da72a3bc25"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#a2944482d98243bebf55412da72a3bc25">NRF_write</a> (uint32_t command, uint32_t *data, uint8_t count)</td></tr>
+<tr class="memdesc:a2944482d98243bebf55412da72a3bc25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to NRF24l01+ module.  <a href="#a2944482d98243bebf55412da72a3bc25">More...</a><br /></td></tr>
+<tr class="separator:a2944482d98243bebf55412da72a3bc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065d69a8d468d4662ec8d17d76179712"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#a065d69a8d468d4662ec8d17d76179712">NRF_read</a> (uint32_t command, uint32_t *data, uint8_t count)</td></tr>
+<tr class="memdesc:a065d69a8d468d4662ec8d17d76179712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from NRF24l01+ module.  <a href="#a065d69a8d468d4662ec8d17d76179712">More...</a><br /></td></tr>
+<tr class="separator:a065d69a8d468d4662ec8d17d76179712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef40b2dfcf1e3e09c6841e4ac7936580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#aef40b2dfcf1e3e09c6841e4ac7936580">NRF_ISR</a> (void)</td></tr>
 <tr class="memdesc:aef40b2dfcf1e3e09c6841e4ac7936580"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISR of NRF24l01+ module.  <a href="#aef40b2dfcf1e3e09c6841e4ac7936580">More...</a><br /></td></tr>
 <tr class="separator:aef40b2dfcf1e3e09c6841e4ac7936580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af80cce4a88ce2b13f22e7951a30ad29e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#af80cce4a88ce2b13f22e7951a30ad29e">t</a> [8]</td></tr>
+<tr class="separator:af80cce4a88ce2b13f22e7951a30ad29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf5d342e977c5857e99310eea0e72e4b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nrf24l01_8c.html#aaf5d342e977c5857e99310eea0e72e4b">c</a> =0</td></tr>
+<tr class="separator:aaf5d342e977c5857e99310eea0e72e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ad1e63bfa769b6b25fffbd56b8f85d8aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1e63bfa769b6b25fffbd56b8f85d8aa">&#9670;&nbsp;</a></span>clear_CE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clear_CE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clears CE pin of NRF24l01+ module. </p>
+
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00041">41</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00017">nrf_ce</a>, and <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>.</p>
+
+</div>
+</div>
 <a id="a8e4b718cc74a4671374f2c970e3c75ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e4b718cc74a4671374f2c970e3c75ed">&#9670;&nbsp;</a></span>clear_CSN()</h2>
 
@@ -101,11 +144,11 @@ Functions</h2></td></tr>
 
 <p>Clears CSN pin of NRF24l01+ module. </p>
 
-<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00031">31</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00049">49</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
 
-<p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00015">nrf_csn</a>, <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>, and <a class="el" href="nrf24l01_8c_source.html#l00023">set_CSN()</a>.</p>
+<p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00015">nrf_csn</a>, <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>, and <a class="el" href="nrf24l01_8c_source.html#l00025">set_CSN()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00040">ConfigureNRF()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00160">NRF_read()</a>, and <a class="el" href="nrf24l01_8c_source.html#l00127">NRF_write()</a>.</p>
 
 </div>
 </div>
@@ -127,9 +170,9 @@ Functions</h2></td></tr>
 
 <p>Configures NRF24l01+ module. </p>
 
-<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00040">40</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00058">58</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
 
-<p class="reference">References <a class="el" href="nrf24l01_8c_source.html#l00031">clear_CSN()</a>, <a class="el" href="spi__driver_8c_source.html#l00020">ConfigureSPI2()</a>, <a class="el" href="nrf24l01_8h_source.html#l00016">nrf_ce</a>, <a class="el" href="nrf24l01_8h_source.html#l00017">nrf_irq</a>, <a class="el" href="nrf24l01_8c_source.html#l00071">NRF_ISR()</a>, <a class="el" href="nrf24l01_8c_source.html#l00023">set_CSN()</a>, <a class="el" href="spi__driver_8c_source.html#l00070">SPIreceive()</a>, and <a class="el" href="spi__driver_8c_source.html#l00051">SPIsend()</a>.</p>
+<p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00033">CONFIG</a>, <a class="el" href="spi__driver_8c_source.html#l00020">ConfigureSPI2()</a>, <a class="el" href="nrf24l01_8h_source.html#l00034">EN_AA</a>, <a class="el" href="nrf24l01_8h_source.html#l00035">EN_RXADDR</a>, <a class="el" href="nrf24l01_8h_source.html#l00017">nrf_ce</a>, <a class="el" href="nrf24l01_8h_source.html#l00015">nrf_csn</a>, <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>, <a class="el" href="nrf24l01_8h_source.html#l00016">nrf_irq</a>, <a class="el" href="nrf24l01_8c_source.html#l00176">NRF_ISR()</a>, <a class="el" href="nrf24l01_8c_source.html#l00160">NRF_read()</a>, <a class="el" href="nrf24l01_8c_source.html#l00127">NRF_write()</a>, <a class="el" href="nrf24l01_8h_source.html#l00041">OBSERVE_TX</a>, <a class="el" href="nrf24l01_8h_source.html#l00020">R_REGISTER</a>, <a class="el" href="nrf24l01_8h_source.html#l00038">RF_CH</a>, <a class="el" href="nrf24l01_8h_source.html#l00039">RF_SETUP</a>, <a class="el" href="nrf24l01_8h_source.html#l00043">RX_ADDR_P</a>, <a class="el" href="nrf24l01_8h_source.html#l00045">RX_PW_P</a>, <a class="el" href="nrf24l01_8c_source.html#l00033">set_CE()</a>, <a class="el" href="nrf24l01_8h_source.html#l00036">SETUP_AW</a>, <a class="el" href="nrf24l01_8h_source.html#l00037">SETUP_RETR</a>, <a class="el" href="spi__driver_8c_source.html#l00079">SPI_rxfifo_flush()</a>, <a class="el" href="nrf24l01_8h_source.html#l00040">STATUS</a>, <a class="el" href="nrf24l01_8h_source.html#l00044">TX_ADDR</a>, <a class="el" href="nrf24l01_8h_source.html#l00021">W_REGISTER</a>, and <a class="el" href="nrf24l01_8h_source.html#l00023">W_TX_PAYLOAD</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00049">main()</a>.</p>
 
@@ -153,9 +196,138 @@ Functions</h2></td></tr>
 
 <p>ISR of NRF24l01+ module. </p>
 
-<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00071">71</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00176">176</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00040">ConfigureNRF()</a>.</p>
+<p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>, <a class="el" href="nrf24l01_8c_source.html#l00160">NRF_read()</a>, <a class="el" href="nrf24l01_8c_source.html#l00127">NRF_write()</a>, <a class="el" href="nrf24l01_8h_source.html#l00020">R_REGISTER</a>, <a class="el" href="nrf24l01_8h_source.html#l00040">STATUS</a>, and <a class="el" href="nrf24l01_8h_source.html#l00021">W_REGISTER</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00058">ConfigureNRF()</a>.</p>
+
+</div>
+</div>
+<a id="a065d69a8d468d4662ec8d17d76179712"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a065d69a8d468d4662ec8d17d76179712">&#9670;&nbsp;</a></span>NRF_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t NRF_read </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read from NRF24l01+ module. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>NRF24l01+ command to read </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer of data to receive </td></tr>
+    <tr><td class="paramname">count</td><td>Number of bytes of data to receive from above pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status register value </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00160">160</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nrf24l01_8c_source.html#l00049">clear_CSN()</a>, <a class="el" href="nrf24l01_8h_source.html#l00030">NOP</a>, <a class="el" href="nrf24l01_8c_source.html#l00127">NRF_write()</a>, <a class="el" href="nrf24l01_8c_source.html#l00025">set_CSN()</a>, <a class="el" href="spi__driver_8c_source.html#l00068">SPIreceive()</a>, and <a class="el" href="spi__driver_8c_source.html#l00049">SPIsend()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00058">ConfigureNRF()</a>, and <a class="el" href="nrf24l01_8c_source.html#l00176">NRF_ISR()</a>.</p>
+
+</div>
+</div>
+<a id="a2944482d98243bebf55412da72a3bc25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2944482d98243bebf55412da72a3bc25">&#9670;&nbsp;</a></span>NRF_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t NRF_write </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write to NRF24l01+ module. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>NRF24l01+ command to send </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer of data to send </td></tr>
+    <tr><td class="paramname">count</td><td>Number of bytes of data to send from above pointer. count=0 for read commands </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status register value </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00127">127</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nrf24l01_8c_source.html#l00049">clear_CSN()</a>, <a class="el" href="nrf24l01_8c_source.html#l00025">set_CSN()</a>, <a class="el" href="spi__driver_8c_source.html#l00079">SPI_rxfifo_flush()</a>, <a class="el" href="spi__driver_8c_source.html#l00068">SPIreceive()</a>, and <a class="el" href="spi__driver_8c_source.html#l00049">SPIsend()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00058">ConfigureNRF()</a>, <a class="el" href="nrf24l01_8c_source.html#l00176">NRF_ISR()</a>, and <a class="el" href="nrf24l01_8c_source.html#l00160">NRF_read()</a>.</p>
+
+</div>
+</div>
+<a id="ad3a4189b6ee9141022e9204cd261dc49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3a4189b6ee9141022e9204cd261dc49">&#9670;&nbsp;</a></span>set_CE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_CE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets CE pin of NRF24l01+ module. </p>
+
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00033">33</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00017">nrf_ce</a>, and <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00058">ConfigureNRF()</a>.</p>
 
 </div>
 </div>
@@ -176,11 +348,44 @@ Functions</h2></td></tr>
 
 <p>Sets CSN pin of NRF24l01+ module. </p>
 
-<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00023">23</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00025">25</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
 
 <p class="reference">References <a class="el" href="nrf24l01_8h_source.html#l00015">nrf_csn</a>, and <a class="el" href="nrf24l01_8h_source.html#l00014">nrf_gpio_base</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00031">clear_CSN()</a>, and <a class="el" href="nrf24l01_8c_source.html#l00040">ConfigureNRF()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="nrf24l01_8c_source.html#l00049">clear_CSN()</a>, <a class="el" href="nrf24l01_8c_source.html#l00160">NRF_read()</a>, and <a class="el" href="nrf24l01_8c_source.html#l00127">NRF_write()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aaf5d342e977c5857e99310eea0e72e4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf5d342e977c5857e99310eea0e72e4b">&#9670;&nbsp;</a></span>c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t c =0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00020">20</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
+
+</div>
+</div>
+<a id="af80cce4a88ce2b13f22e7951a30ad29e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af80cce4a88ce2b13f22e7951a30ad29e">&#9670;&nbsp;</a></span>t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t t[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="nrf24l01_8c_source.html#l00020">20</a> of file <a class="el" href="nrf24l01_8c_source.html">nrf24l01.c</a>.</p>
 
 </div>
 </div>
