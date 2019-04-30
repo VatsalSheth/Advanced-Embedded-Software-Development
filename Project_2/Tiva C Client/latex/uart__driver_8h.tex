@@ -1,0 +1,56 @@
+\hypertarget{uart__driver_8h}{}\section{Include/uart\+\_\+driver.h File Reference}
+\label{uart__driver_8h}\index{Include/uart\+\_\+driver.\+h@{Include/uart\+\_\+driver.\+h}}
+{\ttfamily \#include \char`\"{}basic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driverlib/uart.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uart__driver_8h_a5f60b6a60802eccd1ae9526e776a476c}{Configure\+U\+A\+RT} (void)
+\begin{DoxyCompactList}\small\item\em Configure the U\+A\+RT and its pins. This must be called before U\+A\+R\+Tprintf(). \end{DoxyCompactList}\item 
+void \hyperlink{uart__driver_8h_aa9f28718f859a5c7ba69656379ee0bc3}{Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+PS} (void)
+\begin{DoxyCompactList}\small\item\em Configure the U\+A\+RT and its pins for G\+PS sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{uart__driver_8h_a5f60b6a60802eccd1ae9526e776a476c}\label{uart__driver_8h_a5f60b6a60802eccd1ae9526e776a476c}} 
+\index{uart\+\_\+driver.\+h@{uart\+\_\+driver.\+h}!Configure\+U\+A\+RT@{Configure\+U\+A\+RT}}
+\index{Configure\+U\+A\+RT@{Configure\+U\+A\+RT}!uart\+\_\+driver.\+h@{uart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{Configure\+U\+A\+R\+T()}{ConfigureUART()}}
+{\footnotesize\ttfamily void Configure\+U\+A\+RT (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure the U\+A\+RT and its pins. This must be called before U\+A\+R\+Tprintf(). 
+
+File\+: \hyperlink{uart__driver_8h}{uart\+\_\+driver.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{uart__driver_8c}{uart\+\_\+driver.\+c} Date\+: 4/29/2019
+
+File\+: \hyperlink{uart__driver_8c}{uart\+\_\+driver.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains A\+PI for U\+A\+RT Date\+: 4/29/2019 
+
+Definition at line 12 of file uart\+\_\+driver.\+c.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{uart__driver_8h_aa9f28718f859a5c7ba69656379ee0bc3}\label{uart__driver_8h_aa9f28718f859a5c7ba69656379ee0bc3}} 
+\index{uart\+\_\+driver.\+h@{uart\+\_\+driver.\+h}!Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+PS@{Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+PS}}
+\index{Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+PS@{Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+PS}!uart\+\_\+driver.\+h@{uart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+P\+S()}{ConfigureUART\_4\_GPS()}}
+{\footnotesize\ttfamily void Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+PS (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure the U\+A\+RT and its pins for G\+PS sensor. 
+
+
+
+Definition at line 45 of file uart\+\_\+driver.\+c.
+
+
+
+References g\+\_\+ui32\+Sys\+Clock.
+
+
+
+Referenced by Sensor\+\_\+fn().
+

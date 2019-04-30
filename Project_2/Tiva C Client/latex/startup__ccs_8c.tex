@@ -1,0 +1,157 @@
+\hypertarget{startup__ccs_8c}{}\section{startup\+\_\+ccs.\+c File Reference}
+\label{startup__ccs_8c}\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}inc/hw\+\_\+nvic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inc/hw\+\_\+types.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{startup__ccs_8c_a516ff8924be921fa3a1bb7754b1f5734}{Reset\+I\+SR} (void)
+\item 
+static void \hyperlink{startup__ccs_8c_ab6bfaa60e7bfe85a2116230a2afdcb40}{Nmi\+SR} (void)
+\item 
+static void \hyperlink{startup__ccs_8c_a50057a2a70b3ab2320bc6e3f93e83d27}{Fault\+I\+SR} (void)
+\item 
+static void \hyperlink{startup__ccs_8c_ac62d95950fb9f007b01e80b27290ee43}{Int\+Default\+Handler} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a3c8534f5781f4cf53ffbeb6d35880b27}{\+\_\+c\+\_\+int00} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a4e6b17b7b6e1a92564afdeff7e9dba91}{x\+Port\+Pend\+S\+V\+Handler} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a859e86b6143d6bc4cf96b2867f408c75}{v\+Port\+S\+V\+C\+Handler} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a78100b2d36913d0b45565be8975e5de8}{x\+Port\+Sys\+Tick\+Handler} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a5f284a8f4650725fb7f38dcec4839d92}{U\+A\+R\+T\+Stdio\+Int\+Handler} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a74ceb5fbff5fd971c473d77538d3ea8c}{Timer0\+Int\+Handler} (void)
+\item 
+void \hyperlink{startup__ccs_8c_a65c79b40bb1ef0170ed09c5cd657f0f0}{Timer1\+Int\+Handler} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{startup__ccs_8c_ac1f2b7c32de8681c4f4184ca6efca568}{\+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP}
+\item 
+void($\ast$const \hyperlink{startup__ccs_8c_a28c770c8f2522f11e2a95f7486620c5b}{g\+\_\+pfn\+Vectors} \mbox{[}$\,$\mbox{]})(void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{startup__ccs_8c_a3c8534f5781f4cf53ffbeb6d35880b27}\label{startup__ccs_8c_a3c8534f5781f4cf53ffbeb6d35880b27}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!\+\_\+c\+\_\+int00@{\+\_\+c\+\_\+int00}}
+\index{\+\_\+c\+\_\+int00@{\+\_\+c\+\_\+int00}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+c\+\_\+int00()}{\_c\_int00()}}
+{\footnotesize\ttfamily void \+\_\+c\+\_\+int00 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{startup__ccs_8c_a50057a2a70b3ab2320bc6e3f93e83d27}\label{startup__ccs_8c_a50057a2a70b3ab2320bc6e3f93e83d27}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!Fault\+I\+SR@{Fault\+I\+SR}}
+\index{Fault\+I\+SR@{Fault\+I\+SR}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{Fault\+I\+S\+R()}{FaultISR()}}
+{\footnotesize\ttfamily static void Fault\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 255 of file startup\+\_\+ccs.\+c.
+
+\mbox{\Hypertarget{startup__ccs_8c_ac62d95950fb9f007b01e80b27290ee43}\label{startup__ccs_8c_ac62d95950fb9f007b01e80b27290ee43}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!Int\+Default\+Handler@{Int\+Default\+Handler}}
+\index{Int\+Default\+Handler@{Int\+Default\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{Int\+Default\+Handler()}{IntDefaultHandler()}}
+{\footnotesize\ttfamily static void Int\+Default\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 273 of file startup\+\_\+ccs.\+c.
+
+\mbox{\Hypertarget{startup__ccs_8c_ab6bfaa60e7bfe85a2116230a2afdcb40}\label{startup__ccs_8c_ab6bfaa60e7bfe85a2116230a2afdcb40}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!Nmi\+SR@{Nmi\+SR}}
+\index{Nmi\+SR@{Nmi\+SR}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{Nmi\+S\+R()}{NmiSR()}}
+{\footnotesize\ttfamily static void Nmi\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 237 of file startup\+\_\+ccs.\+c.
+
+\mbox{\Hypertarget{startup__ccs_8c_a516ff8924be921fa3a1bb7754b1f5734}\label{startup__ccs_8c_a516ff8924be921fa3a1bb7754b1f5734}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!Reset\+I\+SR@{Reset\+I\+SR}}
+\index{Reset\+I\+SR@{Reset\+I\+SR}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{Reset\+I\+S\+R()}{ResetISR()}}
+{\footnotesize\ttfamily void Reset\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 219 of file startup\+\_\+ccs.\+c.
+
+\mbox{\Hypertarget{startup__ccs_8c_a74ceb5fbff5fd971c473d77538d3ea8c}\label{startup__ccs_8c_a74ceb5fbff5fd971c473d77538d3ea8c}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!Timer0\+Int\+Handler@{Timer0\+Int\+Handler}}
+\index{Timer0\+Int\+Handler@{Timer0\+Int\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{Timer0\+Int\+Handler()}{Timer0IntHandler()}}
+{\footnotesize\ttfamily void Timer0\+Int\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 110 of file sensor.\+c.
+
+
+
+References x\+Semaphore\+\_\+s.
+
+\mbox{\Hypertarget{startup__ccs_8c_a65c79b40bb1ef0170ed09c5cd657f0f0}\label{startup__ccs_8c_a65c79b40bb1ef0170ed09c5cd657f0f0}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!Timer1\+Int\+Handler@{Timer1\+Int\+Handler}}
+\index{Timer1\+Int\+Handler@{Timer1\+Int\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{Timer1\+Int\+Handler()}{Timer1IntHandler()}}
+{\footnotesize\ttfamily void Timer1\+Int\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file rf\+\_\+comm.\+c.
+
+
+
+References clear\+\_\+\+C\+E(), max\+\_\+flag, rf\+\_\+link, rx\+\_\+flag, set\+\_\+txmode(), set\+T\+I\+M\+E\+R1(), and tx\+\_\+flag.
+
+\mbox{\Hypertarget{startup__ccs_8c_a5f284a8f4650725fb7f38dcec4839d92}\label{startup__ccs_8c_a5f284a8f4650725fb7f38dcec4839d92}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!U\+A\+R\+T\+Stdio\+Int\+Handler@{U\+A\+R\+T\+Stdio\+Int\+Handler}}
+\index{U\+A\+R\+T\+Stdio\+Int\+Handler@{U\+A\+R\+T\+Stdio\+Int\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+Stdio\+Int\+Handler()}{UARTStdioIntHandler()}}
+{\footnotesize\ttfamily void U\+A\+R\+T\+Stdio\+Int\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{startup__ccs_8c_a859e86b6143d6bc4cf96b2867f408c75}\label{startup__ccs_8c_a859e86b6143d6bc4cf96b2867f408c75}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!v\+Port\+S\+V\+C\+Handler@{v\+Port\+S\+V\+C\+Handler}}
+\index{v\+Port\+S\+V\+C\+Handler@{v\+Port\+S\+V\+C\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+S\+V\+C\+Handler()}{vPortSVCHandler()}}
+{\footnotesize\ttfamily void v\+Port\+S\+V\+C\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{startup__ccs_8c_a4e6b17b7b6e1a92564afdeff7e9dba91}\label{startup__ccs_8c_a4e6b17b7b6e1a92564afdeff7e9dba91}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!x\+Port\+Pend\+S\+V\+Handler@{x\+Port\+Pend\+S\+V\+Handler}}
+\index{x\+Port\+Pend\+S\+V\+Handler@{x\+Port\+Pend\+S\+V\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{x\+Port\+Pend\+S\+V\+Handler()}{xPortPendSVHandler()}}
+{\footnotesize\ttfamily void x\+Port\+Pend\+S\+V\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{startup__ccs_8c_a78100b2d36913d0b45565be8975e5de8}\label{startup__ccs_8c_a78100b2d36913d0b45565be8975e5de8}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!x\+Port\+Sys\+Tick\+Handler@{x\+Port\+Sys\+Tick\+Handler}}
+\index{x\+Port\+Sys\+Tick\+Handler@{x\+Port\+Sys\+Tick\+Handler}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{x\+Port\+Sys\+Tick\+Handler()}{xPortSysTickHandler()}}
+{\footnotesize\ttfamily void x\+Port\+Sys\+Tick\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{startup__ccs_8c_ac1f2b7c32de8681c4f4184ca6efca568}\label{startup__ccs_8c_ac1f2b7c32de8681c4f4184ca6efca568}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!\+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP@{\+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP}}
+\index{\+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP@{\+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP}{\_\_STACK\_TOP}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+\_\+\+S\+T\+A\+C\+K\+\_\+\+T\+OP}
+
+\mbox{\Hypertarget{startup__ccs_8c_a28c770c8f2522f11e2a95f7486620c5b}\label{startup__ccs_8c_a28c770c8f2522f11e2a95f7486620c5b}} 
+\index{startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}!g\+\_\+pfn\+Vectors@{g\+\_\+pfn\+Vectors}}
+\index{g\+\_\+pfn\+Vectors@{g\+\_\+pfn\+Vectors}!startup\+\_\+ccs.\+c@{startup\+\_\+ccs.\+c}}
+\subsubsection{\texorpdfstring{g\+\_\+pfn\+Vectors}{g\_pfnVectors}}
+{\footnotesize\ttfamily void($\ast$ const g\+\_\+pfn\+Vectors\mbox{[}$\,$\mbox{]})(void)}
+
+
+
+Definition at line 75 of file startup\+\_\+ccs.\+c.
+

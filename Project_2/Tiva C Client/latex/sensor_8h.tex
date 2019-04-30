@@ -1,0 +1,317 @@
+\hypertarget{sensor_8h}{}\section{Include/sensor.h File Reference}
+\label{sensor_8h}\index{Include/sensor.\+h@{Include/sensor.\+h}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mpu6050.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}uart\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}button.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gps\+\_\+driver.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sensor_8h_a5114c57a124ba5186edc33dedef29b25}{Accident}~(0x01)
+\item 
+\#define \hyperlink{sensor_8h_ada6c7e95d837db73e06731efe20c67c4}{Time\+\_\+exc}~(0x02)
+\item 
+\#define \hyperlink{sensor_8h_a4900e73f0a05a207159151bbc5563448}{N\+\_\+ignore}~(0x04)
+\item 
+\#define \hyperlink{sensor_8h_a20cea5bb58c492c2dc17b896bc5aee39}{Continue}~(0x08)
+\item 
+\#define \hyperlink{sensor_8h_a36b40d732683cffecbede218f332e321}{G\+PS}~(0x10)
+\item 
+\#define \hyperlink{sensor_8h_ad2d7243c099b33b2343976dd3ee8b36b}{A\+C\+C\+EL}~(0x20)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{sensor_8h_a361f65b6c1c3412b08a0ebcd704bf602}{Sensor\+\_\+task} ()
+\item 
+void \hyperlink{sensor_8h_ac5810ef03d34d84416222b23666c8634}{Sensor\+\_\+fn} (void $\ast$pv\+Parameters)
+\item 
+void \hyperlink{sensor_8h_ac1de44cc0313c19d92f6391619da2768}{Configure\+T\+I\+M\+ER} (void)
+\item 
+uint32\+\_\+t \hyperlink{sensor_8h_abff276c528961d3974c3f02a75ec22ac}{get\+\_\+time} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \hyperlink{sensor_8h_a12cb2aceb7856eb11db582601f16b49f}{x\+Queue\+\_\+rf}
+\item 
+Queue\+Handle\+\_\+t \hyperlink{sensor_8h_a41586cd4de97267a5d195c9ff879c3ba}{x\+Queue\+\_\+a}
+\item 
+Semaphore\+Handle\+\_\+t \hyperlink{sensor_8h_a54b30ae25071f4e7426634a5bd874ca5}{x\+Semaphore\+\_\+rf}
+\item 
+Semaphore\+Handle\+\_\+t \hyperlink{sensor_8h_a9e41ee645f4bb31dab541ed4c9d9e8bd}{x\+Semaphore\+\_\+s}
+\item 
+uint32\+\_\+t \hyperlink{sensor_8h_a961f7cafb2fb3bab6ce59471390f8ebb}{time\+\_\+exch\+\_\+flag}
+\item 
+uint32\+\_\+t \hyperlink{sensor_8h_a8a12906ab5a9a5a53606990cd6b29995}{button\+\_\+flag}
+\item 
+struct tx\+\_\+packet \hyperlink{sensor_8h_add5bb70f375ed2f14e6cdccd9f7062d8}{pk}
+\item 
+Task\+Handle\+\_\+t \hyperlink{sensor_8h_af5071832194293a312163895480af6ac}{x\+Handle\+\_\+s}
+\item 
+uint32\+\_\+t \hyperlink{sensor_8h_a6352955e3fb4fdeeb131b64bd0f19e51}{timer\+\_\+flag}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sensor_8h_ad2d7243c099b33b2343976dd3ee8b36b}\label{sensor_8h_ad2d7243c099b33b2343976dd3ee8b36b}} 
+\index{sensor.\+h@{sensor.\+h}!A\+C\+C\+EL@{A\+C\+C\+EL}}
+\index{A\+C\+C\+EL@{A\+C\+C\+EL}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{A\+C\+C\+EL}{ACCEL}}
+{\footnotesize\ttfamily \#define A\+C\+C\+EL~(0x20)}
+
+
+
+Definition at line 22 of file sensor.\+h.
+
+\mbox{\Hypertarget{sensor_8h_a5114c57a124ba5186edc33dedef29b25}\label{sensor_8h_a5114c57a124ba5186edc33dedef29b25}} 
+\index{sensor.\+h@{sensor.\+h}!Accident@{Accident}}
+\index{Accident@{Accident}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{Accident}{Accident}}
+{\footnotesize\ttfamily \#define Accident~(0x01)}
+
+File\+: \hyperlink{sensor_8h}{sensor.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{sensor_8c}{sensor.\+c} Date\+: 4/29/2019 
+
+Definition at line 17 of file sensor.\+h.
+
+\mbox{\Hypertarget{sensor_8h_a20cea5bb58c492c2dc17b896bc5aee39}\label{sensor_8h_a20cea5bb58c492c2dc17b896bc5aee39}} 
+\index{sensor.\+h@{sensor.\+h}!Continue@{Continue}}
+\index{Continue@{Continue}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{Continue}{Continue}}
+{\footnotesize\ttfamily \#define Continue~(0x08)}
+
+
+
+Definition at line 20 of file sensor.\+h.
+
+\mbox{\Hypertarget{sensor_8h_a36b40d732683cffecbede218f332e321}\label{sensor_8h_a36b40d732683cffecbede218f332e321}} 
+\index{sensor.\+h@{sensor.\+h}!G\+PS@{G\+PS}}
+\index{G\+PS@{G\+PS}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{G\+PS}{GPS}}
+{\footnotesize\ttfamily \#define G\+PS~(0x10)}
+
+
+
+Definition at line 21 of file sensor.\+h.
+
+\mbox{\Hypertarget{sensor_8h_a4900e73f0a05a207159151bbc5563448}\label{sensor_8h_a4900e73f0a05a207159151bbc5563448}} 
+\index{sensor.\+h@{sensor.\+h}!N\+\_\+ignore@{N\+\_\+ignore}}
+\index{N\+\_\+ignore@{N\+\_\+ignore}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{N\+\_\+ignore}{N\_ignore}}
+{\footnotesize\ttfamily \#define N\+\_\+ignore~(0x04)}
+
+
+
+Definition at line 19 of file sensor.\+h.
+
+\mbox{\Hypertarget{sensor_8h_ada6c7e95d837db73e06731efe20c67c4}\label{sensor_8h_ada6c7e95d837db73e06731efe20c67c4}} 
+\index{sensor.\+h@{sensor.\+h}!Time\+\_\+exc@{Time\+\_\+exc}}
+\index{Time\+\_\+exc@{Time\+\_\+exc}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{Time\+\_\+exc}{Time\_exc}}
+{\footnotesize\ttfamily \#define Time\+\_\+exc~(0x02)}
+
+
+
+Definition at line 18 of file sensor.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sensor_8h_ac1de44cc0313c19d92f6391619da2768}\label{sensor_8h_ac1de44cc0313c19d92f6391619da2768}} 
+\index{sensor.\+h@{sensor.\+h}!Configure\+T\+I\+M\+ER@{Configure\+T\+I\+M\+ER}}
+\index{Configure\+T\+I\+M\+ER@{Configure\+T\+I\+M\+ER}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{Configure\+T\+I\+M\+E\+R()}{ConfigureTIMER()}}
+{\footnotesize\ttfamily void Configure\+T\+I\+M\+ER (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 99 of file sensor.\+c.
+
+
+
+References g\+\_\+ui32\+Sys\+Clock.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{sensor_8h_abff276c528961d3974c3f02a75ec22ac}\label{sensor_8h_abff276c528961d3974c3f02a75ec22ac}} 
+\index{sensor.\+h@{sensor.\+h}!get\+\_\+time@{get\+\_\+time}}
+\index{get\+\_\+time@{get\+\_\+time}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+time()}{get\_time()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 118 of file sensor.\+c.
+
+
+
+References pk, and Time\+\_\+exc.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{sensor_8h_ac5810ef03d34d84416222b23666c8634}\label{sensor_8h_ac5810ef03d34d84416222b23666c8634}} 
+\index{sensor.\+h@{sensor.\+h}!Sensor\+\_\+fn@{Sensor\+\_\+fn}}
+\index{Sensor\+\_\+fn@{Sensor\+\_\+fn}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{Sensor\+\_\+fn()}{Sensor\_fn()}}
+{\footnotesize\ttfamily void Sensor\+\_\+fn (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file sensor.\+c.
+
+
+
+References button\+\_\+flag, Configure\+Button(), Configure\+M\+P\+U(), Configure\+T\+I\+M\+E\+R(), Configure\+U\+A\+R\+T\+\_\+4\+\_\+\+G\+P\+S(), get\+\_\+time(), gps\+\_\+encode(), gps\+\_\+f\+\_\+get\+\_\+position(), gps\+\_\+satellites(), pk, time\+\_\+exch\+\_\+flag, x\+Queue\+\_\+a, x\+Queue\+\_\+rf, and x\+Semaphore\+\_\+s.
+
+
+
+Referenced by Sensor\+\_\+task().
+
+\mbox{\Hypertarget{sensor_8h_a361f65b6c1c3412b08a0ebcd704bf602}\label{sensor_8h_a361f65b6c1c3412b08a0ebcd704bf602}} 
+\index{sensor.\+h@{sensor.\+h}!Sensor\+\_\+task@{Sensor\+\_\+task}}
+\index{Sensor\+\_\+task@{Sensor\+\_\+task}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{Sensor\+\_\+task()}{Sensor\_task()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sensor\+\_\+task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file sensor.\+c.
+
+
+
+References config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES, Sensor\+\_\+fn(), and x\+Handle\+\_\+s.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{sensor_8h_a8a12906ab5a9a5a53606990cd6b29995}\label{sensor_8h_a8a12906ab5a9a5a53606990cd6b29995}} 
+\index{sensor.\+h@{sensor.\+h}!button\+\_\+flag@{button\+\_\+flag}}
+\index{button\+\_\+flag@{button\+\_\+flag}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{button\+\_\+flag}{button\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t button\+\_\+flag}
+
+File\+: \hyperlink{sensor_8c}{sensor.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file creates task for sensors which control G\+PS, M\+P\+U6050, button Date\+: 4/29/2019 
+
+Definition at line 10 of file sensor.\+c.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{sensor_8h_add5bb70f375ed2f14e6cdccd9f7062d8}\label{sensor_8h_add5bb70f375ed2f14e6cdccd9f7062d8}} 
+\index{sensor.\+h@{sensor.\+h}!pk@{pk}}
+\index{pk@{pk}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{pk}{pk}}
+{\footnotesize\ttfamily struct tx\+\_\+packet pk}
+
+
+
+Definition at line 11 of file sensor.\+c.
+
+
+
+Referenced by get\+\_\+time(), and Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{sensor_8h_a961f7cafb2fb3bab6ce59471390f8ebb}\label{sensor_8h_a961f7cafb2fb3bab6ce59471390f8ebb}} 
+\index{sensor.\+h@{sensor.\+h}!time\+\_\+exch\+\_\+flag@{time\+\_\+exch\+\_\+flag}}
+\index{time\+\_\+exch\+\_\+flag@{time\+\_\+exch\+\_\+flag}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{time\+\_\+exch\+\_\+flag}{time\_exch\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t time\+\_\+exch\+\_\+flag}
+
+
+
+Definition at line 10 of file sensor.\+c.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{sensor_8h_a6352955e3fb4fdeeb131b64bd0f19e51}\label{sensor_8h_a6352955e3fb4fdeeb131b64bd0f19e51}} 
+\index{sensor.\+h@{sensor.\+h}!timer\+\_\+flag@{timer\+\_\+flag}}
+\index{timer\+\_\+flag@{timer\+\_\+flag}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{timer\+\_\+flag}{timer\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t timer\+\_\+flag}
+
+
+
+Definition at line 30 of file sensor.\+h.
+
+\mbox{\Hypertarget{sensor_8h_af5071832194293a312163895480af6ac}\label{sensor_8h_af5071832194293a312163895480af6ac}} 
+\index{sensor.\+h@{sensor.\+h}!x\+Handle\+\_\+s@{x\+Handle\+\_\+s}}
+\index{x\+Handle\+\_\+s@{x\+Handle\+\_\+s}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{x\+Handle\+\_\+s}{xHandle\_s}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t x\+Handle\+\_\+s}
+
+
+
+Definition at line 12 of file sensor.\+c.
+
+
+
+Referenced by Sensor\+\_\+task().
+
+\mbox{\Hypertarget{sensor_8h_a41586cd4de97267a5d195c9ff879c3ba}\label{sensor_8h_a41586cd4de97267a5d195c9ff879c3ba}} 
+\index{sensor.\+h@{sensor.\+h}!x\+Queue\+\_\+a@{x\+Queue\+\_\+a}}
+\index{x\+Queue\+\_\+a@{x\+Queue\+\_\+a}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{x\+Queue\+\_\+a}{xQueue\_a}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+\_\+a}
+
+
+
+Definition at line 12 of file main.\+c.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{sensor_8h_a12cb2aceb7856eb11db582601f16b49f}\label{sensor_8h_a12cb2aceb7856eb11db582601f16b49f}} 
+\index{sensor.\+h@{sensor.\+h}!x\+Queue\+\_\+rf@{x\+Queue\+\_\+rf}}
+\index{x\+Queue\+\_\+rf@{x\+Queue\+\_\+rf}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{x\+Queue\+\_\+rf}{xQueue\_rf}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+\_\+rf}
+
+File\+: \hyperlink{main_8h}{main.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{main_8c}{main.\+c} Date\+: 4/29/2019 
+
+Definition at line 12 of file main.\+c.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{sensor_8h_a54b30ae25071f4e7426634a5bd874ca5}\label{sensor_8h_a54b30ae25071f4e7426634a5bd874ca5}} 
+\index{sensor.\+h@{sensor.\+h}!x\+Semaphore\+\_\+rf@{x\+Semaphore\+\_\+rf}}
+\index{x\+Semaphore\+\_\+rf@{x\+Semaphore\+\_\+rf}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{x\+Semaphore\+\_\+rf}{xSemaphore\_rf}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t x\+Semaphore\+\_\+rf}
+
+
+
+Definition at line 13 of file main.\+c.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{sensor_8h_a9e41ee645f4bb31dab541ed4c9d9e8bd}\label{sensor_8h_a9e41ee645f4bb31dab541ed4c9d9e8bd}} 
+\index{sensor.\+h@{sensor.\+h}!x\+Semaphore\+\_\+s@{x\+Semaphore\+\_\+s}}
+\index{x\+Semaphore\+\_\+s@{x\+Semaphore\+\_\+s}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{x\+Semaphore\+\_\+s}{xSemaphore\_s}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t x\+Semaphore\+\_\+s}
+
+
+
+Definition at line 13 of file main.\+c.
+
+
+
+Referenced by main().
+

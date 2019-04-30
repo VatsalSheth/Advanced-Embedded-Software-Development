@@ -1,0 +1,720 @@
+\hypertarget{nrf24l01_8h}{}\section{Include/nrf24l01.h File Reference}
+\label{nrf24l01_8h}\index{Include/nrf24l01.\+h@{Include/nrf24l01.\+h}}
+{\ttfamily \#include \char`\"{}basic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi\+\_\+driver.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{nrf24l01_8h_ad7b3c7708f7d54c9c83e6a5f6b43d15d}{nrf\+\_\+gpio\+\_\+base}~G\+P\+I\+O\+\_\+\+P\+O\+R\+T\+L\+\_\+\+B\+A\+SE
+\item 
+\#define \hyperlink{nrf24l01_8h_a067b8f16222795820f19e293ef838259}{nrf\+\_\+csn}~G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+1
+\item 
+\#define \hyperlink{nrf24l01_8h_a175472cf0728a143c3a2217d3d03988e}{nrf\+\_\+irq}~G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+2
+\item 
+\#define \hyperlink{nrf24l01_8h_a3306d6b734ed12aef885bb1434e77c7c}{nrf\+\_\+ce}~G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+3
+\item 
+\#define \hyperlink{nrf24l01_8h_ad253c20be4ebdb4f1351989627aa7a65}{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER}(x)~(x \& 0x1f)
+\item 
+\#define \hyperlink{nrf24l01_8h_a932d95ab89c1aa30251aa93fbb270422}{W\+\_\+\+R\+E\+G\+I\+S\+T\+ER}(x)~((x \& 0x1f) $\vert$ 0x20)
+\item 
+\#define \hyperlink{nrf24l01_8h_a462d8c2314b823b724574c1ca73225a6}{R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}~(0x61)
+\item 
+\#define \hyperlink{nrf24l01_8h_afd12673bc8ca8559b0eee395e8845982}{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}~(0xa0)
+\item 
+\#define \hyperlink{nrf24l01_8h_abce47e8066832b6ac4e18162a79859b4}{F\+L\+U\+S\+H\+\_\+\+TX}~(0xe1)
+\item 
+\#define \hyperlink{nrf24l01_8h_ab2418a6171d7f1eefd458927fdfe7057}{F\+L\+U\+S\+H\+\_\+\+RX}~(0xe2)
+\item 
+\#define \hyperlink{nrf24l01_8h_a2f1d9bb858232e8b1494b60aa9a7d25a}{R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL}~(0xe3)
+\item 
+\#define \hyperlink{nrf24l01_8h_a14ea186f093047db160cee642e5bd901}{R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID}~(0x60)
+\item 
+\#define \hyperlink{nrf24l01_8h_a2219d59eae0b7ba29bdcbeee15471df5}{W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD}(x)~((x \& 0x07) $\vert$ 0xa8)
+\item 
+\#define \hyperlink{nrf24l01_8h_a974e6df1de481bc7796a2c1c96b6c9ff}{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK}~(0xb0)
+\item 
+\#define \hyperlink{nrf24l01_8h_a700f88377bf36711b711f69b06c52f5d}{N\+OP}~(0xff)
+\item 
+\#define \hyperlink{nrf24l01_8h_a76ea3cf49247a07c54b3db005a3c7f57}{C\+O\+N\+F\+IG}~(0x00)
+\item 
+\#define \hyperlink{nrf24l01_8h_aa84a282351a2c9b83dd653df6ac59216}{E\+N\+\_\+\+AA}~(0x01)
+\item 
+\#define \hyperlink{nrf24l01_8h_ab6b2378ce9cab6ccafb6d30c774c5307}{E\+N\+\_\+\+R\+X\+A\+D\+DR}~(0x02)
+\item 
+\#define \hyperlink{nrf24l01_8h_af5ef355ba3eca336db1285cab353ddc2}{S\+E\+T\+U\+P\+\_\+\+AW}~(0x03)
+\item 
+\#define \hyperlink{nrf24l01_8h_a2188309b3eceeae158dd64109cd919aa}{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR}~(0x04)
+\item 
+\#define \hyperlink{nrf24l01_8h_a5c4da84e4a01531aa9f5c3e617848d66}{R\+F\+\_\+\+CH}~(0x05)
+\item 
+\#define \hyperlink{nrf24l01_8h_ad95edb7665f39454d7d7fd436301712b}{R\+F\+\_\+\+S\+E\+T\+UP}~(0x06)
+\item 
+\#define \hyperlink{nrf24l01_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}{S\+T\+A\+T\+US}~(0x07)
+\item 
+\#define \hyperlink{nrf24l01_8h_a491468eaa7f2db84c152709b0b5fb1aa}{O\+B\+S\+E\+R\+V\+E\+\_\+\+TX}~(0x08)
+\item 
+\#define \hyperlink{nrf24l01_8h_ab9743a9a0928c8f19ad9687ae6c67150}{R\+PD}~(0x09)
+\item 
+\#define \hyperlink{nrf24l01_8h_a7c845eaaec6dcac0e400d167f5b35487}{R\+X\+\_\+\+A\+D\+D\+R\+\_\+P}(x)~(0x0a + x)
+\item 
+\#define \hyperlink{nrf24l01_8h_aa734c6e08b9f794436eacbabe466a6c4}{T\+X\+\_\+\+A\+D\+DR}~(0x10)
+\item 
+\#define \hyperlink{nrf24l01_8h_a516683e38011171fcfa223debfb01f6e}{R\+X\+\_\+\+P\+W\+\_\+P}(x)~(0x11 + x)
+\item 
+\#define \hyperlink{nrf24l01_8h_a9e5c9878194f462bf7a46ca8a7b8f9d2}{F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US}~(0x17)
+\item 
+\#define \hyperlink{nrf24l01_8h_ae79cde384e0b6a5549efb001589a79ec}{D\+Y\+N\+PD}~(0x1c)
+\item 
+\#define \hyperlink{nrf24l01_8h_adf81f7b30b6c08465ce704956b446a2d}{F\+E\+A\+T\+U\+RE}~(0x1d)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{nrf24l01_8h_a8e4b718cc74a4671374f2c970e3c75ed}{clear\+\_\+\+C\+SN} ()
+\begin{DoxyCompactList}\small\item\em Clears C\+SN pin of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_a4c47ecb0afd108992aa1d9350d3f8295}{set\+\_\+\+C\+SN} ()
+\begin{DoxyCompactList}\small\item\em Sets C\+SN pin of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_ad3a4189b6ee9141022e9204cd261dc49}{set\+\_\+\+CE} ()
+\begin{DoxyCompactList}\small\item\em Sets CE pin of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_ad1e63bfa769b6b25fffbd56b8f85d8aa}{clear\+\_\+\+CE} ()
+\begin{DoxyCompactList}\small\item\em Clears CE pin of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_a58dcbbe5884003d7814d657f456f987d}{Configure\+N\+RF} (void)
+\begin{DoxyCompactList}\small\item\em Configures N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_aef40b2dfcf1e3e09c6841e4ac7936580}{N\+R\+F\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{nrf24l01_8h_a8e019a9ef75d5648a801d4fe2c99fd08}{N\+R\+F\+\_\+write} (uint32\+\_\+t command, uint8\+\_\+t $\ast$data, uint8\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Write to N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{nrf24l01_8h_ad7197c236227c9d20f9099acd3e8d7c8}{N\+R\+F\+\_\+read} (uint32\+\_\+t command, uint8\+\_\+t $\ast$data, uint8\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Read from N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_a82e412e87330e76e6bdfba2e48e5f716}{set\+\_\+rxmode} (void)
+\begin{DoxyCompactList}\small\item\em Set N\+RF module to RX mode. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_ab56eb8c077356f06be37bb1820fc0476}{set\+\_\+txmode} (void)
+\begin{DoxyCompactList}\small\item\em Set N\+RF module to TX mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{nrf24l01_8h_a76ea3cf49247a07c54b3db005a3c7f57}\label{nrf24l01_8h_a76ea3cf49247a07c54b3db005a3c7f57}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!C\+O\+N\+F\+IG@{C\+O\+N\+F\+IG}}
+\index{C\+O\+N\+F\+IG@{C\+O\+N\+F\+IG}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+N\+F\+IG}{CONFIG}}
+{\footnotesize\ttfamily \#define C\+O\+N\+F\+IG~(0x00)}
+
+
+
+Definition at line 33 of file nrf24l01.\+h.
+
+
+
+Referenced by set\+\_\+rxmode(), and set\+\_\+txmode().
+
+\mbox{\Hypertarget{nrf24l01_8h_ae79cde384e0b6a5549efb001589a79ec}\label{nrf24l01_8h_ae79cde384e0b6a5549efb001589a79ec}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!D\+Y\+N\+PD@{D\+Y\+N\+PD}}
+\index{D\+Y\+N\+PD@{D\+Y\+N\+PD}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{D\+Y\+N\+PD}{DYNPD}}
+{\footnotesize\ttfamily \#define D\+Y\+N\+PD~(0x1c)}
+
+
+
+Definition at line 47 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_aa84a282351a2c9b83dd653df6ac59216}\label{nrf24l01_8h_aa84a282351a2c9b83dd653df6ac59216}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!E\+N\+\_\+\+AA@{E\+N\+\_\+\+AA}}
+\index{E\+N\+\_\+\+AA@{E\+N\+\_\+\+AA}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+\_\+\+AA}{EN\_AA}}
+{\footnotesize\ttfamily \#define E\+N\+\_\+\+AA~(0x01)}
+
+
+
+Definition at line 34 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_ab6b2378ce9cab6ccafb6d30c774c5307}\label{nrf24l01_8h_ab6b2378ce9cab6ccafb6d30c774c5307}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!E\+N\+\_\+\+R\+X\+A\+D\+DR@{E\+N\+\_\+\+R\+X\+A\+D\+DR}}
+\index{E\+N\+\_\+\+R\+X\+A\+D\+DR@{E\+N\+\_\+\+R\+X\+A\+D\+DR}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+\_\+\+R\+X\+A\+D\+DR}{EN\_RXADDR}}
+{\footnotesize\ttfamily \#define E\+N\+\_\+\+R\+X\+A\+D\+DR~(0x02)}
+
+
+
+Definition at line 35 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_adf81f7b30b6c08465ce704956b446a2d}\label{nrf24l01_8h_adf81f7b30b6c08465ce704956b446a2d}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!F\+E\+A\+T\+U\+RE@{F\+E\+A\+T\+U\+RE}}
+\index{F\+E\+A\+T\+U\+RE@{F\+E\+A\+T\+U\+RE}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{F\+E\+A\+T\+U\+RE}{FEATURE}}
+{\footnotesize\ttfamily \#define F\+E\+A\+T\+U\+RE~(0x1d)}
+
+
+
+Definition at line 48 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a9e5c9878194f462bf7a46ca8a7b8f9d2}\label{nrf24l01_8h_a9e5c9878194f462bf7a46ca8a7b8f9d2}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US@{F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US}}
+\index{F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US@{F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US}{FIFO\_STATUS}}
+{\footnotesize\ttfamily \#define F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US~(0x17)}
+
+
+
+Definition at line 46 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_ab2418a6171d7f1eefd458927fdfe7057}\label{nrf24l01_8h_ab2418a6171d7f1eefd458927fdfe7057}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!F\+L\+U\+S\+H\+\_\+\+RX@{F\+L\+U\+S\+H\+\_\+\+RX}}
+\index{F\+L\+U\+S\+H\+\_\+\+RX@{F\+L\+U\+S\+H\+\_\+\+RX}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+U\+S\+H\+\_\+\+RX}{FLUSH\_RX}}
+{\footnotesize\ttfamily \#define F\+L\+U\+S\+H\+\_\+\+RX~(0xe2)}
+
+
+
+Definition at line 25 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_abce47e8066832b6ac4e18162a79859b4}\label{nrf24l01_8h_abce47e8066832b6ac4e18162a79859b4}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!F\+L\+U\+S\+H\+\_\+\+TX@{F\+L\+U\+S\+H\+\_\+\+TX}}
+\index{F\+L\+U\+S\+H\+\_\+\+TX@{F\+L\+U\+S\+H\+\_\+\+TX}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+U\+S\+H\+\_\+\+TX}{FLUSH\_TX}}
+{\footnotesize\ttfamily \#define F\+L\+U\+S\+H\+\_\+\+TX~(0xe1)}
+
+
+
+Definition at line 24 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_a700f88377bf36711b711f69b06c52f5d}\label{nrf24l01_8h_a700f88377bf36711b711f69b06c52f5d}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!N\+OP@{N\+OP}}
+\index{N\+OP@{N\+OP}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{N\+OP}{NOP}}
+{\footnotesize\ttfamily \#define N\+OP~(0xff)}
+
+
+
+Definition at line 30 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+read().
+
+\mbox{\Hypertarget{nrf24l01_8h_a3306d6b734ed12aef885bb1434e77c7c}\label{nrf24l01_8h_a3306d6b734ed12aef885bb1434e77c7c}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!nrf\+\_\+ce@{nrf\+\_\+ce}}
+\index{nrf\+\_\+ce@{nrf\+\_\+ce}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{nrf\+\_\+ce}{nrf\_ce}}
+{\footnotesize\ttfamily \#define nrf\+\_\+ce~G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+3}
+
+
+
+Definition at line 17 of file nrf24l01.\+h.
+
+
+
+Referenced by clear\+\_\+\+C\+E(), Configure\+N\+R\+F(), and set\+\_\+\+C\+E().
+
+\mbox{\Hypertarget{nrf24l01_8h_a067b8f16222795820f19e293ef838259}\label{nrf24l01_8h_a067b8f16222795820f19e293ef838259}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!nrf\+\_\+csn@{nrf\+\_\+csn}}
+\index{nrf\+\_\+csn@{nrf\+\_\+csn}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{nrf\+\_\+csn}{nrf\_csn}}
+{\footnotesize\ttfamily \#define nrf\+\_\+csn~G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+1}
+
+
+
+Definition at line 15 of file nrf24l01.\+h.
+
+
+
+Referenced by clear\+\_\+\+C\+S\+N(), Configure\+N\+R\+F(), and set\+\_\+\+C\+S\+N().
+
+\mbox{\Hypertarget{nrf24l01_8h_ad7b3c7708f7d54c9c83e6a5f6b43d15d}\label{nrf24l01_8h_ad7b3c7708f7d54c9c83e6a5f6b43d15d}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!nrf\+\_\+gpio\+\_\+base@{nrf\+\_\+gpio\+\_\+base}}
+\index{nrf\+\_\+gpio\+\_\+base@{nrf\+\_\+gpio\+\_\+base}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{nrf\+\_\+gpio\+\_\+base}{nrf\_gpio\_base}}
+{\footnotesize\ttfamily \#define nrf\+\_\+gpio\+\_\+base~G\+P\+I\+O\+\_\+\+P\+O\+R\+T\+L\+\_\+\+B\+A\+SE}
+
+File\+: \hyperlink{nrf24l01_8h}{nrf24l01.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{nrf24l01_8c}{nrf24l01.\+c} Date\+: 4/29/2019 
+
+Definition at line 14 of file nrf24l01.\+h.
+
+
+
+Referenced by clear\+\_\+\+C\+E(), clear\+\_\+\+C\+S\+N(), Configure\+N\+R\+F(), N\+R\+F\+\_\+\+I\+S\+R(), set\+\_\+\+C\+E(), and set\+\_\+\+C\+S\+N().
+
+\mbox{\Hypertarget{nrf24l01_8h_a175472cf0728a143c3a2217d3d03988e}\label{nrf24l01_8h_a175472cf0728a143c3a2217d3d03988e}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!nrf\+\_\+irq@{nrf\+\_\+irq}}
+\index{nrf\+\_\+irq@{nrf\+\_\+irq}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{nrf\+\_\+irq}{nrf\_irq}}
+{\footnotesize\ttfamily \#define nrf\+\_\+irq~G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+2}
+
+
+
+Definition at line 16 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_a491468eaa7f2db84c152709b0b5fb1aa}\label{nrf24l01_8h_a491468eaa7f2db84c152709b0b5fb1aa}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!O\+B\+S\+E\+R\+V\+E\+\_\+\+TX@{O\+B\+S\+E\+R\+V\+E\+\_\+\+TX}}
+\index{O\+B\+S\+E\+R\+V\+E\+\_\+\+TX@{O\+B\+S\+E\+R\+V\+E\+\_\+\+TX}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{O\+B\+S\+E\+R\+V\+E\+\_\+\+TX}{OBSERVE\_TX}}
+{\footnotesize\ttfamily \#define O\+B\+S\+E\+R\+V\+E\+\_\+\+TX~(0x08)}
+
+
+
+Definition at line 41 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_ad253c20be4ebdb4f1351989627aa7a65}\label{nrf24l01_8h_ad253c20be4ebdb4f1351989627aa7a65}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}
+\index{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER}{R\_REGISTER}}
+{\footnotesize\ttfamily \#define R\+\_\+\+R\+E\+G\+I\+S\+T\+ER(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(x \& 0x1f)}
+
+
+
+Definition at line 20 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{nrf24l01_8h_a462d8c2314b823b724574c1ca73225a6}\label{nrf24l01_8h_a462d8c2314b823b724574c1ca73225a6}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD@{R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}}
+\index{R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD@{R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}{R\_RX\_PAYLOAD}}
+{\footnotesize\ttfamily \#define R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD~(0x61)}
+
+
+
+Definition at line 22 of file nrf24l01.\+h.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{nrf24l01_8h_a14ea186f093047db160cee642e5bd901}\label{nrf24l01_8h_a14ea186f093047db160cee642e5bd901}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID@{R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID}}
+\index{R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID@{R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID}{R\_RX\_PL\_WID}}
+{\footnotesize\ttfamily \#define R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID~(0x60)}
+
+
+
+Definition at line 27 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a2f1d9bb858232e8b1494b60aa9a7d25a}\label{nrf24l01_8h_a2f1d9bb858232e8b1494b60aa9a7d25a}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL@{R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL}}
+\index{R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL@{R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL}{REUSE\_TX\_PL}}
+{\footnotesize\ttfamily \#define R\+E\+U\+S\+E\+\_\+\+T\+X\+\_\+\+PL~(0xe3)}
+
+
+
+Definition at line 26 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a5c4da84e4a01531aa9f5c3e617848d66}\label{nrf24l01_8h_a5c4da84e4a01531aa9f5c3e617848d66}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+F\+\_\+\+CH@{R\+F\+\_\+\+CH}}
+\index{R\+F\+\_\+\+CH@{R\+F\+\_\+\+CH}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+F\+\_\+\+CH}{RF\_CH}}
+{\footnotesize\ttfamily \#define R\+F\+\_\+\+CH~(0x05)}
+
+
+
+Definition at line 38 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_ad95edb7665f39454d7d7fd436301712b}\label{nrf24l01_8h_ad95edb7665f39454d7d7fd436301712b}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+F\+\_\+\+S\+E\+T\+UP@{R\+F\+\_\+\+S\+E\+T\+UP}}
+\index{R\+F\+\_\+\+S\+E\+T\+UP@{R\+F\+\_\+\+S\+E\+T\+UP}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+F\+\_\+\+S\+E\+T\+UP}{RF\_SETUP}}
+{\footnotesize\ttfamily \#define R\+F\+\_\+\+S\+E\+T\+UP~(0x06)}
+
+
+
+Definition at line 39 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_ab9743a9a0928c8f19ad9687ae6c67150}\label{nrf24l01_8h_ab9743a9a0928c8f19ad9687ae6c67150}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+PD@{R\+PD}}
+\index{R\+PD@{R\+PD}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+PD}{RPD}}
+{\footnotesize\ttfamily \#define R\+PD~(0x09)}
+
+
+
+Definition at line 42 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a7c845eaaec6dcac0e400d167f5b35487}\label{nrf24l01_8h_a7c845eaaec6dcac0e400d167f5b35487}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+X\+\_\+\+A\+D\+D\+R\+\_\+P@{R\+X\+\_\+\+A\+D\+D\+R\+\_\+P}}
+\index{R\+X\+\_\+\+A\+D\+D\+R\+\_\+P@{R\+X\+\_\+\+A\+D\+D\+R\+\_\+P}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+A\+D\+D\+R\+\_\+P}{RX\_ADDR\_P}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+A\+D\+D\+R\+\_\+P(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(0x0a + x)}
+
+
+
+Definition at line 43 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_a516683e38011171fcfa223debfb01f6e}\label{nrf24l01_8h_a516683e38011171fcfa223debfb01f6e}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!R\+X\+\_\+\+P\+W\+\_\+P@{R\+X\+\_\+\+P\+W\+\_\+P}}
+\index{R\+X\+\_\+\+P\+W\+\_\+P@{R\+X\+\_\+\+P\+W\+\_\+P}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+P\+W\+\_\+P}{RX\_PW\_P}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+P\+W\+\_\+P(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(0x11 + x)}
+
+
+
+Definition at line 45 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_af5ef355ba3eca336db1285cab353ddc2}\label{nrf24l01_8h_af5ef355ba3eca336db1285cab353ddc2}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!S\+E\+T\+U\+P\+\_\+\+AW@{S\+E\+T\+U\+P\+\_\+\+AW}}
+\index{S\+E\+T\+U\+P\+\_\+\+AW@{S\+E\+T\+U\+P\+\_\+\+AW}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+T\+U\+P\+\_\+\+AW}{SETUP\_AW}}
+{\footnotesize\ttfamily \#define S\+E\+T\+U\+P\+\_\+\+AW~(0x03)}
+
+
+
+Definition at line 36 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a2188309b3eceeae158dd64109cd919aa}\label{nrf24l01_8h_a2188309b3eceeae158dd64109cd919aa}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!S\+E\+T\+U\+P\+\_\+\+R\+E\+TR@{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR}}
+\index{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR@{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR}{SETUP\_RETR}}
+{\footnotesize\ttfamily \#define S\+E\+T\+U\+P\+\_\+\+R\+E\+TR~(0x04)}
+
+
+
+Definition at line 37 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}\label{nrf24l01_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!S\+T\+A\+T\+US@{S\+T\+A\+T\+US}}
+\index{S\+T\+A\+T\+US@{S\+T\+A\+T\+US}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+US}{STATUS}}
+{\footnotesize\ttfamily \#define S\+T\+A\+T\+US~(0x07)}
+
+
+
+Definition at line 40 of file nrf24l01.\+h.
+
+
+
+Referenced by N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{nrf24l01_8h_aa734c6e08b9f794436eacbabe466a6c4}\label{nrf24l01_8h_aa734c6e08b9f794436eacbabe466a6c4}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!T\+X\+\_\+\+A\+D\+DR@{T\+X\+\_\+\+A\+D\+DR}}
+\index{T\+X\+\_\+\+A\+D\+DR@{T\+X\+\_\+\+A\+D\+DR}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+A\+D\+DR}{TX\_ADDR}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+A\+D\+DR~(0x10)}
+
+
+
+Definition at line 44 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_a2219d59eae0b7ba29bdcbeee15471df5}\label{nrf24l01_8h_a2219d59eae0b7ba29bdcbeee15471df5}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD@{W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD}}
+\index{W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD@{W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD}{W\_ACK\_PAYLOAD}}
+{\footnotesize\ttfamily \#define W\+\_\+\+A\+C\+K\+\_\+\+P\+A\+Y\+L\+O\+AD(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x \& 0x07) $\vert$ 0xa8)}
+
+
+
+Definition at line 28 of file nrf24l01.\+h.
+
+\mbox{\Hypertarget{nrf24l01_8h_a932d95ab89c1aa30251aa93fbb270422}\label{nrf24l01_8h_a932d95ab89c1aa30251aa93fbb270422}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!W\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{W\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}
+\index{W\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{W\+\_\+\+R\+E\+G\+I\+S\+T\+ER}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{W\+\_\+\+R\+E\+G\+I\+S\+T\+ER}{W\_REGISTER}}
+{\footnotesize\ttfamily \#define W\+\_\+\+R\+E\+G\+I\+S\+T\+ER(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x \& 0x1f) $\vert$ 0x20)}
+
+
+
+Definition at line 21 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F(), N\+R\+F\+\_\+\+I\+S\+R(), set\+\_\+rxmode(), and set\+\_\+txmode().
+
+\mbox{\Hypertarget{nrf24l01_8h_afd12673bc8ca8559b0eee395e8845982}\label{nrf24l01_8h_afd12673bc8ca8559b0eee395e8845982}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD@{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}}
+\index{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD@{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}{W\_TX\_PAYLOAD}}
+{\footnotesize\ttfamily \#define W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD~(0xa0)}
+
+
+
+Definition at line 23 of file nrf24l01.\+h.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{nrf24l01_8h_a974e6df1de481bc7796a2c1c96b6c9ff}\label{nrf24l01_8h_a974e6df1de481bc7796a2c1c96b6c9ff}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK@{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK}}
+\index{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK@{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK}{W\_TX\_PAYLOAD\_NOACK}}
+{\footnotesize\ttfamily \#define W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK~(0xb0)}
+
+
+
+Definition at line 29 of file nrf24l01.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{nrf24l01_8h_ad1e63bfa769b6b25fffbd56b8f85d8aa}\label{nrf24l01_8h_ad1e63bfa769b6b25fffbd56b8f85d8aa}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!clear\+\_\+\+CE@{clear\+\_\+\+CE}}
+\index{clear\+\_\+\+CE@{clear\+\_\+\+CE}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{clear\+\_\+\+C\+E()}{clear\_CE()}}
+{\footnotesize\ttfamily void clear\+\_\+\+CE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears CE pin of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 39 of file nrf24l01.\+c.
+
+
+
+References nrf\+\_\+ce, and nrf\+\_\+gpio\+\_\+base.
+
+
+
+Referenced by Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{nrf24l01_8h_a8e4b718cc74a4671374f2c970e3c75ed}\label{nrf24l01_8h_a8e4b718cc74a4671374f2c970e3c75ed}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!clear\+\_\+\+C\+SN@{clear\+\_\+\+C\+SN}}
+\index{clear\+\_\+\+C\+SN@{clear\+\_\+\+C\+SN}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{clear\+\_\+\+C\+S\+N()}{clear\_CSN()}}
+{\footnotesize\ttfamily void clear\+\_\+\+C\+SN (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears C\+SN pin of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 47 of file nrf24l01.\+c.
+
+
+
+References nrf\+\_\+csn, nrf\+\_\+gpio\+\_\+base, and set\+\_\+\+C\+S\+N().
+
+
+
+Referenced by N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
+
+\mbox{\Hypertarget{nrf24l01_8h_a58dcbbe5884003d7814d657f456f987d}\label{nrf24l01_8h_a58dcbbe5884003d7814d657f456f987d}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!Configure\+N\+RF@{Configure\+N\+RF}}
+\index{Configure\+N\+RF@{Configure\+N\+RF}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{Configure\+N\+R\+F()}{ConfigureNRF()}}
+{\footnotesize\ttfamily void Configure\+N\+RF (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configures N\+R\+F24l01+ module. 
+
+
+
+Definition at line 56 of file nrf24l01.\+c.
+
+
+
+References Configure\+S\+P\+I2(), E\+N\+\_\+\+R\+X\+A\+D\+DR, F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US, F\+L\+U\+S\+H\+\_\+\+RX, F\+L\+U\+S\+H\+\_\+\+TX, N\+OP, nrf\+\_\+ce, nrf\+\_\+csn, nrf\+\_\+gpio\+\_\+base, nrf\+\_\+irq, N\+R\+F\+\_\+\+I\+S\+R(), N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+E\+G\+I\+S\+T\+ER, R\+X\+\_\+\+A\+D\+D\+R\+\_\+P, R\+X\+\_\+\+P\+W\+\_\+P, S\+P\+I\+\_\+rxfifo\+\_\+flush(), T\+X\+\_\+\+A\+D\+DR, and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{nrf24l01_8h_aef40b2dfcf1e3e09c6841e4ac7936580}\label{nrf24l01_8h_aef40b2dfcf1e3e09c6841e4ac7936580}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}}
+\index{N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{N\+R\+F\+\_\+\+I\+S\+R()}{NRF\_ISR()}}
+{\footnotesize\ttfamily void N\+R\+F\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 88 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{nrf24l01_8h_ad7197c236227c9d20f9099acd3e8d7c8}\label{nrf24l01_8h_ad7197c236227c9d20f9099acd3e8d7c8}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!N\+R\+F\+\_\+read@{N\+R\+F\+\_\+read}}
+\index{N\+R\+F\+\_\+read@{N\+R\+F\+\_\+read}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{N\+R\+F\+\_\+read()}{NRF\_read()}}
+{\footnotesize\ttfamily uint8\+\_\+t N\+R\+F\+\_\+read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+Read from N\+R\+F24l01+ module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & N\+R\+F24l01+ command to read \\
+\hline
+{\em data} & Pointer of data to receive \\
+\hline
+{\em count} & Number of bytes of data to receive from above pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file nrf24l01.\+c.
+
+
+
+References clear\+\_\+\+C\+S\+N(), N\+OP, N\+R\+F\+\_\+write(), set\+\_\+\+C\+S\+N(), S\+P\+Ireceive(), and S\+P\+Isend().
+
+
+
+Referenced by Comm\+\_\+fn(), Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{nrf24l01_8h_a8e019a9ef75d5648a801d4fe2c99fd08}\label{nrf24l01_8h_a8e019a9ef75d5648a801d4fe2c99fd08}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!N\+R\+F\+\_\+write@{N\+R\+F\+\_\+write}}
+\index{N\+R\+F\+\_\+write@{N\+R\+F\+\_\+write}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{N\+R\+F\+\_\+write()}{NRF\_write()}}
+{\footnotesize\ttfamily uint8\+\_\+t N\+R\+F\+\_\+write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+Write to N\+R\+F24l01+ module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & N\+R\+F24l01+ command to send \\
+\hline
+{\em data} & Pointer of data to send \\
+\hline
+{\em count} & Number of bytes of data to send from above pointer. count=0 for read commands \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file nrf24l01.\+c.
+
+
+
+References clear\+\_\+\+C\+S\+N(), set\+\_\+\+C\+S\+N(), S\+P\+I\+\_\+rxfifo\+\_\+flush(), S\+P\+Ireceive(), and S\+P\+Isend().
+
+
+
+Referenced by Comm\+\_\+fn(), Configure\+N\+R\+F(), N\+R\+F\+\_\+\+I\+S\+R(), N\+R\+F\+\_\+read(), set\+\_\+rxmode(), and set\+\_\+txmode().
+
+\mbox{\Hypertarget{nrf24l01_8h_ad3a4189b6ee9141022e9204cd261dc49}\label{nrf24l01_8h_ad3a4189b6ee9141022e9204cd261dc49}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+\+CE@{set\+\_\+\+CE}}
+\index{set\+\_\+\+CE@{set\+\_\+\+CE}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+\+C\+E()}{set\_CE()}}
+{\footnotesize\ttfamily void set\+\_\+\+CE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets CE pin of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 31 of file nrf24l01.\+c.
+
+
+
+References nrf\+\_\+ce, and nrf\+\_\+gpio\+\_\+base.
+
+
+
+Referenced by Comm\+\_\+fn(), and N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{nrf24l01_8h_a4c47ecb0afd108992aa1d9350d3f8295}\label{nrf24l01_8h_a4c47ecb0afd108992aa1d9350d3f8295}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+\+C\+SN@{set\+\_\+\+C\+SN}}
+\index{set\+\_\+\+C\+SN@{set\+\_\+\+C\+SN}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+\+C\+S\+N()}{set\_CSN()}}
+{\footnotesize\ttfamily void set\+\_\+\+C\+SN (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets C\+SN pin of N\+R\+F24l01+ module. 
+
+File\+: \hyperlink{i2c__driver_8c}{i2c\+\_\+driver.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for N\+R\+F24l01+ module Date\+: 4/29/2019 
+
+Definition at line 23 of file nrf24l01.\+c.
+
+
+
+References nrf\+\_\+csn, and nrf\+\_\+gpio\+\_\+base.
+
+
+
+Referenced by clear\+\_\+\+C\+S\+N(), N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
+
+\mbox{\Hypertarget{nrf24l01_8h_a82e412e87330e76e6bdfba2e48e5f716}\label{nrf24l01_8h_a82e412e87330e76e6bdfba2e48e5f716}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+rxmode@{set\+\_\+rxmode}}
+\index{set\+\_\+rxmode@{set\+\_\+rxmode}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+rxmode()}{set\_rxmode()}}
+{\footnotesize\ttfamily void set\+\_\+rxmode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Set N\+RF module to RX mode. 
+
+
+
+Definition at line 118 of file nrf24l01.\+c.
+
+
+
+References C\+O\+N\+F\+IG, N\+R\+F\+\_\+write(), and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+
+
+Referenced by N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{nrf24l01_8h_ab56eb8c077356f06be37bb1820fc0476}\label{nrf24l01_8h_ab56eb8c077356f06be37bb1820fc0476}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+txmode@{set\+\_\+txmode}}
+\index{set\+\_\+txmode@{set\+\_\+txmode}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+txmode()}{set\_txmode()}}
+{\footnotesize\ttfamily void set\+\_\+txmode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Set N\+RF module to TX mode. 
+
+
+
+Definition at line 108 of file nrf24l01.\+c.
+
+
+
+References C\+O\+N\+F\+IG, N\+R\+F\+\_\+write(), and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+
+
+Referenced by Comm\+\_\+fn(), and Timer1\+Int\+Handler().
+

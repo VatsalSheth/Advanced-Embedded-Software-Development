@@ -1,0 +1,410 @@
+\hypertarget{lcd__driver_8c}{}\section{lcd\+\_\+driver.\+c File Reference}
+\label{lcd__driver_8c}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+{\ttfamily \#include \char`\"{}Include/lcd\+\_\+driver.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lcd__driver_8c_aa51dae929e5d3a4c0284af34b60e2a35}{W\+R\+\_\+\+C\+MD} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Write to instruction register of L\+CD. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{lcd__driver_8c_a4bdecb2f54b0351dafc22a22d7205f59}{R\+D\+\_\+\+C\+MD} (void)
+\begin{DoxyCompactList}\small\item\em Read from instruction register of L\+CD. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_a0919d732b6de844997951ece972f9758}{W\+R\+\_\+\+D\+A\+TA} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Write to data register of L\+CD. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{lcd__driver_8c_ae2e35ea9408f73b8e44ac03bb910ceec}{R\+D\+\_\+\+D\+A\+TA} (void)
+\begin{DoxyCompactList}\small\item\em Read from data register of L\+CD. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_adecd104c0f66e6103b31b040c829223e}{Configure\+L\+CD} (void)
+\begin{DoxyCompactList}\small\item\em Configure G\+P\+IO port M for data and port F for control signals of L\+CD. L\+CD initialization steps. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_ae040f3c8f9a3c822a10e04c6bf1c68d0}{lcdbusywait} ()
+\begin{DoxyCompactList}\small\item\em Polls the L\+CD busy flag. Function does not return until the L\+CD controller is ready to accept another command. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_afc304ab483ae55aa92afe601a2e663b4}{lcdgotoaddr} (uint8\+\_\+t addr)
+\begin{DoxyCompactList}\small\item\em Sets the cursor to the specified L\+CD D\+D\+R\+AM address. Should call \hyperlink{lcd__driver_8c_ae040f3c8f9a3c822a10e04c6bf1c68d0}{lcdbusywait()}. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_aee3a4fab811cc1cd370ea87b6c88fc00}{lcdgotoxy} (uint8\+\_\+t row, uint8\+\_\+t column)
+\begin{DoxyCompactList}\small\item\em Sets the cursor to the L\+CD D\+D\+R\+AM address corresponding to the specified row and column. Location (0,0) is the top left corner of the L\+CD screen. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_a187251e153ba4c7a8cb1eefb47def0cc}{lcdputch} (char cc)
+\begin{DoxyCompactList}\small\item\em Writes the specified character to the current. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_a2720ba7705db3740942f4d325557b6aa}{lcdputstr} (char $\ast$ss)
+\begin{DoxyCompactList}\small\item\em Writes the specified null-\/terminated string to the L\+CD starting at the current L\+CD cursor position. Automatically wraps long strings to the next L\+CD line after the right edge of the display screen has been reached. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_a510c8db6472b14a9483377a1c38a7d80}{lcdputint} (int a)
+\begin{DoxyCompactList}\small\item\em Displays integer number upto 3 decimal. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_a9a843782966b959b890aefd6eac71b2f}{lcdputfloat} (float a)
+\begin{DoxyCompactList}\small\item\em Displays float number upto 4 decimal points. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_ab090115d4b4a0ee621fd2a2c86bf83f7}{lcdcreatechar} (uint8\+\_\+t ccode, uint8\+\_\+t row\+\_\+vals\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function to create a 5x8 pixel custom character with character code ccode (0$<$=ccode$<$=7) using the row values given in the 8-\/byte array row\+\_\+vals\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8c_a2d8b0dc142b0c3a37b95f8b14893c88b}{lcdclear} ()
+\begin{DoxyCompactList}\small\item\em Clears the L\+CD using the H\+D44780 Clear display instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{lcd__driver_8c_ab50eb070e1fd8b2bdb220f312a2527ea}{row\+\_\+addr} \mbox{[}4\mbox{]} = \{0x00, 0x40, 0x10, 0x50\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lcd__driver_8c_adecd104c0f66e6103b31b040c829223e}\label{lcd__driver_8c_adecd104c0f66e6103b31b040c829223e}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!Configure\+L\+CD@{Configure\+L\+CD}}
+\index{Configure\+L\+CD@{Configure\+L\+CD}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{Configure\+L\+C\+D()}{ConfigureLCD()}}
+{\footnotesize\ttfamily void Configure\+L\+CD (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure G\+P\+IO port M for data and port F for control signals of L\+CD. L\+CD initialization steps. 
+
+
+
+Definition at line 90 of file lcd\+\_\+driver.\+c.
+
+
+
+References ctrl\+\_\+gpio\+\_\+base, data\+\_\+gpio\+\_\+base, EN, lcdbusywait(), lcdclear(), RS, RW, and W\+R\+\_\+\+C\+M\+D().
+
+
+
+Referenced by Actuator\+\_\+fn().
+
+\mbox{\Hypertarget{lcd__driver_8c_ae040f3c8f9a3c822a10e04c6bf1c68d0}\label{lcd__driver_8c_ae040f3c8f9a3c822a10e04c6bf1c68d0}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdbusywait@{lcdbusywait}}
+\index{lcdbusywait@{lcdbusywait}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdbusywait()}{lcdbusywait()}}
+{\footnotesize\ttfamily void lcdbusywait (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Polls the L\+CD busy flag. Function does not return until the L\+CD controller is ready to accept another command. 
+
+
+
+Definition at line 114 of file lcd\+\_\+driver.\+c.
+
+
+
+References R\+D\+\_\+\+C\+M\+D().
+
+
+
+Referenced by Configure\+L\+C\+D(), lcdclear(), lcdcreatechar(), lcdgotoaddr(), and lcdputch().
+
+\mbox{\Hypertarget{lcd__driver_8c_a2d8b0dc142b0c3a37b95f8b14893c88b}\label{lcd__driver_8c_a2d8b0dc142b0c3a37b95f8b14893c88b}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdclear@{lcdclear}}
+\index{lcdclear@{lcdclear}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdclear()}{lcdclear()}}
+{\footnotesize\ttfamily void lcdclear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the L\+CD using the H\+D44780 Clear display instruction. 
+
+
+
+Definition at line 265 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdbusywait(), and W\+R\+\_\+\+C\+M\+D().
+
+
+
+Referenced by Configure\+L\+C\+D().
+
+\mbox{\Hypertarget{lcd__driver_8c_ab090115d4b4a0ee621fd2a2c86bf83f7}\label{lcd__driver_8c_ab090115d4b4a0ee621fd2a2c86bf83f7}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdcreatechar@{lcdcreatechar}}
+\index{lcdcreatechar@{lcdcreatechar}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdcreatechar()}{lcdcreatechar()}}
+{\footnotesize\ttfamily void lcdcreatechar (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ccode,  }\item[{uint8\+\_\+t}]{row\+\_\+vals\mbox{[}8\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function to create a 5x8 pixel custom character with character code ccode (0$<$=ccode$<$=7) using the row values given in the 8-\/byte array row\+\_\+vals\mbox{[}\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ccode} & Character code 0-\/7 \\
+\hline
+{\em row\+\_\+vals} & Array of row values to generate character. Bit value 1 represents dark pixel. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 249 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdbusywait(), W\+R\+\_\+\+C\+M\+D(), and W\+R\+\_\+\+D\+A\+T\+A().
+
+\mbox{\Hypertarget{lcd__driver_8c_afc304ab483ae55aa92afe601a2e663b4}\label{lcd__driver_8c_afc304ab483ae55aa92afe601a2e663b4}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdgotoaddr@{lcdgotoaddr}}
+\index{lcdgotoaddr@{lcdgotoaddr}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdgotoaddr()}{lcdgotoaddr()}}
+{\footnotesize\ttfamily void lcdgotoaddr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Sets the cursor to the specified L\+CD D\+D\+R\+AM address. Should call \hyperlink{lcd__driver_8c_ae040f3c8f9a3c822a10e04c6bf1c68d0}{lcdbusywait()}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & D\+D\+R\+AM address to set cursor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdbusywait(), and W\+R\+\_\+\+C\+M\+D().
+
+
+
+Referenced by Actuator\+\_\+fn(), lcdgotoxy(), and lcdputstr().
+
+\mbox{\Hypertarget{lcd__driver_8c_aee3a4fab811cc1cd370ea87b6c88fc00}\label{lcd__driver_8c_aee3a4fab811cc1cd370ea87b6c88fc00}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdgotoxy@{lcdgotoxy}}
+\index{lcdgotoxy@{lcdgotoxy}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdgotoxy()}{lcdgotoxy()}}
+{\footnotesize\ttfamily void lcdgotoxy (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{row,  }\item[{uint8\+\_\+t}]{column }\end{DoxyParamCaption})}
+
+
+
+Sets the cursor to the L\+CD D\+D\+R\+AM address corresponding to the specified row and column. Location (0,0) is the top left corner of the L\+CD screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & Line number 0-\/3 \\
+\hline
+{\em column} & Column number 0-\/15 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 140 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdgotoaddr(), and row\+\_\+addr.
+
+\mbox{\Hypertarget{lcd__driver_8c_a187251e153ba4c7a8cb1eefb47def0cc}\label{lcd__driver_8c_a187251e153ba4c7a8cb1eefb47def0cc}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdputch@{lcdputch}}
+\index{lcdputch@{lcdputch}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdputch()}{lcdputch()}}
+{\footnotesize\ttfamily void lcdputch (\begin{DoxyParamCaption}\item[{char}]{cc }\end{DoxyParamCaption})}
+
+
+
+Writes the specified character to the current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cc} & Character to be written on L\+CD \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 151 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdbusywait(), and W\+R\+\_\+\+D\+A\+T\+A().
+
+
+
+Referenced by Actuator\+\_\+fn(), lcdputfloat(), lcdputint(), and lcdputstr().
+
+\mbox{\Hypertarget{lcd__driver_8c_a9a843782966b959b890aefd6eac71b2f}\label{lcd__driver_8c_a9a843782966b959b890aefd6eac71b2f}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdputfloat@{lcdputfloat}}
+\index{lcdputfloat@{lcdputfloat}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdputfloat()}{lcdputfloat()}}
+{\footnotesize\ttfamily void lcdputfloat (\begin{DoxyParamCaption}\item[{float}]{a }\end{DoxyParamCaption})}
+
+
+
+Displays float number upto 4 decimal points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input float number to be displayed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 218 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdputch(), and lcdputint().
+
+
+
+Referenced by Actuator\+\_\+fn().
+
+\mbox{\Hypertarget{lcd__driver_8c_a510c8db6472b14a9483377a1c38a7d80}\label{lcd__driver_8c_a510c8db6472b14a9483377a1c38a7d80}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdputint@{lcdputint}}
+\index{lcdputint@{lcdputint}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdputint()}{lcdputint()}}
+{\footnotesize\ttfamily void lcdputint (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Displays integer number upto 3 decimal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input integer number to be displayed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 196 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdputch().
+
+
+
+Referenced by Actuator\+\_\+fn(), and lcdputfloat().
+
+\mbox{\Hypertarget{lcd__driver_8c_a2720ba7705db3740942f4d325557b6aa}\label{lcd__driver_8c_a2720ba7705db3740942f4d325557b6aa}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcdputstr@{lcdputstr}}
+\index{lcdputstr@{lcdputstr}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcdputstr()}{lcdputstr()}}
+{\footnotesize\ttfamily void lcdputstr (\begin{DoxyParamCaption}\item[{char $\ast$}]{ss }\end{DoxyParamCaption})}
+
+
+
+Writes the specified null-\/terminated string to the L\+CD starting at the current L\+CD cursor position. Automatically wraps long strings to the next L\+CD line after the right edge of the display screen has been reached. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ss} & String to be displayed on L\+CD \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 162 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdgotoaddr(), lcdputch(), R\+D\+\_\+\+C\+M\+D(), and row\+\_\+addr.
+
+
+
+Referenced by Actuator\+\_\+fn().
+
+\mbox{\Hypertarget{lcd__driver_8c_a4bdecb2f54b0351dafc22a22d7205f59}\label{lcd__driver_8c_a4bdecb2f54b0351dafc22a22d7205f59}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!R\+D\+\_\+\+C\+MD@{R\+D\+\_\+\+C\+MD}}
+\index{R\+D\+\_\+\+C\+MD@{R\+D\+\_\+\+C\+MD}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{R\+D\+\_\+\+C\+M\+D()}{RD\_CMD()}}
+{\footnotesize\ttfamily uint8\+\_\+t R\+D\+\_\+\+C\+MD (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read from instruction register of L\+CD. 
+
+\begin{DoxyReturn}{Returns}
+Instruction register value 
+\end{DoxyReturn}
+
+
+Definition at line 35 of file lcd\+\_\+driver.\+c.
+
+
+
+References ctrl\+\_\+gpio\+\_\+base, data\+\_\+gpio\+\_\+base, EN, RS, and RW.
+
+
+
+Referenced by lcdbusywait(), and lcdputstr().
+
+\mbox{\Hypertarget{lcd__driver_8c_ae2e35ea9408f73b8e44ac03bb910ceec}\label{lcd__driver_8c_ae2e35ea9408f73b8e44ac03bb910ceec}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!R\+D\+\_\+\+D\+A\+TA@{R\+D\+\_\+\+D\+A\+TA}}
+\index{R\+D\+\_\+\+D\+A\+TA@{R\+D\+\_\+\+D\+A\+TA}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{R\+D\+\_\+\+D\+A\+T\+A()}{RD\_DATA()}}
+{\footnotesize\ttfamily uint8\+\_\+t R\+D\+\_\+\+D\+A\+TA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read from data register of L\+CD. 
+
+\begin{DoxyReturn}{Returns}
+Data register value 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file lcd\+\_\+driver.\+c.
+
+
+
+References ctrl\+\_\+gpio\+\_\+base, data\+\_\+gpio\+\_\+base, EN, RS, and RW.
+
+\mbox{\Hypertarget{lcd__driver_8c_aa51dae929e5d3a4c0284af34b60e2a35}\label{lcd__driver_8c_aa51dae929e5d3a4c0284af34b60e2a35}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!W\+R\+\_\+\+C\+MD@{W\+R\+\_\+\+C\+MD}}
+\index{W\+R\+\_\+\+C\+MD@{W\+R\+\_\+\+C\+MD}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+\_\+\+C\+M\+D()}{WR\_CMD()}}
+{\footnotesize\ttfamily void W\+R\+\_\+\+C\+MD (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Write to instruction register of L\+CD. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Command to be written in instruction register \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file lcd\+\_\+driver.\+c.
+
+
+
+References ctrl\+\_\+gpio\+\_\+base, data\+\_\+gpio\+\_\+base, EN, RS, and RW.
+
+
+
+Referenced by Configure\+L\+C\+D(), lcdclear(), lcdcreatechar(), and lcdgotoaddr().
+
+\mbox{\Hypertarget{lcd__driver_8c_a0919d732b6de844997951ece972f9758}\label{lcd__driver_8c_a0919d732b6de844997951ece972f9758}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!W\+R\+\_\+\+D\+A\+TA@{W\+R\+\_\+\+D\+A\+TA}}
+\index{W\+R\+\_\+\+D\+A\+TA@{W\+R\+\_\+\+D\+A\+TA}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+\_\+\+D\+A\+T\+A()}{WR\_DATA()}}
+{\footnotesize\ttfamily void W\+R\+\_\+\+D\+A\+TA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Write to data register of L\+CD. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Value to be written in data register \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file lcd\+\_\+driver.\+c.
+
+
+
+References ctrl\+\_\+gpio\+\_\+base, data\+\_\+gpio\+\_\+base, EN, RS, and RW.
+
+
+
+Referenced by lcdcreatechar(), and lcdputch().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{lcd__driver_8c_ab50eb070e1fd8b2bdb220f312a2527ea}\label{lcd__driver_8c_ab50eb070e1fd8b2bdb220f312a2527ea}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!row\+\_\+addr@{row\+\_\+addr}}
+\index{row\+\_\+addr@{row\+\_\+addr}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{row\+\_\+addr}{row\_addr}}
+{\footnotesize\ttfamily uint8\+\_\+t row\+\_\+addr\mbox{[}4\mbox{]} = \{0x00, 0x40, 0x10, 0x50\}}
+
+File\+: \hyperlink{lcd__driver_8c}{lcd\+\_\+driver.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for 16x2 character L\+CD Date\+: 4/29/2019 
+
+Definition at line 11 of file lcd\+\_\+driver.\+c.
+
+
+
+Referenced by lcdgotoxy(), and lcdputstr().
+

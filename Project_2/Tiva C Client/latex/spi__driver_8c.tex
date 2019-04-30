@@ -1,0 +1,103 @@
+\hypertarget{spi__driver_8c}{}\section{spi\+\_\+driver.\+c File Reference}
+\label{spi__driver_8c}\index{spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}}
+{\ttfamily \#include \char`\"{}Include/spi\+\_\+driver.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{spi__driver_8c_a9f0d582580529c5fcf66f3475981c6b5}{Configure\+S\+P\+I2} (void)
+\begin{DoxyCompactList}\small\item\em Configure S\+S\+I2 block as S\+PI Master. \end{DoxyCompactList}\item 
+void \hyperlink{spi__driver_8c_a7ca37424c7a9ccefde91d79b1b7ac987}{S\+P\+Isend} (uint32\+\_\+t $\ast$data, uint32\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Send data through S\+S\+I2. \end{DoxyCompactList}\item 
+void \hyperlink{spi__driver_8c_a47949f56ac5919693e050a685a06f42d}{S\+P\+Ireceive} (uint32\+\_\+t $\ast$data, uint32\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Receive data through S\+S\+I2. \end{DoxyCompactList}\item 
+void \hyperlink{spi__driver_8c_a2dadbf649c776991ed3b0b2780ee5917}{S\+P\+I\+\_\+rxfifo\+\_\+flush} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{spi__driver_8c_a9f0d582580529c5fcf66f3475981c6b5}\label{spi__driver_8c_a9f0d582580529c5fcf66f3475981c6b5}} 
+\index{spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}!Configure\+S\+P\+I2@{Configure\+S\+P\+I2}}
+\index{Configure\+S\+P\+I2@{Configure\+S\+P\+I2}!spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{Configure\+S\+P\+I2()}{ConfigureSPI2()}}
+{\footnotesize\ttfamily void Configure\+S\+P\+I2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure S\+S\+I2 block as S\+PI Master. 
+
+File\+: \hyperlink{actuator_8c}{actuator.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains A\+PI for S\+PI Date\+: 4/29/2019 
+
+Definition at line 19 of file spi\+\_\+driver.\+c.
+
+
+
+References g\+\_\+ui32\+Sys\+Clock.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{spi__driver_8c_a2dadbf649c776991ed3b0b2780ee5917}\label{spi__driver_8c_a2dadbf649c776991ed3b0b2780ee5917}} 
+\index{spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}!S\+P\+I\+\_\+rxfifo\+\_\+flush@{S\+P\+I\+\_\+rxfifo\+\_\+flush}}
+\index{S\+P\+I\+\_\+rxfifo\+\_\+flush@{S\+P\+I\+\_\+rxfifo\+\_\+flush}!spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+I\+\_\+rxfifo\+\_\+flush()}{SPI\_rxfifo\_flush()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+rxfifo\+\_\+flush (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file spi\+\_\+driver.\+c.
+
+
+
+Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+write().
+
+\mbox{\Hypertarget{spi__driver_8c_a47949f56ac5919693e050a685a06f42d}\label{spi__driver_8c_a47949f56ac5919693e050a685a06f42d}} 
+\index{spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}!S\+P\+Ireceive@{S\+P\+Ireceive}}
+\index{S\+P\+Ireceive@{S\+P\+Ireceive}!spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+Ireceive()}{SPIreceive()}}
+{\footnotesize\ttfamily void S\+P\+Ireceive (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{data,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+Receive data through S\+S\+I2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to store received data \\
+\hline
+{\em count} & Number of 32 bits data to receive \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 67 of file spi\+\_\+driver.\+c.
+
+
+
+Referenced by N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
+
+\mbox{\Hypertarget{spi__driver_8c_a7ca37424c7a9ccefde91d79b1b7ac987}\label{spi__driver_8c_a7ca37424c7a9ccefde91d79b1b7ac987}} 
+\index{spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}!S\+P\+Isend@{S\+P\+Isend}}
+\index{S\+P\+Isend@{S\+P\+Isend}!spi\+\_\+driver.\+c@{spi\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+Isend()}{SPIsend()}}
+{\footnotesize\ttfamily void S\+P\+Isend (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{data,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+Send data through S\+S\+I2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to send data \\
+\hline
+{\em count} & Number of 32 bits data to send \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file spi\+\_\+driver.\+c.
+
+
+
+Referenced by N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
+

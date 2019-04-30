@@ -1,0 +1,103 @@
+\hypertarget{actuator_8c}{}\section{actuator.\+c File Reference}
+\label{actuator_8c}\index{actuator.\+c@{actuator.\+c}}
+{\ttfamily \#include \char`\"{}Include/actuator.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{actuator_8c_a4a22f9f2949a57f35e2cea1d5885a8b5}{Actuator\+\_\+task} ()
+\item 
+void \hyperlink{actuator_8c_ac332f9ec6e45d575b6461764d066d311}{Actuator\+\_\+fn} (void $\ast$pv\+Parameters)
+\item 
+void \hyperlink{actuator_8c_ad2b58515815f1f2d15550183a0f4a095}{Configure\+L\+ED} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{actuator_8c_aba7255845c58ca48dff42a15c70dba5c}{back\+\_\+lat}
+\item 
+float \hyperlink{actuator_8c_a5ecf4db84a7ae629a0fe517bda1011c6}{back\+\_\+lon}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{actuator_8c_ac332f9ec6e45d575b6461764d066d311}\label{actuator_8c_ac332f9ec6e45d575b6461764d066d311}} 
+\index{actuator.\+c@{actuator.\+c}!Actuator\+\_\+fn@{Actuator\+\_\+fn}}
+\index{Actuator\+\_\+fn@{Actuator\+\_\+fn}!actuator.\+c@{actuator.\+c}}
+\subsubsection{\texorpdfstring{Actuator\+\_\+fn()}{Actuator\_fn()}}
+{\footnotesize\ttfamily void Actuator\+\_\+fn (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file actuator.\+c.
+
+
+
+References Accident\+\_\+\+Addr, Back, back\+\_\+lat, back\+\_\+lon, Configure\+L\+C\+D(), Configure\+L\+E\+D(), Dir\+\_\+\+Addr, Fwd, G\+P\+S\+\_\+\+Addr, gps\+\_\+course\+\_\+to(), Lat\+\_\+\+Addr, lcdgotoaddr(), lcdputch(), lcdputfloat(), lcdputint(), lcdputstr(), Left, Lon\+\_\+\+Addr, Misled, M\+P\+U\+\_\+\+Addr, Reached, Rf\+\_\+\+Addr, rf\+\_\+link, Right, Satellite\+\_\+\+Addr, x\+Handle\+\_\+rf, x\+Handle\+\_\+s, and x\+Queue\+\_\+a.
+
+
+
+Referenced by Actuator\+\_\+task().
+
+\mbox{\Hypertarget{actuator_8c_a4a22f9f2949a57f35e2cea1d5885a8b5}\label{actuator_8c_a4a22f9f2949a57f35e2cea1d5885a8b5}} 
+\index{actuator.\+c@{actuator.\+c}!Actuator\+\_\+task@{Actuator\+\_\+task}}
+\index{Actuator\+\_\+task@{Actuator\+\_\+task}!actuator.\+c@{actuator.\+c}}
+\subsubsection{\texorpdfstring{Actuator\+\_\+task()}{Actuator\_task()}}
+{\footnotesize\ttfamily uint32\+\_\+t Actuator\+\_\+task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file actuator.\+c.
+
+
+
+References Actuator\+\_\+fn(), and config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{actuator_8c_ad2b58515815f1f2d15550183a0f4a095}\label{actuator_8c_ad2b58515815f1f2d15550183a0f4a095}} 
+\index{actuator.\+c@{actuator.\+c}!Configure\+L\+ED@{Configure\+L\+ED}}
+\index{Configure\+L\+ED@{Configure\+L\+ED}!actuator.\+c@{actuator.\+c}}
+\subsubsection{\texorpdfstring{Configure\+L\+E\+D()}{ConfigureLED()}}
+{\footnotesize\ttfamily void Configure\+L\+ED (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 160 of file actuator.\+c.
+
+
+
+Referenced by Actuator\+\_\+fn().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{actuator_8c_aba7255845c58ca48dff42a15c70dba5c}\label{actuator_8c_aba7255845c58ca48dff42a15c70dba5c}} 
+\index{actuator.\+c@{actuator.\+c}!back\+\_\+lat@{back\+\_\+lat}}
+\index{back\+\_\+lat@{back\+\_\+lat}!actuator.\+c@{actuator.\+c}}
+\subsubsection{\texorpdfstring{back\+\_\+lat}{back\_lat}}
+{\footnotesize\ttfamily float back\+\_\+lat}
+
+File\+: \hyperlink{actuator_8c}{actuator.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file creates task for actuators which control L\+CD and L\+ED Date\+: 4/29/2019 
+
+Definition at line 11 of file actuator.\+c.
+
+
+
+Referenced by Actuator\+\_\+fn().
+
+\mbox{\Hypertarget{actuator_8c_a5ecf4db84a7ae629a0fe517bda1011c6}\label{actuator_8c_a5ecf4db84a7ae629a0fe517bda1011c6}} 
+\index{actuator.\+c@{actuator.\+c}!back\+\_\+lon@{back\+\_\+lon}}
+\index{back\+\_\+lon@{back\+\_\+lon}!actuator.\+c@{actuator.\+c}}
+\subsubsection{\texorpdfstring{back\+\_\+lon}{back\_lon}}
+{\footnotesize\ttfamily float back\+\_\+lon}
+
+
+
+Definition at line 11 of file actuator.\+c.
+
+
+
+Referenced by Actuator\+\_\+fn().
+

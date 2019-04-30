@@ -1,0 +1,119 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+{\ttfamily \#include \char`\"{}Include/main.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8c_a2eb5093548035dca71f09ba8f40db43d}{v\+Application\+Stack\+Overflow\+Hook} (x\+Task\+Handle $\ast$px\+Task, char $\ast$pc\+Task\+Name)
+\item 
+int \hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile unsigned long \hyperlink{main_8c_af19094d1ae97a868ca20f3578d162b95}{g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value}
+\item 
+Queue\+Handle\+\_\+t \hyperlink{main_8c_a12cb2aceb7856eb11db582601f16b49f}{x\+Queue\+\_\+rf}
+\item 
+Queue\+Handle\+\_\+t \hyperlink{main_8c_a41586cd4de97267a5d195c9ff879c3ba}{x\+Queue\+\_\+a}
+\item 
+Semaphore\+Handle\+\_\+t \hyperlink{main_8c_a54b30ae25071f4e7426634a5bd874ca5}{x\+Semaphore\+\_\+rf}
+\item 
+Semaphore\+Handle\+\_\+t \hyperlink{main_8c_a9e41ee645f4bb31dab541ed4c9d9e8bd}{x\+Semaphore\+\_\+s}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file main.\+c.
+
+
+
+References Actuator\+\_\+task(), Comm\+\_\+task(), Configure\+U\+A\+R\+T(), g\+\_\+ui32\+Sys\+Clock, Sensor\+\_\+task(), x\+Queue\+\_\+a, x\+Queue\+\_\+rf, x\+Semaphore\+\_\+rf, and x\+Semaphore\+\_\+s.
+
+\mbox{\Hypertarget{main_8c_a2eb5093548035dca71f09ba8f40db43d}\label{main_8c_a2eb5093548035dca71f09ba8f40db43d}} 
+\index{main.\+c@{main.\+c}!v\+Application\+Stack\+Overflow\+Hook@{v\+Application\+Stack\+Overflow\+Hook}}
+\index{v\+Application\+Stack\+Overflow\+Hook@{v\+Application\+Stack\+Overflow\+Hook}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{v\+Application\+Stack\+Overflow\+Hook()}{vApplicationStackOverflowHook()}}
+{\footnotesize\ttfamily void v\+Application\+Stack\+Overflow\+Hook (\begin{DoxyParamCaption}\item[{x\+Task\+Handle $\ast$}]{px\+Task,  }\item[{char $\ast$}]{pc\+Task\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file main.\+c.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_af19094d1ae97a868ca20f3578d162b95}\label{main_8c_af19094d1ae97a868ca20f3578d162b95}} 
+\index{main.\+c@{main.\+c}!g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value@{g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value}}
+\index{g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value@{g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value}{g\_vulRunTimeStatsCountValue}}
+{\footnotesize\ttfamily volatile unsigned long g\+\_\+vul\+Run\+Time\+Stats\+Count\+Value}
+
+File\+: \hyperlink{main_8c}{main.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file calls functions for task, semaphore and queu creation. Date\+: 4/29/2019 Refrence\+: Tivaware demo codes 
+
+Definition at line 11 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a41586cd4de97267a5d195c9ff879c3ba}\label{main_8c_a41586cd4de97267a5d195c9ff879c3ba}} 
+\index{main.\+c@{main.\+c}!x\+Queue\+\_\+a@{x\+Queue\+\_\+a}}
+\index{x\+Queue\+\_\+a@{x\+Queue\+\_\+a}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+\_\+a}{xQueue\_a}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+\_\+a}
+
+
+
+Definition at line 12 of file main.\+c.
+
+
+
+Referenced by Actuator\+\_\+fn(), Comm\+\_\+fn(), main(), and Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{main_8c_a12cb2aceb7856eb11db582601f16b49f}\label{main_8c_a12cb2aceb7856eb11db582601f16b49f}} 
+\index{main.\+c@{main.\+c}!x\+Queue\+\_\+rf@{x\+Queue\+\_\+rf}}
+\index{x\+Queue\+\_\+rf@{x\+Queue\+\_\+rf}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+\_\+rf}{xQueue\_rf}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+\_\+rf}
+
+File\+: \hyperlink{main_8h}{main.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{main_8c}{main.\+c} Date\+: 4/29/2019 
+
+Definition at line 12 of file main.\+c.
+
+
+
+Referenced by Comm\+\_\+fn(), main(), and Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{main_8c_a54b30ae25071f4e7426634a5bd874ca5}\label{main_8c_a54b30ae25071f4e7426634a5bd874ca5}} 
+\index{main.\+c@{main.\+c}!x\+Semaphore\+\_\+rf@{x\+Semaphore\+\_\+rf}}
+\index{x\+Semaphore\+\_\+rf@{x\+Semaphore\+\_\+rf}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{x\+Semaphore\+\_\+rf}{xSemaphore\_rf}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t x\+Semaphore\+\_\+rf}
+
+
+
+Definition at line 13 of file main.\+c.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{main_8c_a9e41ee645f4bb31dab541ed4c9d9e8bd}\label{main_8c_a9e41ee645f4bb31dab541ed4c9d9e8bd}} 
+\index{main.\+c@{main.\+c}!x\+Semaphore\+\_\+s@{x\+Semaphore\+\_\+s}}
+\index{x\+Semaphore\+\_\+s@{x\+Semaphore\+\_\+s}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{x\+Semaphore\+\_\+s}{xSemaphore\_s}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t x\+Semaphore\+\_\+s}
+
+
+
+Definition at line 13 of file main.\+c.
+
+
+
+Referenced by main(), M\+P\+U\+\_\+\+I\+S\+R(), Sensor\+\_\+fn(), and Timer0\+Int\+Handler().
+

@@ -1,0 +1,243 @@
+\hypertarget{rf__comm_8c}{}\section{rf\+\_\+comm.\+c File Reference}
+\label{rf__comm_8c}\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+{\ttfamily \#include \char`\"{}Include/rf\+\_\+comm.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8c_a10098359140c9e86af8c3a811c739145}{Comm\+\_\+task} ()
+\item 
+void \hyperlink{rf__comm_8c_ae48dbcd906148bb90f676cc70133386b}{Comm\+\_\+fn} (void $\ast$pv\+Parameters)
+\item 
+void \hyperlink{rf__comm_8c_aef40b2dfcf1e3e09c6841e4ac7936580}{N\+R\+F\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{rf__comm_8c_a65a7716541a992a60a79e8e1bbc8829e}{Configure\+T\+I\+M\+E\+R1} (void)
+\item 
+void \hyperlink{rf__comm_8c_ab02b81cc7d5669322c49bee1baeb04a3}{set\+T\+I\+M\+E\+R1} (uint8\+\_\+t sec)
+\item 
+void \hyperlink{rf__comm_8c_a65c79b40bb1ef0170ed09c5cd657f0f0}{Timer1\+Int\+Handler} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle\+\_\+t \hyperlink{rf__comm_8c_ab3d3cda2fadb22c1688e8e2faa1e4d9d}{x\+Handle\+\_\+rf}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8c_a078816f61053caefee8e0b2261a9286c}{tx\+\_\+flag}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8c_a77072575cc7c6c4defd26d7048b1ef74}{rx\+\_\+flag}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8c_aeb262f1c08632c7b3f62c67689526a88}{max\+\_\+flag}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8c_a672860b34a7d5c7c2b292f4f99b5dfa1}{tx\+\_\+cont}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8c_a5f6b80c6081f398240550d6341d591d3}{rf\+\_\+link}
+\item 
+struct tx\+\_\+packet \hyperlink{rf__comm_8c_afe52a353420a4fe6d3abd05c871f35c6}{rx\+\_\+pk}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rf__comm_8c_ae48dbcd906148bb90f676cc70133386b}\label{rf__comm_8c_ae48dbcd906148bb90f676cc70133386b}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!Comm\+\_\+fn@{Comm\+\_\+fn}}
+\index{Comm\+\_\+fn@{Comm\+\_\+fn}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{Comm\+\_\+fn()}{Comm\_fn()}}
+{\footnotesize\ttfamily void Comm\+\_\+fn (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file rf\+\_\+comm.\+c.
+
+
+
+References clear\+\_\+\+C\+E(), Configure\+N\+R\+F(), Configure\+T\+I\+M\+E\+R1(), Continue, max\+\_\+flag, N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD, rf\+\_\+link, rx\+\_\+flag, rx\+\_\+pk, set\+\_\+\+C\+E(), set\+\_\+txmode(), tx\+\_\+cont, tx\+\_\+flag, W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD, x\+Queue\+\_\+a, and x\+Queue\+\_\+rf.
+
+
+
+Referenced by Comm\+\_\+task().
+
+\mbox{\Hypertarget{rf__comm_8c_a10098359140c9e86af8c3a811c739145}\label{rf__comm_8c_a10098359140c9e86af8c3a811c739145}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!Comm\+\_\+task@{Comm\+\_\+task}}
+\index{Comm\+\_\+task@{Comm\+\_\+task}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{Comm\+\_\+task()}{Comm\_task()}}
+{\footnotesize\ttfamily uint32\+\_\+t Comm\+\_\+task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file rf\+\_\+comm.\+c.
+
+
+
+References Comm\+\_\+fn(), config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES, and x\+Handle\+\_\+rf.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{rf__comm_8c_a65a7716541a992a60a79e8e1bbc8829e}\label{rf__comm_8c_a65a7716541a992a60a79e8e1bbc8829e}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!Configure\+T\+I\+M\+E\+R1@{Configure\+T\+I\+M\+E\+R1}}
+\index{Configure\+T\+I\+M\+E\+R1@{Configure\+T\+I\+M\+E\+R1}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{Configure\+T\+I\+M\+E\+R1()}{ConfigureTIMER1()}}
+{\footnotesize\ttfamily void Configure\+T\+I\+M\+E\+R1 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 131 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{rf__comm_8c_aef40b2dfcf1e3e09c6841e4ac7936580}\label{rf__comm_8c_aef40b2dfcf1e3e09c6841e4ac7936580}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}}
+\index{N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{N\+R\+F\+\_\+\+I\+S\+R()}{NRF\_ISR()}}
+{\footnotesize\ttfamily void N\+R\+F\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 88 of file rf\+\_\+comm.\+c.
+
+
+
+References clear\+\_\+\+C\+E(), max\+\_\+flag, nrf\+\_\+gpio\+\_\+base, N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+E\+G\+I\+S\+T\+ER, rf\+\_\+link, rx\+\_\+flag, set\+\_\+\+C\+E(), set\+\_\+rxmode(), set\+T\+I\+M\+E\+R1(), S\+T\+A\+T\+US, tx\+\_\+cont, tx\+\_\+flag, and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+
+
+Referenced by Configure\+N\+R\+F().
+
+\mbox{\Hypertarget{rf__comm_8c_ab02b81cc7d5669322c49bee1baeb04a3}\label{rf__comm_8c_ab02b81cc7d5669322c49bee1baeb04a3}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!set\+T\+I\+M\+E\+R1@{set\+T\+I\+M\+E\+R1}}
+\index{set\+T\+I\+M\+E\+R1@{set\+T\+I\+M\+E\+R1}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{set\+T\+I\+M\+E\+R1()}{setTIMER1()}}
+{\footnotesize\ttfamily void set\+T\+I\+M\+E\+R1 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file rf\+\_\+comm.\+c.
+
+
+
+References g\+\_\+ui32\+Sys\+Clock.
+
+
+
+Referenced by N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{rf__comm_8c_a65c79b40bb1ef0170ed09c5cd657f0f0}\label{rf__comm_8c_a65c79b40bb1ef0170ed09c5cd657f0f0}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!Timer1\+Int\+Handler@{Timer1\+Int\+Handler}}
+\index{Timer1\+Int\+Handler@{Timer1\+Int\+Handler}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{Timer1\+Int\+Handler()}{Timer1IntHandler()}}
+{\footnotesize\ttfamily void Timer1\+Int\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file rf\+\_\+comm.\+c.
+
+
+
+References clear\+\_\+\+C\+E(), max\+\_\+flag, rf\+\_\+link, rx\+\_\+flag, set\+\_\+txmode(), set\+T\+I\+M\+E\+R1(), and tx\+\_\+flag.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{rf__comm_8c_aeb262f1c08632c7b3f62c67689526a88}\label{rf__comm_8c_aeb262f1c08632c7b3f62c67689526a88}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!max\+\_\+flag@{max\+\_\+flag}}
+\index{max\+\_\+flag@{max\+\_\+flag}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{max\+\_\+flag}{max\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t max\+\_\+flag}
+
+
+
+Definition at line 12 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{rf__comm_8c_a5f6b80c6081f398240550d6341d591d3}\label{rf__comm_8c_a5f6b80c6081f398240550d6341d591d3}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!rf\+\_\+link@{rf\+\_\+link}}
+\index{rf\+\_\+link@{rf\+\_\+link}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{rf\+\_\+link}{rf\_link}}
+{\footnotesize\ttfamily uint32\+\_\+t rf\+\_\+link}
+
+
+
+Definition at line 12 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Actuator\+\_\+fn(), Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{rf__comm_8c_a77072575cc7c6c4defd26d7048b1ef74}\label{rf__comm_8c_a77072575cc7c6c4defd26d7048b1ef74}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!rx\+\_\+flag@{rx\+\_\+flag}}
+\index{rx\+\_\+flag@{rx\+\_\+flag}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{rx\+\_\+flag}{rx\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t rx\+\_\+flag}
+
+
+
+Definition at line 12 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{rf__comm_8c_afe52a353420a4fe6d3abd05c871f35c6}\label{rf__comm_8c_afe52a353420a4fe6d3abd05c871f35c6}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!rx\+\_\+pk@{rx\+\_\+pk}}
+\index{rx\+\_\+pk@{rx\+\_\+pk}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{rx\+\_\+pk}{rx\_pk}}
+{\footnotesize\ttfamily struct tx\+\_\+packet rx\+\_\+pk}
+
+
+
+Definition at line 13 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{rf__comm_8c_a672860b34a7d5c7c2b292f4f99b5dfa1}\label{rf__comm_8c_a672860b34a7d5c7c2b292f4f99b5dfa1}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!tx\+\_\+cont@{tx\+\_\+cont}}
+\index{tx\+\_\+cont@{tx\+\_\+cont}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{tx\+\_\+cont}{tx\_cont}}
+{\footnotesize\ttfamily uint32\+\_\+t tx\+\_\+cont}
+
+
+
+Definition at line 12 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn(), and N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{rf__comm_8c_a078816f61053caefee8e0b2261a9286c}\label{rf__comm_8c_a078816f61053caefee8e0b2261a9286c}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!tx\+\_\+flag@{tx\+\_\+flag}}
+\index{tx\+\_\+flag@{tx\+\_\+flag}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{tx\+\_\+flag}{tx\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t tx\+\_\+flag}
+
+
+
+Definition at line 12 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{rf__comm_8c_ab3d3cda2fadb22c1688e8e2faa1e4d9d}\label{rf__comm_8c_ab3d3cda2fadb22c1688e8e2faa1e4d9d}} 
+\index{rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}!x\+Handle\+\_\+rf@{x\+Handle\+\_\+rf}}
+\index{x\+Handle\+\_\+rf@{x\+Handle\+\_\+rf}!rf\+\_\+comm.\+c@{rf\+\_\+comm.\+c}}
+\subsubsection{\texorpdfstring{x\+Handle\+\_\+rf}{xHandle\_rf}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t x\+Handle\+\_\+rf}
+
+File\+: \hyperlink{rf__comm_8c}{rf\+\_\+comm.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file creates task for rf comunication control Date\+: 4/29/2019 
+
+Definition at line 11 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Actuator\+\_\+fn(), and Comm\+\_\+task().
+

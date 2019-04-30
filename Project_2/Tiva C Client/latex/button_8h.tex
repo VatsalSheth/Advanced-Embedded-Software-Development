@@ -1,0 +1,97 @@
+\hypertarget{button_8h}{}\section{Include/button.h File Reference}
+\label{button_8h}\index{Include/button.\+h@{Include/button.\+h}}
+{\ttfamily \#include \char`\"{}basic.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{button_8h_a0d4d13ea7145d8b97ccd755132579aa8}{Button\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em Button click. \end{DoxyCompactList}\item 
+void \hyperlink{button_8h_ae8d5123efdd67e5cfddf084ba6123e7b}{Configure\+Button} ()
+\begin{DoxyCompactList}\small\item\em Configure On board user button on P\+J0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{button_8h_a8a12906ab5a9a5a53606990cd6b29995}{button\+\_\+flag}
+\item 
+struct tx\+\_\+packet \hyperlink{button_8h_add5bb70f375ed2f14e6cdccd9f7062d8}{pk}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{button_8h_a0d4d13ea7145d8b97ccd755132579aa8}\label{button_8h_a0d4d13ea7145d8b97ccd755132579aa8}} 
+\index{button.\+h@{button.\+h}!Button\+\_\+\+I\+SR@{Button\+\_\+\+I\+SR}}
+\index{Button\+\_\+\+I\+SR@{Button\+\_\+\+I\+SR}!button.\+h@{button.\+h}}
+\subsubsection{\texorpdfstring{Button\+\_\+\+I\+S\+R()}{Button\_ISR()}}
+{\footnotesize\ttfamily void Button\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Button click. 
+
+
+
+Definition at line 25 of file button.\+c.
+
+
+
+References button\+\_\+flag, and pk.
+
+
+
+Referenced by Configure\+Button().
+
+\mbox{\Hypertarget{button_8h_ae8d5123efdd67e5cfddf084ba6123e7b}\label{button_8h_ae8d5123efdd67e5cfddf084ba6123e7b}} 
+\index{button.\+h@{button.\+h}!Configure\+Button@{Configure\+Button}}
+\index{Configure\+Button@{Configure\+Button}!button.\+h@{button.\+h}}
+\subsubsection{\texorpdfstring{Configure\+Button()}{ConfigureButton()}}
+{\footnotesize\ttfamily void Configure\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Configure On board user button on P\+J0. 
+
+File\+: \hyperlink{button_8c}{button.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains configuration and isr for user button Date\+: 4/29/2019 
+
+Definition at line 12 of file button.\+c.
+
+
+
+References Button\+\_\+\+I\+S\+R().
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{button_8h_a8a12906ab5a9a5a53606990cd6b29995}\label{button_8h_a8a12906ab5a9a5a53606990cd6b29995}} 
+\index{button.\+h@{button.\+h}!button\+\_\+flag@{button\+\_\+flag}}
+\index{button\+\_\+flag@{button\+\_\+flag}!button.\+h@{button.\+h}}
+\subsubsection{\texorpdfstring{button\+\_\+flag}{button\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t button\+\_\+flag}
+
+File\+: \hyperlink{button_8h}{button.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{button_8c}{button.\+c} Date\+: 4/29/2019
+
+File\+: \hyperlink{sensor_8c}{sensor.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file creates task for sensors which control G\+PS, M\+P\+U6050, button Date\+: 4/29/2019 
+
+Definition at line 10 of file sensor.\+c.
+
+
+
+Referenced by Button\+\_\+\+I\+S\+R(), and M\+P\+U\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{button_8h_add5bb70f375ed2f14e6cdccd9f7062d8}\label{button_8h_add5bb70f375ed2f14e6cdccd9f7062d8}} 
+\index{button.\+h@{button.\+h}!pk@{pk}}
+\index{pk@{pk}!button.\+h@{button.\+h}}
+\subsubsection{\texorpdfstring{pk}{pk}}
+{\footnotesize\ttfamily struct tx\+\_\+packet pk}
+
+
+
+Definition at line 11 of file sensor.\+c.
+
+
+
+Referenced by Button\+\_\+\+I\+S\+R(), and M\+P\+U\+\_\+\+I\+S\+R().
+

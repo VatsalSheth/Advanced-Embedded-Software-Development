@@ -1,0 +1,995 @@
+\hypertarget{gps__driver_8h}{}\section{Include/gps\+\_\+driver.h File Reference}
+\label{gps__driver_8h}\index{Include/gps\+\_\+driver.\+h@{Include/gps\+\_\+driver.\+h}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}basic.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{gps__driver_8h_a65e9886d74aaee76545e83dd09011727}{false}~0
+\item 
+\#define \hyperlink{gps__driver_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}~1
+\item 
+\#define \hyperlink{gps__driver_8h_a598a3330b3c21701223ee0ca14316eca}{PI}~3.\+14159265
+\item 
+\#define \hyperlink{gps__driver_8h_a3b947f4b635461030ff2d87833e5049e}{T\+W\+O\+\_\+\+PI}~2$\ast$\hyperlink{gps__driver_8h_a598a3330b3c21701223ee0ca14316eca}{PI}
+\item 
+\#define \hyperlink{gps__driver_8h_ae7616788b30810a219d9cdee95904ba4}{sq}(x)~((x)$\ast$(x))
+\item 
+\#define \hyperlink{gps__driver_8h_a6b2b41fde24104078515115c23292a3b}{G\+P\+R\+M\+C\+\_\+\+T\+E\+RM}~\char`\"{}G\+P\+R\+MC\char`\"{}
+\item 
+\#define \hyperlink{gps__driver_8h_a921cbdc030dea977206518b8efc64cd9}{G\+P\+G\+G\+A\+\_\+\+T\+E\+RM}~\char`\"{}G\+P\+G\+GA\char`\"{}
+\item 
+\#define \hyperlink{gps__driver_8h_a8ad02445135c7b174e42cb4646733616}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}~1000.\+0
+\item 
+\#define \hyperlink{gps__driver_8h_a127ab70c3250d8d2defc8879aa4081da}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}~1000000.\+0
+\item 
+\#define \hyperlink{gps__driver_8h_af4a0707f54e30a5b85ff14b92571b8ae}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}~-\/1.\+0
+\item 
+\#define \hyperlink{gps__driver_8h_ae87ddbf37a52c5a1f6d26bd22b7947f9}{G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON}~12
+\item 
+\#define \hyperlink{gps__driver_8h_a3303a20dbabb09f59aa264c105fa1ae0}{G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}~1.\+15077945
+\item 
+\#define \hyperlink{gps__driver_8h_aa7e8317fef5e01a2de2f26c3a343dbe7}{G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}~0.\+51444444
+\item 
+\#define \hyperlink{gps__driver_8h_a40018fb630e507a4f7ef19fbf3320052}{G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}~1.\+852
+\item 
+\#define \hyperlink{gps__driver_8h_ac85cc4e3cad434caed39ddeb548b5ad9}{G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}~0.\+00062137112
+\item 
+\#define \hyperlink{gps__driver_8h_a5adf04f30f255fa8a082252cfeceb7fa}{G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}~0.\+001
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef char \hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole}
+\item 
+typedef unsigned char \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55bab1f0ddaf86c7c4c48824e0fd2ddab890}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE} = 0x\+F\+F\+F\+F\+F\+F\+FF, 
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba2a0fc90e853fbae0259af247e55f9b8f}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE} = 999999999, 
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba7c3ed422aa45c92070ed7605aebae4c3}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE} = 999999999, 
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba97de308819e835eb62d22c4e9a666523}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE} = 0, 
+\newline
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55bae4ba443b854e8c67547e449e1f55667f}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME} = 0x\+F\+F\+F\+F\+F\+F\+FF, 
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55baea55580ee5c7c0a84db5990410d85854}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED} = 999999999, 
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba46a2c0f8ad8b19e522e077b785566079}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME} = 0x\+F\+F\+F\+F\+F\+F\+FF, 
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba8428f511eea629585cbb7d9ad95df2f6}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES} = 0x\+FF, 
+\newline
+\hyperlink{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba263ee392825abb1d86773c99401a4b85}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP} = 0x\+F\+F\+F\+F\+F\+F\+FF
+ \}
+\item 
+enum \{ \hyperlink{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a8005b6b210f1fb122cda134d8039556c}{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA}, 
+\hyperlink{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a17ecf9591de6aea5b663b563f64d7b72}{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC}, 
+\hyperlink{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a8cd3b708bd74f31a67a2d2f8013d393a}{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} \hyperlink{gps__driver_8h_a30be5b610aae20d05adde26dcee05153}{encode} (char c)
+\item 
+void \hyperlink{gps__driver_8h_a053c042dcb4ace1116e4a2af3633d13a}{gps\+\_\+get\+\_\+position} (long $\ast$latitude, long $\ast$longitude, unsigned long $\ast$fix\+\_\+age)
+\begin{DoxyCompactList}\small\item\em lat/long in hundred thousandth of a degree and age of fix in milliseconds \end{DoxyCompactList}\item 
+void \hyperlink{gps__driver_8h_a8cf2dc913f69357aaa2f84999710e411}{gps\+\_\+get\+\_\+datetime} (unsigned long $\ast$date, unsigned long $\ast$time, unsigned long $\ast$age)
+\begin{DoxyCompactList}\small\item\em Date as ddmmyy, time as hhmmsscc, and age in milliseconds. \end{DoxyCompactList}\item 
+unsigned short \hyperlink{gps__driver_8h_a262fa3e2c6d2518e4ee7893354d76a66}{gps\+\_\+satellites} (void)
+\item 
+unsigned long \hyperlink{gps__driver_8h_a0f2db75eafebc0db754b5c01f20238f3}{gps\+\_\+hdop} (void)
+\item 
+\hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} \hyperlink{gps__driver_8h_a2ef52d51193e8782afc8d97347270d19}{gps\+\_\+encode} (char)
+\item 
+void \hyperlink{gps__driver_8h_a7a3da881c1cfdd6a85895538827d5650}{gps\+\_\+f\+\_\+get\+\_\+position} (float $\ast$latitude, float $\ast$longitude, unsigned long $\ast$fix\+\_\+age)
+\item 
+void \hyperlink{gps__driver_8h_a2435cbe4302bf3d72d70b71d9aa0e522}{gps\+\_\+crack\+\_\+datetime} (int $\ast$year, \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$month, \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$day, \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$hour, \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$minute, \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$second, \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$hundredths, unsigned long $\ast$fix\+\_\+age)
+\item 
+float \hyperlink{gps__driver_8h_aabd734d60cbe3cdf4f53b99ff71511f3}{gps\+\_\+f\+\_\+altitude} ()
+\item 
+float \hyperlink{gps__driver_8h_a88c327da472869973400c7863c569a39}{gps\+\_\+f\+\_\+course} ()
+\item 
+float \hyperlink{gps__driver_8h_a5f94e99acc75ff72428367ed6ebef6b0}{gps\+\_\+f\+\_\+speed\+\_\+knots} ()
+\item 
+float \hyperlink{gps__driver_8h_a6e4b41596b7cc64466f9ef2be5835665}{gps\+\_\+f\+\_\+speed\+\_\+mph} ()
+\item 
+float \hyperlink{gps__driver_8h_a90a10a9187e9737755292f01b0b47c31}{gps\+\_\+f\+\_\+speed\+\_\+mps} ()
+\item 
+float \hyperlink{gps__driver_8h_a07e1b825d8e29bcca5e872709216248a}{gps\+\_\+f\+\_\+speed\+\_\+kmph} ()
+\item 
+static int \hyperlink{gps__driver_8h_a4d6bf5b14f9c50c7727f546325196faa}{library\+\_\+version} ()
+\item 
+static float \hyperlink{gps__driver_8h_a02117348886764b208274a99e1a9e51f}{gps\+\_\+distance\+\_\+between} (float lat1, float long1, float lat2, float long2)
+\item 
+float \hyperlink{gps__driver_8h_a6b81f7a6981b892a6687802b22ce0da7}{gps\+\_\+course\+\_\+to} (float lat1, float long1, float lat2, float long2)
+\item 
+static const char $\ast$ \hyperlink{gps__driver_8h_abc4ee2194d99cc47297ee91022a3aae2}{gps\+\_\+cardinal} (float \hyperlink{gps__driver_8c_a07c262c2f3d1195a76c63c6e5984a04a}{course})
+\item 
+void \hyperlink{gps__driver_8h_aa3739ff6df1c487944d96dc6f7ce92b7}{gps\+\_\+stats} (unsigned long $\ast$chars, unsigned short $\ast$good\+\_\+sentences, unsigned short $\ast$failed\+\_\+cs)
+\item 
+int \hyperlink{gps__driver_8h_a45983775e03f4b9465d92119cbcf036e}{from\+\_\+hex} (char a)
+\item 
+unsigned long \hyperlink{gps__driver_8h_a171bfbafbf9f1042e0e6916d78d749bf}{gps\+\_\+parse\+\_\+decimal} ()
+\item 
+unsigned long \hyperlink{gps__driver_8h_a2dc2af8b665f887dcb997ae8f8b1351e}{gps\+\_\+parse\+\_\+degrees} ()
+\item 
+\hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} \hyperlink{gps__driver_8h_a7ca39bf8a1a19cd367dc34b00fa4ab6c}{gps\+\_\+term\+\_\+complete} ()
+\begin{DoxyCompactList}\small\item\em Processes a just-\/completed term. \end{DoxyCompactList}\item 
+\hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} \hyperlink{gps__driver_8h_aac7f3bb82a1ada19ecc6311059ef4f6a}{gpsisdigit} (char c)
+\item 
+long \hyperlink{gps__driver_8h_a597b9ccd02469fb6b35170070879aef2}{gpsatol} (const char $\ast$str)
+\item 
+int \hyperlink{gps__driver_8h_a85d2b57196c9e37681a596d9720ef81f}{gpsstrcmp} (const char $\ast$str1, const char $\ast$str2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gps__driver_8h_a65e9886d74aaee76545e83dd09011727}\label{gps__driver_8h_a65e9886d74aaee76545e83dd09011727}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!false@{false}}
+\index{false@{false}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{false}{false}}
+{\footnotesize\ttfamily \#define false~0}
+
+
+
+Definition at line 20 of file gps\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{gps__driver_8h_a921cbdc030dea977206518b8efc64cd9}\label{gps__driver_8h_a921cbdc030dea977206518b8efc64cd9}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+G\+G\+A\+\_\+\+T\+E\+RM@{G\+P\+G\+G\+A\+\_\+\+T\+E\+RM}}
+\index{G\+P\+G\+G\+A\+\_\+\+T\+E\+RM@{G\+P\+G\+G\+A\+\_\+\+T\+E\+RM}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+G\+G\+A\+\_\+\+T\+E\+RM}{GPGGA\_TERM}}
+{\footnotesize\ttfamily \#define G\+P\+G\+G\+A\+\_\+\+T\+E\+RM~\char`\"{}G\+P\+G\+GA\char`\"{}}
+
+
+
+Definition at line 29 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_a6b2b41fde24104078515115c23292a3b}\label{gps__driver_8h_a6b2b41fde24104078515115c23292a3b}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+R\+M\+C\+\_\+\+T\+E\+RM@{G\+P\+R\+M\+C\+\_\+\+T\+E\+RM}}
+\index{G\+P\+R\+M\+C\+\_\+\+T\+E\+RM@{G\+P\+R\+M\+C\+\_\+\+T\+E\+RM}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+R\+M\+C\+\_\+\+T\+E\+RM}{GPRMC\_TERM}}
+{\footnotesize\ttfamily \#define G\+P\+R\+M\+C\+\_\+\+T\+E\+RM~\char`\"{}G\+P\+R\+MC\char`\"{}}
+
+
+
+Definition at line 28 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_a127ab70c3250d8d2defc8879aa4081da}\label{gps__driver_8h_a127ab70c3250d8d2defc8879aa4081da}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}}
+\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}{GPS\_INVALID\_F\_ALTITUDE}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE~1000000.\+0}
+
+
+
+Definition at line 32 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+f\+\_\+altitude().
+
+\mbox{\Hypertarget{gps__driver_8h_a8ad02445135c7b174e42cb4646733616}\label{gps__driver_8h_a8ad02445135c7b174e42cb4646733616}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}}
+\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}{GPS\_INVALID\_F\_ANGLE}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE~1000.\+0}
+
+
+
+Definition at line 31 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+f\+\_\+course(), and gps\+\_\+f\+\_\+get\+\_\+position().
+
+\mbox{\Hypertarget{gps__driver_8h_af4a0707f54e30a5b85ff14b92571b8ae}\label{gps__driver_8h_af4a0707f54e30a5b85ff14b92571b8ae}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}}
+\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}{GPS\_INVALID\_F\_SPEED}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED~-\/1.\+0}
+
+
+
+Definition at line 33 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+f\+\_\+speed\+\_\+kmph(), gps\+\_\+f\+\_\+speed\+\_\+knots(), gps\+\_\+f\+\_\+speed\+\_\+mph(), and gps\+\_\+f\+\_\+speed\+\_\+mps().
+
+\mbox{\Hypertarget{gps__driver_8h_a5adf04f30f255fa8a082252cfeceb7fa}\label{gps__driver_8h_a5adf04f30f255fa8a082252cfeceb7fa}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER@{G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}}
+\index{G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER@{G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}{GPS\_KM\_PER\_METER}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+K\+M\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER~0.\+001}
+
+
+
+Definition at line 41 of file gps\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{gps__driver_8h_a40018fb630e507a4f7ef19fbf3320052}\label{gps__driver_8h_a40018fb630e507a4f7ef19fbf3320052}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT@{G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}}
+\index{G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT@{G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}{GPS\_KMPH\_PER\_KNOT}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT~1.\+852}
+
+
+
+Definition at line 39 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+f\+\_\+speed\+\_\+kmph().
+
+\mbox{\Hypertarget{gps__driver_8h_ac85cc4e3cad434caed39ddeb548b5ad9}\label{gps__driver_8h_ac85cc4e3cad434caed39ddeb548b5ad9}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER@{G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}}
+\index{G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER@{G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER}{GPS\_MILES\_PER\_METER}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+M\+I\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+\+M\+E\+T\+ER~0.\+00062137112}
+
+
+
+Definition at line 40 of file gps\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{gps__driver_8h_a3303a20dbabb09f59aa264c105fa1ae0}\label{gps__driver_8h_a3303a20dbabb09f59aa264c105fa1ae0}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT@{G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}}
+\index{G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT@{G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}{GPS\_MPH\_PER\_KNOT}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT~1.\+15077945}
+
+
+
+Definition at line 37 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+f\+\_\+speed\+\_\+mph().
+
+\mbox{\Hypertarget{gps__driver_8h_aa7e8317fef5e01a2de2f26c3a343dbe7}\label{gps__driver_8h_aa7e8317fef5e01a2de2f26c3a343dbe7}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT@{G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}}
+\index{G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT@{G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT}{GPS\_MPS\_PER\_KNOT}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT~0.\+51444444}
+
+
+
+Definition at line 38 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+f\+\_\+speed\+\_\+mps().
+
+\mbox{\Hypertarget{gps__driver_8h_ae87ddbf37a52c5a1f6d26bd22b7947f9}\label{gps__driver_8h_ae87ddbf37a52c5a1f6d26bd22b7947f9}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON@{G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON@{G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON}{GPS\_VERSION}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON~12}
+
+
+
+Definition at line 36 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by library\+\_\+version().
+
+\mbox{\Hypertarget{gps__driver_8h_a598a3330b3c21701223ee0ca14316eca}\label{gps__driver_8h_a598a3330b3c21701223ee0ca14316eca}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!PI@{PI}}
+\index{PI@{PI}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{PI}{PI}}
+{\footnotesize\ttfamily \#define PI~3.\+14159265}
+
+
+
+Definition at line 23 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by degrees(), and radians().
+
+\mbox{\Hypertarget{gps__driver_8h_ae7616788b30810a219d9cdee95904ba4}\label{gps__driver_8h_ae7616788b30810a219d9cdee95904ba4}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!sq@{sq}}
+\index{sq@{sq}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{sq}{sq}}
+{\footnotesize\ttfamily \#define sq(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x)$\ast$(x))}
+
+
+
+Definition at line 26 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+distance\+\_\+between().
+
+\mbox{\Hypertarget{gps__driver_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}\label{gps__driver_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!true@{true}}
+\index{true@{true}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{true}{true}}
+{\footnotesize\ttfamily \#define true~1}
+
+
+
+Definition at line 21 of file gps\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{gps__driver_8h_a3b947f4b635461030ff2d87833e5049e}\label{gps__driver_8h_a3b947f4b635461030ff2d87833e5049e}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!T\+W\+O\+\_\+\+PI@{T\+W\+O\+\_\+\+PI}}
+\index{T\+W\+O\+\_\+\+PI@{T\+W\+O\+\_\+\+PI}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{T\+W\+O\+\_\+\+PI}{TWO\_PI}}
+{\footnotesize\ttfamily \#define T\+W\+O\+\_\+\+PI~2$\ast$\hyperlink{gps__driver_8h_a598a3330b3c21701223ee0ca14316eca}{PI}}
+
+
+
+Definition at line 24 of file gps\+\_\+driver.\+h.
+
+
+
+Referenced by gps\+\_\+course\+\_\+to().
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}\label{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!boole@{boole}}
+\index{boole@{boole}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{boole}{boole}}
+{\footnotesize\ttfamily typedef char \hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole}}
+
+File\+: \hyperlink{gps__driver_8h}{gps\+\_\+driver.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{gps__driver_8c}{gps\+\_\+driver.\+c} Date\+: 4/29/2019 Reference\+: Arduino Tiny\+G\+PS C++ library 
+
+Definition at line 18 of file gps\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}\label{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!byte@{byte}}
+\index{byte@{byte}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{byte}{byte}}
+{\footnotesize\ttfamily typedef unsigned char \hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte}}
+
+
+
+Definition at line 19 of file gps\+\_\+driver.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55bab1f0ddaf86c7c4c48824e0fd2ddab890}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55bab1f0ddaf86c7c4c48824e0fd2ddab890}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba2a0fc90e853fbae0259af247e55f9b8f}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba2a0fc90e853fbae0259af247e55f9b8f}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba7c3ed422aa45c92070ed7605aebae4c3}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba7c3ed422aa45c92070ed7605aebae4c3}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba97de308819e835eb62d22c4e9a666523}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba97de308819e835eb62d22c4e9a666523}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55bae4ba443b854e8c67547e449e1f55667f}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55bae4ba443b854e8c67547e449e1f55667f}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55baea55580ee5c7c0a84db5990410d85854}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55baea55580ee5c7c0a84db5990410d85854}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba46a2c0f8ad8b19e522e077b785566079}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba46a2c0f8ad8b19e522e077b785566079}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba8428f511eea629585cbb7d9ad95df2f6}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba8428f511eea629585cbb7d9ad95df2f6}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP}}}\mbox{\Hypertarget{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba263ee392825abb1d86773c99401a4b85}\label{gps__driver_8h_a06fc87d81c62e9abb8790b6e5713c55ba263ee392825abb1d86773c99401a4b85}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 45 of file gps\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7}\label{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA@{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA@{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA}}}\mbox{\Hypertarget{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a8005b6b210f1fb122cda134d8039556c}\label{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a8005b6b210f1fb122cda134d8039556c}} 
+G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC@{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC@{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC}}}\mbox{\Hypertarget{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a17ecf9591de6aea5b663b563f64d7b72}\label{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a17ecf9591de6aea5b663b563f64d7b72}} 
+G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER@{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER@{G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER}}}\mbox{\Hypertarget{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a8cd3b708bd74f31a67a2d2f8013d393a}\label{gps__driver_8h_adf764cbdea00d65edcd07bb9953ad2b7a8cd3b708bd74f31a67a2d2f8013d393a}} 
+G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 95 of file gps\+\_\+driver.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gps__driver_8h_a30be5b610aae20d05adde26dcee05153}\label{gps__driver_8h_a30be5b610aae20d05adde26dcee05153}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!encode@{encode}}
+\index{encode@{encode}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily \hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} encode (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gps__driver_8h_a45983775e03f4b9465d92119cbcf036e}\label{gps__driver_8h_a45983775e03f4b9465d92119cbcf036e}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!from\+\_\+hex@{from\+\_\+hex}}
+\index{from\+\_\+hex@{from\+\_\+hex}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{from\+\_\+hex()}{from\_hex()}}
+{\footnotesize\ttfamily int from\+\_\+hex (\begin{DoxyParamCaption}\item[{char}]{a }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 184 of file gps\+\_\+driver.\+c.
+
+
+
+Referenced by gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_abc4ee2194d99cc47297ee91022a3aae2}\label{gps__driver_8h_abc4ee2194d99cc47297ee91022a3aae2}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+cardinal@{gps\+\_\+cardinal}}
+\index{gps\+\_\+cardinal@{gps\+\_\+cardinal}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+cardinal()}{gps\_cardinal()}}
+{\footnotesize\ttfamily static const char$\ast$ gps\+\_\+cardinal (\begin{DoxyParamCaption}\item[{float}]{course }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em course} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 463 of file gps\+\_\+driver.\+c.
+
+
+
+Referenced by library\+\_\+version().
+
+\mbox{\Hypertarget{gps__driver_8h_a6b81f7a6981b892a6687802b22ce0da7}\label{gps__driver_8h_a6b81f7a6981b892a6687802b22ce0da7}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+course\+\_\+to@{gps\+\_\+course\+\_\+to}}
+\index{gps\+\_\+course\+\_\+to@{gps\+\_\+course\+\_\+to}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+course\+\_\+to()}{gps\_course\_to()}}
+{\footnotesize\ttfamily float gps\+\_\+course\+\_\+to (\begin{DoxyParamCaption}\item[{float}]{lat1,  }\item[{float}]{long1,  }\item[{float}]{lat2,  }\item[{float}]{long2 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat1} & \\
+\hline
+{\em long1} & \\
+\hline
+{\em lat2} & \\
+\hline
+{\em long2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 438 of file gps\+\_\+driver.\+c.
+
+
+
+References degrees(), radians(), and T\+W\+O\+\_\+\+PI.
+
+
+
+Referenced by library\+\_\+version().
+
+\mbox{\Hypertarget{gps__driver_8h_a2435cbe4302bf3d72d70b71d9aa0e522}\label{gps__driver_8h_a2435cbe4302bf3d72d70b71d9aa0e522}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+crack\+\_\+datetime@{gps\+\_\+crack\+\_\+datetime}}
+\index{gps\+\_\+crack\+\_\+datetime@{gps\+\_\+crack\+\_\+datetime}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+crack\+\_\+datetime()}{gps\_crack\_datetime()}}
+{\footnotesize\ttfamily void gps\+\_\+crack\+\_\+datetime (\begin{DoxyParamCaption}\item[{int $\ast$}]{year,  }\item[{\hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$}]{month,  }\item[{\hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$}]{day,  }\item[{\hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$}]{hour,  }\item[{\hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$}]{minute,  }\item[{\hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$}]{second,  }\item[{\hyperlink{gps__driver_8h_a0c8186d9b9b7880309c27230bbb5e69d}{byte} $\ast$}]{hundredths,  }\item[{unsigned long $\ast$}]{age }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & \\
+\hline
+{\em month} & \\
+\hline
+{\em day} & \\
+\hline
+{\em hour} & \\
+\hline
+{\em minute} & \\
+\hline
+{\em second} & \\
+\hline
+{\em hundredths} & \\
+\hline
+{\em age} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 531 of file gps\+\_\+driver.\+c.
+
+
+
+References gps\+\_\+get\+\_\+datetime().
+
+\mbox{\Hypertarget{gps__driver_8h_a02117348886764b208274a99e1a9e51f}\label{gps__driver_8h_a02117348886764b208274a99e1a9e51f}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+distance\+\_\+between@{gps\+\_\+distance\+\_\+between}}
+\index{gps\+\_\+distance\+\_\+between@{gps\+\_\+distance\+\_\+between}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+distance\+\_\+between()}{gps\_distance\_between()}}
+{\footnotesize\ttfamily static float gps\+\_\+distance\+\_\+between (\begin{DoxyParamCaption}\item[{float}]{lat1,  }\item[{float}]{long1,  }\item[{float}]{lat2,  }\item[{float}]{long2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat1} & \\
+\hline
+{\em long1} & \\
+\hline
+{\em lat2} & \\
+\hline
+{\em long2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 405 of file gps\+\_\+driver.\+c.
+
+
+
+References radians(), and sq.
+
+
+
+Referenced by library\+\_\+version().
+
+\mbox{\Hypertarget{gps__driver_8h_a2ef52d51193e8782afc8d97347270d19}\label{gps__driver_8h_a2ef52d51193e8782afc8d97347270d19}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+encode@{gps\+\_\+encode}}
+\index{gps\+\_\+encode@{gps\+\_\+encode}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+encode()}{gps\_encode()}}
+{\footnotesize\ttfamily \hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} gps\+\_\+encode (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 114 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+encoded\+\_\+characters, \+\_\+is\+\_\+checksum\+\_\+term, \+\_\+is\+\_\+gps\+\_\+data\+\_\+good, \+\_\+parity, \+\_\+sentence\+\_\+type, \+\_\+term, \+\_\+term\+\_\+number, \+\_\+term\+\_\+offset, G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER, and gps\+\_\+term\+\_\+complete().
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{gps__driver_8h_aabd734d60cbe3cdf4f53b99ff71511f3}\label{gps__driver_8h_aabd734d60cbe3cdf4f53b99ff71511f3}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+altitude@{gps\+\_\+f\+\_\+altitude}}
+\index{gps\+\_\+f\+\_\+altitude@{gps\+\_\+f\+\_\+altitude}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+altitude()}{gps\_f\_altitude()}}
+{\footnotesize\ttfamily float gps\+\_\+f\+\_\+altitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 553 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+altitude, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE, and G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE.
+
+\mbox{\Hypertarget{gps__driver_8h_a88c327da472869973400c7863c569a39}\label{gps__driver_8h_a88c327da472869973400c7863c569a39}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+course@{gps\+\_\+f\+\_\+course}}
+\index{gps\+\_\+f\+\_\+course@{gps\+\_\+f\+\_\+course}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+course()}{gps\_f\_course()}}
+{\footnotesize\ttfamily float gps\+\_\+f\+\_\+course (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 562 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+course, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE, and G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE.
+
+\mbox{\Hypertarget{gps__driver_8h_a7a3da881c1cfdd6a85895538827d5650}\label{gps__driver_8h_a7a3da881c1cfdd6a85895538827d5650}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+get\+\_\+position@{gps\+\_\+f\+\_\+get\+\_\+position}}
+\index{gps\+\_\+f\+\_\+get\+\_\+position@{gps\+\_\+f\+\_\+get\+\_\+position}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+get\+\_\+position()}{gps\_f\_get\_position()}}
+{\footnotesize\ttfamily void gps\+\_\+f\+\_\+get\+\_\+position (\begin{DoxyParamCaption}\item[{float $\ast$}]{latitude,  }\item[{float $\ast$}]{longitude,  }\item[{unsigned long $\ast$}]{fix\+\_\+age }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em latitude} & \\
+\hline
+{\em longitude} & \\
+\hline
+{\em fix\+\_\+age} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 512 of file gps\+\_\+driver.\+c.
+
+
+
+References gps\+\_\+get\+\_\+position(), G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE, and G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{gps__driver_8h_a07e1b825d8e29bcca5e872709216248a}\label{gps__driver_8h_a07e1b825d8e29bcca5e872709216248a}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+speed\+\_\+kmph@{gps\+\_\+f\+\_\+speed\+\_\+kmph}}
+\index{gps\+\_\+f\+\_\+speed\+\_\+kmph@{gps\+\_\+f\+\_\+speed\+\_\+kmph}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+speed\+\_\+kmph()}{gps\_f\_speed\_kmph()}}
+{\footnotesize\ttfamily float gps\+\_\+f\+\_\+speed\+\_\+kmph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 600 of file gps\+\_\+driver.\+c.
+
+
+
+References gps\+\_\+f\+\_\+speed\+\_\+knots(), G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED, and G\+P\+S\+\_\+\+K\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT.
+
+\mbox{\Hypertarget{gps__driver_8h_a5f94e99acc75ff72428367ed6ebef6b0}\label{gps__driver_8h_a5f94e99acc75ff72428367ed6ebef6b0}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+speed\+\_\+knots@{gps\+\_\+f\+\_\+speed\+\_\+knots}}
+\index{gps\+\_\+f\+\_\+speed\+\_\+knots@{gps\+\_\+f\+\_\+speed\+\_\+knots}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+speed\+\_\+knots()}{gps\_f\_speed\_knots()}}
+{\footnotesize\ttfamily float gps\+\_\+f\+\_\+speed\+\_\+knots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 571 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+speed, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED, and G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED.
+
+
+
+Referenced by gps\+\_\+f\+\_\+speed\+\_\+kmph(), gps\+\_\+f\+\_\+speed\+\_\+mph(), and gps\+\_\+f\+\_\+speed\+\_\+mps().
+
+\mbox{\Hypertarget{gps__driver_8h_a6e4b41596b7cc64466f9ef2be5835665}\label{gps__driver_8h_a6e4b41596b7cc64466f9ef2be5835665}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+speed\+\_\+mph@{gps\+\_\+f\+\_\+speed\+\_\+mph}}
+\index{gps\+\_\+f\+\_\+speed\+\_\+mph@{gps\+\_\+f\+\_\+speed\+\_\+mph}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+speed\+\_\+mph()}{gps\_f\_speed\_mph()}}
+{\footnotesize\ttfamily float gps\+\_\+f\+\_\+speed\+\_\+mph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 580 of file gps\+\_\+driver.\+c.
+
+
+
+References gps\+\_\+f\+\_\+speed\+\_\+knots(), G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED, and G\+P\+S\+\_\+\+M\+P\+H\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT.
+
+\mbox{\Hypertarget{gps__driver_8h_a90a10a9187e9737755292f01b0b47c31}\label{gps__driver_8h_a90a10a9187e9737755292f01b0b47c31}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+f\+\_\+speed\+\_\+mps@{gps\+\_\+f\+\_\+speed\+\_\+mps}}
+\index{gps\+\_\+f\+\_\+speed\+\_\+mps@{gps\+\_\+f\+\_\+speed\+\_\+mps}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+f\+\_\+speed\+\_\+mps()}{gps\_f\_speed\_mps()}}
+{\footnotesize\ttfamily float gps\+\_\+f\+\_\+speed\+\_\+mps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 590 of file gps\+\_\+driver.\+c.
+
+
+
+References gps\+\_\+f\+\_\+speed\+\_\+knots(), G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED, and G\+P\+S\+\_\+\+M\+P\+S\+\_\+\+P\+E\+R\+\_\+\+K\+N\+OT.
+
+\mbox{\Hypertarget{gps__driver_8h_a8cf2dc913f69357aaa2f84999710e411}\label{gps__driver_8h_a8cf2dc913f69357aaa2f84999710e411}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+get\+\_\+datetime@{gps\+\_\+get\+\_\+datetime}}
+\index{gps\+\_\+get\+\_\+datetime@{gps\+\_\+get\+\_\+datetime}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+get\+\_\+datetime()}{gps\_get\_datetime()}}
+{\footnotesize\ttfamily void gps\+\_\+get\+\_\+datetime (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{date,  }\item[{unsigned long $\ast$}]{time,  }\item[{unsigned long $\ast$}]{age }\end{DoxyParamCaption})}
+
+
+
+Date as ddmmyy, time as hhmmsscc, and age in milliseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & Pointer to return date value \\
+\hline
+{\em time} & Pointer to return time value \\
+\hline
+{\em age} & Pointer to return age value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 495 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+date, \+\_\+last\+\_\+time\+\_\+fix, \+\_\+time, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME, and uptime().
+
+
+
+Referenced by gps\+\_\+crack\+\_\+datetime().
+
+\mbox{\Hypertarget{gps__driver_8h_a053c042dcb4ace1116e4a2af3633d13a}\label{gps__driver_8h_a053c042dcb4ace1116e4a2af3633d13a}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+get\+\_\+position@{gps\+\_\+get\+\_\+position}}
+\index{gps\+\_\+get\+\_\+position@{gps\+\_\+get\+\_\+position}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+get\+\_\+position()}{gps\_get\_position()}}
+{\footnotesize\ttfamily void gps\+\_\+get\+\_\+position (\begin{DoxyParamCaption}\item[{long $\ast$}]{latitude,  }\item[{long $\ast$}]{longitude,  }\item[{unsigned long $\ast$}]{fix\+\_\+age }\end{DoxyParamCaption})}
+
+
+
+lat/long in hundred thousandth of a degree and age of fix in milliseconds 
+
+
+\begin{DoxyParams}{Parameters}
+{\em latitude} & Pointer to write latitude value \\
+\hline
+{\em longitude} & Pointer to write longitude value \\
+\hline
+{\em fix\+\_\+age} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 477 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+last\+\_\+position\+\_\+fix, \+\_\+latitude, \+\_\+longitude, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE, G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME, and uptime().
+
+
+
+Referenced by gps\+\_\+f\+\_\+get\+\_\+position().
+
+\mbox{\Hypertarget{gps__driver_8h_a0f2db75eafebc0db754b5c01f20238f3}\label{gps__driver_8h_a0f2db75eafebc0db754b5c01f20238f3}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+hdop@{gps\+\_\+hdop}}
+\index{gps\+\_\+hdop@{gps\+\_\+hdop}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+hdop()}{gps\_hdop()}}
+{\footnotesize\ttfamily unsigned long gps\+\_\+hdop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 81 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+hdop.
+
+\mbox{\Hypertarget{gps__driver_8h_a171bfbafbf9f1042e0e6916d78d749bf}\label{gps__driver_8h_a171bfbafbf9f1042e0e6916d78d749bf}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+parse\+\_\+decimal@{gps\+\_\+parse\+\_\+decimal}}
+\index{gps\+\_\+parse\+\_\+decimal@{gps\+\_\+parse\+\_\+decimal}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+parse\+\_\+decimal()}{gps\_parse\_decimal()}}
+{\footnotesize\ttfamily unsigned long gps\+\_\+parse\+\_\+decimal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 197 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+term, gpsatol(), and gpsisdigit().
+
+
+
+Referenced by gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_a2dc2af8b665f887dcb997ae8f8b1351e}\label{gps__driver_8h_a2dc2af8b665f887dcb997ae8f8b1351e}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+parse\+\_\+degrees@{gps\+\_\+parse\+\_\+degrees}}
+\index{gps\+\_\+parse\+\_\+degrees@{gps\+\_\+parse\+\_\+degrees}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+parse\+\_\+degrees()}{gps\_parse\_degrees()}}
+{\footnotesize\ttfamily unsigned long gps\+\_\+parse\+\_\+degrees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 228 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+term, gpsatol(), and gpsisdigit().
+
+
+
+Referenced by gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_a262fa3e2c6d2518e4ee7893354d76a66}\label{gps__driver_8h_a262fa3e2c6d2518e4ee7893354d76a66}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+satellites@{gps\+\_\+satellites}}
+\index{gps\+\_\+satellites@{gps\+\_\+satellites}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+satellites()}{gps\_satellites()}}
+{\footnotesize\ttfamily unsigned short gps\+\_\+satellites (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 78 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+numsats.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{gps__driver_8h_aa3739ff6df1c487944d96dc6f7ce92b7}\label{gps__driver_8h_aa3739ff6df1c487944d96dc6f7ce92b7}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+stats@{gps\+\_\+stats}}
+\index{gps\+\_\+stats@{gps\+\_\+stats}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+stats()}{gps\_stats()}}
+{\footnotesize\ttfamily void gps\+\_\+stats (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{chars,  }\item[{unsigned short $\ast$}]{sentences,  }\item[{unsigned short $\ast$}]{failed\+\_\+cs }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em chars} & \\
+\hline
+{\em sentences} & \\
+\hline
+{\em failed\+\_\+cs} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 164 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+encoded\+\_\+characters, \+\_\+failed\+\_\+checksum, and \+\_\+good\+\_\+sentences.
+
+
+
+Referenced by library\+\_\+version().
+
+\mbox{\Hypertarget{gps__driver_8h_a7ca39bf8a1a19cd367dc34b00fa4ab6c}\label{gps__driver_8h_a7ca39bf8a1a19cd367dc34b00fa4ab6c}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gps\+\_\+term\+\_\+complete@{gps\+\_\+term\+\_\+complete}}
+\index{gps\+\_\+term\+\_\+complete@{gps\+\_\+term\+\_\+complete}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gps\+\_\+term\+\_\+complete()}{gps\_term\_complete()}}
+{\footnotesize\ttfamily \hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} gps\+\_\+term\+\_\+complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Processes a just-\/completed term. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if new sentence has just passed checksum test and is validated 
+\end{DoxyReturn}
+
+
+Definition at line 257 of file gps\+\_\+driver.\+c.
+
+
+
+References \+\_\+altitude, \+\_\+course, \+\_\+date, \+\_\+failed\+\_\+checksum, \+\_\+good\+\_\+sentences, \+\_\+hdop, \+\_\+is\+\_\+checksum\+\_\+term, \+\_\+is\+\_\+gps\+\_\+data\+\_\+good, \+\_\+last\+\_\+position\+\_\+fix, \+\_\+last\+\_\+time\+\_\+fix, \+\_\+latitude, \+\_\+longitude, \+\_\+new\+\_\+altitude, \+\_\+new\+\_\+course, \+\_\+new\+\_\+date, \+\_\+new\+\_\+hdop, \+\_\+new\+\_\+latitude, \+\_\+new\+\_\+longitude, \+\_\+new\+\_\+numsats, \+\_\+new\+\_\+position\+\_\+fix, \+\_\+new\+\_\+speed, \+\_\+new\+\_\+time, \+\_\+new\+\_\+time\+\_\+fix, \+\_\+numsats, \+\_\+parity, \+\_\+sentence\+\_\+type, \+\_\+speed, \+\_\+term, \+\_\+term\+\_\+number, \+\_\+time, C\+O\+M\+B\+I\+NE, from\+\_\+hex(), G\+P\+G\+G\+A\+\_\+\+T\+E\+RM, G\+P\+R\+M\+C\+\_\+\+T\+E\+RM, gps\+\_\+parse\+\_\+decimal(), gps\+\_\+parse\+\_\+degrees(), G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+G\+GA, G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+G\+P\+R\+MC, G\+P\+S\+\_\+\+S\+E\+N\+T\+E\+N\+C\+E\+\_\+\+O\+T\+H\+ER, gpsatol(), gpsstrcmp(), and uptime().
+
+
+
+Referenced by gps\+\_\+encode().
+
+\mbox{\Hypertarget{gps__driver_8h_a597b9ccd02469fb6b35170070879aef2}\label{gps__driver_8h_a597b9ccd02469fb6b35170070879aef2}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gpsatol@{gpsatol}}
+\index{gpsatol@{gpsatol}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gpsatol()}{gpsatol()}}
+{\footnotesize\ttfamily long gpsatol (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 376 of file gps\+\_\+driver.\+c.
+
+
+
+References gpsisdigit().
+
+
+
+Referenced by gps\+\_\+parse\+\_\+decimal(), gps\+\_\+parse\+\_\+degrees(), and gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_aac7f3bb82a1ada19ecc6311059ef4f6a}\label{gps__driver_8h_aac7f3bb82a1ada19ecc6311059ef4f6a}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gpsisdigit@{gpsisdigit}}
+\index{gpsisdigit@{gpsisdigit}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gpsisdigit()}{gpsisdigit()}}
+{\footnotesize\ttfamily \hyperlink{gps__driver_8h_ac45a4a715a823730b9f943be279bd268}{boole} gpsisdigit (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file gps\+\_\+driver.\+c.
+
+
+
+Referenced by gps\+\_\+parse\+\_\+decimal(), gps\+\_\+parse\+\_\+degrees(), and gpsatol().
+
+\mbox{\Hypertarget{gps__driver_8h_a85d2b57196c9e37681a596d9720ef81f}\label{gps__driver_8h_a85d2b57196c9e37681a596d9720ef81f}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!gpsstrcmp@{gpsstrcmp}}
+\index{gpsstrcmp@{gpsstrcmp}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{gpsstrcmp()}{gpsstrcmp()}}
+{\footnotesize\ttfamily int gpsstrcmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str1,  }\item[{const char $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em str1} & \\
+\hline
+{\em str2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 390 of file gps\+\_\+driver.\+c.
+
+
+
+Referenced by gps\+\_\+term\+\_\+complete().
+
+\mbox{\Hypertarget{gps__driver_8h_a4d6bf5b14f9c50c7727f546325196faa}\label{gps__driver_8h_a4d6bf5b14f9c50c7727f546325196faa}} 
+\index{gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}!library\+\_\+version@{library\+\_\+version}}
+\index{library\+\_\+version@{library\+\_\+version}!gps\+\_\+driver.\+h@{gps\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{library\+\_\+version()}{library\_version()}}
+{\footnotesize\ttfamily static int library\+\_\+version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 85 of file gps\+\_\+driver.\+h.
+
+
+
+References course(), gps\+\_\+cardinal(), gps\+\_\+course\+\_\+to(), gps\+\_\+distance\+\_\+between(), gps\+\_\+stats(), and G\+P\+S\+\_\+\+V\+E\+R\+S\+I\+ON.
+

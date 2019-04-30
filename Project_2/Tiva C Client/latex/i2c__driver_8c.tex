@@ -1,0 +1,89 @@
+\hypertarget{i2c__driver_8c}{}\section{i2c\+\_\+driver.\+c File Reference}
+\label{i2c__driver_8c}\index{i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}}
+{\ttfamily \#include \char`\"{}Include/i2c\+\_\+driver.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{i2c__driver_8c_a6ce3db1994587a4c70027f9b1ca75f3e}{Configure\+I2\+C2} (void)
+\begin{DoxyCompactList}\small\item\em Configures I2C 2 Block. \end{DoxyCompactList}\item 
+void \hyperlink{i2c__driver_8c_a20abdd2d44f610306c9230e04d4e288b}{I2\+Csend} (uint8\+\_\+t addr, uint8\+\_\+t $\ast$data, uint8\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Writes data on I2C 2 Block. \end{DoxyCompactList}\item 
+void \hyperlink{i2c__driver_8c_adfe2fd957339be56726109a9382cdfd6}{I2\+Creceive} (uint8\+\_\+t addr, uint8\+\_\+t reg, uint8\+\_\+t $\ast$data, uint8\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Receives specified bytes of data from given register through I2C 2 Block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{i2c__driver_8c_a6ce3db1994587a4c70027f9b1ca75f3e}\label{i2c__driver_8c_a6ce3db1994587a4c70027f9b1ca75f3e}} 
+\index{i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}!Configure\+I2\+C2@{Configure\+I2\+C2}}
+\index{Configure\+I2\+C2@{Configure\+I2\+C2}!i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{Configure\+I2\+C2()}{ConfigureI2C2()}}
+{\footnotesize\ttfamily void Configure\+I2\+C2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configures I2C 2 Block. 
+
+File\+: \hyperlink{i2c__driver_8c}{i2c\+\_\+driver.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for I2C Date\+: 4/29/2019 
+
+Definition at line 13 of file i2c\+\_\+driver.\+c.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
+\mbox{\Hypertarget{i2c__driver_8c_adfe2fd957339be56726109a9382cdfd6}\label{i2c__driver_8c_adfe2fd957339be56726109a9382cdfd6}} 
+\index{i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}!I2\+Creceive@{I2\+Creceive}}
+\index{I2\+Creceive@{I2\+Creceive}!i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{I2\+Creceive()}{I2Creceive()}}
+{\footnotesize\ttfamily void I2\+Creceive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+Receives specified bytes of data from given register through I2C 2 Block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Slave address \\
+\hline
+{\em reg} & Register to read data from \\
+\hline
+{\em data} & Pointer to received data \\
+\hline
+{\em count} & Number of bytes to be received \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 84 of file i2c\+\_\+driver.\+c.
+
+
+
+Referenced by B\+I\+S\+T\+\_\+mpu(), Configure\+M\+P\+U(), and M\+P\+U\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{i2c__driver_8c_a20abdd2d44f610306c9230e04d4e288b}\label{i2c__driver_8c_a20abdd2d44f610306c9230e04d4e288b}} 
+\index{i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}!I2\+Csend@{I2\+Csend}}
+\index{I2\+Csend@{I2\+Csend}!i2c\+\_\+driver.\+c@{i2c\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{I2\+Csend()}{I2Csend()}}
+{\footnotesize\ttfamily void I2\+Csend (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+
+
+Writes data on I2C 2 Block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Slave addrres \\
+\hline
+{\em data} & Pointer to data to be sent \\
+\hline
+{\em count} & Number of bytes to be sent from data pointer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 45 of file i2c\+\_\+driver.\+c.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
