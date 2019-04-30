@@ -1,8 +1,8 @@
-/*
- * lcd_driver.c
- *
- *  Created on: Apr 18, 2019
- *      Author: vkshe
+/**
+ * File: lcd_driver.c
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file has driver API for 16x2 character LCD
+ * Date: 4/29/2019
  */
 
 
@@ -102,7 +102,7 @@ void ConfigureLCD(void)
     SysCtlDelay(599520);       //Delay 5 ms
     WR_CMD(0x38);   //Send function set 8bit data and 2 line interface
     lcdbusywait();
-    WR_CMD(0x0E);   //Send Display on/off. D=1, C=1, B=0
+    WR_CMD(0x0C);   //Send Display on/off. D=1, C=0, B=0
     lcdbusywait();
     WR_CMD(0x06);   //Send Entry mode set, Increment cursor, NO display shift
     lcdclear();
@@ -186,6 +186,57 @@ void lcdputstr(char *ss)
         {
             addr+=1;
         }
+    }
+}
+
+/**
+ * @brief Displays integer number upto 3 decimal
+ * @param a Input integer number to be displayed
+ */
+void lcdputint(int a)
+{
+    uint8_t i = 3, valid = 0;
+    uint32_t div = 100;
+
+    while(i != 0)
+    {
+        if(a/div || valid == 1 || i==1)
+        {
+            valid = 1;
+            lcdputch(0x30 + a/div);
+        }
+        a = a % div;
+        div = div/10;
+        i--;
+    }
+}
+
+/**
+ * @brief Displays float number upto 4 decimal points
+ * @param a Input float number to be displayed
+ */
+void lcdputfloat(float a)
+{
+    uint8_t i;
+
+    if(a<0)
+    {
+        lcdputch('-');
+        a = a*(-1);
+        lcdputint((int)a);
+    }
+    else
+    {
+        lcdputint((int)a);
+    }
+
+    a = a - (int)a;
+    lcdputch('.');
+    for(i=0; i<4; i++)
+    {
+        a = a*10;
+        lcdputch(0x30 + (int)a);
+        a = a - (int)a;
     }
 }
 

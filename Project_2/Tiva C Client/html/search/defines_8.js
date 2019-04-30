@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['netif_5fdebug',['NETIF_DEBUG',['../lwipopts_8h.html#a2dfad02b075a7f9a8791a66fe40864a4',1,'lwipopts.h']]],
-  ['no_5fsys',['NO_SYS',['../lwipopts_8h.html#ae00ba99de94a5bf84d832be8976df59b',1,'lwipopts.h']]],
-  ['nop',['NOP',['../nrf24l01_8h.html#a700f88377bf36711b711f69b06c52f5d',1,'nrf24l01.h']]],
-  ['nrf_5fce',['nrf_ce',['../nrf24l01_8h.html#a3306d6b734ed12aef885bb1434e77c7c',1,'nrf24l01.h']]],
-  ['nrf_5fcsn',['nrf_csn',['../nrf24l01_8h.html#a067b8f16222795820f19e293ef838259',1,'nrf24l01.h']]],
-  ['nrf_5fgpio_5fbase',['nrf_gpio_base',['../nrf24l01_8h.html#ad7b3c7708f7d54c9c83e6a5f6b43d15d',1,'nrf24l01.h']]],
-  ['nrf_5firq',['nrf_irq',['../nrf24l01_8h.html#a175472cf0728a143c3a2217d3d03988e',1,'nrf24l01.h']]],
-  ['num_5frx_5fdescriptors',['NUM_RX_DESCRIPTORS',['../lwipopts_8h.html#ad9819ff90ac3963fcb6ba7c402fb98c6',1,'lwipopts.h']]],
-  ['num_5ftx_5fdescriptors',['NUM_TX_DESCRIPTORS',['../lwipopts_8h.html#ad70baca046931aa8d783f9db0a950f08',1,'lwipopts.h']]]
+  ['include_5fuxtaskgetstackhighwatermark',['INCLUDE_uxTaskGetStackHighWaterMark',['../_free_r_t_o_s_config_8h.html#a23c7b4b41fe9b575cf2329c7cbe78b86',1,'FreeRTOSConfig.h']]],
+  ['include_5fuxtaskpriorityget',['INCLUDE_uxTaskPriorityGet',['../_free_r_t_o_s_config_8h.html#a1279eb797355460aeeec06aa524e91df',1,'FreeRTOSConfig.h']]],
+  ['include_5fvtaskcleanupresources',['INCLUDE_vTaskCleanUpResources',['../_free_r_t_o_s_config_8h.html#a7ee138825e57f243c8ee5fd4207b9e26',1,'FreeRTOSConfig.h']]],
+  ['include_5fvtaskdelay',['INCLUDE_vTaskDelay',['../_free_r_t_o_s_config_8h.html#a24361a6eb816a965f1ee4e2e08e364f8',1,'FreeRTOSConfig.h']]],
+  ['include_5fvtaskdelayuntil',['INCLUDE_vTaskDelayUntil',['../_free_r_t_o_s_config_8h.html#ae8459bfd5b428319bb10de9f504a53aa',1,'FreeRTOSConfig.h']]],
+  ['include_5fvtaskdelete',['INCLUDE_vTaskDelete',['../_free_r_t_o_s_config_8h.html#a5ae1434fdf995108dc749ff9329f53bd',1,'FreeRTOSConfig.h']]],
+  ['include_5fvtaskpriorityset',['INCLUDE_vTaskPrioritySet',['../_free_r_t_o_s_config_8h.html#ad6858ac8aaf726007fd19752956ef1bd',1,'FreeRTOSConfig.h']]],
+  ['include_5fvtasksuspend',['INCLUDE_vTaskSuspend',['../_free_r_t_o_s_config_8h.html#aef8fbb97819ad3d962f334ac298206d1',1,'FreeRTOSConfig.h']]],
+  ['ip_5ffrag',['IP_FRAG',['../lwipopts_8h.html#af85c8bdd5035b6cada790b4cc2a209a4',1,'lwipopts.h']]],
+  ['ip_5freassembly',['IP_REASSEMBLY',['../lwipopts_8h.html#a1a31ab0e0f37b17d40fa7c35bc2c4f69',1,'lwipopts.h']]]
 ];

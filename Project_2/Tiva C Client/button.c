@@ -1,10 +1,9 @@
-/*
- * button.c
- *
- *  Created on: Apr 18, 2019
- *      Author: vkshe
+/**
+ * File: button.c
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file contains configuration and isr for user button
+ * Date: 4/29/2019
  */
-
 #include "Include/button.h"
 
 /**
@@ -29,6 +28,8 @@ void Button_ISR(void)
     GPIOIntDisable(GPIO_PORTJ_BASE, GPIO_INT_PIN_0);
     i = GPIOIntStatus(GPIO_PORTJ_BASE, false);
     GPIOIntClear(GPIO_PORTJ_BASE, i);
+    button_flag = 1;
+    pk.status &= (~0x01);
     for(i=0; i<1000; i++);
     GPIOIntEnable(GPIO_PORTJ_BASE, GPIO_INT_PIN_0);
 }

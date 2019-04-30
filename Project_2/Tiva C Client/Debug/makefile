@@ -10,11 +10,16 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./actuator.obj" \
 "./button.obj" \
+"./gps_driver.obj" \
 "./i2c_driver.obj" \
 "./lcd_driver.obj" \
 "./main.obj" \
+"./mpu6050.obj" \
 "./nrf24l01.obj" \
+"./rf_comm.obj" \
+"./sensor.obj" \
 "./spi_driver.obj" \
 "./startup_ccs.obj" \
 "./uart_driver.obj" \
@@ -40,10 +45,8 @@ ORDERED_OBJS += \
 "./utils/uartstdio.obj" \
 "./utils/ustdlib.obj" \
 "../senshub_iot_ccs.cmd" \
-"../ezTivaLib/ez1294LIB.lib" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
--l"C:/Users/vkshe/workspace_v8/Advanced-Embedded-Software-Development/Project_2/Tiva C Client/ezTivaLib/ez1294LIB.lib" \
 -l"C:/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib" \
 -l"C:/ti/TivaWare_C_Series-2.1.4.178/sensorlib/ccs/Debug/sensorlib.lib" \
 
@@ -56,7 +59,6 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include drivers/subdir_vars.mk
--include ezTivaLib/subdir_vars.mk
 -include third_party/FreeRTOS/Source/subdir_vars.mk
 -include third_party/FreeRTOS/Source/portable/CCS/ARM_CM4F/subdir_vars.mk
 -include third_party/FreeRTOS/Source/portable/MemMang/subdir_vars.mk
@@ -64,7 +66,6 @@ RMDIR := RMDIR /S/Q
 -include utils/subdir_vars.mk
 -include subdir_rules.mk
 -include drivers/subdir_rules.mk
--include ezTivaLib/subdir_rules.mk
 -include third_party/FreeRTOS/Source/subdir_rules.mk
 -include third_party/FreeRTOS/Source/portable/CCS/ARM_CM4F/subdir_rules.mk
 -include third_party/FreeRTOS/Source/portable/MemMang/subdir_rules.mk
@@ -182,7 +183,7 @@ BIN_OUTPUTS__QUOTED += \
 all: Project_2_client.out
 
 # Tool invocations
-Project_2_client.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+Project_2_client.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
 	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -Ooff --advice:power="all" -g --gcc --define=ccs="ccs" --define=PART_TM4C1294NCPDT --define=TARGET_IS_TM4C129_RA0 --define=UART_BUFFERED --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --ual -z -m"senshub_iot_ccs.map" --stack_size=16384 --heap_size=1024 -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/lib" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Project_2_client_linkInfo.xml" --rom_model -o "Project_2_client.out" $(ORDERED_OBJS)
@@ -201,8 +202,8 @@ Project_2_client.bin: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "button.obj" "i2c_driver.obj" "lcd_driver.obj" "main.obj" "nrf24l01.obj" "spi_driver.obj" "startup_ccs.obj" "uart_driver.obj" "drivers\buttons.obj" "drivers\eth_client_lwip.obj" "drivers\exosite_hal_lwip.obj" "drivers\http.obj" "drivers\pinout.obj" "third_party\FreeRTOS\Source\list.obj" "third_party\FreeRTOS\Source\queue.obj" "third_party\FreeRTOS\Source\tasks.obj" "third_party\FreeRTOS\Source\timers.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\portasm.obj" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.obj" "third_party\exosite\exosite.obj" "third_party\exosite\exosite_meta.obj" "utils\cmdline.obj" "utils\flash_pb.obj" "utils\locator.obj" "utils\lwiplib.obj" "utils\ringbuf.obj" "utils\uartstdio.obj" "utils\ustdlib.obj" 
-	-$(RM) "button.d" "i2c_driver.d" "lcd_driver.d" "main.d" "nrf24l01.d" "spi_driver.d" "startup_ccs.d" "uart_driver.d" "drivers\buttons.d" "drivers\eth_client_lwip.d" "drivers\exosite_hal_lwip.d" "drivers\http.d" "drivers\pinout.d" "third_party\FreeRTOS\Source\list.d" "third_party\FreeRTOS\Source\queue.d" "third_party\FreeRTOS\Source\tasks.d" "third_party\FreeRTOS\Source\timers.d" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.d" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.d" "third_party\exosite\exosite.d" "third_party\exosite\exosite_meta.d" "utils\cmdline.d" "utils\flash_pb.d" "utils\locator.d" "utils\lwiplib.d" "utils\ringbuf.d" "utils\uartstdio.d" "utils\ustdlib.d" 
+	-$(RM) "actuator.obj" "button.obj" "gps_driver.obj" "i2c_driver.obj" "lcd_driver.obj" "main.obj" "mpu6050.obj" "nrf24l01.obj" "rf_comm.obj" "sensor.obj" "spi_driver.obj" "startup_ccs.obj" "uart_driver.obj" "drivers\buttons.obj" "drivers\eth_client_lwip.obj" "drivers\exosite_hal_lwip.obj" "drivers\http.obj" "drivers\pinout.obj" "third_party\FreeRTOS\Source\list.obj" "third_party\FreeRTOS\Source\queue.obj" "third_party\FreeRTOS\Source\tasks.obj" "third_party\FreeRTOS\Source\timers.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.obj" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\portasm.obj" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.obj" "third_party\exosite\exosite.obj" "third_party\exosite\exosite_meta.obj" "utils\cmdline.obj" "utils\flash_pb.obj" "utils\locator.obj" "utils\lwiplib.obj" "utils\ringbuf.obj" "utils\uartstdio.obj" "utils\ustdlib.obj" 
+	-$(RM) "actuator.d" "button.d" "gps_driver.d" "i2c_driver.d" "lcd_driver.d" "main.d" "mpu6050.d" "nrf24l01.d" "rf_comm.d" "sensor.d" "spi_driver.d" "startup_ccs.d" "uart_driver.d" "drivers\buttons.d" "drivers\eth_client_lwip.d" "drivers\exosite_hal_lwip.d" "drivers\http.d" "drivers\pinout.d" "third_party\FreeRTOS\Source\list.d" "third_party\FreeRTOS\Source\queue.d" "third_party\FreeRTOS\Source\tasks.d" "third_party\FreeRTOS\Source\timers.d" "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\port.d" "third_party\FreeRTOS\Source\portable\MemMang\heap_1.d" "third_party\exosite\exosite.d" "third_party\exosite\exosite_meta.d" "utils\cmdline.d" "utils\flash_pb.d" "utils\locator.d" "utils\lwiplib.d" "utils\ringbuf.d" "utils\uartstdio.d" "utils\ustdlib.d" 
 	-$(RM) "third_party\FreeRTOS\Source\portable\CCS\ARM_CM4F\portasm.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

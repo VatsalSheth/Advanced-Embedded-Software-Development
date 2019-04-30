@@ -1,8 +1,8 @@
-/*
- * spi_driver.h
- *
- *  Created on: Apr 17, 2019
- *      Author: vkshe
+/**
+ * File: spi_driver.h
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file contains required include and declarations of variables and functions used by spi_driver.c
+ * Date: 4/29/2019
  */
 
 #ifndef INCLUDE_SPI_DRIVER_H_

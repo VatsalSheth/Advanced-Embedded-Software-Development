@@ -1,0 +1,216 @@
+\hypertarget{mpu6050_8h}{}\section{Include/mpu6050.h File Reference}
+\label{mpu6050_8h}\index{Include/mpu6050.\+h@{Include/mpu6050.\+h}}
+{\ttfamily \#include \char`\"{}basic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}i2c\+\_\+driver.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mpu6050_8h_a5ac6094b45fdc3c394b2c6170e4fb15f}{S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}~(0x68)
+\item 
+\#define \hyperlink{mpu6050_8h_aa0c7760bfef8473292922ca7afe4456f}{mpu\+\_\+gpio\+\_\+base}~(G\+P\+I\+O\+\_\+\+P\+O\+R\+T\+B\+\_\+\+B\+A\+SE)
+\item 
+\#define \hyperlink{mpu6050_8h_ab1ea66c809fa0703f2c143381b11ebf4}{mpu\+\_\+irq}~(G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+2)
+\item 
+\#define \hyperlink{mpu6050_8h_abfacb289ca83d461846a55e997a6cc2c}{mpu\+\_\+ad0}~(G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+3)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{mpu6050_8h_a00ae65936ccde9c24a7792f736941a08}{Configure\+M\+PU} (void)
+\begin{DoxyCompactList}\small\item\em Configure I2C 2 block and Gpio pin for interrupt from M\+P\+U6050. Writes initialization registers in M\+PU and configures D\+MP engine. \end{DoxyCompactList}\item 
+void \hyperlink{mpu6050_8h_a1c1d1738754abc00225c527c84a583ad}{M\+P\+U\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR of M\+P\+U6050 module. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{mpu6050_8h_a24dd44c6692f5330e9b10d20b53d02ec}{B\+I\+S\+T\+\_\+mpu} (void)
+\begin{DoxyCompactList}\small\item\em Reads the W\+HO AM I register on M\+P\+U6050 to verify the identity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{mpu6050_8h_a8a12906ab5a9a5a53606990cd6b29995}{button\+\_\+flag}
+\item 
+uint32\+\_\+t \hyperlink{mpu6050_8h_a961f7cafb2fb3bab6ce59471390f8ebb}{time\+\_\+exch\+\_\+flag}
+\item 
+struct tx\+\_\+packet \hyperlink{mpu6050_8h_add5bb70f375ed2f14e6cdccd9f7062d8}{pk}
+\item 
+Semaphore\+Handle\+\_\+t \hyperlink{mpu6050_8h_a9e41ee645f4bb31dab541ed4c9d9e8bd}{x\+Semaphore\+\_\+s}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mpu6050_8h_abfacb289ca83d461846a55e997a6cc2c}\label{mpu6050_8h_abfacb289ca83d461846a55e997a6cc2c}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!mpu\+\_\+ad0@{mpu\+\_\+ad0}}
+\index{mpu\+\_\+ad0@{mpu\+\_\+ad0}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{mpu\+\_\+ad0}{mpu\_ad0}}
+{\footnotesize\ttfamily \#define mpu\+\_\+ad0~(G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+3)}
+
+
+
+Definition at line 24 of file mpu6050.\+h.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
+\mbox{\Hypertarget{mpu6050_8h_aa0c7760bfef8473292922ca7afe4456f}\label{mpu6050_8h_aa0c7760bfef8473292922ca7afe4456f}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!mpu\+\_\+gpio\+\_\+base@{mpu\+\_\+gpio\+\_\+base}}
+\index{mpu\+\_\+gpio\+\_\+base@{mpu\+\_\+gpio\+\_\+base}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{mpu\+\_\+gpio\+\_\+base}{mpu\_gpio\_base}}
+{\footnotesize\ttfamily \#define mpu\+\_\+gpio\+\_\+base~(G\+P\+I\+O\+\_\+\+P\+O\+R\+T\+B\+\_\+\+B\+A\+SE)}
+
+
+
+Definition at line 22 of file mpu6050.\+h.
+
+
+
+Referenced by Configure\+M\+P\+U(), and M\+P\+U\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{mpu6050_8h_ab1ea66c809fa0703f2c143381b11ebf4}\label{mpu6050_8h_ab1ea66c809fa0703f2c143381b11ebf4}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!mpu\+\_\+irq@{mpu\+\_\+irq}}
+\index{mpu\+\_\+irq@{mpu\+\_\+irq}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{mpu\+\_\+irq}{mpu\_irq}}
+{\footnotesize\ttfamily \#define mpu\+\_\+irq~(G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+2)}
+
+
+
+Definition at line 23 of file mpu6050.\+h.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
+\mbox{\Hypertarget{mpu6050_8h_a5ac6094b45fdc3c394b2c6170e4fb15f}\label{mpu6050_8h_a5ac6094b45fdc3c394b2c6170e4fb15f}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!S\+L\+A\+V\+E\+\_\+\+A\+D\+DR@{S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}}
+\index{S\+L\+A\+V\+E\+\_\+\+A\+D\+DR@{S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}{SLAVE\_ADDR}}
+{\footnotesize\ttfamily \#define S\+L\+A\+V\+E\+\_\+\+A\+D\+DR~(0x68)}
+
+File\+: \hyperlink{mpu6050_8h}{mpu6050.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{mpu6050_8c}{mpu6050.\+c} Date\+: 4/29/2019 
+
+Definition at line 20 of file mpu6050.\+h.
+
+
+
+Referenced by B\+I\+S\+T\+\_\+mpu(), Configure\+M\+P\+U(), and M\+P\+U\+\_\+\+I\+S\+R().
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mpu6050_8h_a24dd44c6692f5330e9b10d20b53d02ec}\label{mpu6050_8h_a24dd44c6692f5330e9b10d20b53d02ec}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!B\+I\+S\+T\+\_\+mpu@{B\+I\+S\+T\+\_\+mpu}}
+\index{B\+I\+S\+T\+\_\+mpu@{B\+I\+S\+T\+\_\+mpu}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+S\+T\+\_\+mpu()}{BIST\_mpu()}}
+{\footnotesize\ttfamily uint8\+\_\+t B\+I\+S\+T\+\_\+mpu (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reads the W\+HO AM I register on M\+P\+U6050 to verify the identity. 
+
+\begin{DoxyReturn}{Returns}
+1 on success and 0 on failure 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file mpu6050.\+c.
+
+
+
+References I2\+Creceive(), and S\+L\+A\+V\+E\+\_\+\+A\+D\+DR.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
+\mbox{\Hypertarget{mpu6050_8h_a00ae65936ccde9c24a7792f736941a08}\label{mpu6050_8h_a00ae65936ccde9c24a7792f736941a08}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!Configure\+M\+PU@{Configure\+M\+PU}}
+\index{Configure\+M\+PU@{Configure\+M\+PU}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{Configure\+M\+P\+U()}{ConfigureMPU()}}
+{\footnotesize\ttfamily uint8\+\_\+t Configure\+M\+PU (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure I2C 2 block and Gpio pin for interrupt from M\+P\+U6050. Writes initialization registers in M\+PU and configures D\+MP engine. 
+
+File\+: \hyperlink{mpu6050_8c}{mpu6050.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for M\+P\+U6050 sensor Date\+: 4/29/2019 \begin{DoxyReturn}{Returns}
+1 on B\+I\+ST success and 0 on B\+I\+ST failure 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file mpu6050.\+c.
+
+
+
+References B\+I\+S\+T\+\_\+mpu(), Configure\+I2\+C2(), I2\+Creceive(), I2\+Csend(), mpu\+\_\+ad0, mpu\+\_\+gpio\+\_\+base, mpu\+\_\+irq, M\+P\+U\+\_\+\+I\+S\+R(), and S\+L\+A\+V\+E\+\_\+\+A\+D\+DR.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{mpu6050_8h_a1c1d1738754abc00225c527c84a583ad}\label{mpu6050_8h_a1c1d1738754abc00225c527c84a583ad}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!M\+P\+U\+\_\+\+I\+SR@{M\+P\+U\+\_\+\+I\+SR}}
+\index{M\+P\+U\+\_\+\+I\+SR@{M\+P\+U\+\_\+\+I\+SR}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{M\+P\+U\+\_\+\+I\+S\+R()}{MPU\_ISR()}}
+{\footnotesize\ttfamily void M\+P\+U\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR of M\+P\+U6050 module. 
+
+
+
+Definition at line 81 of file mpu6050.\+c.
+
+
+
+References button\+\_\+flag, I2\+Creceive(), mpu\+\_\+gpio\+\_\+base, pk, S\+L\+A\+V\+E\+\_\+\+A\+D\+DR, time\+\_\+exch\+\_\+flag, and x\+Semaphore\+\_\+s.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{mpu6050_8h_a8a12906ab5a9a5a53606990cd6b29995}\label{mpu6050_8h_a8a12906ab5a9a5a53606990cd6b29995}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!button\+\_\+flag@{button\+\_\+flag}}
+\index{button\+\_\+flag@{button\+\_\+flag}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{button\+\_\+flag}{button\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t button\+\_\+flag}
+
+File\+: \hyperlink{sensor_8c}{sensor.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file creates task for sensors which control G\+PS, M\+P\+U6050, button Date\+: 4/29/2019 
+
+Definition at line 10 of file sensor.\+c.
+
+\mbox{\Hypertarget{mpu6050_8h_add5bb70f375ed2f14e6cdccd9f7062d8}\label{mpu6050_8h_add5bb70f375ed2f14e6cdccd9f7062d8}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!pk@{pk}}
+\index{pk@{pk}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{pk}{pk}}
+{\footnotesize\ttfamily struct tx\+\_\+packet pk}
+
+
+
+Definition at line 11 of file sensor.\+c.
+
+\mbox{\Hypertarget{mpu6050_8h_a961f7cafb2fb3bab6ce59471390f8ebb}\label{mpu6050_8h_a961f7cafb2fb3bab6ce59471390f8ebb}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!time\+\_\+exch\+\_\+flag@{time\+\_\+exch\+\_\+flag}}
+\index{time\+\_\+exch\+\_\+flag@{time\+\_\+exch\+\_\+flag}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{time\+\_\+exch\+\_\+flag}{time\_exch\_flag}}
+{\footnotesize\ttfamily uint32\+\_\+t time\+\_\+exch\+\_\+flag}
+
+
+
+Definition at line 10 of file sensor.\+c.
+
+
+
+Referenced by M\+P\+U\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{mpu6050_8h_a9e41ee645f4bb31dab541ed4c9d9e8bd}\label{mpu6050_8h_a9e41ee645f4bb31dab541ed4c9d9e8bd}} 
+\index{mpu6050.\+h@{mpu6050.\+h}!x\+Semaphore\+\_\+s@{x\+Semaphore\+\_\+s}}
+\index{x\+Semaphore\+\_\+s@{x\+Semaphore\+\_\+s}!mpu6050.\+h@{mpu6050.\+h}}
+\subsubsection{\texorpdfstring{x\+Semaphore\+\_\+s}{xSemaphore\_s}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t x\+Semaphore\+\_\+s}
+
+
+
+Definition at line 13 of file main.\+c.
+

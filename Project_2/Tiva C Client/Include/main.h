@@ -1,8 +1,8 @@
-/*
- * main.h
- *
- *  Created on: Apr 17, 2019
- *      Author: vkshe
+/**
+ * File: main.h
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file contains required include and declarations of variables and functions used by main.c
+ * Date: 4/29/2019
  */
 
 #ifndef INCLUDE_MAIN_H_
@@ -10,19 +10,14 @@
 
 #include "Include/basic.h"
 
-#include "inc/hw_ints.h"
 #include "driverlib/interrupt.h"
-#include "driverlib/timer.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "semphr.h"
 #include "drivers/pinout.h"
 
-#include "Include/i2c_driver.h"
-#include "Include/nrf24l01.h"
-#include "Include/uart_driver.h"
-#include "Include/lcd_driver.h"
-#include "Include/button.h"
+#include "Include/actuator.h"
+#include "Include/sensor.h"
+#include "Include/rf_comm.h"
+
+extern QueueHandle_t xQueue_rf, xQueue_a;
+extern SemaphoreHandle_t xSemaphore_rf, xSemaphore_s;
 
 #endif /* INCLUDE_MAIN_H_ */

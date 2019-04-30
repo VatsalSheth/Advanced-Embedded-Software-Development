@@ -62,26 +62,100 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">main.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="basic_8h_source.html">Include/basic.h</a>&quot;</code><br />
-<code>#include &quot;inc/hw_ints.h&quot;</code><br />
 <code>#include &quot;driverlib/interrupt.h&quot;</code><br />
-<code>#include &quot;driverlib/timer.h&quot;</code><br />
-<code>#include &quot;FreeRTOS.h&quot;</code><br />
-<code>#include &quot;task.h&quot;</code><br />
-<code>#include &quot;queue.h&quot;</code><br />
-<code>#include &quot;semphr.h&quot;</code><br />
 <code>#include &quot;drivers/pinout.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="i2c__driver_8h_source.html">Include/i2c_driver.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="nrf24l01_8h_source.html">Include/nrf24l01.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="uart__driver_8h_source.html">Include/uart_driver.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lcd__driver_8h_source.html">Include/lcd_driver.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="button_8h_source.html">Include/button.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="actuator_8h_source.html">Include/actuator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sensor_8h_source.html">Include/sensor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="rf__comm_8h_source.html">Include/rf_comm.h</a>&quot;</code><br />
 </div>
 <p><a href="main_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a12cb2aceb7856eb11db582601f16b49f"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a12cb2aceb7856eb11db582601f16b49f">xQueue_rf</a></td></tr>
+<tr class="separator:a12cb2aceb7856eb11db582601f16b49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41586cd4de97267a5d195c9ff879c3ba"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a41586cd4de97267a5d195c9ff879c3ba">xQueue_a</a></td></tr>
+<tr class="separator:a41586cd4de97267a5d195c9ff879c3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b30ae25071f4e7426634a5bd874ca5"><td class="memItemLeft" align="right" valign="top">SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a54b30ae25071f4e7426634a5bd874ca5">xSemaphore_rf</a></td></tr>
+<tr class="separator:a54b30ae25071f4e7426634a5bd874ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e41ee645f4bb31dab541ed4c9d9e8bd"><td class="memItemLeft" align="right" valign="top">SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a9e41ee645f4bb31dab541ed4c9d9e8bd">xSemaphore_s</a></td></tr>
+<tr class="separator:a9e41ee645f4bb31dab541ed4c9d9e8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a41586cd4de97267a5d195c9ff879c3ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41586cd4de97267a5d195c9ff879c3ba">&#9670;&nbsp;</a></span>xQueue_a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QueueHandle_t xQueue_a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00012">12</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a12cb2aceb7856eb11db582601f16b49f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12cb2aceb7856eb11db582601f16b49f">&#9670;&nbsp;</a></span>xQueue_rf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QueueHandle_t xQueue_rf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>File: <a class="el" href="main_8h.html">main.h</a> Author: Vatsal Sheth &amp; Sarthak Jain Description: This file contains required include and declarations of variables and functions used by <a class="el" href="main_8c.html">main.c</a> Date: 4/29/2019 </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00012">12</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a54b30ae25071f4e7426634a5bd874ca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54b30ae25071f4e7426634a5bd874ca5">&#9670;&nbsp;</a></span>xSemaphore_rf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SemaphoreHandle_t xSemaphore_rf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00013">13</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a9e41ee645f4bb31dab541ed4c9d9e8bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e41ee645f4bb31dab541ed4c9d9e8bd">&#9670;&nbsp;</a></span>xSemaphore_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SemaphoreHandle_t xSemaphore_s</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00013">13</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="mpu6050_8c_source.html#l00081">MPU_ISR()</a>, <a class="el" href="sensor_8c_source.html#l00014">Sensor_fn()</a>, and <a class="el" href="sensor_8c_source.html#l00110">Timer0IntHandler()</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

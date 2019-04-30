@@ -40,7 +40,11 @@ void \hyperlink{lcd__driver_8h_a2720ba7705db3740942f4d325557b6aa}{lcdputstr} (ch
 void \hyperlink{lcd__driver_8h_ab090115d4b4a0ee621fd2a2c86bf83f7}{lcdcreatechar} (uint8\+\_\+t ccode, uint8\+\_\+t row\+\_\+vals\mbox{[}8\mbox{]})
 \begin{DoxyCompactList}\small\item\em Function to create a 5x8 pixel custom character with character code ccode (0$<$=ccode$<$=7) using the row values given in the 8-\/byte array row\+\_\+vals\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
 void \hyperlink{lcd__driver_8h_a2d8b0dc142b0c3a37b95f8b14893c88b}{lcdclear} ()
-\begin{DoxyCompactList}\small\item\em Clears the L\+CD using the H\+D44780 Clear display instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Clears the L\+CD using the H\+D44780 Clear display instruction. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8h_a9a843782966b959b890aefd6eac71b2f}{lcdputfloat} (float a)
+\begin{DoxyCompactList}\small\item\em Displays float number upto 4 decimal points. \end{DoxyCompactList}\item 
+void \hyperlink{lcd__driver_8h_a510c8db6472b14a9483377a1c38a7d80}{lcdputint} (int a)
+\begin{DoxyCompactList}\small\item\em Displays integer number upto 3 decimal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -69,7 +73,7 @@ Referenced by Configure\+L\+C\+D(), R\+D\+\_\+\+C\+M\+D(), R\+D\+\_\+\+D\+A\+T\+
 \subsubsection{\texorpdfstring{data\+\_\+gpio\+\_\+base}{data\_gpio\_base}}
 {\footnotesize\ttfamily \#define data\+\_\+gpio\+\_\+base~G\+P\+I\+O\+\_\+\+P\+O\+R\+T\+M\+\_\+\+B\+A\+SE}
 
-
+File\+: \hyperlink{lcd__driver_8h}{lcd\+\_\+driver.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{lcd__driver_8c}{lcd\+\_\+driver.\+c} Date\+: 4/29/2019 
 
 Definition at line 20 of file lcd\+\_\+driver.\+h.
 
@@ -142,7 +146,7 @@ References ctrl\+\_\+gpio\+\_\+base, data\+\_\+gpio\+\_\+base, EN, lcdbusywait()
 
 
 
-Referenced by main().
+Referenced by Actuator\+\_\+fn().
 
 \mbox{\Hypertarget{lcd__driver_8h_ae040f3c8f9a3c822a10e04c6bf1c68d0}\label{lcd__driver_8h_ae040f3c8f9a3c822a10e04c6bf1c68d0}} 
 \index{lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}!lcdbusywait@{lcdbusywait}}
@@ -178,7 +182,7 @@ Clears the L\+CD using the H\+D44780 Clear display instruction.
 
 
 
-Definition at line 214 of file lcd\+\_\+driver.\+c.
+Definition at line 265 of file lcd\+\_\+driver.\+c.
 
 
 
@@ -207,7 +211,7 @@ Function to create a 5x8 pixel custom character with character code ccode (0$<$=
 \end{DoxyParams}
 
 
-Definition at line 198 of file lcd\+\_\+driver.\+c.
+Definition at line 249 of file lcd\+\_\+driver.\+c.
 
 
 
@@ -238,7 +242,7 @@ References lcdbusywait(), and W\+R\+\_\+\+C\+M\+D().
 
 
 
-Referenced by lcdgotoxy(), and lcdputstr().
+Referenced by Actuator\+\_\+fn(), lcdgotoxy(), and lcdputstr().
 
 \mbox{\Hypertarget{lcd__driver_8h_aee3a4fab811cc1cd370ea87b6c88fc00}\label{lcd__driver_8h_aee3a4fab811cc1cd370ea87b6c88fc00}} 
 \index{lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}!lcdgotoxy@{lcdgotoxy}}
@@ -290,7 +294,61 @@ References lcdbusywait(), and W\+R\+\_\+\+D\+A\+T\+A().
 
 
 
-Referenced by lcdputstr().
+Referenced by Actuator\+\_\+fn(), lcdputfloat(), lcdputint(), and lcdputstr().
+
+\mbox{\Hypertarget{lcd__driver_8h_a9a843782966b959b890aefd6eac71b2f}\label{lcd__driver_8h_a9a843782966b959b890aefd6eac71b2f}} 
+\index{lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}!lcdputfloat@{lcdputfloat}}
+\index{lcdputfloat@{lcdputfloat}!lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{lcdputfloat()}{lcdputfloat()}}
+{\footnotesize\ttfamily void lcdputfloat (\begin{DoxyParamCaption}\item[{float}]{a }\end{DoxyParamCaption})}
+
+
+
+Displays float number upto 4 decimal points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input float number to be displayed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 218 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdputch(), and lcdputint().
+
+
+
+Referenced by Actuator\+\_\+fn().
+
+\mbox{\Hypertarget{lcd__driver_8h_a510c8db6472b14a9483377a1c38a7d80}\label{lcd__driver_8h_a510c8db6472b14a9483377a1c38a7d80}} 
+\index{lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}!lcdputint@{lcdputint}}
+\index{lcdputint@{lcdputint}!lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{lcdputint()}{lcdputint()}}
+{\footnotesize\ttfamily void lcdputint (\begin{DoxyParamCaption}\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Displays integer number upto 3 decimal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Input integer number to be displayed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 196 of file lcd\+\_\+driver.\+c.
+
+
+
+References lcdputch().
+
+
+
+Referenced by Actuator\+\_\+fn(), and lcdputfloat().
 
 \mbox{\Hypertarget{lcd__driver_8h_a2720ba7705db3740942f4d325557b6aa}\label{lcd__driver_8h_a2720ba7705db3740942f4d325557b6aa}} 
 \index{lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}!lcdputstr@{lcdputstr}}
@@ -314,6 +372,10 @@ Definition at line 162 of file lcd\+\_\+driver.\+c.
 
 
 References lcdgotoaddr(), lcdputch(), R\+D\+\_\+\+C\+M\+D(), and row\+\_\+addr.
+
+
+
+Referenced by Actuator\+\_\+fn().
 
 \mbox{\Hypertarget{lcd__driver_8h_a4bdecb2f54b0351dafc22a22d7205f59}\label{lcd__driver_8h_a4bdecb2f54b0351dafc22a22d7205f59}} 
 \index{lcd\+\_\+driver.\+h@{lcd\+\_\+driver.\+h}!R\+D\+\_\+\+C\+MD@{R\+D\+\_\+\+C\+MD}}
@@ -424,7 +486,7 @@ Referenced by lcdcreatechar(), and lcdputch().
 \subsubsection{\texorpdfstring{row\+\_\+addr}{row\_addr}}
 {\footnotesize\ttfamily uint8\+\_\+t row\+\_\+addr\mbox{[}4\mbox{]}}
 
-
+File\+: \hyperlink{lcd__driver_8c}{lcd\+\_\+driver.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for 16x2 character L\+CD Date\+: 4/29/2019 
 
 Definition at line 11 of file lcd\+\_\+driver.\+c.
 

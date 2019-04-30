@@ -1,0 +1,265 @@
+\hypertarget{rf__comm_8h}{}\section{Include/rf\+\_\+comm.h File Reference}
+\label{rf__comm_8h}\index{Include/rf\+\_\+comm.\+h@{Include/rf\+\_\+comm.\+h}}
+{\ttfamily \#include \char`\"{}nrf24l01.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{rf__comm_8h_a5114c57a124ba5186edc33dedef29b25}{Accident}~(0x01)
+\item 
+\#define \hyperlink{rf__comm_8h_ada6c7e95d837db73e06731efe20c67c4}{Time\+\_\+exc}~(0x02)
+\item 
+\#define \hyperlink{rf__comm_8h_a4900e73f0a05a207159151bbc5563448}{N\+\_\+ignore}~(0x04)
+\item 
+\#define \hyperlink{rf__comm_8h_a20cea5bb58c492c2dc17b896bc5aee39}{Continue}~(0x08)
+\item 
+\#define \hyperlink{rf__comm_8h_a36b40d732683cffecbede218f332e321}{G\+PS}~(0x10)
+\item 
+\#define \hyperlink{rf__comm_8h_ad2d7243c099b33b2343976dd3ee8b36b}{A\+C\+C\+EL}~(0x20)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rf__comm_8h_ae48dbcd906148bb90f676cc70133386b}{Comm\+\_\+fn} (void $\ast$pv\+Parameters)
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8h_a10098359140c9e86af8c3a811c739145}{Comm\+\_\+task} ()
+\item 
+void \hyperlink{rf__comm_8h_aef40b2dfcf1e3e09c6841e4ac7936580}{N\+R\+F\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{rf__comm_8h_a024029d87052fff4fe60b99db6d505ce}{Configure\+T\+I\+M\+E\+R1} ()
+\item 
+void \hyperlink{rf__comm_8h_ab02b81cc7d5669322c49bee1baeb04a3}{set\+T\+I\+M\+E\+R1} (uint8\+\_\+t sec)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \hyperlink{rf__comm_8h_a12cb2aceb7856eb11db582601f16b49f}{x\+Queue\+\_\+rf}
+\item 
+Queue\+Handle\+\_\+t \hyperlink{rf__comm_8h_a41586cd4de97267a5d195c9ff879c3ba}{x\+Queue\+\_\+a}
+\item 
+Semaphore\+Handle\+\_\+t \hyperlink{rf__comm_8h_a54b30ae25071f4e7426634a5bd874ca5}{x\+Semaphore\+\_\+rf}
+\item 
+Task\+Handle\+\_\+t \hyperlink{rf__comm_8h_ab3d3cda2fadb22c1688e8e2faa1e4d9d}{x\+Handle\+\_\+rf}
+\item 
+uint32\+\_\+t \hyperlink{rf__comm_8h_a5f6b80c6081f398240550d6341d591d3}{rf\+\_\+link}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{rf__comm_8h_ad2d7243c099b33b2343976dd3ee8b36b}\label{rf__comm_8h_ad2d7243c099b33b2343976dd3ee8b36b}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!A\+C\+C\+EL@{A\+C\+C\+EL}}
+\index{A\+C\+C\+EL@{A\+C\+C\+EL}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{A\+C\+C\+EL}{ACCEL}}
+{\footnotesize\ttfamily \#define A\+C\+C\+EL~(0x20)}
+
+
+
+Definition at line 18 of file rf\+\_\+comm.\+h.
+
+\mbox{\Hypertarget{rf__comm_8h_a5114c57a124ba5186edc33dedef29b25}\label{rf__comm_8h_a5114c57a124ba5186edc33dedef29b25}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!Accident@{Accident}}
+\index{Accident@{Accident}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{Accident}{Accident}}
+{\footnotesize\ttfamily \#define Accident~(0x01)}
+
+File\+: \hyperlink{rf__comm_8h}{rf\+\_\+comm.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{rf__comm_8c}{rf\+\_\+comm.\+c} Date\+: 4/29/2019 
+
+Definition at line 13 of file rf\+\_\+comm.\+h.
+
+\mbox{\Hypertarget{rf__comm_8h_a20cea5bb58c492c2dc17b896bc5aee39}\label{rf__comm_8h_a20cea5bb58c492c2dc17b896bc5aee39}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!Continue@{Continue}}
+\index{Continue@{Continue}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{Continue}{Continue}}
+{\footnotesize\ttfamily \#define Continue~(0x08)}
+
+
+
+Definition at line 16 of file rf\+\_\+comm.\+h.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{rf__comm_8h_a36b40d732683cffecbede218f332e321}\label{rf__comm_8h_a36b40d732683cffecbede218f332e321}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!G\+PS@{G\+PS}}
+\index{G\+PS@{G\+PS}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{G\+PS}{GPS}}
+{\footnotesize\ttfamily \#define G\+PS~(0x10)}
+
+
+
+Definition at line 17 of file rf\+\_\+comm.\+h.
+
+\mbox{\Hypertarget{rf__comm_8h_a4900e73f0a05a207159151bbc5563448}\label{rf__comm_8h_a4900e73f0a05a207159151bbc5563448}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!N\+\_\+ignore@{N\+\_\+ignore}}
+\index{N\+\_\+ignore@{N\+\_\+ignore}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{N\+\_\+ignore}{N\_ignore}}
+{\footnotesize\ttfamily \#define N\+\_\+ignore~(0x04)}
+
+
+
+Definition at line 15 of file rf\+\_\+comm.\+h.
+
+\mbox{\Hypertarget{rf__comm_8h_ada6c7e95d837db73e06731efe20c67c4}\label{rf__comm_8h_ada6c7e95d837db73e06731efe20c67c4}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!Time\+\_\+exc@{Time\+\_\+exc}}
+\index{Time\+\_\+exc@{Time\+\_\+exc}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{Time\+\_\+exc}{Time\_exc}}
+{\footnotesize\ttfamily \#define Time\+\_\+exc~(0x02)}
+
+
+
+Definition at line 14 of file rf\+\_\+comm.\+h.
+
+
+
+Referenced by get\+\_\+time().
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rf__comm_8h_ae48dbcd906148bb90f676cc70133386b}\label{rf__comm_8h_ae48dbcd906148bb90f676cc70133386b}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!Comm\+\_\+fn@{Comm\+\_\+fn}}
+\index{Comm\+\_\+fn@{Comm\+\_\+fn}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{Comm\+\_\+fn()}{Comm\_fn()}}
+{\footnotesize\ttfamily void Comm\+\_\+fn (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file rf\+\_\+comm.\+c.
+
+
+
+References clear\+\_\+\+C\+E(), Configure\+N\+R\+F(), Configure\+T\+I\+M\+E\+R1(), Continue, max\+\_\+flag, N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+X\+\_\+\+P\+A\+Y\+L\+O\+AD, rf\+\_\+link, rx\+\_\+flag, rx\+\_\+pk, set\+\_\+\+C\+E(), set\+\_\+txmode(), tx\+\_\+cont, tx\+\_\+flag, W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD, x\+Queue\+\_\+a, and x\+Queue\+\_\+rf.
+
+
+
+Referenced by Comm\+\_\+task().
+
+\mbox{\Hypertarget{rf__comm_8h_a10098359140c9e86af8c3a811c739145}\label{rf__comm_8h_a10098359140c9e86af8c3a811c739145}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!Comm\+\_\+task@{Comm\+\_\+task}}
+\index{Comm\+\_\+task@{Comm\+\_\+task}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{Comm\+\_\+task()}{Comm\_task()}}
+{\footnotesize\ttfamily uint32\+\_\+t Comm\+\_\+task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file rf\+\_\+comm.\+c.
+
+
+
+References Comm\+\_\+fn(), config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES, and x\+Handle\+\_\+rf.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{rf__comm_8h_a024029d87052fff4fe60b99db6d505ce}\label{rf__comm_8h_a024029d87052fff4fe60b99db6d505ce}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!Configure\+T\+I\+M\+E\+R1@{Configure\+T\+I\+M\+E\+R1}}
+\index{Configure\+T\+I\+M\+E\+R1@{Configure\+T\+I\+M\+E\+R1}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{Configure\+T\+I\+M\+E\+R1()}{ConfigureTIMER1()}}
+{\footnotesize\ttfamily void Configure\+T\+I\+M\+E\+R1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 131 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn().
+
+\mbox{\Hypertarget{rf__comm_8h_aef40b2dfcf1e3e09c6841e4ac7936580}\label{rf__comm_8h_aef40b2dfcf1e3e09c6841e4ac7936580}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}}
+\index{N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{N\+R\+F\+\_\+\+I\+S\+R()}{NRF\_ISR()}}
+{\footnotesize\ttfamily void N\+R\+F\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR of N\+R\+F24l01+ module. 
+
+
+
+Definition at line 88 of file rf\+\_\+comm.\+c.
+
+
+
+References clear\+\_\+\+C\+E(), max\+\_\+flag, nrf\+\_\+gpio\+\_\+base, N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+E\+G\+I\+S\+T\+ER, rf\+\_\+link, rx\+\_\+flag, set\+\_\+\+C\+E(), set\+\_\+rxmode(), set\+T\+I\+M\+E\+R1(), S\+T\+A\+T\+US, tx\+\_\+cont, tx\+\_\+flag, and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+\mbox{\Hypertarget{rf__comm_8h_ab02b81cc7d5669322c49bee1baeb04a3}\label{rf__comm_8h_ab02b81cc7d5669322c49bee1baeb04a3}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!set\+T\+I\+M\+E\+R1@{set\+T\+I\+M\+E\+R1}}
+\index{set\+T\+I\+M\+E\+R1@{set\+T\+I\+M\+E\+R1}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{set\+T\+I\+M\+E\+R1()}{setTIMER1()}}
+{\footnotesize\ttfamily void set\+T\+I\+M\+E\+R1 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file rf\+\_\+comm.\+c.
+
+
+
+References g\+\_\+ui32\+Sys\+Clock.
+
+
+
+Referenced by N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{rf__comm_8h_a5f6b80c6081f398240550d6341d591d3}\label{rf__comm_8h_a5f6b80c6081f398240550d6341d591d3}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!rf\+\_\+link@{rf\+\_\+link}}
+\index{rf\+\_\+link@{rf\+\_\+link}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{rf\+\_\+link}{rf\_link}}
+{\footnotesize\ttfamily uint32\+\_\+t rf\+\_\+link}
+
+
+
+Definition at line 12 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
+
+\mbox{\Hypertarget{rf__comm_8h_ab3d3cda2fadb22c1688e8e2faa1e4d9d}\label{rf__comm_8h_ab3d3cda2fadb22c1688e8e2faa1e4d9d}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!x\+Handle\+\_\+rf@{x\+Handle\+\_\+rf}}
+\index{x\+Handle\+\_\+rf@{x\+Handle\+\_\+rf}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{x\+Handle\+\_\+rf}{xHandle\_rf}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t x\+Handle\+\_\+rf}
+
+File\+: \hyperlink{rf__comm_8c}{rf\+\_\+comm.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file creates task for rf comunication control Date\+: 4/29/2019 
+
+Definition at line 11 of file rf\+\_\+comm.\+c.
+
+
+
+Referenced by Comm\+\_\+task().
+
+\mbox{\Hypertarget{rf__comm_8h_a41586cd4de97267a5d195c9ff879c3ba}\label{rf__comm_8h_a41586cd4de97267a5d195c9ff879c3ba}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!x\+Queue\+\_\+a@{x\+Queue\+\_\+a}}
+\index{x\+Queue\+\_\+a@{x\+Queue\+\_\+a}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{x\+Queue\+\_\+a}{xQueue\_a}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+\_\+a}
+
+
+
+Definition at line 12 of file main.\+c.
+
+\mbox{\Hypertarget{rf__comm_8h_a12cb2aceb7856eb11db582601f16b49f}\label{rf__comm_8h_a12cb2aceb7856eb11db582601f16b49f}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!x\+Queue\+\_\+rf@{x\+Queue\+\_\+rf}}
+\index{x\+Queue\+\_\+rf@{x\+Queue\+\_\+rf}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{x\+Queue\+\_\+rf}{xQueue\_rf}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+\_\+rf}
+
+File\+: \hyperlink{main_8h}{main.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{main_8c}{main.\+c} Date\+: 4/29/2019 
+
+Definition at line 12 of file main.\+c.
+
+\mbox{\Hypertarget{rf__comm_8h_a54b30ae25071f4e7426634a5bd874ca5}\label{rf__comm_8h_a54b30ae25071f4e7426634a5bd874ca5}} 
+\index{rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}!x\+Semaphore\+\_\+rf@{x\+Semaphore\+\_\+rf}}
+\index{x\+Semaphore\+\_\+rf@{x\+Semaphore\+\_\+rf}!rf\+\_\+comm.\+h@{rf\+\_\+comm.\+h}}
+\subsubsection{\texorpdfstring{x\+Semaphore\+\_\+rf}{xSemaphore\_rf}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t x\+Semaphore\+\_\+rf}
+
+
+
+Definition at line 13 of file main.\+c.
+

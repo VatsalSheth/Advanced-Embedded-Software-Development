@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['set_5fce',['set_CE',['../nrf24l01_8h.html#ad3a4189b6ee9141022e9204cd261dc49',1,'set_CE():&#160;nrf24l01.c'],['../nrf24l01_8c.html#ad3a4189b6ee9141022e9204cd261dc49',1,'set_CE():&#160;nrf24l01.c']]],
-  ['set_5fcsn',['set_CSN',['../nrf24l01_8h.html#a4c47ecb0afd108992aa1d9350d3f8295',1,'set_CSN():&#160;nrf24l01.c'],['../nrf24l01_8c.html#a4c47ecb0afd108992aa1d9350d3f8295',1,'set_CSN():&#160;nrf24l01.c']]],
-  ['spi_5frxfifo_5fflush',['SPI_rxfifo_flush',['../spi__driver_8h.html#a2dadbf649c776991ed3b0b2780ee5917',1,'SPI_rxfifo_flush(void):&#160;spi_driver.c'],['../spi__driver_8c.html#a2dadbf649c776991ed3b0b2780ee5917',1,'SPI_rxfifo_flush(void):&#160;spi_driver.c']]],
-  ['spireceive',['SPIreceive',['../spi__driver_8h.html#a47949f56ac5919693e050a685a06f42d',1,'SPIreceive(uint32_t *data, uint32_t count):&#160;spi_driver.c'],['../spi__driver_8c.html#a47949f56ac5919693e050a685a06f42d',1,'SPIreceive(uint32_t *data, uint32_t count):&#160;spi_driver.c']]],
-  ['spisend',['SPIsend',['../spi__driver_8h.html#a7ca37424c7a9ccefde91d79b1b7ac987',1,'SPIsend(uint32_t *data, uint32_t count):&#160;spi_driver.c'],['../spi__driver_8c.html#a7ca37424c7a9ccefde91d79b1b7ac987',1,'SPIsend(uint32_t *data, uint32_t count):&#160;spi_driver.c']]]
+  ['lcdbusywait',['lcdbusywait',['../lcd__driver_8h.html#ae040f3c8f9a3c822a10e04c6bf1c68d0',1,'lcdbusywait():&#160;lcd_driver.c'],['../lcd__driver_8c.html#ae040f3c8f9a3c822a10e04c6bf1c68d0',1,'lcdbusywait():&#160;lcd_driver.c']]],
+  ['lcdclear',['lcdclear',['../lcd__driver_8h.html#a2d8b0dc142b0c3a37b95f8b14893c88b',1,'lcdclear():&#160;lcd_driver.c'],['../lcd__driver_8c.html#a2d8b0dc142b0c3a37b95f8b14893c88b',1,'lcdclear():&#160;lcd_driver.c']]],
+  ['lcdcreatechar',['lcdcreatechar',['../lcd__driver_8h.html#ab090115d4b4a0ee621fd2a2c86bf83f7',1,'lcdcreatechar(uint8_t ccode, uint8_t row_vals[8]):&#160;lcd_driver.c'],['../lcd__driver_8c.html#ab090115d4b4a0ee621fd2a2c86bf83f7',1,'lcdcreatechar(uint8_t ccode, uint8_t row_vals[8]):&#160;lcd_driver.c']]],
+  ['lcdgotoaddr',['lcdgotoaddr',['../lcd__driver_8h.html#afc304ab483ae55aa92afe601a2e663b4',1,'lcdgotoaddr(uint8_t addr):&#160;lcd_driver.c'],['../lcd__driver_8c.html#afc304ab483ae55aa92afe601a2e663b4',1,'lcdgotoaddr(uint8_t addr):&#160;lcd_driver.c']]],
+  ['lcdgotoxy',['lcdgotoxy',['../lcd__driver_8h.html#aee3a4fab811cc1cd370ea87b6c88fc00',1,'lcdgotoxy(uint8_t row, uint8_t column):&#160;lcd_driver.c'],['../lcd__driver_8c.html#aee3a4fab811cc1cd370ea87b6c88fc00',1,'lcdgotoxy(uint8_t row, uint8_t column):&#160;lcd_driver.c']]],
+  ['lcdputch',['lcdputch',['../lcd__driver_8h.html#a187251e153ba4c7a8cb1eefb47def0cc',1,'lcdputch(char cc):&#160;lcd_driver.c'],['../lcd__driver_8c.html#a187251e153ba4c7a8cb1eefb47def0cc',1,'lcdputch(char cc):&#160;lcd_driver.c']]],
+  ['lcdputfloat',['lcdputfloat',['../lcd__driver_8h.html#a9a843782966b959b890aefd6eac71b2f',1,'lcdputfloat(float a):&#160;lcd_driver.c'],['../lcd__driver_8c.html#a9a843782966b959b890aefd6eac71b2f',1,'lcdputfloat(float a):&#160;lcd_driver.c']]],
+  ['lcdputint',['lcdputint',['../lcd__driver_8h.html#a510c8db6472b14a9483377a1c38a7d80',1,'lcdputint(int a):&#160;lcd_driver.c'],['../lcd__driver_8c.html#a510c8db6472b14a9483377a1c38a7d80',1,'lcdputint(int a):&#160;lcd_driver.c']]],
+  ['lcdputstr',['lcdputstr',['../lcd__driver_8h.html#a2720ba7705db3740942f4d325557b6aa',1,'lcdputstr(char *ss):&#160;lcd_driver.c'],['../lcd__driver_8c.html#a2720ba7705db3740942f4d325557b6aa',1,'lcdputstr(char *ss):&#160;lcd_driver.c']]],
+  ['library_5fversion',['library_version',['../gps__driver_8h.html#a4d6bf5b14f9c50c7727f546325196faa',1,'gps_driver.h']]]
 ];

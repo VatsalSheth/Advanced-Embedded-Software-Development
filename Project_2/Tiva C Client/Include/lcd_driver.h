@@ -1,8 +1,8 @@
-/*
- * lcd_driver.h
- *
- *  Created on: Apr 18, 2019
- *      Author: vkshe
+/**
+ * File: lcd_driver.h
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file contains required include and declarations of variables and functions used by lcd_driver.c
+ * Date: 4/29/2019
  */
 
 /*
@@ -38,5 +38,7 @@ void lcdputch(char cc);
 void lcdputstr(char *ss);
 void lcdcreatechar(uint8_t ccode, uint8_t row_vals[8]);
 void lcdclear();
+void lcdputfloat(float a);
+void lcdputint(int a);
 
 #endif /* INCLUDE_LCD_DRIVER_H_ */

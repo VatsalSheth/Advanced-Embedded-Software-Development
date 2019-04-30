@@ -1,14 +1,16 @@
 var searchData=
 [
-  ['lwip_5fautoip',['LWIP_AUTOIP',['../lwipopts_8h.html#aaf1b3a089827223589baf1b7f4f57069',1,'lwipopts.h']]],
-  ['lwip_5fcompat_5fmutex',['LWIP_COMPAT_MUTEX',['../lwipopts_8h.html#a7bada49634cd3b28b28bdcedd763a1e6',1,'lwipopts.h']]],
-  ['lwip_5fdbg_5fmin_5flevel',['LWIP_DBG_MIN_LEVEL',['../lwipopts_8h.html#a2043f599515774f8e571ba185dbcb9e7',1,'lwipopts.h']]],
-  ['lwip_5fdhcp',['LWIP_DHCP',['../lwipopts_8h.html#a8a6ec62dc121064ac591b1fd8567bee9',1,'lwipopts.h']]],
-  ['lwip_5fdhcp_5fautoip_5fcoop',['LWIP_DHCP_AUTOIP_COOP',['../lwipopts_8h.html#a1a91e18dbb9777bc6e3963f52cb5f9fe',1,'lwipopts.h']]],
-  ['lwip_5fdhcp_5fautoip_5fcoop_5ftries',['LWIP_DHCP_AUTOIP_COOP_TRIES',['../lwipopts_8h.html#a4ff3f941b4c71a04b0c30fbee5b198c2',1,'lwipopts.h']]],
-  ['lwip_5fdns',['LWIP_DNS',['../lwipopts_8h.html#a98710dd81446b7cb2daac736bae6f646',1,'lwipopts.h']]],
-  ['lwip_5fhttpd_5fdynamic_5fheaders',['LWIP_HTTPD_DYNAMIC_HEADERS',['../lwipopts_8h.html#a75932fc5eeb9abeddfdaf8413574c6d7',1,'lwipopts.h']]],
-  ['lwip_5fnetconn',['LWIP_NETCONN',['../lwipopts_8h.html#a478041b8544461258f6961bf0f3c1a77',1,'lwipopts.h']]],
-  ['lwip_5fsocket',['LWIP_SOCKET',['../lwipopts_8h.html#a1cb62ce61ac39d7d6728ae5d3d3b927f',1,'lwipopts.h']]],
-  ['lwip_5ftcp',['LWIP_TCP',['../lwipopts_8h.html#aa4ed98deb97b77c633cb8870f34c71e9',1,'lwipopts.h']]]
+  ['gpgga_5fterm',['GPGGA_TERM',['../gps__driver_8h.html#a921cbdc030dea977206518b8efc64cd9',1,'gps_driver.h']]],
+  ['gprmc_5fterm',['GPRMC_TERM',['../gps__driver_8h.html#a6b2b41fde24104078515115c23292a3b',1,'gps_driver.h']]],
+  ['gps',['GPS',['../rf__comm_8h.html#a36b40d732683cffecbede218f332e321',1,'GPS():&#160;rf_comm.h'],['../sensor_8h.html#a36b40d732683cffecbede218f332e321',1,'GPS():&#160;sensor.h']]],
+  ['gps_5faddr',['GPS_Addr',['../actuator_8h.html#a65ece157da11389e2f0c0c402fcf0a57',1,'actuator.h']]],
+  ['gps_5finvalid_5ff_5faltitude',['GPS_INVALID_F_ALTITUDE',['../gps__driver_8h.html#a127ab70c3250d8d2defc8879aa4081da',1,'gps_driver.h']]],
+  ['gps_5finvalid_5ff_5fangle',['GPS_INVALID_F_ANGLE',['../gps__driver_8h.html#a8ad02445135c7b174e42cb4646733616',1,'gps_driver.h']]],
+  ['gps_5finvalid_5ff_5fspeed',['GPS_INVALID_F_SPEED',['../gps__driver_8h.html#af4a0707f54e30a5b85ff14b92571b8ae',1,'gps_driver.h']]],
+  ['gps_5fkm_5fper_5fmeter',['GPS_KM_PER_METER',['../gps__driver_8h.html#a5adf04f30f255fa8a082252cfeceb7fa',1,'gps_driver.h']]],
+  ['gps_5fkmph_5fper_5fknot',['GPS_KMPH_PER_KNOT',['../gps__driver_8h.html#a40018fb630e507a4f7ef19fbf3320052',1,'gps_driver.h']]],
+  ['gps_5fmiles_5fper_5fmeter',['GPS_MILES_PER_METER',['../gps__driver_8h.html#ac85cc4e3cad434caed39ddeb548b5ad9',1,'gps_driver.h']]],
+  ['gps_5fmph_5fper_5fknot',['GPS_MPH_PER_KNOT',['../gps__driver_8h.html#a3303a20dbabb09f59aa264c105fa1ae0',1,'gps_driver.h']]],
+  ['gps_5fmps_5fper_5fknot',['GPS_MPS_PER_KNOT',['../gps__driver_8h.html#aa7e8317fef5e01a2de2f26c3a343dbe7',1,'gps_driver.h']]],
+  ['gps_5fversion',['GPS_VERSION',['../gps__driver_8h.html#ae87ddbf37a52c5a1f6d26bd22b7947f9',1,'gps_driver.h']]]
 ];

@@ -1,16 +1,13 @@
 var searchData=
 [
-  ['r_5fregister',['R_REGISTER',['../nrf24l01_8h.html#ad253c20be4ebdb4f1351989627aa7a65',1,'nrf24l01.h']]],
-  ['r_5frx_5fpayload',['R_RX_PAYLOAD',['../nrf24l01_8h.html#a462d8c2314b823b724574c1ca73225a6',1,'nrf24l01.h']]],
-  ['r_5frx_5fpl_5fwid',['R_RX_PL_WID',['../nrf24l01_8h.html#a14ea186f093047db160cee642e5bd901',1,'nrf24l01.h']]],
-  ['raw_5fdebug',['RAW_DEBUG',['../lwipopts_8h.html#af0551bef83c0fc1baa57cf339d220e25',1,'lwipopts.h']]],
-  ['reuse_5ftx_5fpl',['REUSE_TX_PL',['../nrf24l01_8h.html#a2f1d9bb858232e8b1494b60aa9a7d25a',1,'nrf24l01.h']]],
-  ['rf_5fch',['RF_CH',['../nrf24l01_8h.html#a5c4da84e4a01531aa9f5c3e617848d66',1,'nrf24l01.h']]],
-  ['rf_5fsetup',['RF_SETUP',['../nrf24l01_8h.html#ad95edb7665f39454d7d7fd436301712b',1,'nrf24l01.h']]],
-  ['rpd',['RPD',['../nrf24l01_8h.html#ab9743a9a0928c8f19ad9687ae6c67150',1,'nrf24l01.h']]],
-  ['rs',['RS',['../lcd__driver_8h.html#af8903d8eea3868940c60af887473b152',1,'lcd_driver.h']]],
-  ['rtos_5ffreertos',['RTOS_FREERTOS',['../lwipopts_8h.html#a6e62cc5ab8779b717d6fa0a2abd94912',1,'lwipopts.h']]],
-  ['rw',['RW',['../lcd__driver_8h.html#afc4ded33ac0ca43defcce639e965748a',1,'lcd_driver.h']]],
-  ['rx_5faddr_5fp',['RX_ADDR_P',['../nrf24l01_8h.html#a7c845eaaec6dcac0e400d167f5b35487',1,'nrf24l01.h']]],
-  ['rx_5fpw_5fp',['RX_PW_P',['../nrf24l01_8h.html#a516683e38011171fcfa223debfb01f6e',1,'nrf24l01.h']]]
+  ['n_5fignore',['N_ignore',['../rf__comm_8h.html#a4900e73f0a05a207159151bbc5563448',1,'N_ignore():&#160;rf_comm.h'],['../sensor_8h.html#a4900e73f0a05a207159151bbc5563448',1,'N_ignore():&#160;sensor.h']]],
+  ['netif_5fdebug',['NETIF_DEBUG',['../lwipopts_8h.html#a2dfad02b075a7f9a8791a66fe40864a4',1,'lwipopts.h']]],
+  ['no_5fsys',['NO_SYS',['../lwipopts_8h.html#ae00ba99de94a5bf84d832be8976df59b',1,'lwipopts.h']]],
+  ['nop',['NOP',['../nrf24l01_8h.html#a700f88377bf36711b711f69b06c52f5d',1,'nrf24l01.h']]],
+  ['nrf_5fce',['nrf_ce',['../nrf24l01_8h.html#a3306d6b734ed12aef885bb1434e77c7c',1,'nrf24l01.h']]],
+  ['nrf_5fcsn',['nrf_csn',['../nrf24l01_8h.html#a067b8f16222795820f19e293ef838259',1,'nrf24l01.h']]],
+  ['nrf_5fgpio_5fbase',['nrf_gpio_base',['../nrf24l01_8h.html#ad7b3c7708f7d54c9c83e6a5f6b43d15d',1,'nrf24l01.h']]],
+  ['nrf_5firq',['nrf_irq',['../nrf24l01_8h.html#a175472cf0728a143c3a2217d3d03988e',1,'nrf24l01.h']]],
+  ['num_5frx_5fdescriptors',['NUM_RX_DESCRIPTORS',['../lwipopts_8h.html#ad9819ff90ac3963fcb6ba7c402fb98c6',1,'lwipopts.h']]],
+  ['num_5ftx_5fdescriptors',['NUM_TX_DESCRIPTORS',['../lwipopts_8h.html#ad70baca046931aa8d783f9db0a950f08',1,'lwipopts.h']]]
 ];

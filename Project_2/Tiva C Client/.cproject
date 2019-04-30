@@ -59,7 +59,6 @@
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/lwip-1.4.1/apps&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/lwip-1.4.1/ports/tiva-tm4c129/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${SW_ROOT}/third_party/FreeRTOS/Source/portable/CCS/ARM_CM4F&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Users\vkshe\workspace_v8\Advanced-Embedded-Software-Development\Project_2\Tiva C Client\ezTivaLib&quot;"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.ADVICE__POWER.587642519" name="Enable checking of ULP power rules (--advice:power)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.ADVICE__POWER" value="&quot;all&quot;" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.DEBUGGING_MODEL.1035704834" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>

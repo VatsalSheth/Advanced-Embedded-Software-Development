@@ -69,8 +69,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="basic_8h_source.html">basic.h</a>&quot;</code><br />
-<code>#include &quot;driverlib/rom.h&quot;</code><br />
-<code>#include &quot;driverlib/rom_map.h&quot;</code><br />
 <code>#include &quot;driverlib/uart.h&quot;</code><br />
 </div>
 <p><a href="uart__driver_8h_source.html">Go to the source code of this file.</a></p>
@@ -78,7 +76,11 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5f60b6a60802eccd1ae9526e776a476c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__driver_8h.html#a5f60b6a60802eccd1ae9526e776a476c">ConfigureUART</a> (void)</td></tr>
+<tr class="memdesc:a5f60b6a60802eccd1ae9526e776a476c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the UART and its pins. This must be called before UARTprintf().  <a href="#a5f60b6a60802eccd1ae9526e776a476c">More...</a><br /></td></tr>
 <tr class="separator:a5f60b6a60802eccd1ae9526e776a476c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f28718f859a5c7ba69656379ee0bc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__driver_8h.html#aa9f28718f859a5c7ba69656379ee0bc3">ConfigureUART_4_GPS</a> (void)</td></tr>
+<tr class="memdesc:aa9f28718f859a5c7ba69656379ee0bc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the UART and its pins for GPS sensor.  <a href="#aa9f28718f859a5c7ba69656379ee0bc3">More...</a><br /></td></tr>
+<tr class="separator:aa9f28718f859a5c7ba69656379ee0bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a5f60b6a60802eccd1ae9526e776a476c"></a>
@@ -97,9 +99,39 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uart__driver_8c_source.html#l00015">15</a> of file <a class="el" href="uart__driver_8c_source.html">uart_driver.c</a>.</p>
+<p>Configure the UART and its pins. This must be called before UARTprintf(). </p>
+<p>File: <a class="el" href="uart__driver_8h.html">uart_driver.h</a> Author: Vatsal Sheth &amp; Sarthak Jain Description: This file contains required include and declarations of variables and functions used by <a class="el" href="uart__driver_8c.html">uart_driver.c</a> Date: 4/29/2019</p>
+<p>File: <a class="el" href="uart__driver_8c.html">uart_driver.c</a> Author: Vatsal Sheth &amp; Sarthak Jain Description: This file contains API for UART Date: 4/29/2019 </p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00049">main()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uart__driver_8c_source.html#l00012">12</a> of file <a class="el" href="uart__driver_8c_source.html">uart_driver.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00051">main()</a>.</p>
+
+</div>
+</div>
+<a id="aa9f28718f859a5c7ba69656379ee0bc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f28718f859a5c7ba69656379ee0bc3">&#9670;&nbsp;</a></span>ConfigureUART_4_GPS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigureUART_4_GPS </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure the UART and its pins for GPS sensor. </p>
+
+<p class="definition">Definition at line <a class="el" href="uart__driver_8c_source.html#l00045">45</a> of file <a class="el" href="uart__driver_8c_source.html">uart_driver.c</a>.</p>
+
+<p class="reference">References <a class="el" href="basic_8h_source.html#l00041">g_ui32SysClock</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="sensor_8c_source.html#l00014">Sensor_fn()</a>.</p>
 
 </div>
 </div>

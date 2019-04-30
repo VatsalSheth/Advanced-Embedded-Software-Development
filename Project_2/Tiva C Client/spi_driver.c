@@ -1,10 +1,9 @@
-/*
- * spi_driver.c
- *
- *  Created on: Apr 17, 2019
- *      Author: Vatsal Sheth
+/**
+ * File: actuator.c
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file contains API for SPI
+ * Date: 4/29/2019
  */
-
 /*
  * SSI Module 2
  * SCLK: PD3

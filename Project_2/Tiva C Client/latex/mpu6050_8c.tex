@@ -1,0 +1,87 @@
+\hypertarget{mpu6050_8c}{}\section{mpu6050.\+c File Reference}
+\label{mpu6050_8c}\index{mpu6050.\+c@{mpu6050.\+c}}
+{\ttfamily \#include \char`\"{}Include/mpu6050.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{mpu6050_8c_a00ae65936ccde9c24a7792f736941a08}{Configure\+M\+PU} (void)
+\begin{DoxyCompactList}\small\item\em Configure I2C 2 block and Gpio pin for interrupt from M\+P\+U6050. Writes initialization registers in M\+PU and configures D\+MP engine. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{mpu6050_8c_a351f0c63d3e3bcb3d34b7167edc2404b}{B\+I\+S\+T\+\_\+mpu} ()
+\begin{DoxyCompactList}\small\item\em Reads the W\+HO AM I register on M\+P\+U6050 to verify the identity. \end{DoxyCompactList}\item 
+void \hyperlink{mpu6050_8c_a1c1d1738754abc00225c527c84a583ad}{M\+P\+U\+\_\+\+I\+SR} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR of M\+P\+U6050 module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mpu6050_8c_a351f0c63d3e3bcb3d34b7167edc2404b}\label{mpu6050_8c_a351f0c63d3e3bcb3d34b7167edc2404b}} 
+\index{mpu6050.\+c@{mpu6050.\+c}!B\+I\+S\+T\+\_\+mpu@{B\+I\+S\+T\+\_\+mpu}}
+\index{B\+I\+S\+T\+\_\+mpu@{B\+I\+S\+T\+\_\+mpu}!mpu6050.\+c@{mpu6050.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+S\+T\+\_\+mpu()}{BIST\_mpu()}}
+{\footnotesize\ttfamily uint8\+\_\+t B\+I\+S\+T\+\_\+mpu (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reads the W\+HO AM I register on M\+P\+U6050 to verify the identity. 
+
+\begin{DoxyReturn}{Returns}
+1 on success and 0 on failure 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file mpu6050.\+c.
+
+
+
+References I2\+Creceive(), and S\+L\+A\+V\+E\+\_\+\+A\+D\+DR.
+
+
+
+Referenced by Configure\+M\+P\+U().
+
+\mbox{\Hypertarget{mpu6050_8c_a00ae65936ccde9c24a7792f736941a08}\label{mpu6050_8c_a00ae65936ccde9c24a7792f736941a08}} 
+\index{mpu6050.\+c@{mpu6050.\+c}!Configure\+M\+PU@{Configure\+M\+PU}}
+\index{Configure\+M\+PU@{Configure\+M\+PU}!mpu6050.\+c@{mpu6050.\+c}}
+\subsubsection{\texorpdfstring{Configure\+M\+P\+U()}{ConfigureMPU()}}
+{\footnotesize\ttfamily uint8\+\_\+t Configure\+M\+PU (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure I2C 2 block and Gpio pin for interrupt from M\+P\+U6050. Writes initialization registers in M\+PU and configures D\+MP engine. 
+
+File\+: \hyperlink{mpu6050_8c}{mpu6050.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for M\+P\+U6050 sensor Date\+: 4/29/2019 \begin{DoxyReturn}{Returns}
+1 on B\+I\+ST success and 0 on B\+I\+ST failure 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file mpu6050.\+c.
+
+
+
+References B\+I\+S\+T\+\_\+mpu(), Configure\+I2\+C2(), I2\+Creceive(), I2\+Csend(), mpu\+\_\+ad0, mpu\+\_\+gpio\+\_\+base, mpu\+\_\+irq, M\+P\+U\+\_\+\+I\+S\+R(), and S\+L\+A\+V\+E\+\_\+\+A\+D\+DR.
+
+
+
+Referenced by Sensor\+\_\+fn().
+
+\mbox{\Hypertarget{mpu6050_8c_a1c1d1738754abc00225c527c84a583ad}\label{mpu6050_8c_a1c1d1738754abc00225c527c84a583ad}} 
+\index{mpu6050.\+c@{mpu6050.\+c}!M\+P\+U\+\_\+\+I\+SR@{M\+P\+U\+\_\+\+I\+SR}}
+\index{M\+P\+U\+\_\+\+I\+SR@{M\+P\+U\+\_\+\+I\+SR}!mpu6050.\+c@{mpu6050.\+c}}
+\subsubsection{\texorpdfstring{M\+P\+U\+\_\+\+I\+S\+R()}{MPU\_ISR()}}
+{\footnotesize\ttfamily void M\+P\+U\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR of M\+P\+U6050 module. 
+
+
+
+Definition at line 81 of file mpu6050.\+c.
+
+
+
+References button\+\_\+flag, I2\+Creceive(), mpu\+\_\+gpio\+\_\+base, pk, S\+L\+A\+V\+E\+\_\+\+A\+D\+DR, time\+\_\+exch\+\_\+flag, and x\+Semaphore\+\_\+s.
+
+
+
+Referenced by Configure\+M\+P\+U().
+

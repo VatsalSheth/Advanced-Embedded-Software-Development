@@ -82,10 +82,14 @@ void \hyperlink{nrf24l01_8h_a58dcbbe5884003d7814d657f456f987d}{Configure\+N\+RF}
 \begin{DoxyCompactList}\small\item\em Configures N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
 void \hyperlink{nrf24l01_8h_aef40b2dfcf1e3e09c6841e4ac7936580}{N\+R\+F\+\_\+\+I\+SR} (void)
 \begin{DoxyCompactList}\small\item\em I\+SR of N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
-uint8\+\_\+t \hyperlink{nrf24l01_8h_a2944482d98243bebf55412da72a3bc25}{N\+R\+F\+\_\+write} (uint32\+\_\+t command, uint32\+\_\+t $\ast$data, uint8\+\_\+t count)
+uint8\+\_\+t \hyperlink{nrf24l01_8h_a8e019a9ef75d5648a801d4fe2c99fd08}{N\+R\+F\+\_\+write} (uint32\+\_\+t command, uint8\+\_\+t $\ast$data, uint8\+\_\+t count)
 \begin{DoxyCompactList}\small\item\em Write to N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
-uint8\+\_\+t \hyperlink{nrf24l01_8h_a065d69a8d468d4662ec8d17d76179712}{N\+R\+F\+\_\+read} (uint32\+\_\+t command, uint32\+\_\+t $\ast$data, uint8\+\_\+t count)
-\begin{DoxyCompactList}\small\item\em Read from N\+R\+F24l01+ module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+uint8\+\_\+t \hyperlink{nrf24l01_8h_ad7197c236227c9d20f9099acd3e8d7c8}{N\+R\+F\+\_\+read} (uint32\+\_\+t command, uint8\+\_\+t $\ast$data, uint8\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Read from N\+R\+F24l01+ module. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_a82e412e87330e76e6bdfba2e48e5f716}{set\+\_\+rxmode} (void)
+\begin{DoxyCompactList}\small\item\em Set N\+RF module to RX mode. \end{DoxyCompactList}\item 
+void \hyperlink{nrf24l01_8h_ab56eb8c077356f06be37bb1820fc0476}{set\+\_\+txmode} (void)
+\begin{DoxyCompactList}\small\item\em Set N\+RF module to TX mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -101,7 +105,7 @@ Definition at line 33 of file nrf24l01.\+h.
 
 
 
-Referenced by Configure\+N\+R\+F().
+Referenced by set\+\_\+rxmode(), and set\+\_\+txmode().
 
 \mbox{\Hypertarget{nrf24l01_8h_ae79cde384e0b6a5549efb001589a79ec}\label{nrf24l01_8h_ae79cde384e0b6a5549efb001589a79ec}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!D\+Y\+N\+PD@{D\+Y\+N\+PD}}
@@ -122,10 +126,6 @@ Definition at line 47 of file nrf24l01.\+h.
 
 
 Definition at line 34 of file nrf24l01.\+h.
-
-
-
-Referenced by Configure\+N\+R\+F().
 
 \mbox{\Hypertarget{nrf24l01_8h_ab6b2378ce9cab6ccafb6d30c774c5307}\label{nrf24l01_8h_ab6b2378ce9cab6ccafb6d30c774c5307}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!E\+N\+\_\+\+R\+X\+A\+D\+DR@{E\+N\+\_\+\+R\+X\+A\+D\+DR}}
@@ -161,6 +161,10 @@ Definition at line 48 of file nrf24l01.\+h.
 
 Definition at line 46 of file nrf24l01.\+h.
 
+
+
+Referenced by Configure\+N\+R\+F().
+
 \mbox{\Hypertarget{nrf24l01_8h_ab2418a6171d7f1eefd458927fdfe7057}\label{nrf24l01_8h_ab2418a6171d7f1eefd458927fdfe7057}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!F\+L\+U\+S\+H\+\_\+\+RX@{F\+L\+U\+S\+H\+\_\+\+RX}}
 \index{F\+L\+U\+S\+H\+\_\+\+RX@{F\+L\+U\+S\+H\+\_\+\+RX}!nrf24l01.\+h@{nrf24l01.\+h}}
@@ -171,6 +175,10 @@ Definition at line 46 of file nrf24l01.\+h.
 
 Definition at line 25 of file nrf24l01.\+h.
 
+
+
+Referenced by Configure\+N\+R\+F().
+
 \mbox{\Hypertarget{nrf24l01_8h_abce47e8066832b6ac4e18162a79859b4}\label{nrf24l01_8h_abce47e8066832b6ac4e18162a79859b4}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!F\+L\+U\+S\+H\+\_\+\+TX@{F\+L\+U\+S\+H\+\_\+\+TX}}
 \index{F\+L\+U\+S\+H\+\_\+\+TX@{F\+L\+U\+S\+H\+\_\+\+TX}!nrf24l01.\+h@{nrf24l01.\+h}}
@@ -180,6 +188,10 @@ Definition at line 25 of file nrf24l01.\+h.
 
 
 Definition at line 24 of file nrf24l01.\+h.
+
+
+
+Referenced by Configure\+N\+R\+F().
 
 \mbox{\Hypertarget{nrf24l01_8h_a700f88377bf36711b711f69b06c52f5d}\label{nrf24l01_8h_a700f88377bf36711b711f69b06c52f5d}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!N\+OP@{N\+OP}}
@@ -193,7 +205,7 @@ Definition at line 30 of file nrf24l01.\+h.
 
 
 
-Referenced by N\+R\+F\+\_\+read().
+Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+read().
 
 \mbox{\Hypertarget{nrf24l01_8h_a3306d6b734ed12aef885bb1434e77c7c}\label{nrf24l01_8h_a3306d6b734ed12aef885bb1434e77c7c}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!nrf\+\_\+ce@{nrf\+\_\+ce}}
@@ -229,7 +241,7 @@ Referenced by clear\+\_\+\+C\+S\+N(), Configure\+N\+R\+F(), and set\+\_\+\+C\+S\
 \subsubsection{\texorpdfstring{nrf\+\_\+gpio\+\_\+base}{nrf\_gpio\_base}}
 {\footnotesize\ttfamily \#define nrf\+\_\+gpio\+\_\+base~G\+P\+I\+O\+\_\+\+P\+O\+R\+T\+L\+\_\+\+B\+A\+SE}
 
-
+File\+: \hyperlink{nrf24l01_8h}{nrf24l01.\+h} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file contains required include and declarations of variables and functions used by \hyperlink{nrf24l01_8c}{nrf24l01.\+c} Date\+: 4/29/2019 
 
 Definition at line 14 of file nrf24l01.\+h.
 
@@ -261,10 +273,6 @@ Referenced by Configure\+N\+R\+F().
 
 Definition at line 41 of file nrf24l01.\+h.
 
-
-
-Referenced by Configure\+N\+R\+F().
-
 \mbox{\Hypertarget{nrf24l01_8h_ad253c20be4ebdb4f1351989627aa7a65}\label{nrf24l01_8h_ad253c20be4ebdb4f1351989627aa7a65}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!R\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}
 \index{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{R\+\_\+\+R\+E\+G\+I\+S\+T\+ER}!nrf24l01.\+h@{nrf24l01.\+h}}
@@ -288,6 +296,10 @@ Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
 
 
 Definition at line 22 of file nrf24l01.\+h.
+
+
+
+Referenced by Comm\+\_\+fn().
 
 \mbox{\Hypertarget{nrf24l01_8h_a14ea186f093047db160cee642e5bd901}\label{nrf24l01_8h_a14ea186f093047db160cee642e5bd901}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID@{R\+\_\+\+R\+X\+\_\+\+P\+L\+\_\+\+W\+ID}}
@@ -319,10 +331,6 @@ Definition at line 26 of file nrf24l01.\+h.
 
 Definition at line 38 of file nrf24l01.\+h.
 
-
-
-Referenced by Configure\+N\+R\+F().
-
 \mbox{\Hypertarget{nrf24l01_8h_ad95edb7665f39454d7d7fd436301712b}\label{nrf24l01_8h_ad95edb7665f39454d7d7fd436301712b}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!R\+F\+\_\+\+S\+E\+T\+UP@{R\+F\+\_\+\+S\+E\+T\+UP}}
 \index{R\+F\+\_\+\+S\+E\+T\+UP@{R\+F\+\_\+\+S\+E\+T\+UP}!nrf24l01.\+h@{nrf24l01.\+h}}
@@ -332,10 +340,6 @@ Referenced by Configure\+N\+R\+F().
 
 
 Definition at line 39 of file nrf24l01.\+h.
-
-
-
-Referenced by Configure\+N\+R\+F().
 
 \mbox{\Hypertarget{nrf24l01_8h_ab9743a9a0928c8f19ad9687ae6c67150}\label{nrf24l01_8h_ab9743a9a0928c8f19ad9687ae6c67150}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!R\+PD@{R\+PD}}
@@ -385,10 +389,6 @@ Referenced by Configure\+N\+R\+F().
 
 Definition at line 36 of file nrf24l01.\+h.
 
-
-
-Referenced by Configure\+N\+R\+F().
-
 \mbox{\Hypertarget{nrf24l01_8h_a2188309b3eceeae158dd64109cd919aa}\label{nrf24l01_8h_a2188309b3eceeae158dd64109cd919aa}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!S\+E\+T\+U\+P\+\_\+\+R\+E\+TR@{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR}}
 \index{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR@{S\+E\+T\+U\+P\+\_\+\+R\+E\+TR}!nrf24l01.\+h@{nrf24l01.\+h}}
@@ -398,10 +398,6 @@ Referenced by Configure\+N\+R\+F().
 
 
 Definition at line 37 of file nrf24l01.\+h.
-
-
-
-Referenced by Configure\+N\+R\+F().
 
 \mbox{\Hypertarget{nrf24l01_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}\label{nrf24l01_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!S\+T\+A\+T\+US@{S\+T\+A\+T\+US}}
@@ -415,7 +411,7 @@ Definition at line 40 of file nrf24l01.\+h.
 
 
 
-Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
+Referenced by N\+R\+F\+\_\+\+I\+S\+R().
 
 \mbox{\Hypertarget{nrf24l01_8h_aa734c6e08b9f794436eacbabe466a6c4}\label{nrf24l01_8h_aa734c6e08b9f794436eacbabe466a6c4}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!T\+X\+\_\+\+A\+D\+DR@{T\+X\+\_\+\+A\+D\+DR}}
@@ -453,7 +449,7 @@ Definition at line 21 of file nrf24l01.\+h.
 
 
 
-Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
+Referenced by Configure\+N\+R\+F(), N\+R\+F\+\_\+\+I\+S\+R(), set\+\_\+rxmode(), and set\+\_\+txmode().
 
 \mbox{\Hypertarget{nrf24l01_8h_afd12673bc8ca8559b0eee395e8845982}\label{nrf24l01_8h_afd12673bc8ca8559b0eee395e8845982}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD@{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD}}
@@ -467,7 +463,7 @@ Definition at line 23 of file nrf24l01.\+h.
 
 
 
-Referenced by Configure\+N\+R\+F().
+Referenced by Comm\+\_\+fn().
 
 \mbox{\Hypertarget{nrf24l01_8h_a974e6df1de481bc7796a2c1c96b6c9ff}\label{nrf24l01_8h_a974e6df1de481bc7796a2c1c96b6c9ff}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK@{W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+A\+D\+\_\+\+N\+O\+A\+CK}}
@@ -494,11 +490,15 @@ Clears CE pin of N\+R\+F24l01+ module.
 
 
 
-Definition at line 41 of file nrf24l01.\+c.
+Definition at line 39 of file nrf24l01.\+c.
 
 
 
 References nrf\+\_\+ce, and nrf\+\_\+gpio\+\_\+base.
+
+
+
+Referenced by Comm\+\_\+fn(), N\+R\+F\+\_\+\+I\+S\+R(), and Timer1\+Int\+Handler().
 
 \mbox{\Hypertarget{nrf24l01_8h_a8e4b718cc74a4671374f2c970e3c75ed}\label{nrf24l01_8h_a8e4b718cc74a4671374f2c970e3c75ed}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!clear\+\_\+\+C\+SN@{clear\+\_\+\+C\+SN}}
@@ -512,7 +512,7 @@ Clears C\+SN pin of N\+R\+F24l01+ module.
 
 
 
-Definition at line 49 of file nrf24l01.\+c.
+Definition at line 47 of file nrf24l01.\+c.
 
 
 
@@ -534,15 +534,15 @@ Configures N\+R\+F24l01+ module.
 
 
 
-Definition at line 58 of file nrf24l01.\+c.
+Definition at line 56 of file nrf24l01.\+c.
 
 
 
-References C\+O\+N\+F\+IG, Configure\+S\+P\+I2(), E\+N\+\_\+\+AA, E\+N\+\_\+\+R\+X\+A\+D\+DR, nrf\+\_\+ce, nrf\+\_\+csn, nrf\+\_\+gpio\+\_\+base, nrf\+\_\+irq, N\+R\+F\+\_\+\+I\+S\+R(), N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), O\+B\+S\+E\+R\+V\+E\+\_\+\+TX, R\+\_\+\+R\+E\+G\+I\+S\+T\+ER, R\+F\+\_\+\+CH, R\+F\+\_\+\+S\+E\+T\+UP, R\+X\+\_\+\+A\+D\+D\+R\+\_\+P, R\+X\+\_\+\+P\+W\+\_\+P, set\+\_\+\+C\+E(), S\+E\+T\+U\+P\+\_\+\+AW, S\+E\+T\+U\+P\+\_\+\+R\+E\+TR, S\+P\+I\+\_\+rxfifo\+\_\+flush(), S\+T\+A\+T\+US, T\+X\+\_\+\+A\+D\+DR, W\+\_\+\+R\+E\+G\+I\+S\+T\+ER, and W\+\_\+\+T\+X\+\_\+\+P\+A\+Y\+L\+O\+AD.
+References Configure\+S\+P\+I2(), E\+N\+\_\+\+R\+X\+A\+D\+DR, F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US, F\+L\+U\+S\+H\+\_\+\+RX, F\+L\+U\+S\+H\+\_\+\+TX, N\+OP, nrf\+\_\+ce, nrf\+\_\+csn, nrf\+\_\+gpio\+\_\+base, nrf\+\_\+irq, N\+R\+F\+\_\+\+I\+S\+R(), N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+E\+G\+I\+S\+T\+ER, R\+X\+\_\+\+A\+D\+D\+R\+\_\+P, R\+X\+\_\+\+P\+W\+\_\+P, S\+P\+I\+\_\+rxfifo\+\_\+flush(), T\+X\+\_\+\+A\+D\+DR, and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
 
 
 
-Referenced by main().
+Referenced by Comm\+\_\+fn().
 
 \mbox{\Hypertarget{nrf24l01_8h_aef40b2dfcf1e3e09c6841e4ac7936580}\label{nrf24l01_8h_aef40b2dfcf1e3e09c6841e4ac7936580}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!N\+R\+F\+\_\+\+I\+SR@{N\+R\+F\+\_\+\+I\+SR}}
@@ -556,21 +556,17 @@ I\+SR of N\+R\+F24l01+ module.
 
 
 
-Definition at line 176 of file nrf24l01.\+c.
-
-
-
-References nrf\+\_\+gpio\+\_\+base, N\+R\+F\+\_\+read(), N\+R\+F\+\_\+write(), R\+\_\+\+R\+E\+G\+I\+S\+T\+ER, S\+T\+A\+T\+US, and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+Definition at line 88 of file rf\+\_\+comm.\+c.
 
 
 
 Referenced by Configure\+N\+R\+F().
 
-\mbox{\Hypertarget{nrf24l01_8h_a065d69a8d468d4662ec8d17d76179712}\label{nrf24l01_8h_a065d69a8d468d4662ec8d17d76179712}} 
+\mbox{\Hypertarget{nrf24l01_8h_ad7197c236227c9d20f9099acd3e8d7c8}\label{nrf24l01_8h_ad7197c236227c9d20f9099acd3e8d7c8}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!N\+R\+F\+\_\+read@{N\+R\+F\+\_\+read}}
 \index{N\+R\+F\+\_\+read@{N\+R\+F\+\_\+read}!nrf24l01.\+h@{nrf24l01.\+h}}
 \subsubsection{\texorpdfstring{N\+R\+F\+\_\+read()}{NRF\_read()}}
-{\footnotesize\ttfamily uint8\+\_\+t N\+R\+F\+\_\+read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command,  }\item[{uint32\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t N\+R\+F\+\_\+read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
 
 
 
@@ -590,7 +586,7 @@ Status register value
 \end{DoxyReturn}
 
 
-Definition at line 160 of file nrf24l01.\+c.
+Definition at line 169 of file nrf24l01.\+c.
 
 
 
@@ -598,13 +594,13 @@ References clear\+\_\+\+C\+S\+N(), N\+OP, N\+R\+F\+\_\+write(), set\+\_\+\+C\+S\
 
 
 
-Referenced by Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
+Referenced by Comm\+\_\+fn(), Configure\+N\+R\+F(), and N\+R\+F\+\_\+\+I\+S\+R().
 
-\mbox{\Hypertarget{nrf24l01_8h_a2944482d98243bebf55412da72a3bc25}\label{nrf24l01_8h_a2944482d98243bebf55412da72a3bc25}} 
+\mbox{\Hypertarget{nrf24l01_8h_a8e019a9ef75d5648a801d4fe2c99fd08}\label{nrf24l01_8h_a8e019a9ef75d5648a801d4fe2c99fd08}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!N\+R\+F\+\_\+write@{N\+R\+F\+\_\+write}}
 \index{N\+R\+F\+\_\+write@{N\+R\+F\+\_\+write}!nrf24l01.\+h@{nrf24l01.\+h}}
 \subsubsection{\texorpdfstring{N\+R\+F\+\_\+write()}{NRF\_write()}}
-{\footnotesize\ttfamily uint8\+\_\+t N\+R\+F\+\_\+write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command,  }\item[{uint32\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t N\+R\+F\+\_\+write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
 
 
 
@@ -624,7 +620,7 @@ Status register value
 \end{DoxyReturn}
 
 
-Definition at line 127 of file nrf24l01.\+c.
+Definition at line 132 of file nrf24l01.\+c.
 
 
 
@@ -632,7 +628,7 @@ References clear\+\_\+\+C\+S\+N(), set\+\_\+\+C\+S\+N(), S\+P\+I\+\_\+rxfifo\+\_
 
 
 
-Referenced by Configure\+N\+R\+F(), N\+R\+F\+\_\+\+I\+S\+R(), and N\+R\+F\+\_\+read().
+Referenced by Comm\+\_\+fn(), Configure\+N\+R\+F(), N\+R\+F\+\_\+\+I\+S\+R(), N\+R\+F\+\_\+read(), set\+\_\+rxmode(), and set\+\_\+txmode().
 
 \mbox{\Hypertarget{nrf24l01_8h_ad3a4189b6ee9141022e9204cd261dc49}\label{nrf24l01_8h_ad3a4189b6ee9141022e9204cd261dc49}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+\+CE@{set\+\_\+\+CE}}
@@ -646,7 +642,7 @@ Sets CE pin of N\+R\+F24l01+ module.
 
 
 
-Definition at line 33 of file nrf24l01.\+c.
+Definition at line 31 of file nrf24l01.\+c.
 
 
 
@@ -654,7 +650,7 @@ References nrf\+\_\+ce, and nrf\+\_\+gpio\+\_\+base.
 
 
 
-Referenced by Configure\+N\+R\+F().
+Referenced by Comm\+\_\+fn(), and N\+R\+F\+\_\+\+I\+S\+R().
 
 \mbox{\Hypertarget{nrf24l01_8h_a4c47ecb0afd108992aa1d9350d3f8295}\label{nrf24l01_8h_a4c47ecb0afd108992aa1d9350d3f8295}} 
 \index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+\+C\+SN@{set\+\_\+\+C\+SN}}
@@ -666,9 +662,9 @@ Referenced by Configure\+N\+R\+F().
 
 Sets C\+SN pin of N\+R\+F24l01+ module. 
 
+File\+: \hyperlink{i2c__driver_8c}{i2c\+\_\+driver.\+c} Author\+: Vatsal Sheth \& Sarthak Jain Description\+: This file has driver A\+PI for N\+R\+F24l01+ module Date\+: 4/29/2019 
 
-
-Definition at line 25 of file nrf24l01.\+c.
+Definition at line 23 of file nrf24l01.\+c.
 
 
 
@@ -677,4 +673,48 @@ References nrf\+\_\+csn, and nrf\+\_\+gpio\+\_\+base.
 
 
 Referenced by clear\+\_\+\+C\+S\+N(), N\+R\+F\+\_\+read(), and N\+R\+F\+\_\+write().
+
+\mbox{\Hypertarget{nrf24l01_8h_a82e412e87330e76e6bdfba2e48e5f716}\label{nrf24l01_8h_a82e412e87330e76e6bdfba2e48e5f716}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+rxmode@{set\+\_\+rxmode}}
+\index{set\+\_\+rxmode@{set\+\_\+rxmode}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+rxmode()}{set\_rxmode()}}
+{\footnotesize\ttfamily void set\+\_\+rxmode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Set N\+RF module to RX mode. 
+
+
+
+Definition at line 118 of file nrf24l01.\+c.
+
+
+
+References C\+O\+N\+F\+IG, N\+R\+F\+\_\+write(), and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+
+
+Referenced by N\+R\+F\+\_\+\+I\+S\+R().
+
+\mbox{\Hypertarget{nrf24l01_8h_ab56eb8c077356f06be37bb1820fc0476}\label{nrf24l01_8h_ab56eb8c077356f06be37bb1820fc0476}} 
+\index{nrf24l01.\+h@{nrf24l01.\+h}!set\+\_\+txmode@{set\+\_\+txmode}}
+\index{set\+\_\+txmode@{set\+\_\+txmode}!nrf24l01.\+h@{nrf24l01.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+txmode()}{set\_txmode()}}
+{\footnotesize\ttfamily void set\+\_\+txmode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Set N\+RF module to TX mode. 
+
+
+
+Definition at line 108 of file nrf24l01.\+c.
+
+
+
+References C\+O\+N\+F\+IG, N\+R\+F\+\_\+write(), and W\+\_\+\+R\+E\+G\+I\+S\+T\+ER.
+
+
+
+Referenced by Comm\+\_\+fn(), and Timer1\+Int\+Handler().
 

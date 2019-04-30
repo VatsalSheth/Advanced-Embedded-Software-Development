@@ -61,9 +61,6 @@ $(function() {
 <div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div>
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>c
-: <a class="el" href="nrf24l01_8c.html#aaf5d342e977c5857e99310eea0e72e4b">nrf24l01.c</a>
-</li>
 <li>CHECKSUM_CHECK_IP
 : <a class="el" href="lwipopts_8h.html#a005b1b9988b84a2cb844144cef22c11e">lwipopts.h</a>
 </li>
@@ -92,6 +89,17 @@ $(function() {
 <li>clear_CSN()
 : <a class="el" href="nrf24l01_8h.html#a8e4b718cc74a4671374f2c970e3c75ed">nrf24l01.h</a>
 , <a class="el" href="nrf24l01_8c.html#a8e4b718cc74a4671374f2c970e3c75ed">nrf24l01.c</a>
+</li>
+<li>COMBINE
+: <a class="el" href="gps__driver_8c.html#ae8b0c7d4f4c61109a44d953e5bd22e4f">gps_driver.c</a>
+</li>
+<li>Comm_fn()
+: <a class="el" href="rf__comm_8h.html#ae48dbcd906148bb90f676cc70133386b">rf_comm.h</a>
+, <a class="el" href="rf__comm_8c.html#ae48dbcd906148bb90f676cc70133386b">rf_comm.c</a>
+</li>
+<li>Comm_task()
+: <a class="el" href="rf__comm_8c.html#a10098359140c9e86af8c3a811c739145">rf_comm.c</a>
+, <a class="el" href="rf__comm_8h.html#a10098359140c9e86af8c3a811c739145">rf_comm.h</a>
 </li>
 <li>CONFIG
 : <a class="el" href="nrf24l01_8h.html#a76ea3cf49247a07c54b3db005a3c7f57">nrf24l01.h</a>
@@ -145,28 +153,48 @@ $(function() {
 : <a class="el" href="_free_r_t_o_s_config_8h.html#a9f213227674effff0122a75d94d87938">FreeRTOSConfig.h</a>
 </li>
 <li>ConfigureButton()
-: <a class="el" href="button_8c.html#ae8d5123efdd67e5cfddf084ba6123e7b">button.c</a>
-, <a class="el" href="button_8h.html#ae8d5123efdd67e5cfddf084ba6123e7b">button.h</a>
+: <a class="el" href="button_8h.html#ae8d5123efdd67e5cfddf084ba6123e7b">button.h</a>
+, <a class="el" href="button_8c.html#ae8d5123efdd67e5cfddf084ba6123e7b">button.c</a>
 </li>
 <li>ConfigureI2C2()
 : <a class="el" href="i2c__driver_8h.html#a6ce3db1994587a4c70027f9b1ca75f3e">i2c_driver.h</a>
 , <a class="el" href="i2c__driver_8c.html#a6ce3db1994587a4c70027f9b1ca75f3e">i2c_driver.c</a>
 </li>
 <li>ConfigureLCD()
-: <a class="el" href="lcd__driver_8c.html#adecd104c0f66e6103b31b040c829223e">lcd_driver.c</a>
-, <a class="el" href="lcd__driver_8h.html#adecd104c0f66e6103b31b040c829223e">lcd_driver.h</a>
+: <a class="el" href="lcd__driver_8h.html#adecd104c0f66e6103b31b040c829223e">lcd_driver.h</a>
+, <a class="el" href="lcd__driver_8c.html#adecd104c0f66e6103b31b040c829223e">lcd_driver.c</a>
+</li>
+<li>ConfigureLED()
+: <a class="el" href="actuator_8h.html#ad2b58515815f1f2d15550183a0f4a095">actuator.h</a>
+, <a class="el" href="actuator_8c.html#ad2b58515815f1f2d15550183a0f4a095">actuator.c</a>
+</li>
+<li>ConfigureMPU()
+: <a class="el" href="mpu6050_8h.html#a00ae65936ccde9c24a7792f736941a08">mpu6050.h</a>
+, <a class="el" href="mpu6050_8c.html#a00ae65936ccde9c24a7792f736941a08">mpu6050.c</a>
 </li>
 <li>ConfigureNRF()
-: <a class="el" href="nrf24l01_8c.html#a58dcbbe5884003d7814d657f456f987d">nrf24l01.c</a>
-, <a class="el" href="nrf24l01_8h.html#a58dcbbe5884003d7814d657f456f987d">nrf24l01.h</a>
+: <a class="el" href="nrf24l01_8h.html#a58dcbbe5884003d7814d657f456f987d">nrf24l01.h</a>
+, <a class="el" href="nrf24l01_8c.html#a58dcbbe5884003d7814d657f456f987d">nrf24l01.c</a>
 </li>
 <li>ConfigureSPI2()
-: <a class="el" href="spi__driver_8h.html#a9f0d582580529c5fcf66f3475981c6b5">spi_driver.h</a>
-, <a class="el" href="spi__driver_8c.html#a9f0d582580529c5fcf66f3475981c6b5">spi_driver.c</a>
+: <a class="el" href="spi__driver_8c.html#a9f0d582580529c5fcf66f3475981c6b5">spi_driver.c</a>
+, <a class="el" href="spi__driver_8h.html#a9f0d582580529c5fcf66f3475981c6b5">spi_driver.h</a>
+</li>
+<li>ConfigureTIMER()
+: <a class="el" href="sensor_8h.html#ac1de44cc0313c19d92f6391619da2768">sensor.h</a>
+, <a class="el" href="sensor_8c.html#ac1de44cc0313c19d92f6391619da2768">sensor.c</a>
+</li>
+<li>ConfigureTIMER1()
+: <a class="el" href="rf__comm_8c.html#a65a7716541a992a60a79e8e1bbc8829e">rf_comm.c</a>
+, <a class="el" href="rf__comm_8h.html#a024029d87052fff4fe60b99db6d505ce">rf_comm.h</a>
 </li>
 <li>ConfigureUART()
-: <a class="el" href="uart__driver_8h.html#a5f60b6a60802eccd1ae9526e776a476c">uart_driver.h</a>
-, <a class="el" href="uart__driver_8c.html#a5f60b6a60802eccd1ae9526e776a476c">uart_driver.c</a>
+: <a class="el" href="uart__driver_8c.html#a5f60b6a60802eccd1ae9526e776a476c">uart_driver.c</a>
+, <a class="el" href="uart__driver_8h.html#a5f60b6a60802eccd1ae9526e776a476c">uart_driver.h</a>
+</li>
+<li>ConfigureUART_4_GPS()
+: <a class="el" href="uart__driver_8c.html#aa9f28718f859a5c7ba69656379ee0bc3">uart_driver.c</a>
+, <a class="el" href="uart__driver_8h.html#aa9f28718f859a5c7ba69656379ee0bc3">uart_driver.h</a>
 </li>
 <li>configUSE_16_BIT_TICKS
 : <a class="el" href="_free_r_t_o_s_config_8h.html#aac311ed9b9e5ae4d2d9648b33a24acce">FreeRTOSConfig.h</a>
@@ -194,6 +222,13 @@ $(function() {
 </li>
 <li>configUSE_TRACE_FACILITY
 : <a class="el" href="_free_r_t_o_s_config_8h.html#a27f5ee137dc9f125681a31f0b0a4b3be">FreeRTOSConfig.h</a>
+</li>
+<li>Continue
+: <a class="el" href="sensor_8h.html#a20cea5bb58c492c2dc17b896bc5aee39">sensor.h</a>
+, <a class="el" href="rf__comm_8h.html#a20cea5bb58c492c2dc17b896bc5aee39">rf_comm.h</a>
+</li>
+<li>course()
+: <a class="el" href="gps__driver_8c.html#a07c262c2f3d1195a76c63c6e5984a04a">gps_driver.c</a>
 </li>
 <li>ctrl_gpio_base
 : <a class="el" href="lcd__driver_8h.html#a62a4b586610cd41e953c6e266ce86395">lcd_driver.h</a>

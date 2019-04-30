@@ -1,8 +1,8 @@
-/*
- * nrf24l01.h
- *
- *  Created on: Apr 18, 2019
- *      Author: vkshe
+/**
+ * File: nrf24l01.h
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file contains required include and declarations of variables and functions used by nrf24l01.c
+ * Date: 4/29/2019
  */
 
 #ifndef INCLUDE_NRF24L01_H_
@@ -52,8 +52,10 @@ void set_CSN();
 void set_CE();
 void clear_CE();
 void ConfigureNRF(void);
-void NRF_ISR(void);
-uint8_t NRF_write(uint32_t command, uint32_t *data, uint8_t count);
-uint8_t NRF_read(uint32_t command, uint32_t *data, uint8_t count);
+extern void NRF_ISR(void);
+uint8_t NRF_write(uint32_t command, uint8_t *data, uint8_t count);
+uint8_t NRF_read(uint32_t command, uint8_t *data, uint8_t count);
+void set_rxmode(void);
+void set_txmode(void);
 
 #endif /* INCLUDE_NRF24L01_H_ */

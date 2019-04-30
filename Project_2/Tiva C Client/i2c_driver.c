@@ -1,5 +1,15 @@
+/**
+ * File: i2c_driver.c
+ * Author: Vatsal Sheth & Sarthak Jain
+ * Description: This file has driver API for I2C
+ * Date: 4/29/2019
+ */
+
 #include "Include/i2c_driver.h"
 
+/**
+ * @brief Configures I2C 2 Block
+ */
 void ConfigureI2C2(void)
 {
     //enable I2C module 2
@@ -26,20 +36,54 @@ void ConfigureI2C2(void)
     I2CMasterInitExpClk(I2C2_BASE, SysCtlClockGet(), false);
 }
 
-void I2Csend(uint8_t addr, uint8_t data)
+/**
+ * @brief Writes data on I2C 2 Block
+ * @param addr Slave addrres
+ * @param data Pointer to data to be sent
+ * @param count Number of bytes to be sent from data pointer
+ */
+void I2Csend(uint8_t addr, uint8_t *data, uint8_t count)
 {
-    I2CMasterSlaveAddrSet(I2C2_BASE, addr, false);
-    I2CMasterDataPut(I2C2_BASE, data);
-    I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+    uint8_t i;
 
-    //Overcome I2C error as per ERRATA
-    while(!I2CMasterBusy(I2C2_BASE));
-    while(I2CMasterBusy(I2C2_BASE));
+    I2CMasterSlaveAddrSet(I2C2_BASE, addr, false);
+
+    for(i=0; i<count; i++)
+    {
+        I2CMasterDataPut(I2C2_BASE, data[i]);
+        if((i==0) && (count == 1))
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+        }
+        else if(i==0)
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+        }
+        else if(i<(count-1))
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+        }
+        else if(i==(count-1))
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
+        }
+
+        //Overcome I2C error as per ERRATA
+        while(!I2CMasterBusy(I2C2_BASE));
+        while(I2CMasterBusy(I2C2_BASE));
+    }
 }
 
-uint32_t I2Creceive(uint8_t addr, uint8_t reg)
+/**
+ * @brief Receives specified bytes of data from given register through I2C 2 Block
+ * @param addr Slave address
+ * @param reg  Register to read data from
+ * @param data Pointer to received data
+ * @param count Number of bytes to be received
+ */
+void I2Creceive(uint8_t addr, uint8_t reg, uint8_t *data, uint8_t count)
 {
-    uint32_t data;
+    uint8_t i;
 
     I2CMasterSlaveAddrSet(I2C2_BASE, addr, false);
     I2CMasterDataPut(I2C2_BASE, reg);
@@ -50,22 +94,31 @@ uint32_t I2Creceive(uint8_t addr, uint8_t reg)
     while(I2CMasterBusy(I2C2_BASE));
 
     I2CMasterSlaveAddrSet(I2C2_BASE, addr, true);
-    I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_START);
 
-    //Overcome I2C error as per ERRATA
-    while(!I2CMasterBusy(I2C2_BASE));
-    while(I2CMasterBusy(I2C2_BASE));
+    for(i=0; i<count; i++)
+    {
+        if((i==0) && (count == 1))
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_SINGLE_RECEIVE);
+        }
+        else if(i==0)
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_START);
+        }
+        else if(i<(count-1))
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_CONT);
+        }
+        else if(i==(count-1))
+        {
+            I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_FINISH);
+        }
 
-    data = I2CMasterDataGet(I2C2_BASE);
-    data = data<<8;
 
-    I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_FINISH);
+        //Overcome I2C error as per ERRATA
+        while(!I2CMasterBusy(I2C2_BASE));
+        while(I2CMasterBusy(I2C2_BASE));
 
-    //Overcome I2C error as per ERRATA
-    while(!I2CMasterBusy(I2C2_BASE));
-    while(I2CMasterBusy(I2C2_BASE));
-
-    data |= I2CMasterDataGet(I2C2_BASE);
-
-    return data;
+        data[i] = I2CMasterDataGet(I2C2_BASE);
+    }
 }
